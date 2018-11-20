@@ -32,6 +32,11 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'bootstrap4',
+    'project.apps.comments',
+    'project.apps.like_dislike',
+    'project.apps.ajax_utils',
+    'project.apps.blog',
     'project.apps.account',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -80,8 +85,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysite',
-        'USER': 'mysite_admin',
-        'PASSWORD': '1996'
+        'USER': 'root', #mysite_admin
+        'PASSWORD': '1488' #1996
     }
 }
 
@@ -129,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/test/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = '/var/www/mysite.ru/static'
 
