@@ -1,0 +1,16 @@
+<div>
+    <a href="#comment-1">test</a>
+{% for c in comments %}
+<div class="row  border">
+    <div class="col-sm-12" style="background-color: #ffffff">
+        <div class="media">
+            <a href="#"><img class="mr-3" src="../img" alt="img"></a>
+            <div class="media-body">
+                <a name="{{ c.get_absolute_url }}"></a>
+                <h5 class="mt-0"> {{ c.text }} </h5>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+ </div>

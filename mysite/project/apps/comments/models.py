@@ -3,14 +3,18 @@ from project.apps.blog.models import BaseArticle, Article
 from django.contrib.contenttypes.fields import GenericRelation
 from project.apps.like_dislike.models import LikeDislike
 from django.conf import settings
-
+from  django.urls import reverse
 
 class Comment(BaseArticle):
-    text = models.TextField(max_length=5024)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET('delete'))
+    text = models.TextField(max_length=1024)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    parent_comment = models.ForeignKey('self', on_delete=models.SET('delete'), default='root')
+    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     rating = GenericRelation(LikeDislike, related_query_name='Comment')
 
+    class Meta:
+        ordering = ['-id']
 
+    def get_absolute_url(self):
+        return  'comment-' + str(self.id)
 

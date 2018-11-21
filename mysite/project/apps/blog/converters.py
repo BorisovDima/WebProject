@@ -4,8 +4,7 @@ class CategoryConverter:
     regex = '\w+'
 
     def to_python(self, value):
-        if value != 'testcat': raise ValueError
-        #if not bool(Category.objects.filter(name=value)): raise ValueError
+        if not bool(Category.objects.filter(name=value)): raise ValueError
         return str(value)
 
     def to_url(self, value):

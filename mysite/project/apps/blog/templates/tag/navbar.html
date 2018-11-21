@@ -1,0 +1,56 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
+    <a href="/" class="navbar-brand">
+<img src="{% static 'blog/img/logo.img' %}" width="35" height="35">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+
+    <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
+
+          <ul class="navbar-nav mr-auto">
+
+              {% if user.is_authenticated %}
+                <li class="nav-item active">
+                   <a class="nav-link" href="#">Profile</a>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                   <a class="nav-link" href="#">Regist</a>
+              </li>
+              <li class="nav-item">
+                   <a class="nav-link" href="#">Login</a>
+              </li>
+              {% endif %}
+
+         <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            {% for c in categories %}
+          <a class="dropdown-item" href="{{ c.get_absolute_url }} ">{{ c }}</a>
+            {% endfor %}
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/">All posts</a>
+        </div>
+          </li>
+
+          <li class="nav-item active">
+               <a class="nav-link" id="obj_loader" >{{ category }}</a>
+          </li>
+
+        </ul>
+
+           <form class="form-inline my-0 my-lg-0" method="GET">
+                <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+    </div>
+</nav>

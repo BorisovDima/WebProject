@@ -3,12 +3,10 @@ $(document).ready(function(){
     // с текущим 'obj_id' (может быть категория, пост или None).
 
     var inProgress = true
-    var obj_id = $('#obj_loader').val()
+    var obj_id = $('#obj_loader').text()
     var since = ''
-    var location = $('#loader').attr('value')
-
     $.ajax({
-        url: '/api/load/' + location + '/',
+        url: '/api/load/articles/',
         method: 'GET',
         data: {'obj_id': obj_id} // 'obj_id' (может быть категория, пост или None).
     }).success(function(data) {
@@ -24,7 +22,7 @@ $(document).ready(function(){
 
         if ((($(window).height() + $(window).scrollTop()) > ($(document).height() - 200)) && !inProgress){
                  $.ajax({
-                    url: '/api/load/' + location + '/',
+                    url: '/api/load/articles/',
                     method: 'GET',
                     data: {'since': since, 'obj_id': obj_id}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {

@@ -1,8 +1,37 @@
-<div>
+
 
 
     {% for article in objs %}
-    <h1> {{ article }} </h1>
-            {% endfor %}
+        <div class="row  border">
+             <div class="col-sm-12" style="background-color: #ffffff">
+                 <span style="font-size: 14px;"> Author: <a href="#" >{{ article.author }}</a> </span>
+                      <div class="card-body">
+                       <h5 class="card-title">{{ article.title }}</h5>
+                 <h6 class="card-subtitle mb-2 text-muted">{{ article.create_data }}</h6>
 
-</div>
+                          <a href="{{ article.get_absolute_url }}" class="btn btn-primary"> Read </a>
+                      </div>
+
+
+        <nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-white mt">
+
+
+    <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>
+      <li class="breadcrumb-item"><a style="font-size: 14px;"> Views: {{ article.views }} </a></li>
+    <li class="breadcrumb-item"><a style="font-size: 14px;"> Rating: </a></li>
+      <li class="breadcrumb-item"> <a href="#"style="font-size: 14px;"> {{ article.create_data }} </a></li>
+
+  </ol>
+</nav>
+ </div>
+     </div>
+    <br>
+    {% endfor %}
+
+
+
+
+
+
+

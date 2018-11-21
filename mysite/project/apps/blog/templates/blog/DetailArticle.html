@@ -1,0 +1,66 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load comment_tags %}
+{% load static %}
+
+
+{% block head %}
+
+{% load_navbar user article.category %}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+
+
+<div class="container-fluid">
+
+    <div class="row text-left mt-1">
+    <div class="col-lg-6  offset-md-1" id="add-loader">
+         <div class="row  border">
+             <div class="col-sm-12" style="background-color: #ffffff">
+                    <div class="media">
+                        <a href="#"><img class="mr-3" src="../img" alt="img"></a>
+                        <div class="media-body">
+                            <h5 class="mt-0"> {{ article.title }} </h5>
+
+                            {{ article.text }}
+
+
+
+                        </div>
+                    </div>
+               </div>
+            </div>
+             <br>
+        <div class="row  border">
+             <div class="col-sm-12" style="background-color: #ffffff">
+
+                 <form method="POST" action="{{ article.get_absolute_url}}add-comment/">
+                 {{ form_comment }}
+                     {% csrf_token %}
+                     <input type="submit">
+                      </form>
+
+                 {% load_comments user article %}
+            </div>
+        </div>
+
+
+         </div>
+         <div class="col-lg-3 col-sm-4 d-none d-sm-block border ml-4" style="background-color: #ffffff">
+         <div style="position: fixed">
+          <div class="border">
+             sidebar
+          </div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+{% endblock %}

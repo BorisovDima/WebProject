@@ -15,7 +15,8 @@ class Loader(View):
 
     def get(self, req, **kwargs):
         obj_loader, since = req.GET.get('obj_id'), req.GET.get('since')
-        objects = self.model.objects.filter(name=obj_loader) if obj_loader else self.model.objects.all()
+        objects = self.model.objects.filter(category__name=obj_loader.strip()) if obj_loader \
+            else self.model.objects.all() #Сортирую по имени моей категории ForeignKey или отдаю все посты
         if since:
             objects = objects.filter(id__lte=(int(since)-1))
         objs = list(objects[:20])
@@ -23,4 +24,5 @@ class Loader(View):
         return JsonResponse({'html': render_to_html(self.request, self.template_name, {'objs': objs}),
                              'since': objs[-1].id,
                              'status': 'ok'})
+
 
