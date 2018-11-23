@@ -1,6 +1,9 @@
-from channels.routing import ProtocolTypeRouter
+from channels.routing import ProtocolTypeRouter, URLRouter
+from channels.auth import AuthMiddlewareStack
+from project.apps.comments.routing import ws_urlpatterns
 
 application = ProtocolTypeRouter({
-    # http default
-    # Empty for now (http->django views is added by default)
+    'websocket': AuthMiddlewareStack(        # cookie - user - session - authoriz
+        URLRouter(ws_urlpatterns )
+    ),
 })

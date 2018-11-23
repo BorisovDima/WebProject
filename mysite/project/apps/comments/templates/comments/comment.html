@@ -1,0 +1,17 @@
+<div class="row  border">
+    <div class="col-sm-12" style="background-color: #ffffff">
+        <div class="media">
+            <a href="#"><img class="mr-3" src="../img" alt="img"></a>
+            <div class="media-body">
+                {% if parent_id %}
+                <a href="#{{ parent_id }}">#->{{ parent_name }}</a>
+                {% endif %}
+                <a name="{{ c.get_absolute_url }}"></a>
+                <h5 class="mt-0"> {{ text }} </h5>
+
+                <p><input type="button" value="Answer" onclick="Answer({{ comment_id }}, '{{ author }}')"></p>
+
+            </div>
+        </div>
+    </div>
+</div>

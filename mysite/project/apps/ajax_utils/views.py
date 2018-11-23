@@ -21,7 +21,7 @@ class Loader(View):
             objects = objects.filter(id__lte=(int(since)-1))
         objs = list(objects[:20])
         if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_html(self.request, self.template_name, {'objs': objs}),
+        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
                              'since': objs[-1].id,
                              'status': 'ok'})
 

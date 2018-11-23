@@ -1,10 +1,18 @@
 from django.forms import ModelForm
+from django import forms
 from .models import Comment
 
+
+
+
 class CommentForm(ModelForm):
+    parent = forms.IntegerField(required=False, widget=forms.widgets.HiddenInput)
+
     class Meta:
         model = Comment
         fields = ['text']
-
+        widgets = {
+            'text': forms.Textarea(attrs={'rows': 3, 'Class': 'form-control'})
+        }
 
 

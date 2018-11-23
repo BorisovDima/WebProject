@@ -1,5 +1,12 @@
+{% load static %}
+
 <div>
-    <a href="#comment-1">test</a>
+
+    <div id="answer"></div>
+<script src="{% static 'comments/js/answer_comment.js' %}"> </script>
+
+
+<div id="comments-list">
 {% for c in comments %}
 <div class="row  border">
     <div class="col-sm-12" style="background-color: #ffffff">
@@ -8,9 +15,13 @@
             <div class="media-body">
                 <a name="{{ c.get_absolute_url }}"></a>
                 <h5 class="mt-0"> {{ c.text }} </h5>
+
+                <p><input type="button" value="Answer" onclick="Answer({{ c.id }}, '{{ c.author.username }}')"></p>
+
             </div>
         </div>
     </div>
 </div>
 {% endfor %}
+    </div>
  </div>

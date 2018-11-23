@@ -38,14 +38,16 @@
              <br>
         <div class="row  border">
              <div class="col-sm-12" style="background-color: #ffffff">
+                 <div class="form-group mt-2" id="form">
+                     {{ form_comment.text }}
+                     {{ form_comment.parent }}
+                 </div>
+                <input id="comment-submit" type="button" value="Send"/>
 
-                 <form method="POST" action="{{ article.get_absolute_url}}add-comment/">
-                 {{ form_comment }}
-                     {% csrf_token %}
-                     <input type="submit">
-                      </form>
+
 
                  {% load_comments user article %}
+
             </div>
         </div>
 
@@ -61,6 +63,6 @@
 </div>
 </div>
 
-
+<script src="{% static 'blog/js/websocket.js' %}"></script>
 
 {% endblock %}
