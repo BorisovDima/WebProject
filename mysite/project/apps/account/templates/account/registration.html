@@ -1,0 +1,19 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+
+{% block head %}
+
+{% load_navbar user %}
+
+{% endblock %}
+
+{% block body %}
+
+<form method="POST">
+{{ form.as_ul }}
+{% csrf_token %}
+<input type="hidden" name="next" value="/">
+<input type="submit">
+</form>
+
+{% endblock %}

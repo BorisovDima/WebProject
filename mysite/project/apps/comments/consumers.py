@@ -39,11 +39,10 @@ class CommentConsumer(AsyncWebsocketConsumer):
             if data['parent']:
                 parent = await database_sync_to_async(Comment.objects.get_comment)(id=data['parent'])
                 kwargs['parent_comment'] = parent
-                mykwargs['parent_name'] = parent.author
+                mykwargs['parent_name'] = parent.author.username
                 mykwargs['parent_id'] = data['parent']
 
             comment_id = await database_sync_to_async(Comment.objects.add_comment)(**kwargs, article=article)
-            print(comment_id)
             mykwargs['comment_id'] = comment_id
             mykwargs['author'] = author.username
             await self.channel_layer.group_send(self.article,
@@ -53,7 +52,6 @@ class CommentConsumer(AsyncWebsocketConsumer):
         kwargs = event['kwargs']
         kwargs.update({'create_data': timezone.now()})
         html = render_to_html('comments/comment.html', kwargs)
-        print(html)
         await self.send(json.dumps({'comment': html}))
 
 ####################################################################

@@ -1,6 +1,6 @@
 
 
-var Socket = new WebSocket('ws://' + window.location.host + window.location.pathname);
+var Socket = new WebSocket('ws://' + window.location.host + window.location.pathname + 'add-comment/');
 
 Socket.onmessage = function(event) {
 

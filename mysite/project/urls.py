@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', include('project.apps.blog.urls')),
     path('', include('project.apps.comments.urls')),
+    path('', include('project.apps.account.urls')),
     path('api/', include('project.apps.ajax_utils.urls')),
 
 

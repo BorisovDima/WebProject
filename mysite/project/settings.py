@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'project.apps.ajax_utils',
     'project.apps.blog',
     'project.apps.account',
+    'django.contrib.humanize',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

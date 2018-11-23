@@ -1,17 +1,27 @@
-<div class="row  border">
-    <div class="col-sm-12" style="background-color: #ffffff">
-        <div class="media">
-            <a href="#"><img class="mr-3" src="../img" alt="img"></a>
-            <div class="media-body">
-                {% if parent_id %}
-                <a href="#{{ parent_id }}">#->{{ parent_name }}</a>
-                {% endif %}
-                <a name="{{ c.get_absolute_url }}"></a>
-                <h5 class="mt-0"> {{ text }} </h5>
+{% load humanize %}
+{% load static %}
 
-                <p><input type="button" value="Answer" onclick="Answer({{ comment_id }}, '{{ author }}')"></p>
+<div class="media" id="comment-{{ comment_id }}">
+    <a href="#"><img class="mr-2" src="{% static 'blog/img/logo.img' %}" alt="img"  width="25" height="25"></a>
+    <div class="media-body">
+        <h6 class="text-primary mt-0" style="font-size: 14px">{{ author }}</h6>
+        <ul class="nav">
+            {% if parent_id %}
+            <li class="nav-item">
+                <input type="button" class="btn btn-link btn-sm pt-1" value="Ответил {{ parent_name }}"
+                  onclick="scroll_to_parent('{{ parent_id }}')">
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                     <h6  class="text-muted"  style="font-size: 14px">{{ create_data | naturaltime }}<input type="button" class="btn btn-link btn-sm" value="Ответить"
+                  onclick="Answer({{ comment_id }}, '{{ author }}')"></h6>
+            </li>
+        </ul>
 
-            </div>
-        </div>
+        <h6 class="mt-0"  style="font-size: 14px"> {{ text }} </h6>
+
+
     </div>
 </div>
+<hr class="mt-0">
+

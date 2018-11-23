@@ -27,8 +27,8 @@ class Comment(BaseArticle):
     class Meta:
         ordering = ['-id']
 
-    def get_absolute_url(self):
-        return 'comment-' + str(self.id)
+    #def get_absolute_url(self):
+        #return 'comment-' + str(self.id)
 
 
 
