@@ -6,15 +6,15 @@
              <div class="col-sm-12" style="background-color: #ffffff">
                  <span style="font-size: 14px;"> Author: <a href="#" >{{ article.author }}</a> </span>
                       <div class="card-body">
-                       <h5 class="card-title">{{ article.title }}</h5>
-                 <h6 class="card-subtitle mb-2 text-muted">{{ article.create_data }}</h6>
+                       <h6 class="card-title">{{ article.title }}</h6>
+                 <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;" >{{ article.create_data }}</h6>
 
-                          <a href="{{ article.get_absolute_url }}" class="btn btn-primary"> Read </a>
+                          <a href="{{ article.get_absolute_url }}" class="btn btn-primary mt-2"> Read </a>
                       </div>
 
 
         <nav aria-label="breadcrumb">
-  <ol class="breadcrumb bg-white mt">
+  <ol class="breadcrumb bg-white mb-0 pt-0">
 
 
     <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>

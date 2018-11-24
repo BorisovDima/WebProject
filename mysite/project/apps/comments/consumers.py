@@ -6,7 +6,7 @@ from .forms import CommentForm
 from django.utils import timezone
 from .models import Comment
 from project.apps.blog.shortcuts import render_to_html
-from project.apps.account.models import BlogUser
+from django.contrib.auth import get_user_model
 
 class CommentConsumer(AsyncWebsocketConsumer):
 
@@ -31,8 +31,8 @@ class CommentConsumer(AsyncWebsocketConsumer):
             pass
         else:
             article = await database_sync_to_async(self.get_article)(slug=self.article)
-            author =  await database_sync_to_async(self.get_author)()                     # test
-            kwargs = {'text': data['text'], 'author': author}  # 'author': self.scope['user']
+            author = await database_sync_to_async(self.get_author)(id=self.scope['user'].id)                     # test
+            kwargs = {'text': data['text'], 'author': author}
             mykwargs = kwargs.copy()
 
 
@@ -50,7 +50,7 @@ class CommentConsumer(AsyncWebsocketConsumer):
                                               'kwargs': mykwargs})
     async def send_comment(self, event):
         kwargs = event['kwargs']
-        kwargs.update({'create_data': timezone.now()})
+        kwargs.update({'create_data': timezone.now(), 'user': self.scope['user']})
         html = render_to_html('comments/comment.html', kwargs)
         await self.send(json.dumps({'comment': html}))
 
@@ -58,7 +58,8 @@ class CommentConsumer(AsyncWebsocketConsumer):
     def get_article(self, slug):
         return Article.objects.get(slug=slug)
 
-    def get_author(self):                                                   # test
-        return BlogUser.objects.last()
+    def get_author(self, id):
+        user_model = get_user_model()
+        return user_model.objects.get(id=id)
 
 

@@ -12,20 +12,12 @@
 
 
 {% block body %}
-
-
-
-
-<div class="container-fluid">
-
-    <div class="row text-left mt-1">
-    <div class="col-lg-6  offset-md-1" id="add-loader">
          <div class="row  border">
              <div class="col-sm-12" style="background-color: #ffffff">
                     <div class="media">
                         <a href="#"><img class="mr-3" src="../img" alt="img"></a>
                         <div class="media-body">
-                            <h6 class="mt-0 font-weight-normal"> {{ article.title }} </h6>
+                            <h6 class="mt-1 font-weight-normal"> {{ article.title }} </h6>
 
                             <h6 style="font-size: 14px">{{ article.text }}</h6>
 
@@ -38,31 +30,21 @@
              <br>
         <div class="row  border">
              <div class="col-sm-12" style="background-color: #ffffff">
+                 {% if user.is_authenticated %}
                  <div class="form-group mt-2" id="form">
                      {{ form_comment.text }}
                      {{ form_comment.parent }}
                  </div>
                 <input id="comment-submit" type="button" value="Send"/>
-
+                  {% endif %}
 
 
                  {% load_comments user article %}
 
             </div>
         </div>
+{% endblock %}
 
-
-         </div>
-         <div class="col-lg-3 col-sm-4 d-none d-sm-block border ml-4" style="background-color: #ffffff">
-         <div style="position: fixed">
-          <div class="border">
-             sidebar
-          </div>
-</div>
-</div>
-</div>
-</div>
-
+{% block buttom %}
 <script src="{% static 'blog/js/websocket.js' %}"></script>
-
 {% endblock %}

@@ -1,19 +1,41 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
 
+
 {% block head %}
-
 {% load_navbar user %}
-
 {% endblock %}
 
 {% block body %}
 
+
+
+<div class="row  border">
+             <div class="col-sm-12" style="background-color: #ffffff">
+      <hr>
 <form method="POST">
-{{ form.as_ul }}
+    {% for field in form %}
+ <div class="form-group">
+        {{ field.label }}
+        {{ field }}
+       <small id="loginerror" class="form-text text-danger">   {{ field.errors}} </small>
+  <small id="loginHelp" class="form-text text-muted"> {{ field.help_text }} </small>
+  </div>
+    {% endfor %}
 {% csrf_token %}
 <input type="hidden" name="next" value="/">
-<input type="submit">
+  <button type="submit" class="btn btn-primary ">Submit</button>
+    <hr>
 </form>
+    <small id="error" class="form-text text-danger">   {{ form.non_field_errors  }} </small>
 
+
+      </div>
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block buttom %}
 {% endblock %}

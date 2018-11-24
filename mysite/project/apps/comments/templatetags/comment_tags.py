@@ -10,7 +10,7 @@ def load_comments(user, article):
 
 
 @register.inclusion_tag('comments/comment.html')
-def get_comment(comment):
+def get_comment(comment, user):
     context = {}
     if comment.parent_comment:
         context['parent_id'] = comment.parent_comment.id
@@ -19,6 +19,7 @@ def get_comment(comment):
     context['text'] = comment.text
     context['comment_id'] = comment.id
     context['author'] = comment.author.username
+    context['user'] = user
     return context
 
 

@@ -30,3 +30,5 @@ class DetailArticle(DetailView):
         context = super().get_context_data(**kwargs)
         context['form_comment'] = CommentForm()
         return context
+
+#class CreatePost()

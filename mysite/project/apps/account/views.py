@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import CreateView
-from .forms import MyRegForm
+from .forms import MyRegForm, MyLoginForm
 from django.contrib.auth import get_user_model, authenticate, login
 from django.contrib.auth.views import LogoutView, LoginView
 
@@ -19,6 +19,7 @@ class Registr(CreateView):
 
 class Login(LoginView):
     template_name = 'account/registration.html'
+    form_class = MyLoginForm
 
 
 class Logout(LogoutView):

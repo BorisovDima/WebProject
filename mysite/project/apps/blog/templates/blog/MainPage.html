@@ -25,35 +25,38 @@
 
 
 
-{% block body %}
-
-
 <div class="container-fluid">
 
         <div class="row text-left mt-1">
             <div class="col-lg-6  offset-md-1" id="add-loader">
+                {% block body %}
+
+                {% endblock %}
 
             </div>
+            {% block sidebar %}
             <div class="col-lg-3 col-sm-4 d-none d-sm-block border ml-4" style="background-color: #ffffff">
                     <div style="position: fixed">
                         <div class="border">
                             sidebar
                         </div>
+
                 </div>
+                {% endblock %}
 
             </div>
+
         </div>
 </div>
 
 
 
-<script src="{% static 'blog/js/jquery_paginate.js' %}"></script>
 
 
-{% endblock %}
 
 {% block buttom %}
 
+<script src="{% static 'blog/js/jquery_paginate.js' %}"></script>
 {% endblock %}
  </div>
 </body>
