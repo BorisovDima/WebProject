@@ -24,12 +24,12 @@ Socket.onerror = function(error) {
 
 $('#comment-submit').click(function() {
     var text = $("#id_text").val()
-    var parent = $("#id_parent").val()
-
+    var id_parent = $("#id_parent").val()
+    var name_parent = $("#name_parent").val()
     if (!text) {
         return false
     }
-    Socket.send(JSON.stringify({'text': text, 'parent': parent}))
+    Socket.send(JSON.stringify({'text': text, 'id_parent':id_parent, 'name_parent' : name_parent}))
 })
 
 

@@ -31,20 +31,17 @@ class CommentConsumer(AsyncWebsocketConsumer):
             pass
         else:
             article = await database_sync_to_async(self.get_article)(slug=self.article)
-            author = await database_sync_to_async(self.get_author)(id=self.scope['user'].id)                     # test
-            kwargs = {'text': data['text'], 'author': author}
+            kwargs = {'text': data['text'], 'author_id': self.scope['user'].id}
             mykwargs = kwargs.copy()
 
-
-            if data['parent']:
-                parent = await database_sync_to_async(Comment.objects.get_comment)(id=data['parent'])
-                kwargs['parent_comment'] = parent
-                mykwargs['parent_name'] = parent.author.username
-                mykwargs['parent_id'] = data['parent']
+            if data['id_parent']:
+                kwargs['parent_comment_id'] = data['id_parent']
+                mykwargs['parent_name'] = data['name_parent']
+                mykwargs['parent_id'] = data['id_parent']
 
             comment_id = await database_sync_to_async(Comment.objects.add_comment)(**kwargs, article=article)
             mykwargs['comment_id'] = comment_id
-            mykwargs['author'] = author.username
+            mykwargs['author'] = self.scope['user'].username
             await self.channel_layer.group_send(self.article,
                                           {'type': 'send_comment',
                                               'kwargs': mykwargs})
@@ -57,9 +54,5 @@ class CommentConsumer(AsyncWebsocketConsumer):
 ####################################################################
     def get_article(self, slug):
         return Article.objects.get(slug=slug)
-
-    def get_author(self, id):
-        user_model = get_user_model()
-        return user_model.objects.get(id=id)
 
 

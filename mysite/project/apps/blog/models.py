@@ -37,12 +37,12 @@ class Article(BaseArticle):
         ('C', 'Close'),
     )
 
-    title = models.CharField(max_length=224)
-    text = models.TextField(max_length=10024)
+    title = models.CharField(max_length=524)
+    text = models.TextField(max_length=2024,  null=True, blank=True)
     views = models.PositiveIntegerField(default=0)
     #image =
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     rating = GenericRelation(LikeDislike, related_query_name='article')
     status = models.CharField(choices=STATUS_CHOICES, max_length=12, default='A')

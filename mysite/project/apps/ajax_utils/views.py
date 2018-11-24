@@ -19,7 +19,7 @@ class Loader(View):
             else self.model.objects.all() #Сортирую по имени моей категории ForeignKey или отдаю все посты
         if since:
             objects = objects.filter(id__lte=(int(since)-1))
-        objs = list(objects[:20])
+        objs = list(objects[:15])
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
                              'since': objs[-1].id,

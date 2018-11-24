@@ -17,11 +17,9 @@
                     <div class="media">
                         <a href="#"><img class="mr-3" src="../img" alt="img"></a>
                         <div class="media-body">
-                            <h6 class="mt-1 font-weight-normal"> {{ article.title }} </h6>
-
+                            <h6 class="mt-2 font-weight-normal"> {{ article.title }} </h6>
+                                <hr>
                             <h6 style="font-size: 14px">{{ article.text }}</h6>
-
-
 
                         </div>
                     </div>
@@ -34,10 +32,10 @@
                  <div class="form-group mt-2" id="form">
                      {{ form_comment.text }}
                      {{ form_comment.parent }}
+                     <input type="hidden" id="name_parent">
                  </div>
                 <input id="comment-submit" type="button" value="Send"/>
                   {% endif %}
-
 
                  {% load_comments user article %}
 
