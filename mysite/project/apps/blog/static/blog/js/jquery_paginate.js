@@ -5,8 +5,9 @@ $(document).ready(function(){
     var inProgress = true
     var obj_id = $('#obj_loader').text()
     var since = ''
+    var location = $('#location').val()
     $.ajax({
-        url: '/api/load/articles/',
+        url: '/api/load/' + location + '/',
         method: 'GET',
         data: {'obj_id': obj_id} // 'obj_id' (может быть категория, пост или None).
     }).success(function(data) {
@@ -22,7 +23,7 @@ $(document).ready(function(){
 
         if ((($(window).height() + $(window).scrollTop()) > ($(document).height() - 200)) && !inProgress){
                  $.ajax({
-                    url: '/api/load/articles/',
+                    url: '/api/load/' + location + '/',
                     method: 'GET',
                     data: {'since': since, 'obj_id': obj_id}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {

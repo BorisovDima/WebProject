@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic import CreateView, DetailView, TemplateView, ListView
 from .models import Article, Category
 from django.shortcuts import get_object_or_404
 from .shortcuts import render_to_html
@@ -7,10 +7,12 @@ from project.apps.comments.forms import CommentForm
 from  .forms import CreateArticleForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
+
 class MainPage(TemplateView):
-    template_name = 'blog/MainPage.html'
 
     def get_context_data(self, **kwargs):
+        self.template_name = self.kwargs['template_name']
         context = super().get_context_data(**kwargs)
         return context
 
@@ -40,3 +42,7 @@ class CreateArticle(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+
+

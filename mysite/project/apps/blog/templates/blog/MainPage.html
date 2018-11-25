@@ -24,7 +24,6 @@
 {% endblock %}
 
 
-
 <div class="container-fluid">
 
         <div class="row text-left mt-1">
@@ -45,7 +44,7 @@
                            <a href="{% url 'blog:main_page' %}" class="text-muted">Articles</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#" class="text-muted" >Users</a>
+                            <a href="{% url 'blog:users' %}" class="text-muted" >Users</a>
                         </li>
                         <li class="list-group-item">
                         </li>
@@ -85,7 +84,9 @@
 
 {% block buttom %}
 
+<input id="location" value="{{ location }}" type="hidden">
 <script src="{% static 'blog/js/jquery_paginate.js' %}"></script>
+
 {% endblock %}
  </div>
 </body>

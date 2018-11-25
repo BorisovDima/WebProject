@@ -23,8 +23,8 @@ class Profile(models.Model):
      login = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      avatar = models.ImageField(null=True, blank=True)
      date_of_birth = models.DateTimeField(null=True, blank=True)
-     current_city = models.CharField(max_length=255, null=True, blank=True)
-     about_me = models.CharField(max_length=455, null=True, blank=True)
+     current_city = models.CharField(max_length=99, null=True, blank=True)
+     about_me = models.CharField(max_length=255, null=True, blank=True)
 
 
      def get_user_friends(self):
@@ -50,3 +50,5 @@ class Profile(models.Model):
      def get_absolute_url(self):
           return reverse('account:profile', kwargs={'login': self.login})
 
+     class Meta:
+          ordering = ['-id']

@@ -6,7 +6,7 @@ from project.apps.blog.shortcuts import render_to_html
 class Loader(View):
     template_name = None # Указывается в urls.py
     model = None         # Указывается в urls.py
-
+    sorted_kwargs = None
     """
     Получаю обьект по которому производить сортировку и id с которого отбирать множество (rows.id < since). 
     Обертываю QuerySet в list и у последего обьекта беру id с которого при следующем запросе брать множество, 
