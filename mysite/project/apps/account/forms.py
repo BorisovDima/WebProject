@@ -2,6 +2,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.forms import widgets
 from django import forms
+from .models import Profile
+
 class MyRegForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
@@ -26,6 +28,7 @@ class MyRegForm(UserCreationForm):
         model = get_user_model()
         fields =['username']
 
+
 class MyLoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
@@ -33,4 +36,15 @@ class MyLoginForm(AuthenticationForm):
         self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
                                                                   'placeholder': 'Login'})
         self.fields['password'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
+
                                                                        'placeholder': 'Password'})
+
+class ProfileForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['about_me'].widget = widgets.Textarea(attrs={'Class': 'form-control', 'rows': 2,
+                                                                 'style':'resize:none; font-size: 14px'})
+
+    class Meta:
+        model = Profile
+        fields = ['about_me']

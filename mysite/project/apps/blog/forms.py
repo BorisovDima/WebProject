@@ -28,8 +28,6 @@ class CreateArticleForm(ModelForm):
         self.cleaned_data['text'] = replacer(self.cleaned_data['text'], 44)
         return self.cleaned_data['text']
 
-
-
     class Meta:
         model = Article
         fields = ['title', 'text', 'category', 'tags']

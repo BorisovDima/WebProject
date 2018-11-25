@@ -3,13 +3,13 @@
 
     {% for article in objs %}
         <div class="row  border">
-             <div class="col-sm-12" style="background-color: #ffffff">
-                 <span style="font-size: 14px;"> Author: <a href="#" >{{ article.author }}</a> </span>
-                      <div class="card-body">
+             <div class="col-sm-12 pt-2" style="background-color: #ffffff">
+                 <span style="font-size: 14px;"> Author: <a href="#">{{ article.author }}</a> </span>
+                      <div class="card-body py-2 px-0">
                        <h6 class="card-title">{{ article.title }}</h6>
                  <h6 class="card-subtitle mb-2 text-muted" style="font-size: 14px;" >{{ article.create_data }}</h6>
 
-                          <a href="{{ article.get_absolute_url }}" class="btn btn-primary mt-2"> Read </a>
+                          <a href="{{ article.get_absolute_url }}" class="btn btn-primary  mb-0"> Read </a>
                       </div>
 
 

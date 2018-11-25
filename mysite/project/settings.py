@@ -145,7 +145,7 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 AUTH_USER_MODEL = 'account.BlogUser'
 
-LOGIN_URL = '/'
+LOGIN_URL = '/login/'
 
 #######  CHANNELS #################
 

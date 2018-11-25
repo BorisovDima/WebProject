@@ -9,15 +9,99 @@
 {% block body %}
 
 <div class="row  border">
-    <div class="col-sm-12" style="background-color: #ffffff">
-        <div class="card" style="width: 18rem;">
+    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+        <div class="card border-light">
+            <div class="card-body">
+                {% if profile.get_user_name %}
+                <h5 class="card-text">profile.get_user_name</h5>
+                {% else %}
+            <a href="#" class="text-muted"><h5>What your name?</h5></a>
+                {% endif %}
+                <hr>
+            <h6 class="card-text text-muted" style="font-size: 14px;">Data registration: {{ profile.get_user_joined }} </h6>
+             {% if profile.date_of_birth %}
+            <h6 class="card-text text-muted" style="font-size: 14px;">Date of birth:  {{ profile.date_of_birth }} </h6>
+                {% endif %}
+               {% if profile.current_city %}
+            <h6 class="card-text text-muted" style="font-size: 14px;">Current city: {{ profile.current_city }}  </h6>
+                {% endif %}
+            <h6 class="card-text" style="font-size: 14px;" >About me...</h6>
 
-  <div class="card-body">
-    <a href="#" class="btn btn-primary">Create post</a>
-  </div>
+
+
+    <a class="text-dark" data-toggle="collapse" href="#about-me"
+     role="button" aria-expanded="false" aria-controls="about-me" style="font-size: 14px;"  title="Write about you">
+        {% if profile.about_me %}
+                {{ profile.about_me }}
+                {% else %}
+                ...
+                {% endif %}
+     </a>
+
+
+<div class="collapse" id="about-me">
+    <form method="POST">
+        <div class="form-group">
+         {{ form.about_me }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-link" value="Change">
+        </div>
+    </form>
+</div>
+
+
+        </div>
+        </div>
+
+        <div class="card border-light">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link text-muted " href="#">Friends {{ profile.get_user_friends.count }} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="#">Followers {{ profile.get_user_followers.count }} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-muted" href="#">Subscriptions {{ profile.get_user_subscriptions.count }} </a>
+                </li>
+            </ul>
+        </div>
+        <div class="card  text-center">
+            <div class="card-body py-2 px-0">
+                <h5 class="card-title"> Create new article </h5>
+                {% if user_status == 'owner' %}
+                <a href="{% url 'blog:create_article' %}" class="btn btn-primary"> New article </a>
+                {% endif %}
+            </div>
+</div>
+
+    {% if profile.get_user_articles %}
+    {% for article in profile.get_user_articles %}
+    <div class="card ">
+         <div class="card-body ">
+             <h6 class="card-title">{{ article.title }}</h6>
+             <a href="{{ article.get_absolute_url }}" class="btn btn-primary"> Read </a>
+             <nav aria-label="breadcrumb">
+                 <ol class="breadcrumb bg-white mb-0 mt-2 pb-0">
+                     <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>
+                     <li class="breadcrumb-item"><a style="font-size: 14px;"> Views: {{ article.views }} </a></li>
+                     <li class="breadcrumb-item"><a style="font-size: 14px;"> Rating: </a></li>
+                     <li class="breadcrumb-item"> <a href="#"style="font-size: 14px;"> {{ article.create_data }} </a></li>
+                 </ol>
+            </nav>
+         </div>
+    </div>
+     {% endfor %}
+      {% else %}
+     <div class="card text-center">
+         <div class="card-body ">
+     <h5 class="card-title"> {{ profile.login }} nothing posting</h5>
+         </div>
+     </div>
+      {% endif %}
     </div>
 </div>
-</div>
+
 {% endblock %}
 
 {% block sidebar %}
@@ -25,20 +109,31 @@
 
         <img class="card-img-top img-thumbnail" src="{% static 'blog/img/logo.img' %}" width="20" height="20">
   <div class="card-body">
-    <h4 class="card-title">{{ user.username }}</h4>
-
+    <h4 class="card-title">{{ profile.login }}</h4>
    <ul class="list-group list-group-flush mt-2">
-    <li class="list-group-item pt-2"><a href="#" class="card-link">Edit profile</a></li>
-    <li class="list-group-item"><a href="#" class="card-link">Messages</a></li>
-    <li class="list-group-item">test</li>
+
+     {% if user_status == 'owner' %}
+    <li class="list-group-item pt-2">
+        <a href="#" class="card-link">Edit profile</a>
+    </li>
+     {% endif %}
+
+    <li class="list-group-item">
+        {% if user_status == 'owner' %}
+        <a href="#" class="card-link">Messages</a>
+        {% endif %}
+        {% if user_status == 'user' %}
+        <a href="#" class="card-link">Send message</a>
+        {% endif %}
+    </li>
   </ul>
     </div>
 </div>
 
-<div class="card mt-2" style="width: 18rem;">
+<div class="card mt-2" style="width: 18rem;" >
 
   <div class="card-body">
-      <a class="card-link" href="#"><h6 class="card-subtitle mb-2"> My friends { colvo } </h6></a>
+      <a class="card-link" href="#"><h6 class="card-subtitle mb-2"> My friends {{ profile.get_user_friends.count }} </h6></a>
       <a href="#"> <img src="{% static 'blog/img/logo.img' %}" width="45" height="45"></a>
       <a href="#"> <img src="{% static 'blog/img/logo.img' %}" width="45" height="45"></a>
       <a href="#"> <img src="{% static 'blog/img/logo.img' %}" width="45" height="45"></a>
@@ -53,5 +148,9 @@
 
 
 
+
 {% block buttom %}
+{% endblock %}
+
+{% block additional %}
 {% endblock %}

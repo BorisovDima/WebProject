@@ -35,7 +35,24 @@
 
             </div>
 
-            <div class="col-lg-3 col-sm-4 d-none d-sm-block ml-4">
+            <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+                {% block additional %}
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                           <a href="{% url 'blog:main_page' %}" class="text-muted">Articles</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="text-muted" >Users</a>
+                        </li>
+                        <li class="list-group-item">
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                {% endblock %}
                     <div style="position: fixed">
                         {% block sidebar %}
                         <div class="card" style="width: 18rem;">
@@ -54,7 +71,6 @@
                         </div>
                         {% endblock %}
                 </div>
-
 
             </div>
 
