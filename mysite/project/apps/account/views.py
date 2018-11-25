@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from .forms import MyRegForm, MyLoginForm
 from django.contrib.auth import get_user_model, authenticate, login
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LogoutView, LoginView
 
 
@@ -25,3 +26,13 @@ class Login(LoginView):
 class Logout(LogoutView):
     template_name = 'account/registration.html'
     next_page = '/'
+
+
+class Profile(LoginRequiredMixin, DetailView):
+    template_name = 'account/profile.html'
+    model = get_user_model()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(context)
+        return context

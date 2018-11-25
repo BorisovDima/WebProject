@@ -14,11 +14,13 @@ def get_comment(comment, user):
     context = {}
     if comment.parent_comment:
         context['parent_id'] = comment.parent_comment.id
-        context['parent_name'] = comment.parent_comment.author.username
+        if comment.parent_comment.author:
+            context['parent_name'] = comment.parent_comment.author.username
     context['create_data'] = comment.create_data
     context['text'] = comment.text
     context['comment_id'] = comment.id
-    context['author'] = comment.author.username
+    if comment.author:
+        context['author'] = comment.author.username
     context['user'] = user
     return context
 

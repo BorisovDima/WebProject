@@ -6,7 +6,13 @@ from django.contrib.auth.models import AbstractUser
 
 
 class BlogUser(AbstractUser):
-     pass
+     avatar = models.ImageField(null=True, blank=True)
+     friends = models.ManyToManyField('self', symmetrical=False)
+     slug = models.SlugField(allow_unicode=True, unique=True)
+
+     def save(self, *args, **kwargs):
+          self.slug = self.username
+          return super().save(*args, **kwargs)
 
      def get_absolute_url(self):
           pass

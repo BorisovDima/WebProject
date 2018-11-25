@@ -19,10 +19,13 @@
                    <a class="nav-link"> {{ user }}</a>
               </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="#">My profile</a>
+                   <a class="nav-link" href="{% url 'account:profile' user.slug %}">My profile</a>
               </li>
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
+              </li>
+              <li class="nav-item">
+                   <a class="nav-link" href="{% url 'blog:create_article' %}">Create article</a>
               </li>
               {% else %}
               <li class="nav-item">
