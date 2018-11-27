@@ -25,10 +25,9 @@
                {% if profile.current_city %}
             <h6 class="card-text text-muted" style="font-size: 14px;">Current city: {{ profile.current_city }}  </h6>
                 {% endif %}
-            <h6 class="card-text" style="font-size: 14px;" >About me...</h6>
+            <h6 class="card-text" style="font-size: 14px;" >About me</h6>
 
-
-
+{% if user_status == 'owner' %}
     <a class="text-dark" data-toggle="collapse" href="#about-me"
      role="button" aria-expanded="false" aria-controls="about-me" style="font-size: 14px;"  title="Write about you">
         {% if profile.about_me %}
@@ -37,7 +36,6 @@
                 ...
                 {% endif %}
      </a>
-
 
 <div class="collapse" id="about-me">
     <form method="POST">
@@ -48,6 +46,10 @@
         </div>
     </form>
 </div>
+
+{% else %}
+<a class="text-dark"style="font-size: 14px;"> {% if profile.about_me %} {{ profile.about_me }} {% else %} ... {% endif %} </a>
+{% endif %}
 
 
         </div>
@@ -66,14 +68,16 @@
                 </li>
             </ul>
         </div>
+         {% if user_status == 'owner' %}
         <div class="card  text-center">
             <div class="card-body py-2 px-0">
+
                 <h5 class="card-title"> Create new article </h5>
-                {% if user_status == 'owner' %}
                 <a href="{% url 'blog:create_article' %}" class="btn btn-primary"> New article </a>
-                {% endif %}
+
             </div>
-</div>
+        </div>
+        {% endif %}
 
     {% if profile.get_user_articles %}
     {% for article in profile.get_user_articles %}
@@ -120,10 +124,10 @@
 
     <li class="list-group-item">
         {% if user_status == 'owner' %}
-        <a href="#" class="card-link">Messages</a>
+        <a href="{% url 'account:dialogs' profile.login %}" class="card-link">Messages</a>
         {% endif %}
         {% if user_status == 'user' %}
-        <a href="#" class="card-link">Send message</a>
+        <a href="{% url 'chat:dialog' profile.login %}" class="card-link">Send message</a>
         {% endif %}
     </li>
   </ul>

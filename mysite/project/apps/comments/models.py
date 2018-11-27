@@ -17,7 +17,7 @@ class MyManager(models.Manager):
 
 class Comment(BaseArticle):
     text = models.TextField(max_length=824)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     rating = GenericRelation(LikeDislike, related_query_name='Comment')

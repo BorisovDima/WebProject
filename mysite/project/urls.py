@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('project.apps.blog.urls')),
     path('', include('project.apps.comments.urls')),
     path('', include('project.apps.account.urls')),
+    path('', include('project.apps.chat.urls')),
     path('api/', include('project.apps.ajax_utils.urls')),
 
 

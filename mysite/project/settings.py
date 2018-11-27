@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap4',
+    'project.apps.chat',
     'project.apps.comments',
     'project.apps.like_dislike',
     'project.apps.ajax_utils',
@@ -162,3 +163,35 @@ CHANNEL_LAYERS = {
     },
 }
 ####################################
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+            'myformatSQL': {
+                'format': '[%(asctime)s] - %(levelname)s - %(message)s \n',
+                'datefmt': '%d/%b/%Y %H:%M:%S',
+            },
+            'myformatMain': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s\n' + (99 * '-'),
+                'datefmt': '%d/%b/%Y %H:%M:%S',
+
+            }
+    },
+    'handlers': {
+
+            'console': {
+                'class': 'logging.StreamHandler',
+                'formatter': 'myformatSQL'
+
+            }
+    },
+
+        'django.db.backends': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propogate': False
+        }
+    }

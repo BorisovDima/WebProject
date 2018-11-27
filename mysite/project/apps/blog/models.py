@@ -43,7 +43,7 @@ class Article(BaseArticle):
     #image =
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     rating = GenericRelation(LikeDislike, related_query_name='article')
     status = models.CharField(choices=STATUS_CHOICES, max_length=12, default='A')
     slug = models.SlugField(max_length=70, unique=True)

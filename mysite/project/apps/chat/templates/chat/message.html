@@ -1,0 +1,35 @@
+{% load static %}
+
+
+
+<div class="row  border-light">
+    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+<div  class="dialogs-list-action" onclick="open_dialog('{{ id_dialog }}')">
+<div class="media border pt-2" id="test">
+    <a href="#"><img class="ml-1 mr-2" src="{% static 'blog/img/logo.img' %}" width="30" height="30"></a>
+    <div class="media-body">
+    <div class="reply-body">
+        <ul class="list-inline">
+            <li class="drop-left mb-0">
+                <strong style="font-size: 15px;" class="list-group-item-heading mb-0">
+                    {% if to %}
+                    <a href="#">{{ name_author}}</a> -
+                    <a href="#">{{ to }}</a>
+                     <a href="#"><img class="ml-1 mr-2" src="{% static 'blog/img/logo.img' %}" width="30" height="30"></a>
+                    {% else %}
+                    <a href="#">{{ name_author }}</a>
+                    {% endif %}
+                </strong>
+                <small class="text-muted float-right mb-0">{{ data_publish}}</small>
+            </li>
+            <li class="drop-left">
+            <h6 class="pt-0" style="font-size: 14px;">{{ text }}</h6>
+            </li>
+        </ul>
+        </div>
+
+    </div>
+</div>
+    </div>
+</div>
+</div>

@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf.urls import url
 from . import consumers
 
-ws_urlpatterns  = [
+comment_urlpatterns  = [
     path('<categories:category>/<slug:slug>/add-comment/', consumers.CommentConsumer),
 
 ]

@@ -1,9 +1,13 @@
 from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
-from project.apps.comments.routing import ws_urlpatterns
+from project.apps.comments.routing import comment_urlpatterns
+from project.apps.chat.routing import chat_urlpatterns
+
+pattern = comment_urlpatterns + chat_urlpatterns
 
 application = ProtocolTypeRouter({
     'websocket': AuthMiddlewareStack(        # cookie - user - session - authoriz
-        URLRouter(ws_urlpatterns )
+        URLRouter(pattern)
     ),
 })
+

@@ -1,0 +1,45 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block head %}
+{% load_navbar user %}
+{% endblock %}
+
+
+
+{% block body %}
+<div class="card border-light" id="message-list">
+{% for message in dialog.message_set.all %}
+
+     {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish %}
+{% endfor %}
+</div>
+
+<div class="row border">
+    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+<div class="form-group p-3">
+{{ form.text }}
+<input class="btn btn-primary mt-3" id="send-message" type="submit" value="Send"/>
+</div>
+{% endblock %}
+    </div>
+</div>
+
+
+
+
+{% block sidebar %}
+{% endblock %}
+
+{% block additional %}
+{% endblock %}
+
+
+{% block buttom %}
+<input type="hidden" value="{{ status }}" id="status_dialog">
+<input type="hidden" value="{{ dialog.id }}" id="id_dialog">
+<script src="{% static 'chat/js/websocket_chat.js' %}"></script>
+{% endblock %}

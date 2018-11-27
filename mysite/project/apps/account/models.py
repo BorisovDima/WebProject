@@ -27,8 +27,12 @@ class Profile(models.Model):
      about_me = models.CharField(max_length=255, null=True, blank=True)
 
 
+     def get_user_dialogs(self):
+          return list(self.bloguser.dialog_from_user.all())  + list(self.bloguser.dialog_to_user.all())
+
      def get_user_friends(self):
           return self.bloguser.friends.all()
+
 
      def get_user_followers(self):
           return self.bloguser.followers.all()
@@ -45,7 +49,6 @@ class Profile(models.Model):
      def get_user_name(self):
           return False if not self.bloguser.first_name or not self.bloguser.last_name else \
                self.bloguser.first_name + ' ' + self.bloguser.last_name
-
 
      def get_absolute_url(self):
           return reverse('account:profile', kwargs={'login': self.login})
