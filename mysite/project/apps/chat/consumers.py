@@ -10,7 +10,6 @@ from project.apps.blog.shortcuts import render_to_html
 class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
-        print(parse_qs(self.scope['query_string']))
         self.dialog_id = self.scope['url_route']['kwargs']['id_dialog']
         self.group_d = 'dialog_%s' % self.dialog_id
         self.status = parse_qs(self.scope['query_string']).get(b'status')
@@ -18,7 +17,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
     async def disconnect(self, code):
-        print(self.status)
         if self.status == [b'New']:
             await database_sync_to_async(self.delete_new_close_dialog)()
         await self.channel_layer.group_discard(self.group_d,

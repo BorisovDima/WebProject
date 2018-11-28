@@ -44,8 +44,8 @@ class ProfileView(UpdateView):
         else:
             context['user_status'] = 'owner' \
                 if self.kwargs['login'] == self.request.user.profile.login else 'user'
-            print(context)
         return context
+
 
 class ListDialogView(DetailView):
     template_name = 'account/list_dialog.html'

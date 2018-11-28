@@ -11,14 +11,19 @@
 {% block body %}
  <link rel="stylesheet" type="text/css" href="{% static 'account/css/account-css.css' %}">
 
+
+
 <div class="card border-light">
 {% for dialog in dialogs %}
 
+  {% if dialog.message_set.all %}
      {% with message=dialog.message_set.last %}
 
      {% include 'chat/message.html' with text=message.text to=message.to_ name_author=message.author data_publish=message.data_publish id_dialog=dialog.id %}
-
     {% endwith %}
+  {% endif %}
+
+
 {% endfor %}
 </div>
 

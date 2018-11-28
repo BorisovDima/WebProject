@@ -11,10 +11,21 @@
 
 
 {% block body %}
+
+ <ul class="list-inline">
+            <li class="text-center">
+            <strong>
+<a href="#">{{ dialog.from_user }}</a> -
+<a href="#">{{ dialog.to_user }}</a>
+            </strong>
+            </li>
+ </ul>
+
 <div class="card border-light" id="message-list">
 {% for message in dialog.message_set.all %}
 
      {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish %}
+
 {% endfor %}
 </div>
 
