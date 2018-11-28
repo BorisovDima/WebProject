@@ -1,11 +1,11 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top" id="navbar">
+<nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
 <img src="{% static 'blog/img/logo.img' %}" width="35" height="35">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon"> </span>
   </button>
 
 
@@ -15,11 +15,8 @@
           <ul class="navbar-nav mr-auto">
 
               {% if user.is_authenticated %}
-              <li class="nav-item active">
-                   <a class="nav-link"> {{ user }}</a>
-              </li>
-                <li class="nav-item">
-                   <a class="nav-link" href="{% url 'account:profile' user.profile.login %}">My profile</a>
+              <li class="nav-item">
+                   <a class="nav-link" href="{% url 'account:profile' user.profile.login %}"> {{ user }}</a>
               </li>
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
@@ -31,8 +28,6 @@
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:login' %}">Login</a>
               </li>
-
-
               {% endif %}
 
          <li class="nav-item dropdown">
@@ -57,6 +52,28 @@
         </ul>
 
 
+           <nav class="navbar p-1 ml-2">
+            <a class="navbar-brand" href="#">
+                <img  class="ml-1" src="{% static 'blog/img/baseline-border_color-24px.svg' %}">
+            </a>
+        </nav>
+
+
+        <nav class="navbar p-1 ml-2">
+            <a class="navbar-brand" href="#">
+                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;"></span></small>
+                <img  class="ml-1" src="{% static 'blog/img/baseline-message-24px(3).svg' %}">
+            </a>
+        </nav>
+
+        <nav class="navbar p-1 ml-2">
+            <a class="navbar-brand" href="#">
+                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0"  style="font-size: 9px;"></span></small>
+                <img  class="ml-1" src="{% static 'blog/img/baseline-notification_important-24px.svg' %}">
+            </a>
+        </nav>
+
+
            <form class="form-inline my-0 my-lg-0" method="GET">
                 <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -64,3 +81,7 @@
 
     </div>
 </nav>
+
+{% if user.is_authenticated %}
+<script src="{% static 'chat/js/websocket_event_handler.js' %}"></script>
+{% endif %}

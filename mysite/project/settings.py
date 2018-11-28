@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap4',
-    'project.apps.chat',
+    'project.apps.chat.apps.ChatConfig',
     'project.apps.comments',
     'project.apps.like_dislike',
     'project.apps.ajax_utils',

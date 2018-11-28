@@ -25,6 +25,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         data = json.loads(text_data)
         kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
+
         self.status = b'Dont_new'
         await database_sync_to_async(Message.objects.create_message)(**kwargs)
         kwargs['name_author'] = self.scope['user'].username
@@ -41,6 +42,23 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     def delete_new_close_dialog(self):
         Dialog.objects.get(id=self.dialog_id).delete()
+
+
+########################################################################
+
+
+class EventConsumer(AsyncWebsocketConsumer):
+
+    async def connect(self):
+        self.group = 'user_event_%s' % self.scope['user'].id
+        await self.channel_layer.group_add(self.group, self.channel_name)
+        await self.accept()
+
+
+
+    async def get_event(self, event):
+        notification = event['event']
+        await self.send(json.dumps({'event': notification}))
 
 
 
