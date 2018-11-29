@@ -56,4 +56,5 @@ class ListDialogView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['dialogs'] = self.object.get_user_dialogs()
+        context['additional_arg'] = self.request.path
         return context

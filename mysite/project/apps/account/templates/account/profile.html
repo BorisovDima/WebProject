@@ -123,9 +123,6 @@
      {% endif %}
 
     <li class="list-group-item">
-        {% if user_status == 'owner' %}
-        <a href="{% url 'account:dialogs' profile.login %}" class="card-link">Messages</a>
-        {% endif %}
         {% if user_status == 'user' %}
         <a href="{% url 'chat:dialog' profile.login %}" class="card-link">Send message</a>
         {% endif %}

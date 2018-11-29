@@ -8,8 +8,10 @@ from django.db.models import Q
 
 class DialogManager(models.Manager):
 
+    def get_user_dialogs(self, user):
+        return self.filter(Q(from_user=user) | Q(to_user=user))
+
     def get_or_create_dialog(self, user1, user2):
-        print(self.all())
         dialog, stat = Dialog.objects.filter(Q(from_user=user1, to_user=user2) |
                                                     Q(to_user=user1, from_user=user2)).get_or_create(
                                                     defaults={'from_user': user1, 'to_user': user2})
@@ -39,7 +41,9 @@ class Dialog(models.Model):
 class MessageManager(models.Manager):
 
     def create_message(self, **kwargs):
-        self.create(**kwargs)
+        msg = self.create(**kwargs)
+        return msg.to_(), msg.id
+
 
 class Message(models.Model):
     text = models.TextField(max_length=500)
@@ -53,5 +57,8 @@ class Message(models.Model):
     def to_(self):
         return self.dialog.from_user if self.dialog.from_user != self.author else self.dialog.to_user
 
-
+    def user_readed_msg(self):
+        self.readed = True
+        self.save()
+        return ''
 

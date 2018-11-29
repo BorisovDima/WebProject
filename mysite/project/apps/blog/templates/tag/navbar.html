@@ -1,4 +1,5 @@
 {% load static %}
+{% load blog_tags %}
 
 <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
@@ -16,9 +17,6 @@
 
               {% if user.is_authenticated %}
               <li class="nav-item">
-                   <a class="nav-link" href="{% url 'account:profile' user.profile.login %}"> {{ user }}</a>
-              </li>
-              <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:logout' %}">Logout</a>
               </li>
               {% else %}
@@ -29,6 +27,8 @@
                    <a class="nav-link" href="{% url 'account:login' %}">Login</a>
               </li>
               {% endif %}
+
+
 
          <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,17 +52,26 @@
         </ul>
 
 
+        <form class="form-inline mr-5 my-lg-0" method="GET">
+                <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+        </form>
+
+
+
+        {% if user.is_authenticated %}
            <nav class="navbar p-1 ml-2">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/create-article/">
                 <img  class="ml-1" src="{% static 'blog/img/baseline-border_color-24px.svg' %}">
             </a>
         </nav>
 
 
         <nav class="navbar p-1 ml-2">
-            <a class="navbar-brand" href="#">
-                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;"></span></small>
+            <a class="navbar-brand" href="{% url 'account:dialogs' user.profile.login %}">
+                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
                 <img  class="ml-1" src="{% static 'blog/img/baseline-message-24px(3).svg' %}">
+                <input type="hidden" id="message-dispatch" value="">
+                <input type="hidden" id="message-list" value="{{ additional_arg }}">
             </a>
         </nav>
 
@@ -73,12 +82,14 @@
             </a>
         </nav>
 
-
-           <form class="form-inline my-0 my-lg-0" method="GET">
-                <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-
+         <ul class="navbar-nav mr-0">
+         <li class="nav-item">
+                   <a class="nav-link" href="{% url 'account:profile' user.profile.login %}"> {{ user.profile.pref_name }}
+                       <img src="{% static 'blog/img/logo.img' %}" width="35" height="35">
+                   </a>
+         </li>
+         </ul>
+         {% endif %}
     </div>
 </nav>
 

@@ -4,6 +4,7 @@ $(document).ready(function(){
 
 var id_dialog = $("#id_dialog").val()
 var status = $("#status_dialog").val()
+$('#message-dispatch').val(id_dialog)
 
 var Socket = new WebSocket('ws://' + window.location.host + '/dialog/' + id_dialog + '/?status=' + status);
 

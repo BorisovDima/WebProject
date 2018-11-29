@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
-
+from project.apps.chat.models import Dialog
 
 
 class BlogUser(AbstractUser):
@@ -28,7 +28,8 @@ class Profile(models.Model):
 
 
      def get_user_dialogs(self):
-          return list(self.bloguser.dialog_from_user.all())  + list(self.bloguser.dialog_to_user.all())
+          return Dialog.objects.get_user_dialogs(self.bloguser)
+
 
      def get_user_friends(self):
           return self.bloguser.friends.all()
@@ -53,5 +54,11 @@ class Profile(models.Model):
      def get_absolute_url(self):
           return reverse('account:profile', kwargs={'login': self.login})
 
+     @property
+     def pref_name(self):
+          return '@' + self.login
+
      class Meta:
           ordering = ['-id']
+
+

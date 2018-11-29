@@ -20,8 +20,7 @@ class DialogView(LoginRequiredMixin, FormView):
        else:
             user = get_user_model().objects.get(username=self.kwargs['username'])
             context['dialog'], context['status'] = Dialog.objects.get_or_create_dialog(self.request.user, user)
-            print(self.request.user, user)
-       print(context.get('dialog'), context.get('status'), '-' * 50)
+       print(context)
        return context
 
 

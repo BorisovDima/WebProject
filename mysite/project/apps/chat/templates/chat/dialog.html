@@ -3,19 +3,20 @@
 {% load static %}
 {% load bootstrap4 %}
 
-
 {% block head %}
-{% load_navbar user %}
+{% load_navbar user id_dialog=dialog.id %}
 {% endblock %}
 
 
 
 {% block body %}
 
-
-
 <div class="card border-light" id="message-list">
 {% for message in dialog.message_set.all %}
+
+        {% if not message.readed and message.to_ == user %}
+            {{ message.user_readed_msg }}
+        {% endif %}
 
      {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish %}
 
@@ -44,7 +45,6 @@
 
 
 
-
 {% block sidebar %}
 {% endblock %}
 
@@ -57,3 +57,4 @@
 <input type="hidden" value="{{ dialog.id }}" id="id_dialog">
 <script src="{% static 'chat/js/websocket_chat.js' %}"></script>
 {% endblock %}
+
