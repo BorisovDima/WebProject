@@ -67,11 +67,11 @@
 
 
         <nav class="navbar p-1 ml-2">
-            <a class="navbar-brand" href="{% url 'account:dialogs' user.profile.login %}">
+            <a class="navbar-brand" href="{% url 'chat:list-dialog' user.username %}">
                  <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
                 <img  class="ml-1" src="{% static 'blog/img/baseline-message-24px(3).svg' %}">
                 <input type="hidden" id="message-dispatch" value="">
-                <input type="hidden" id="message-list" value="{{ additional_arg }}">
+                <input type="hidden" id="message-window-n" value="{{ list_dialogs }}">
             </a>
         </nav>
 

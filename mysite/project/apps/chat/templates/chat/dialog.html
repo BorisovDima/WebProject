@@ -18,7 +18,7 @@
             {{ message.user_readed_msg }}
         {% endif %}
 
-     {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish %}
+     {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish dialog_read=True %}
 
 {% endfor %}
 </div>

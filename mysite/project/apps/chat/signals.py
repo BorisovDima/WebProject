@@ -17,13 +17,20 @@ from channels.layers import get_channel_layer
 def msg_handler(sender, **kwargs):
     if not kwargs['instance'].readed:
         user = kwargs['instance'].to_()
-        dialog =  kwargs['instance'].dialog.id
         group = 'user_event_%s' % user.id
+
+        mykwargs = {}
+        mykwargs['id_dialog'] = kwargs['instance'].dialog.id
+        mykwargs['name_author'] = kwargs['instance'].author.username
+        mykwargs['to'] = user.username
+        mykwargs['text'] = kwargs['instance'].text
+
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(group,
                                                 {'type': 'get_event',
-                                                'event': 'message',
-                                                'dialog': dialog})
+                                                 'event': 'message',
+                                                 'kwargs': mykwargs
+                                                  })
                                              
 
 

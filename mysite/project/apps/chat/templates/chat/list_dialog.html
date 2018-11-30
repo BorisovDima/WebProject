@@ -1,0 +1,41 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+
+
+{% block head %}
+{% load_navbar user list_dialogs=list_dialogs %}
+{% endblock %}
+
+
+{% block body %}
+ <link rel="stylesheet" type="text/css" href="{% static 'chat/css/chat.css' %}">
+
+<div class="card border-light" id="All-dialogs">
+
+{% for dialog in dialogs %}
+  {% if dialog.message_set.all %}
+     {% with message=dialog.message_set.last id=dialog.id %}
+        <div id="wrapper-dialog{{ id }}">
+     {% include 'chat/message.html' with text=message.text to=message.to_ name_author=message.author data_publish=message.data_publish id_dialog=dialog.id dialog_read=dialog.readed  not_dialog=220 %}
+    {% endwith %}
+      </div>
+  {% endif %}
+
+
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
+{% block buttom %}
+{% endblock %}
+
+{% block additional %}
+<script src="{% static 'chat/js/list-dialogs.js'%}"></script>
+{% endblock %}
+
+
+

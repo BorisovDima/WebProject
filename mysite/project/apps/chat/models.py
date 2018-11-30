@@ -18,6 +18,7 @@ class DialogManager(models.Manager):
         return dialog, (stat * 'New') or 'old'
 
 
+
 class Dialog(models.Model):
     from_user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
                                   null=True, blank=True, related_name='dialog_from_user')
@@ -32,7 +33,8 @@ class Dialog(models.Model):
         if self.to_user != user and self.from_user != user:
             raise Http404
 
-
+    def readed(self):
+        return self.message_set.last().readed
 
 
 

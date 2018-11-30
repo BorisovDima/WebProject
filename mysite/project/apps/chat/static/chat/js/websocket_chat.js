@@ -1,6 +1,8 @@
 $(document).ready(function(){
         $('body, html').scrollTop($(document).height())
+
 })
+
 
 var id_dialog = $("#id_dialog").val()
 var status = $("#status_dialog").val()
@@ -36,5 +38,6 @@ $('#send-message').click(function() {
     }
     Socket.send(JSON.stringify({'text': text}))
 })
+
 
 

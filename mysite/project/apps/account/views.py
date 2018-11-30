@@ -46,15 +46,3 @@ class ProfileView(UpdateView):
                 if self.kwargs['login'] == self.request.user.profile.login else 'user'
         return context
 
-
-class ListDialogView(DetailView):
-    template_name = 'account/list_dialog.html'
-    model = Profile
-    slug_field = 'login'
-    slug_url_kwarg = 'login'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['dialogs'] = self.object.get_user_dialogs()
-        context['additional_arg'] = self.request.path
-        return context

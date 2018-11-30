@@ -30,6 +30,7 @@
             <div class="col-lg-6  offset-md-1" id="add-loader">
                 {% block body %}
 
+
                 {% endblock %}
 
             </div>
@@ -69,6 +70,7 @@
                             </div>
                         </div>
                         {% endblock %}
+
                 </div>
 
             </div>
@@ -78,8 +80,18 @@
 </div>
 
 
+{% block event_hidden %}
+<div class="fixed-bottom w-25 pl-3" id="wrapper-show-message" style="background-color: #e3e7ed; display:none">
+
+<button type="button" class="close pr-4" aria-label="Close" onclick="close_modal()">
+  <span aria-hidden="true">&times;</span>
+</button>
+    <div id="show-message">
 
 
+    </div>
+</div>
+{% endblock %}
 
 
 {% block buttom %}
@@ -88,6 +100,9 @@
 <script src="{% static 'blog/js/jquery_paginate.js' %}"></script>
 
 {% endblock %}
+
  </div>
+
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
+from asgiref.sync import sync_to_async
 from urllib.parse import parse_qs
 from .models import Dialog, Message
 import json
@@ -24,13 +25,14 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         data = json.loads(text_data)
+        print(data)
         kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
         self.status = b'Dont_new'
         to_user, msg_id = await database_sync_to_async(Message.objects.create_message)(**kwargs)
         kwargs['name_author'] = self.scope['user'].username
         kwargs['to_user'] = to_user.username
         kwargs['msg_id'] = msg_id
-
+        print(self.group_d)
         await self.channel_layer.group_send(self.group_d,
                                             {'type': 'send_msg',
                                              'kwargs': kwargs})
@@ -38,12 +40,13 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def send_msg(self, event):
         kwargs = event['kwargs']
-
+        print('I TUTA')
         if self.scope['user'].username == kwargs['to_user']:
             await database_sync_to_async(self.readed)(kwargs['msg_id'])
-
-        kwargs['data_publish'] = timezone.now()
-        html = render_to_html('chat/message.html', kwargs)
+        print(kwargs)
+        kwargs['data_publish'] = str(timezone.now())
+        kwargs['dialog_read'] = True
+        html = await sync_to_async(render_to_html)('chat/message.html', kwargs) # async def __call__
         await self.send(json.dumps({'message': html}))
 
 
@@ -69,10 +72,13 @@ class EventConsumer(AsyncWebsocketConsumer):
 
 
     async def get_event(self, event):
-        print(self.scope)
         notification = event['event']
-        dialog = event['dialog']
-        await self.send(json.dumps({'event': notification, 'dialog': dialog}))
+        kwargs = event['kwargs']
+        kwargs['data_publish'] = 'Now'
+        kwargs['not_dialog'] = 90
+        html = await sync_to_async(render_to_html)('chat/message.html', kwargs)
+        dialog = kwargs['id_dialog']
+        await self.send(json.dumps({'event': notification, 'dialog': dialog, 'html': html}))
 
 
 
