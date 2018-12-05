@@ -24,6 +24,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
                                                self.channel_name)
 
     async def receive(self, text_data):
+        print('!!!!!!!')
         data = json.loads(text_data)
         kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
         self.status = b'Dont_new'
@@ -43,6 +44,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         kwargs['data_publish'] = 'Now '
         kwargs['dialog_read'] = True
         html = await sync_to_async(render_to_html)('chat/message.html', kwargs) # async def __call__
+        print(html)
         await self.send(json.dumps({'message': html}))
 
 
