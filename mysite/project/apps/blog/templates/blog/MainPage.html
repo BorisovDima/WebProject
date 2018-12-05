@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+{% bootstrap_messages %}
+{% load blog_tags %}
+<html lang="en">
+<head>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="pt-0" style="background-color: #f4f4f4">
+
+
+{% block head %}
+
+{% load_navbar user category %}
+
+{% endblock %}
+
+
+<div class="container-fluid">
+
+        <div class="row text-left mt-1">
+            <div class="col-lg-6  offset-md-1" id="add-loader">
+                {% block body %}
+
+
+                {% endblock %}
+
+            </div>
+
+            <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+                {% block additional %}
+                <div class="card" style="width: 18rem;">
+                <div class="card-body">
+
+                         <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            <a href="/" class="text-muted" >Main</a>
+                        </li>
+                        <li class="list-group-item">
+                           <a href="{% url 'blog:threads' %}" class="text-muted">Threads</a>
+                        </li>
+                         {% if user.is_authenticated %}
+                        <li class="list-group-item">
+                            <a href="#" class="text-muted" >My feed</a>
+                        </li>
+                        {% endif %}
+                        <li class="list-group-item">
+                            <a href="{% url 'blog:users' %}" class="text-muted" >Users</a>
+                        </li>
+                        <li class="list-group-item">
+                        </li>
+                    </ul>
+                </div>
+                </div>
+                {% endblock %}
+                    <div style="position: fixed">
+                        {% block sidebar %}
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                {% if user.is_authenticated %}
+                                <h5 class="card-title">Create Post</h5>
+                                <p class="card-text">Create new post</p>
+                                <a href="{% url 'blog:create_article' %}" class="btn btn-primary">Create</a>
+                                {% else %}
+                                <h5 class="card-title">Registration</h5>
+                                <p class="card-text">Registrations rigth now!</p>
+                                <a href="{% url 'account:registration' %}" class="btn btn-primary">Registr</a>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                        {% endblock %}
+
+                </div>
+
+            </div>
+
+
+        </div>
+</div>
+
+
+{% block event_hidden %}
+<div class="fixed-bottom w-25 pl-3" id="wrapper-show-message" style="background-color: #e3e7ed; display:none">
+
+<button type="button" class="close pr-4" aria-label="Close" onclick="close_modal()">
+  <span aria-hidden="true">&times;</span>
+</button>
+    <div id="show-message">
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block buttom %}
+
+<input id="location" value="{{ location }}{% if thread %}/{{ thread }}{% endif %}" type="hidden">
+<script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+
+{% endblock %}
+
+ </div>
+
+
+</body>
+</html>

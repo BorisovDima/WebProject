@@ -1,0 +1,83 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load comment_tags %}
+{% load static %}
+{% load humanize %}
+
+{% block head %}
+
+{% load_navbar user article.category %}
+
+{% endblock %}
+
+
+{% block body %}
+         <div class="row  border">
+             <div class="col-sm-12 pb-0" style="background-color: #ffffff">
+
+<div class="card border-0">
+    <div class="media">
+         <div class="media-body">
+<div class="reply-body">
+   <ul class="list-inline">
+      <li class="drop-left mb-0">
+         <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url}}"  width="30" height="30">
+          <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
+              @{{ article.author.profile.login }}
+          </a>
+          <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
+      </li>
+
+   </ul>
+</div>
+         </div>
+    </div>
+  <div class="card-body px-0 pt-2  pb-1">
+    <p class="card-text">{{ article.text }}</p>
+      {% if  article.image %}
+
+     <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 552px">
+
+      {% endif %}
+
+  </div>
+</div>
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb bg-white mb-0 pt-0">
+
+
+    <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>
+      <li class="breadcrumb-item"><a style="font-size: 14px;"> Views: {{ article.views.count }} </a></li>
+    <li class="breadcrumb-item"><a style="font-size: 14px;"> Like </a></li>
+
+  </ol>
+</nav>
+
+</div>
+</div>
+
+             <br>
+        <div class="row  border">
+             <div class="col-sm-12" style="background-color: #ffffff">
+                 {% if user.is_authenticated %}
+                 <div class="form-group mt-2" id="form">
+                     {{ form_comment.text }}
+                     {{ form_comment.parent }}
+                     <input type="hidden" id="name_parent">
+                 </div>
+                <input id="comment-submit" type="button" value="Send"/>
+                  {% endif %}
+
+                 {% load_comments user object %}
+
+            </div>
+        </div>
+{% endblock %}
+
+{% block buttom %}
+<script src="{% static 'blog/js/websocket.js' %}"></script>
+{% endblock %}
+
+{% block additional %}
+{% endblock %}

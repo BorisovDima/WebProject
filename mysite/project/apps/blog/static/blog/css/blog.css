@@ -1,0 +1,9 @@
+.affix {
+  top: 0;
+}
+@media (max-width: 1200px) {
+  .affix {
+    position: static;
+  }
+}
+

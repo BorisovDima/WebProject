@@ -1,0 +1,15 @@
+{% load static %}
+{% load comment_tags %}
+<div>
+
+<div id="answer"></div>
+<script src="{% static 'comments/js/answer_comment.js' %}"> </script>
+
+
+<div id="comments-list" class="mt-1">
+{% for c in comments %}
+        {% get_comment c user %}
+
+{% endfor %}
+    </div>
+</div>

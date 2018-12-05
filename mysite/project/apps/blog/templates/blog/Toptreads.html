@@ -1,0 +1,49 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block head %}
+
+{% load_navbar user article.category %}
+
+{% endblock %}
+
+
+
+{% block body %}
+
+           {% include 'blog/threads.html' %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body text-center">
+    <a href="{% url 'blog:threads_all' %}" class="btn mr-1 btn-outline-primary{% if status == 'all' %} active{% endif %}">All threads</a>
+      <a href="{% url 'blog:threads' %}" class="btn ml-1 btn-outline-primary{% if status != 'all' %} active{% endif %}">Top thread</a>
+</div>
+
+     <div class="input-group mb-0">
+  <input id="search-form-ajax" type="text" class="form-control" placeholder="Search thread" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button" id="search-form-ajax-btn">Go!</button>
+  </div>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+{% block buttom %}
+<script src="{% static 'ajax_utils/js/search.js' %}"></script>
+<input id="location" value="{{ location }}" type="hidden">
+{% if status == 'all' %}
+<script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+{% endif %}
+
+{% endblock %}

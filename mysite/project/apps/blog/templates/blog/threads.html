@@ -1,0 +1,27 @@
+{% load blog_tags %}
+
+
+{% for thread in objs %}
+<div class="row border article" onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
+    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+            <div class="card border-0">
+                 <div class="card-body pb-2 pt-2">
+                      <h5 class="mb-0">T/{{ thread.name }}</h5>
+                      <small class="card-subtitle mb-2 text-muted">
+                          {% if thread.sub %}{{ thread.sub }}{% else %} ...{% endif %}</small><br>
+
+                     <a style="font-size: 11px;"> Community: {{ thread.participant.count }}</a>
+                           {% if user.is_authenticated %}
+                     {% thread_part user thread %}
+                     {% endif %}
+
+</div>
+</div>
+    </div>
+</div>
+{% endfor %}
+
+
+
+
+

@@ -1,0 +1,60 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block head %}
+{% load_navbar user id_dialog=dialog.id %}
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="card border-light" id="message-list">
+{% for message in dialog.message_set.all %}
+
+        {% if not message.readed and message.to_ == user %}
+            {{ message.user_readed_msg }}
+        {% endif %}
+
+     {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish dialog_read=True %}
+
+{% endfor %}
+</div>
+
+<div class="row border">
+    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+
+<div class="form-group p-3">
+   <ul class="list-inline mb-2 pb-2">
+       <li class="text-center">
+            <strong>
+                <a href="#">{{ dialog.from_user }}</a> -
+                <a href="#">{{ dialog.to_user }}</a>
+            </strong>
+            </li>
+ </ul>
+
+{{ form.text }}
+<input class="btn btn-primary mt-3" id="send-message" type="submit" value="Send"/>
+</div>
+{% endblock %}
+    </div>
+</div>
+
+
+
+{% block sidebar %}
+{% endblock %}
+
+{% block additional %}
+{% endblock %}
+
+
+{% block buttom %}
+<input type="hidden" value="{{ status }}" id="status_dialog">
+<input type="hidden" value="{{ dialog.id }}" id="id_dialog">
+<script src="{% static 'chat/js/websocket_chat.js' %}"></script>
+{% endblock %}
+
