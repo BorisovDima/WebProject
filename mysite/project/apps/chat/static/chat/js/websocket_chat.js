@@ -33,7 +33,6 @@ Socket.onerror = function(error) {
 
 $('#send-message').click(function() {
     var text = $("#id_text").val()
-    alert($("#id_text").text())
     if (!text) {
         return false
     }

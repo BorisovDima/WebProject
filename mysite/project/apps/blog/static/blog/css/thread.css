@@ -1,0 +1,25 @@
+.item {
+  margin-left: 150px;
+}
+
+.photo {
+  width: 35px;
+  height: 35px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.personPhoto {
+  width: auto;
+  height: 100%;
+  margin: 0 auto;
+  float-left: 100px;
+}
+
+.article:hover {
+   background: #edf5f7
+
+}
+
+.article {
+     background-color: #ffffff;

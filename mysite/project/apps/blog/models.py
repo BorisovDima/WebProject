@@ -27,12 +27,13 @@ from django.db.models import Count
 class ThreadManager(models.Manager):
 
     def get_top(self):
-        return self.annotate(count_views=Count('article__views')).order_by('-count_views')[:21]
+        return self.annotate(count_community=Count('participant')).order_by('-count_community')[:21]
 
 class Thread(BaseArticle):
-    name = models.CharField(max_length=50, unique=True, db_index=True)
-    sub = models.CharField(max_length=124, null=True, blank=True)
+    name = models.CharField(max_length=30, unique=True, db_index=True)
+    sub = models.CharField(max_length=124)
     participant = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    image = models.ImageField(upload_to='thread_img/', null=True, blank=True)
 
     objects = ThreadManager()
 
@@ -45,7 +46,9 @@ class Thread(BaseArticle):
     class Meta:
         ordering = ['-id']
 
-
+    def save(self, *args, **kwargs):
+        make_thumbnail(self.image, (settings.MAX_WIDTH_IMG-300, settings.MAX_HEIGHT_IMG-300))
+        return super().save(*args, **kwargs)
 
 
 class Article(BaseArticle):

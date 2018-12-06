@@ -1,12 +1,31 @@
 {% load blog_tags %}
+{% load static %}
+
+<script src="{% static 'blog/js/article.js' %}"></script>
 
 
 {% for thread in objs %}
-<div class="row border article" onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
-    <div class="col-sm-12 px-0" style="background-color: #ffffff">
+<div class="row border article" onclick="detail_thread('{{ thread.name }}')">
+    <div class="col-sm-12 px-1">
             <div class="card border-0">
-                 <div class="card-body pb-2 pt-2">
-                      <h5 class="mb-0">T/{{ thread.name }}</h5>
+
+                <div class="card-body pb-2 pt-2">
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <article class="item ml-0">
+                                        <div class="photo">
+                                        <img class="personPhoto" src="{{ thread.image.url }}">
+                                        </div>
+                                    </article>
+
+                        </li>
+
+                          <li class="nav-item">
+                              <h5 class="pl-2 pt-2">T/{{ thread.name }}</h5>
+                            </li>
+                    </ul>
+
                       <small class="card-subtitle mb-2 text-muted">
                           {% if thread.sub %}{{ thread.sub }}{% else %} ...{% endif %}</small><br>
 

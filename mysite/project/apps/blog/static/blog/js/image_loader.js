@@ -2,13 +2,13 @@ function readURL(input) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
     reader.onload = function (e) {
-      $('#wrapper-image-load-post').show()
       $('#image-load-post')
         .attr('src', e.target.result)
       show_submit()
-
-
     };
+
+    $('#wrapper-image-load-post').show()
+    show_submit()
     reader.readAsDataURL(input.files[0]);
 
   }
@@ -17,8 +17,8 @@ function readURL(input) {
 
 
 $(function() {
-    $("textarea[id='id_text']").keyup(function count(){
-    number = $("textarea[id='id_text']").val().length;
+    $("textarea[id='navbar-create_post_form']").keyup(function count(){
+    number = $("textarea[id='navbar-create_post_form']").val().length;
     $("#count_message").html(+number);
     show_submit()
 
@@ -35,7 +35,10 @@ function close_file_choice(input) {
 
 
 function show_submit() {
-    count = $("textarea[id='id_text']").val().length;
+    count = $("textarea[id='navbar-create_post_form']").val()
+    if (count){
+    count = count.length
+    }
     img = $('#image-post-input').val()
     if (count > 0 || img) {
         $('#send-form-post').show()

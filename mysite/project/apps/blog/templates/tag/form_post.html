@@ -7,7 +7,7 @@
   <div class="modal-dialog modal-lg">
 
     <div class="modal-content">
-            <div class="modal-header pt-1 pb-1 border-light">
+      <div class="modal-header pt-1 pb-1 border-light">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,9 +15,25 @@
 
     <div class="modal-body">
 
+{% if thread %}
+   <ul class="nav">
+       <li class="nav-item">
+          <article class="item ml-0">
+            <div class="photo">
+             <img class="personPhoto" src="{{ thread.image.url }}">
+                </div>
+             </article>
+       </li>
+
+       <li class="nav-item">
+           <h5 class="pl-2 pt-2">Posted in T/{{ thread.name }}</h5>
+       </li>
+   </ul>
+{% endif %}
 
 
-<form method="POST" action="/create-post/"  enctype="multipart/form-data">
+
+<form method="POST" action="{% url 'blog:create_post' %}"  enctype="multipart/form-data">
        {% csrf_token %}
     <div class="form-group">
     {{ form.text }}
@@ -35,12 +51,15 @@
 
 
     <label class="btn btn-outline-primar" for="image-post-input">
-       <img id="holder-image-load" class="ml-1 btn-outline-primar" src="{% static 'blog/img/baseline-message-24px(3).svg' %}" data-toggle="tooltip" data-placement="top" title="Change image">
+       <img id="holder-image-load" class="ml-1 btn-outline-primar" width='35' src="{% static 'blog/img/baseline-add_photo_alternate-24px(3).svg' %}" data-toggle="tooltip" data-placement="top" title="Change image">
     <input type='file' onchange="readURL(this);"  id="image-post-input" name="{{ form.image.html_name }}" style="display:none">
     </label>
 
     <input type="submit" class="btn btn-primary" id="send-form-post" style="display:none">
 
+{% if thread %}
+{{ form.thread }}
+{% endif %}
 
 </form>
 

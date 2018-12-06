@@ -20,7 +20,7 @@
 
 {% block head %}
 
-{% load_navbar user category %}
+{% load_navbar user %}
 
 {% endblock %}
 
@@ -51,7 +51,7 @@
                         </li>
                          {% if user.is_authenticated %}
                         <li class="list-group-item">
-                            <a href="#" class="text-muted" >My feed</a>
+                            <a href="#" class="text-muted" >Home</a>
                         </li>
                         {% endif %}
                         <li class="list-group-item">

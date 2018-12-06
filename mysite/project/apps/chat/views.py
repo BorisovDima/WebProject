@@ -14,6 +14,7 @@ class DialogView(LoginRequiredMixin, FormView):
 
    def get_context_data(self, **kwargs):
        context = super().get_context_data(**kwargs)
+       print('100' * 100)
        if self.kwargs.get('id_dialog'):
            context['dialog'] = Dialog.objects.get(id=self.kwargs['id_dialog'])
            context['dialog'].auth_user(self.request.user)

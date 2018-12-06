@@ -25,17 +25,17 @@ def msg_count(user, id_dialog=None):
     return count or ''
 
 @register.inclusion_tag('tag/form_post.html')
-def post_form():
-    form =  CreatePostForm()
-    return {'form' : form, 'max_length': MAX_LENGTH_POST}
+def post_form(thread=None):
+    form = CreatePostForm() if not thread else CreatePostForm(initial={'thread': thread})
+    return {'form' : form, 'max_length': MAX_LENGTH_POST, 'thread': thread}
 
 
 
 @register.simple_tag
 def thread_part(user, thread):
     if not thread.participant.filter(username=user.username).exists():
-        html = '<span class="badge badge-danger float-right"><a href="#" class="text-white">Subscribe</a></span>'
+        html = '<span class="badge badge-danger py-2 float-right"><a href="#" class="text-white">Subscribe</a></span>'
     else:
-        html = '<span class="badge badge-success float-right"><a href="#" class="text-white">unsubscribe</a></span>'
+        html = '<span class="badge badge-success py-2 float-right"><a href="#" class="text-white">unsubscribe</a></span>'
     return mark_safe(html)
 

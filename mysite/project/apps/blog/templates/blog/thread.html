@@ -1,0 +1,47 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block head %}
+ <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
+{% post_form objs %}
+
+{% load_navbar user add_post='False' back_to_treads='True'%}
+
+{% endblock %}
+
+
+{% block additional %}
+{% endblock %}
+
+
+{% block sidebar %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body pt-1 ">
+
+      <img class="card-img-top img-fluid" src="{{ objs.image.url }}" >
+      <a class="text-dark" ><h4 class="card-title">T/{{ objs.name }} </h4></a>
+      Community: {{ objs.participant.count }} {% thread_part user objs %}
+
+  </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    {% if user.is_authenticated %}
+        <h5 class="card-title">Create post in this thread</h5>
+              <nav class="navbar p-1">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
+                       Create
+                  </button>
+              </nav>
+
+     {% else %}
+        <h5 class="card-title">Registration</h5>
+        <p class="card-text">Registrations </p>
+        <a href="{% url 'account:registration' %}" class="btn btn-primary">Registr</a>
+     {% endif %}
+    </div>
+</div>
+{% endblock %}

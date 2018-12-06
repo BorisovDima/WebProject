@@ -36,25 +36,28 @@ class DetailArticle(DetailView):
 
 class CreateArticle(LoginRequiredMixin, CreateView):
     template_name = 'blog/CreateArticle.html'
-    model = Article
+    model = None
     form_class = None
     status = None
-    #success_url  - automat
+    not_success = None
+
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
-        form.instance.status = self.status
+        if self.model == Article:
+            form.instance.author = self.request.user
+            form.instance.status = self.status
         return super().form_valid(form)
 
     def form_invalid(self, form):
-        return redirect('/')
+        return redirect(self.not_success) if self.not_success else super().form_invalid(form)
 
 
 class ThreadsView(TemplateView):
-    queryset = None
-    template_name = 'blog/Toptreads.html'
+    context_object = None
+    template_name = None
 
     def get_context_data(self, **kwargs):
         cont = super().get_context_data(**kwargs)
-        cont['objs'] = self.queryset
+        cont['objs'] = self.context_object if not self.kwargs.get('thread') \
+            else Thread.objects.get(name=self.kwargs.get('thread'))
         return cont

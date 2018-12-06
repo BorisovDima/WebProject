@@ -1,8 +1,10 @@
 {% load static %}
 {% load blog_tags %}
 
-{% post_form %}
 
+{% if add_post != 'False' %}
+{% post_form %}
+{% endif %}
 
 <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
@@ -12,6 +14,15 @@
     <span class="navbar-toggler-icon"> </span>
   </button>
 
+{% if back_to_treads %}
+<ul class="navbar-nav mr-auto">
+
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'blog:threads' %}">< Back to treads </a>
+</li>
+
+</ul>
+{% endif %}
 
 
     <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
@@ -38,13 +49,14 @@
 
         {% if user.is_authenticated %}
 
+            {% if add_post != 'False' %}
 
               <nav class="navbar p-1 ml-2">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
                        What's new?
                   </button>
               </nav>
-
+            {% endif %}
 
         <nav class="navbar p-1 ml-2">
             <a class="navbar-brand" href="{% url 'chat:list-dialog' user.username %}">

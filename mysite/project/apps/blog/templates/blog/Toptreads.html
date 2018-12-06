@@ -4,7 +4,9 @@
 
 {% block head %}
 
-{% load_navbar user article.category %}
+{% load_navbar user  %}
+
+ <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
 
 {% endblock %}
 
@@ -19,9 +21,23 @@
 
 {% block sidebar %}
 
+
+<div class="card" style="width: 18rem;">
+   <div class="card-body text-center">
+      {% if user.is_authenticated %}
+      <h5 class="card-title">Create new thread</h5>
+       <a href="{% url 'blog:create_thread' %}" class="btn btn-danger">GO!</a>
+           {% else %}
+           <h5 class="card-title">Registration</h5>
+           <a href="{% url 'account:registration' %}" class="btn btn-danger">GO!</a>
+            {% endif %}
+   </div>
+</div>
+
+
 <div class="card" style="width: 18rem;">
   <div class="card-body text-center">
-    <a href="{% url 'blog:threads_all' %}" class="btn mr-1 btn-outline-primary{% if status == 'all' %} active{% endif %}">All threads</a>
+    <a href="{% url 'blog:threads_all' %}" class="btn mr-1 btn-outline-primary{% if status == 'all' %} active{% endif %}">New threads</a>
       <a href="{% url 'blog:threads' %}" class="btn ml-1 btn-outline-primary{% if status != 'all' %} active{% endif %}">Top thread</a>
 </div>
 
@@ -32,10 +48,6 @@
   </div>
 </div>
 </div>
-
-
-
-
 
 {% endblock %}
 
