@@ -7,7 +7,7 @@
 
     {% for article in objs %}
 
-
+    {{ article.rating }}
 <div class="row border article" onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
              <div class="col-sm-12 pb-0">
 

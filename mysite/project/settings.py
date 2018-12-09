@@ -33,8 +33,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'bootstrap4',
-    'project.apps.chat.apps.ChatConfig',
+    'project.apps.chat',
     'project.apps.event_handler.apps.EventHandlerConfig',
+    'project.apps.back_task.apps.BackTaskConfig',
     'project.apps.comments',
     'project.apps.like_dislike',
     'project.apps.ajax_utils',
@@ -145,18 +146,26 @@ MEDIA_ROOT = '/srv/WebProject/mysite/media/'
 
 MEDIA_URL = 'http://localhost/media/'
 
-MAX_WIDTH_IMG = 565
-
-MAX_HEIGHT_IMG = 600
-
-USER_ICON = (100, 100)
-
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 
 
 AUTH_USER_MODEL = 'account.BlogUser'
 
 LOGIN_URL = '/login/'
+
+
+
+
+MAX_WIDTH_IMG = 565
+
+MAX_HEIGHT_IMG = 600
+
+USER_ICON = (100, 100)
+
+
+HOT_POST = 2
+
+
 
 #######  CHANNELS #################
 
@@ -172,36 +181,18 @@ CHANNEL_LAYERS = {
         },
     },
 }
-####################################
+######## Celery ####################
 
 
+REDIS_HOST = '127.0.0.1'
+REDIS_PORT = '6379'
+CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-            'myformatSQL': {
-                'format': '[%(asctime)s] - %(levelname)s - %(message)s \n',
-                'datefmt': '%d/%b/%Y %H:%M:%S',
-            },
-            'myformatMain': {
-                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s\n' + (99 * '-'),
-                'datefmt': '%d/%b/%Y %H:%M:%S',
+########### mail #######
 
-            }
-    },
-    'handlers': {
 
-            'console': {
-                'class': 'logging.StreamHandler',
-                'formatter': 'myformatSQL'
-
-            }
-    },
-
-        'django.db.backends': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propogate': False
-        }
-    }
+EMAIL_USE_SSL = True
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = 'sup.raychan@mail.ru'
+EMAIL_HOST_PASSWORD = '19960213Z26a'
+EMAIL_PORT = 465

@@ -22,7 +22,7 @@
                         </li>
 
                           <li class="nav-item">
-                              <h5 class="pl-2 pt-2">T/{{ thread.name }}</h5>
+                              <h5 class="pl-2 pt-2">{{ thread.name }}</h5>
                             </li>
                     </ul>
 
@@ -30,10 +30,10 @@
                           {% if thread.sub %}{{ thread.sub }}{% else %} ...{% endif %}</small><br>
 
                      <a style="font-size: 11px;"> Community: {{ thread.participant.count }}</a>
+                    <a style="font-size: 11px;"> / Posts: {{ thread.article_set.all.count }}</a>
                            {% if user.is_authenticated %}
                      {% thread_part user thread %}
                      {% endif %}
-
 </div>
 </div>
     </div>

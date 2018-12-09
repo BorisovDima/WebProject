@@ -2,7 +2,7 @@ from django.urls import path, register_converter
 from . import views, converters
 from .models import  Article, Thread
 from .forms import CreatePostForm, CreateArticleForm, CreateThreadForm
-
+from django.views.generic import RedirectView
 
 register_converter(converters.CategoryConverter, 'threads')
 app_name = 'blog'
@@ -11,20 +11,35 @@ urlpatterns = [
     path('', views.MainPage.as_view(),
          {'template_name': 'blog/MainPage.html', 'location': 'main-page'} ,name='main_page'),
 
-    path('thread/<threads:thread>/', views.ThreadsView.as_view(template_name='blog/thread.html'),
-         {'location': 'thread'}, name='thread'),
+##
 
-    path('threads/all/', views.ThreadsView.as_view(template_name='blog/Toptreads.html'),
-                                            { 'location': 'thread-list', 'status': 'all'},
-                                                        name='threads_all'),
+    path('thread/<threads:thread>/top/', views.ThreadsView.as_view(template_name='blog/thread.html'),
+         {'location': 'thread/sort/top'}, name='thread-top'),
 
-    path('threads/top/', views.ThreadsView.as_view(context_object=Thread.objects.get_top,
-                                                   template_name='blog/Toptreads.html'),
-                                                    {'location': 'thread-list'},
-                                                    name='threads'),
+    path('thread/<threads:thread>/new/', views.ThreadsView.as_view(template_name='blog/thread.html'),
+         {'location': 'thread/sort/new'}, name='thread-new'),
 
+    path('thread/<threads:thread>/hot/', views.ThreadsView.as_view(template_name='blog/thread.html'),
+         {'location': 'thread/sort/hot'}, name='thread-hot'),
+
+
+    path('thread/<threads:thread>/', RedirectView.as_view(pattern_name='blog:thread-hot'), name='thread'),
+
+##
+
+    path('threads/new/', views.ThreadsView.as_view(template_name='blog/Toptreads.html'),
+          {'location': 'thread-list/all', 'search': 'thread'}, name='threads-new'),
+
+    path('threads/top/', views.ThreadsView.as_view(template_name='blog/Toptreads.html'),
+         {'location': 'thread-list/top', 'search': 'thread'}, name='threads-top'),
+
+    path('threads/', RedirectView.as_view(pattern_name='blog:threads-top'), name='threads'),
+
+
+##
     path('users/', views.MainPage.as_view(),
          {'template_name': 'blog/Users.html',  'location': 'users'}, name='users'),
+
 
     path('post/<slug:login>/<int:pk>/', views.DetailArticle.as_view(), name='detail_article'),
 

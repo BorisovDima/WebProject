@@ -7,7 +7,7 @@ from project.apps.comments.forms import CommentForm
 from  .forms import CreateArticleForm, CreatePostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-
+from django.urls import reverse
 
 class MainPage(TemplateView):
 
@@ -23,6 +23,7 @@ class DetailArticle(DetailView):
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
         user = self.request.user
+        print(obj.rating)
         if user.is_authenticated:
             obj.viewed(user)
         return obj
@@ -46,18 +47,26 @@ class CreateArticle(LoginRequiredMixin, CreateView):
         if self.model == Article:
             form.instance.author = self.request.user
             form.instance.status = self.status
+            #form.instance.rating = (Article.objects.get_last_rating() or 0) + 1
         return super().form_valid(form)
+
 
     def form_invalid(self, form):
         return redirect(self.not_success) if self.not_success else super().form_invalid(form)
 
 
 class ThreadsView(TemplateView):
-    context_object = None
     template_name = None
 
     def get_context_data(self, **kwargs):
         cont = super().get_context_data(**kwargs)
-        cont['objs'] = self.context_object if not self.kwargs.get('thread') \
-            else Thread.objects.get(name=self.kwargs.get('thread'))
+        if self.kwargs.get('thread'):
+            cont['objs'] = Thread.objects.get(name=self.kwargs.get('thread'))
+            cont['location'] = cont['location'].replace('sort', self.kwargs['thread'])
+            print(cont['location'])
+        cont['search_loc'] = self.kwargs.get('search')
         return cont
+
+
+
+

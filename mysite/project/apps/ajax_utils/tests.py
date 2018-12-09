@@ -5,11 +5,10 @@ from project.apps.account.models import BlogUser
 
 class TestLoader(TestCase):
     def setUp(self):
-        category = Category.objects.create(name='test')
         user = BlogUser.objects.create_user(username='test', password='1996')
         user.save()
         for i in range(102):
-            Article.objects.create(title=str(i), text='test', author=user, category=category)
+            Article.objects.create(title=str(i), text='test', author=user)
 
 
     def test_uniq_articles(self):

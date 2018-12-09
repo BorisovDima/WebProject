@@ -7,20 +7,31 @@ from django.urls import reverse
 from .utils import make_thumbnail
 
 
-
-
-
-
 class BaseArticle(models.Model):
     create_data = models.DateTimeField(default=timezone.now)
     last_modify_data = models.DateTimeField(default=timezone.now)
+    rating = models.IntegerField(default=0)
+
+
+    def _save(self,  *args, **kwargs):
+        return super().save(*args, **kwargs)
+
+
+    def save(self,  *args, **kwargs):
+        if self.image.width > settings.MAX_WIDTH_IMG or self.image.height > settings.MAX_HEIGHT_IMG:
+            make_thumbnail(self.image, (self.max_width, self.max_height))
+        return super().save(*args, **kwargs)
+
 
     class Meta:
         abstract = True
 
 
+
 class Tag(BaseArticle):
     name = models.CharField(max_length=124, unique=True, db_index=True)
+
+
 
 from django.db.models import Count
 
@@ -30,6 +41,11 @@ class ThreadManager(models.Manager):
         return self.annotate(count_community=Count('participant')).order_by('-count_community')[:21]
 
 class Thread(BaseArticle):
+
+    max_width = settings.MAX_WIDTH_IMG-300
+    max_height = settings.MAX_HEIGHT_IMG-300
+
+
     name = models.CharField(max_length=30, unique=True, db_index=True)
     sub = models.CharField(max_length=124)
     participant = models.ManyToManyField(settings.AUTH_USER_MODEL)
@@ -46,12 +62,16 @@ class Thread(BaseArticle):
     class Meta:
         ordering = ['-id']
 
-    def save(self, *args, **kwargs):
-        make_thumbnail(self.image, (settings.MAX_WIDTH_IMG-300, settings.MAX_HEIGHT_IMG-300))
-        return super().save(*args, **kwargs)
 
+class ArticleManager(models.Manager):
+
+    def get_last_rating(self):
+        return self.order_by('-rating').last()
 
 class Article(BaseArticle):
+
+    max_width = settings.MAX_WIDTH_IMG
+    max_height = settings.MAX_HEIGHT_IMG
 
     STATUS_CHOICES = (
         ('P', 'POST'),
@@ -65,17 +85,10 @@ class Article(BaseArticle):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE,  null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    rating = GenericRelation(LikeDislike, related_query_name='article')
+    like = GenericRelation(LikeDislike, related_query_name='article')
     status = models.CharField(choices=STATUS_CHOICES, max_length=12, blank=True)
-    top = models.BooleanField(default=False)
 
-    def save(self, *args, **kwargs):
-        if self.image:
-            if self.image.width > settings.MAX_WIDTH_IMG or self.image.height > settings.MAX_HEIGHT_IMG:
-                make_thumbnail(self.image, (settings.MAX_WIDTH_IMG, settings.MAX_HEIGHT_IMG))
-        return super().save(*args, **kwargs)
-
-
+    objects = ArticleManager()
 
     def get_absolute_url(self):
         return reverse('blog:detail_article', kwargs={'login': self.author, 'pk': self.pk})
@@ -83,8 +96,6 @@ class Article(BaseArticle):
     def viewed(self, user):
         if not self.views.filter(username=user.username).exists():
             self.views.add(user)
-
-
 
     class Meta:
         ordering = ['-id']

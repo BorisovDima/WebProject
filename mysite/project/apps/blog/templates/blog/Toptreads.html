@@ -14,7 +14,7 @@
 
 {% block body %}
 
-           {% include 'blog/threads.html' %}
+
 
 {% endblock %}
 
@@ -37,13 +37,14 @@
 
 <div class="card" style="width: 18rem;">
   <div class="card-body text-center">
-    <a href="{% url 'blog:threads_all' %}" class="btn mr-1 btn-outline-primary{% if status == 'all' %} active{% endif %}">New threads</a>
-      <a href="{% url 'blog:threads' %}" class="btn ml-1 btn-outline-primary{% if status != 'all' %} active{% endif %}">Top thread</a>
+      <a href="{% url 'blog:threads-top' %}" class="btn ml-1 btn-outline-primary{% if status != 'all' %} active{% endif %}">Top thread</a>
+    <a href="{% url 'blog:threads-new' %}" class="btn mr-1 btn-outline-primary{% if status == 'all' %} active{% endif %}">New threads</a>
 </div>
 
      <div class="input-group mb-0">
   <input id="search-form-ajax" type="text" class="form-control" placeholder="Search thread" aria-label="Recipient's username" aria-describedby="button-addon2">
   <div class="input-group-append">
+      <input type="hidden" value="{{ search_loc }}" id="search-ajax">
     <button class="btn btn-outline-secondary" type="button" id="search-form-ajax-btn">Go!</button>
   </div>
 </div>
@@ -54,8 +55,6 @@
 {% block buttom %}
 <script src="{% static 'ajax_utils/js/search.js' %}"></script>
 <input id="location" value="{{ location }}" type="hidden">
-{% if status == 'all' %}
 <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
-{% endif %}
 
 {% endblock %}

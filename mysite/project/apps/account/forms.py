@@ -6,6 +6,9 @@ from .models import Profile #ProfileImg
 
 class MyRegForm(UserCreationForm):
 
+    email = forms.EmailField(required=True, widget=
+                    forms.widgets.EmailInput(attrs={'Class': 'form-control', 'placeholder': 'Password'}))
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
@@ -29,6 +32,22 @@ class MyRegForm(UserCreationForm):
         fields =['username']
 
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not email:
+            raise forms.ValidationError('requared')
+        if get_user_model().objects.filter(email=email).exists():
+            print('get_user_model().objects.filter(email=email).exists()', get_user_model().objects.filter(email=email).exists())
+            print('dsds')
+            raise forms.ValidationError('Email already exist')
+        return self.cleaned_data['email']
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.email = self.cleaned_data['email']
+        user.save()
+        return user
+
 class MyLoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
@@ -36,9 +55,18 @@ class MyLoginForm(AuthenticationForm):
         self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
                                                                   'placeholder': 'Login'})
         self.fields['password'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
-
-
                                                                        'placeholder': 'Password'})
+
+    def clean(self):
+        model = get_user_model()
+        try:
+            user = model.objects.get(username=self.cleaned_data.get('username'))
+        except model.DoesNotExist:
+            raise self.get_invalid_login_error()
+        if not user.is_verified:
+            raise forms.ValidationError('User not verified, please check email')
+
+        return super().clean()
 
 class ProfileForm(forms.ModelForm):
 

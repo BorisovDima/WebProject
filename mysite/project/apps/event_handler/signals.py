@@ -4,13 +4,18 @@ from django.db.models.signals import post_save
 from asgiref.sync import async_to_sync
 from project.apps.chat.models import Message
 from channels.layers import get_channel_layer
-
-
+from django.contrib.auth import get_user_model
+from project.apps.back_task.tasks import send_verify
 
 #my_message_signal = dispatch.Signal(providing_args=['instance', 'to_user', 'dialog_id'])
 
 
-
+@receiver(post_save, sender=get_user_model(), dispatch_uid="my_user_handler")
+def user_handler(sender, **kwargs):
+    user = kwargs['instance']
+    if not user.is_verified:
+        uuid, email, name  = user.uuid, user.email, user.username
+        send_verify.delay(uuid, email, name)
 
 
 @receiver(post_save, sender=Message, dispatch_uid="my_message_handler")

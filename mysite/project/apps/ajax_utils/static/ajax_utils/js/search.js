@@ -3,10 +3,11 @@ $(document).ready(function(){
     // с текущим 'obj_id' (может быть категория, пост или None).
     var inProgress = true
     var since = ''
-    var location = $('#location').val() +'-search'
+    var location = $('#search-ajax').val() +'-search'
     var search = ''
         $("#search-form-ajax-btn").click(function() {
                 search = $('#search-form-ajax').val()
+                console.log('dadadadada')
                 if (search.length > 0) {
                     $('#search-form-ajax').val('')
                      $("html, body").scrollTop(0, 0)

@@ -4,11 +4,21 @@ from django.urls import reverse
 from project.apps.chat.models import Dialog
 from django.conf import settings
 from project.apps.blog.utils import make_thumbnail
+from uuid import uuid4
+
+
+DEFAULT_USER_IMG = 'user_img/default_user_img.png'
 
 class BlogUser(AbstractUser):
      profile = models.OneToOneField('Profile', on_delete=models.CASCADE)
      followers = models.ManyToManyField('self', symmetrical=False) # если я твой follower (followers.all()),
                                                                    # то ты мой Subscriber  (bloguser_set.all())
+     is_verified = models.BooleanField(default=False)
+     uuid = models.UUIDField(default=uuid4)
+     email = models.EmailField('email', unique=True)
+
+     rating = models.IntegerField(default=0)
+
      def get_absolute_url(self):
           self.profile.get_absolute_url()
 
@@ -16,12 +26,13 @@ class BlogUser(AbstractUser):
           pass
 
 
+
 class Profile(models.Model):
      login = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      date_of_birth = models.DateTimeField(null=True, blank=True)
      current_city = models.CharField(max_length=99, null=True, blank=True)
      about_me = models.CharField(max_length=255, null=True, blank=True)
-     user_img = models.ImageField(upload_to='user_img/')
+     user_img = models.ImageField(upload_to='user_img/', default=DEFAULT_USER_IMG)
      thumbnail = models.ImageField(upload_to='user_img/thumbnails/')
 
      @classmethod
@@ -32,10 +43,11 @@ class Profile(models.Model):
 
 
      def save(self, *args, **kwargs):
-          if not self._state.adding and (self._load_data['user_img'] != self.user_img):
+          if self._state.adding or (self._load_data['user_img'] != self.user_img):
                make_thumbnail(self.user_img, (settings.MAX_WIDTH_IMG, settings.MAX_HEIGHT_IMG),
                         icon=(settings.USER_ICON, self.thumbnail))
-               self.about_me = self._load_data['about_me']
+               if not self._state.adding:
+                    self.about_me = self._load_data['about_me']
           return super().save(*args, **kwargs)
 
 
