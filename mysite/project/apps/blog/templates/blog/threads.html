@@ -22,7 +22,7 @@
                         </li>
 
                           <li class="nav-item">
-                              <h5 class="pl-2 pt-2">{{ thread.name }}</h5>
+                              <a href="{{ thread.get_absolute_url }}" class="text-dark"><h5 class="pl-2 pt-2">{{ thread.name }}</h5></a>
                             </li>
                     </ul>
 
@@ -33,7 +33,9 @@
                     <a style="font-size: 11px;"> / Posts: {{ thread.article_set.all.count }}</a>
                            {% if user.is_authenticated %}
                      {% thread_part user thread %}
-                     {% endif %}
+                            {% csrf_token %}
+                                </form>
+                            {% endif %}
 </div>
 </div>
     </div>

@@ -61,7 +61,11 @@ urlpatterns = [
     path('load/thread-search/', views.Loader_search.as_view(model=Thread,
                                                   template_name='blog/threads.html',
                                                   sorted_kwargs={'field': 'name__icontains'},
-                                                  paginate=20), name='thread-search')
+                                                  paginate=20), name='thread-search'),
+
+    path('load/home/', views.Loader_home.as_view(model=Article,
+                                                template_name='blog/articles.html',
+                                                paginate=15), name='home-feed')
 
 
 ]

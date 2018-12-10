@@ -19,8 +19,7 @@ class BaseCreateForm(ModelForm):
         return self.cleaned_data['text']
 
     def clean_image(self):
-        print(self.cleaned_data, 100 * '-')
-        if self.cleaned_data['image']:
+        if getattr(self.cleaned_data['image'], 'image', None):
             if self.cleaned_data['image'].size > (1000 * 1000):
                 raise ValidationError('Very big size photo')
             file, ext = splitext(self.cleaned_data['image'].name.lower())
@@ -155,11 +154,7 @@ class CreateThreadForm(BaseCreateForm):
 
         return self.cleaned_data['sub']
 
-    def clean_image(self):
-        print(self.cleaned_data)
-        if not self.cleaned_data.get('image'):
-            raise ValidationError('This field is requared!')
-        return super().clean_image()
+
 
 
 

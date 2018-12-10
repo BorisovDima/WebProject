@@ -18,7 +18,7 @@ class BaseArticle(models.Model):
 
 
     def save(self,  *args, **kwargs):
-        if self.image.width > settings.MAX_WIDTH_IMG or self.image.height > settings.MAX_HEIGHT_IMG:
+        if self.image:
             make_thumbnail(self.image, (self.max_width, self.max_height))
         return super().save(*args, **kwargs)
 
@@ -36,20 +36,18 @@ class Tag(BaseArticle):
 from django.db.models import Count
 
 class ThreadManager(models.Manager):
-
-    def get_top(self):
-        return self.annotate(count_community=Count('participant')).order_by('-count_community')[:21]
+    pass
 
 class Thread(BaseArticle):
 
-    max_width = settings.MAX_WIDTH_IMG-300
-    max_height = settings.MAX_HEIGHT_IMG-300
+    max_width = settings.MAX_WIDTH_IMG-400
+    max_height = settings.MAX_HEIGHT_IMG-400
 
 
     name = models.CharField(max_length=30, unique=True, db_index=True)
     sub = models.CharField(max_length=124)
     participant = models.ManyToManyField(settings.AUTH_USER_MODEL)
-    image = models.ImageField(upload_to='thread_img/', null=True, blank=True)
+    image = models.ImageField(upload_to='thread_img/', default=settings.DEFAULT_COMMUNITY_IMG)
 
     objects = ThreadManager()
 
@@ -58,6 +56,15 @@ class Thread(BaseArticle):
 
     def get_absolute_url(self):
         return reverse('blog:thread', kwargs={'thread': self.name})
+
+    def get_hot(self):
+        return self.participant.all().count() * 0.25
+
+    def get_subscribers(self):
+        return self.participant.all()
+
+    def set_subscriber(self, follower):
+        self.participant.add(follower)
 
     class Meta:
         ordering = ['-id']
@@ -96,6 +103,7 @@ class Article(BaseArticle):
     def viewed(self, user):
         if not self.views.filter(username=user.username).exists():
             self.views.add(user)
+
 
     class Meta:
         ordering = ['-id']

@@ -7,7 +7,7 @@ from .models import Profile #ProfileImg
 class MyRegForm(UserCreationForm):
 
     email = forms.EmailField(required=True, widget=
-                    forms.widgets.EmailInput(attrs={'Class': 'form-control', 'placeholder': 'Password'}))
+                    forms.widgets.EmailInput(attrs={'Class': 'form-control'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -37,8 +37,6 @@ class MyRegForm(UserCreationForm):
         if not email:
             raise forms.ValidationError('requared')
         if get_user_model().objects.filter(email=email).exists():
-            print('get_user_model().objects.filter(email=email).exists()', get_user_model().objects.filter(email=email).exists())
-            print('dsds')
             raise forms.ValidationError('Email already exist')
         return self.cleaned_data['email']
 
@@ -57,16 +55,17 @@ class MyLoginForm(AuthenticationForm):
         self.fields['password'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
                                                                        'placeholder': 'Password'})
 
-    def clean(self):
+    def clean_username(self):
         model = get_user_model()
         try:
             user = model.objects.get(username=self.cleaned_data.get('username'))
         except model.DoesNotExist:
             raise self.get_invalid_login_error()
         if not user.is_verified:
-            raise forms.ValidationError('User not verified, please check email')
+            id = user.id
+            raise forms.ValidationError('User not verified, please check email', code='not verify', params={'id': id})
 
-        return super().clean()
+        return self.cleaned_data['username']
 
 class ProfileForm(forms.ModelForm):
 

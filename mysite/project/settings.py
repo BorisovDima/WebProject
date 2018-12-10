@@ -162,6 +162,7 @@ MAX_HEIGHT_IMG = 600
 
 USER_ICON = (100, 100)
 
+DEFAULT_COMMUNITY_IMG = 'thread_img/thread_default.jpg'
 
 HOT_POST = 2
 

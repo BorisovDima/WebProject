@@ -6,7 +6,7 @@ from .shortcuts import render_to_html
 from project.apps.comments.forms import CommentForm
 from  .forms import CreateArticleForm, CreatePostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.http import Http404
 from django.urls import reverse
 
 class MainPage(TemplateView):
@@ -42,12 +42,15 @@ class CreateArticle(LoginRequiredMixin, CreateView):
     status = None
     not_success = None
 
+    def get(self, *args, **kwargs):
+        if self.kwargs.get('not-get'):
+            raise Http404
+        return super().get(*args, **kwargs)
 
     def form_valid(self, form):
         if self.model == Article:
             form.instance.author = self.request.user
             form.instance.status = self.status
-            #form.instance.rating = (Article.objects.get_last_rating() or 0) + 1
         return super().form_valid(form)
 
 
@@ -63,9 +66,10 @@ class ThreadsView(TemplateView):
         if self.kwargs.get('thread'):
             cont['objs'] = Thread.objects.get(name=self.kwargs.get('thread'))
             cont['location'] = cont['location'].replace('sort', self.kwargs['thread'])
-            print(cont['location'])
         cont['search_loc'] = self.kwargs.get('search')
         return cont
+
+
 
 
 

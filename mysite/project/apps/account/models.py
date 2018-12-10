@@ -5,7 +5,7 @@ from project.apps.chat.models import Dialog
 from django.conf import settings
 from project.apps.blog.utils import make_thumbnail
 from uuid import uuid4
-
+from django.utils import timezone
 
 DEFAULT_USER_IMG = 'user_img/default_user_img.png'
 
@@ -16,8 +16,15 @@ class BlogUser(AbstractUser):
      is_verified = models.BooleanField(default=False)
      uuid = models.UUIDField(default=uuid4)
      email = models.EmailField('email', unique=True)
+     last_verify = models.DateTimeField(default=timezone.now)
 
      rating = models.IntegerField(default=0)
+
+     def get_subscribers(self):
+          return self.followers.all()
+
+     def set_subscriber(self, follower):
+          self.followers.add(follower)
 
      def get_absolute_url(self):
           self.profile.get_absolute_url()

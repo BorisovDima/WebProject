@@ -25,7 +25,9 @@ class Login(LoginView):
     template_name = 'account/registration.html'
     form_class = MyLoginForm
 
-
+    def form_invalid(self, form):
+        print(form.errors.as_json())
+        return super().form_invalid(form)
 
 class Logout(LogoutView):
     template_name = 'account/registration.html'
@@ -52,17 +54,18 @@ class ProfileView(UpdateView):
 
 
 class Subscribe(LoginRequiredMixin, View):
-    model = get_user_model()
+    model = None
 
     def get(self, *args, **kwargs):
         raise Http404
 
     def post(self, *args, **kwargs):
-        user = self.model.objects.get(username=kwargs['login'])
+        objs = self.model.objects.get(username=kwargs['key']) if self.model == get_user_model() else \
+            self.model.objects.get(name=kwargs['key'])
         follower = self.request.user
-        if follower not in user.followers.all():
-            user.followers.add(follower)
-        return redirect(user.profile.get_absolute_url())
+        if follower not in objs.get_subscribers():
+            objs.set_subscriber(follower)
+        return redirect(objs.get_absolute_url())
 
 
 
