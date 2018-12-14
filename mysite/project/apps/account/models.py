@@ -6,13 +6,15 @@ from django.conf import settings
 from project.apps.blog.utils import make_thumbnail
 from uuid import uuid4
 from django.utils import timezone
+from project.apps.like_dislike.models import Subscribe
+from django.contrib.contenttypes.fields import GenericRelation
 
 DEFAULT_USER_IMG = 'user_img/default_user_img.png'
 
 class BlogUser(AbstractUser):
      profile = models.OneToOneField('Profile', on_delete=models.CASCADE)
-     followers = models.ManyToManyField('self', symmetrical=False) # если я твой follower (followers.all()),
-                                                                   # то ты мой Subscriber  (bloguser_set.all())
+
+     my_followers = GenericRelation(Subscribe, related_query_name='user_followers')
      is_verified = models.BooleanField(default=False)
      uuid = models.UUIDField(default=uuid4)
      email = models.EmailField('email', unique=True)
@@ -21,13 +23,13 @@ class BlogUser(AbstractUser):
      rating = models.IntegerField(default=0)
 
      def get_subscribers(self):
-          return self.followers.all()
+          return self.my_followers.all()
 
-     def set_subscriber(self, follower):
-          self.followers.add(follower)
+     def get_sub_url(self):
+          return reverse('account:subscribe', kwargs={'key': self.username})
 
      def get_absolute_url(self):
-          self.profile.get_absolute_url()
+          return self.profile.get_absolute_url()
 
      def get_full_url(self):
           pass
@@ -63,10 +65,10 @@ class Profile(models.Model):
 
 
      def get_user_followers(self):
-          return self.bloguser.followers.all()
+          return self.bloguser.my_followers.all()
 
      def get_user_subscriptions(self):
-          return self.bloguser.bloguser_set.all()
+          return Subscribe.objects.filter(user=self.bloguser)
 
      def get_user_articles(self):
           return self.bloguser.article_set.all()

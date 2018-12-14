@@ -1,7 +1,7 @@
 from django.db import models
 from project.apps.blog.models import BaseArticle, Article
 from django.contrib.contenttypes.fields import GenericRelation
-from project.apps.like_dislike.models import LikeDislike
+from project.apps.like_dislike.models import Like
 from django.conf import settings
 from django.urls import reverse
 
@@ -23,7 +23,7 @@ class Comment(BaseArticle):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, blank=True, null=True)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
-    rating = GenericRelation(LikeDislike, related_query_name='Comment')
+    like = GenericRelation(Like, related_query_name='Comment')
 
     objects = MyManager()
 

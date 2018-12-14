@@ -18,7 +18,7 @@ class EventConsumer(AsyncWebsocketConsumer):
         notification = event['event']
         kwargs = event['kwargs']
         kwargs['data_publish'] = 'Now'
-        kwargs['not_dialog'] = 90
+        kwargs['add'] = True
         html = await sync_to_async(render_to_html)('chat/message.html', kwargs)
         dialog = kwargs['id_dialog']
         await self.send(json.dumps({'event': notification, 'dialog': dialog, 'html': html}))

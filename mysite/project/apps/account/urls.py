@@ -13,7 +13,6 @@ urlpatterns = [
     path('logout/', views.Logout.as_view(), name='logout'),
     path('verify/', TemplateView.as_view(template_name='account/verify.html'), name='verify_page'),
     path('verify/<uuid:uuid>/', views.Vertify_account.as_view(), name='verify'),
-    path('profile/<slug:key>/subscribe/', views.Subscribe.as_view(model=get_user_model()), name='subscribe'),
     path('profile/<slug:login>/', views.ProfileView.as_view(), {'location': 'user-articles'}, name='profile'),
 
 

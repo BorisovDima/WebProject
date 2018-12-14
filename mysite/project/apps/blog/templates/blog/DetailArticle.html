@@ -1,5 +1,6 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
+{% load like_tag %}
 {% load comment_tags %}
 {% load static %}
 {% load humanize %}
@@ -49,7 +50,7 @@
 
     <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>
       <li class="breadcrumb-item"><a style="font-size: 14px;"> Views: {{ article.views.count }} </a></li>
-    <li class="breadcrumb-item"><a style="font-size: 14px;"> Like </a></li>
+        {% like_html article 'post' %}
 
   </ol>
 </nav>
@@ -75,7 +76,11 @@
         </div>
 {% endblock %}
 
+{% block sidebar %}
+{% endblock %}
+
 {% block buttom %}
+<script src="{% static 'like_dislike/js/like.js' %}"></script>
 <script src="{% static 'blog/js/websocket.js' %}"></script>
 {% endblock %}
 

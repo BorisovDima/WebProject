@@ -65,16 +65,9 @@
                 {% endblock %}
                     <div style="position: fixed">
                         {% block sidebar %}
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                {% if not user.is_authenticated %}
-                                <h5 class="card-title">Registration</h5>
-                                <p class="card-text">Registrations rigth now!</p>
-                                <a href="{% url 'account:registration' %}" class="btn btn-primary">Registr</a>
-                                {% endif %}
 
-                            </div>
-                        </div>
+                        {% top_treads %}
+
                         {% endblock %}
 
                 </div>
@@ -87,9 +80,10 @@
 
 
 {% block event_hidden %}
-<div class="fixed-bottom w-25 pl-3" id="wrapper-show-message" style="background-color: #e3e7ed; display:none">
 
-<button type="button" class="close pr-4" aria-label="Close" onclick="close_modal()">
+<div class="fixed-bottom w-25 pl-3 border-danger border " id="wrapper-show-message" style="background-color:#f4f2f9; display:none">
+
+<button type="button" class="close pr-2" aria-label="Close" onclick="close_modal()">
   <span aria-hidden="true">&times;</span>
 </button>
     <div id="show-message">
@@ -97,6 +91,7 @@
 
     </div>
 </div>
+
 {% endblock %}
 
 
@@ -104,6 +99,7 @@
 
 <input id="location" value="{{ location }}" type="hidden">
 <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+
 
 {% endblock %}
 

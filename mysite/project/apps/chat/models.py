@@ -37,7 +37,8 @@ class Dialog(models.Model):
         return self.message_set.last().readed
 
 
-
+    class Meta:
+        ordering = ['-id']
 
 
 class MessageManager(models.Manager):

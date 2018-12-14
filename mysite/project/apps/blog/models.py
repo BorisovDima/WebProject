@@ -1,11 +1,12 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.contenttypes.fields import GenericRelation
-from project.apps.like_dislike.models import LikeDislike
+from project.apps.like_dislike.models import Like, Subscribe
 from django.conf import settings
 from django.urls import reverse
 from .utils import make_thumbnail
-
+from project.apps.like_dislike.models import Subscribe
+from django.contrib.contenttypes.fields import GenericRelation
 
 class BaseArticle(models.Model):
     create_data = models.DateTimeField(default=timezone.now)
@@ -33,7 +34,6 @@ class Tag(BaseArticle):
 
 
 
-from django.db.models import Count
 
 class ThreadManager(models.Manager):
     pass
@@ -46,25 +46,24 @@ class Thread(BaseArticle):
 
     name = models.CharField(max_length=30, unique=True, db_index=True)
     sub = models.CharField(max_length=124)
-    participant = models.ManyToManyField(settings.AUTH_USER_MODEL)
     image = models.ImageField(upload_to='thread_img/', default=settings.DEFAULT_COMMUNITY_IMG)
-
+    my_followers = GenericRelation(Subscribe, related_query_name='thread_followers')
     objects = ThreadManager()
 
     def __str__(self):
         return str(self.name)
 
+    def get_sub_url(self):
+        return reverse('blog:subscribe-thread', kwargs={'key': self.name})
+
     def get_absolute_url(self):
         return reverse('blog:thread', kwargs={'thread': self.name})
 
     def get_hot(self):
-        return self.participant.all().count() * 0.25
+        return self.my_followers.all().count() * 0.25
 
     def get_subscribers(self):
-        return self.participant.all()
-
-    def set_subscriber(self, follower):
-        self.participant.add(follower)
+        return self.my_followers.all()
 
     class Meta:
         ordering = ['-id']
@@ -92,7 +91,7 @@ class Article(BaseArticle):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE,  null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    like = GenericRelation(LikeDislike, related_query_name='article')
+    like = GenericRelation(Like, related_query_name='article')
     status = models.CharField(choices=STATUS_CHOICES, max_length=12, blank=True)
 
     objects = ArticleManager()

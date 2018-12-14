@@ -1,23 +1,26 @@
-{% extends "blog/MainPage.html" %}
-{% load blog_tags %}
 {% load static %}
+{% load chat_tags %}
 
+<link rel="stylesheet" type="text/css" href="{% static 'chat/css/chat.css' %}">
 
-{% block head %}
-{% load_navbar user list_dialogs=list_dialogs %}
-{% endblock %}
-
-
-{% block body %}
- <link rel="stylesheet" type="text/css" href="{% static 'chat/css/chat.css' %}">
-
-<div class="card border-light" id="All-dialogs">
-
-{% for dialog in dialogs %}
+<div class="card border-0" id="All-dialogs">
+{% for dialog in objs %}
   {% if dialog.message_set.all %}
-     {% with message=dialog.message_set.last id=dialog.id %}
-        <div id="wrapper-dialog{{ id }}">
-     {% include 'chat/message.html' with text=message.text to=message.to_ name_author=message.author.username data_publish=message.data_publish id_dialog=dialog.id dialog_read=message.readed  not_dialog=220 %}
+     {% with message=dialog.message_set.last %}
+        <div id="wrapper-dialog{{ dialog.id }}">
+            <div class="row  border-0">
+                <div class="col-sm-12 px-0" style="background-color: {% color_dialog message.author.username user.username message.readed %}">
+                    <div  class="dialogs-list-action" onclick="open_dialog('{{ dialog.id }}')">
+                        <div class="media border-bottom border-light pt-2" id="test">
+                            <div class="media-body">
+                                <small class="text-muted float-right mb-0">{{ message.data_publish }}</small>
+                                {% chat_image message.author.username message.to_ %}
+                                <h6 class="pt-0 pl-3" style="font-size: 14px;">{{ message.text|truncatechars:140 }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     {% endwith %}
       </div>
   {% endif %}
@@ -25,17 +28,4 @@
 
 {% endfor %}
 </div>
-
-{% endblock %}
-
-
-
-{% block buttom %}
-{% endblock %}
-
-{% block additional %}
-<script src="{% static 'chat/js/list-dialogs.js'%}"></script>
-{% endblock %}
-
-
 

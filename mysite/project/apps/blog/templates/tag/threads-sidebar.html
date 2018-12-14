@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
+
+  <div class="card" style="width: 18rem;">
+
+      <div class="card-body">
+    <h5 class="card-title">Reccomend community</h5>
+{% for top in tops %}
+
+
+            <ul class="nav">
+                <li class="nav-item">
+                    <article class="item ml-0">
+                        <div class="photo">
+                            <img class="personPhoto" src="{{ top.image.url }}">
+                        </div>
+                    </article>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ top.get_absolute_url }}" class="text-dark"> <h6 class="pl-2 pt-2">{{ top.name }}</h6></a>
+                </li>
+
+            </ul>
+          <hr class="py-0 my-1">
+
+{% endfor %}
+
+         </div>
+
+</div>

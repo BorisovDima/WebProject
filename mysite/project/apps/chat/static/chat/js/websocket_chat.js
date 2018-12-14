@@ -15,7 +15,7 @@ Socket.onmessage = function(event) {
     var data = JSON.parse(event.data);
     var message = data['message']
     $('#message-list').append(message)
-    $('#id_text').val('')
+    $('#id_text_dialog').val('')
     $("html,body").scrollTop($(document).height())
 
 }
@@ -32,7 +32,7 @@ Socket.onerror = function(error) {
 }
 
 $('#send-message').click(function() {
-    var text = $("#id_text").val()
+    var text = $("#id_text_dialog").val()
     if (!text) {
         return false
     }

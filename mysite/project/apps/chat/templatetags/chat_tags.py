@@ -1,5 +1,5 @@
 from django import template
-
+from django.contrib.auth import get_user_model
 
 
 register = template.Library()
@@ -12,5 +12,11 @@ def color_dialog(author, user, readed):
     elif readed == True:
         return '#ffffff'
     else:
-        return '#e3e7ed'
+        return '#f4f2f9'
 
+
+@register.inclusion_tag('chat/user_img.html')
+def chat_image(from_, to=None):
+    from_ = get_user_model().objects.get(username=from_).profile
+    if to: to = get_user_model().objects.get(username=to).profile
+    return {'from': from_, 'to': to}

@@ -1,9 +1,11 @@
 from django.http import JsonResponse
-from django.views.generic import View
+from django.views.generic import View, DetailView
 from project.apps.blog.shortcuts import render_to_html
 from django.conf import settings
 from django.db.models import Count
 from project.apps.blog.models import Thread
+from django.http import Http404
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Loader_search(View):
     template_name = None # Указывается в urls.py
@@ -46,8 +48,8 @@ class Loader_sorted(Loader_search):
                              'status': 'ok'})
 
     def top(self, params):
-        objects = self.model.objects.filter(**params).exclude(rating=0).order_by('-rating')
-        if self.since: objects = objects.filter(rating__lt=self.since)
+        objects = self.model.objects.filter(**params).exclude(rating=0).order_by('rating')
+        if self.since: objects = objects.filter(rating__gt=self.since)
         objs = list(objects[:self.paginate])
         since = objs[-1].rating if objs else None
         return objs, since
@@ -69,19 +71,43 @@ class Loader_sorted(Loader_search):
         return objs, since
 
 from django.db.models import Q
+from project.apps.like_dislike.models import Subscribe
+from project.apps.blog.models import Thread
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.auth import get_user_model
 
 class Loader_home(Loader_search):
-
     def get(self, req, **kwargs):
-        print(self.model.objects.filter(thread__in=req.user.thread_set.all()))
         since = req.GET.get('since')
-        objects = self.model.objects.filter(Q(thread__in=req.user.thread_set.all()) |
-                                            Q(author__in=req.user.bloguser_set.all()))
-        print(objects, req.user.bloguser_set.all(), req.user.thread_set.all())
+        subs = Subscribe.objects.filter(user=req.user)
+        thread = ContentType.objects.get_for_model(Thread)
+        user = ContentType.objects.get_for_model(get_user_model())
+        objects = self.model.objects.filter(Q(author__id__in=subs.filter(content_type=user).values('object_id'))
+                                           |Q(thread__id__in=subs.filter(content_type=thread).values('object_id')))
+
         if since:
-            objects = objects.filter(rating__lt=since)
+            objects = objects.filter(id__lt=since)
         objs = list(objects[:self.paginate])
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
                              'since': objs[-1].id,
                              'status': 'ok'})
+
+class Loader_dialogs(LoginRequiredMixin, Loader_search):
+
+
+    def get(self, req, **kwargs):
+        user = self.model.objects.get(id=kwargs['id'])
+        if req.user != user:
+            raise Http404
+        objs = user.profile.get_user_dialogs()
+        since = req.GET.get('since')
+        if since:
+            objs = objs.filter(id__lt=since)
+        button = objs.count() > self.paginate
+        objs = list(objs[:self.paginate])
+        print(objs[-1].id, button)
+        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
+                             'since': objs[-1].id,
+                             'status': 'ok',
+                             'button': button})

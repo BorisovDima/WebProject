@@ -3,7 +3,7 @@ from . import views, converters
 from .models import  Article, Thread
 from .forms import CreatePostForm, CreateArticleForm, CreateThreadForm
 from django.views.generic import RedirectView
-from project.apps.account.views import Subscribe
+
 
 
 register_converter(converters.CategoryConverter, 'threads')
@@ -26,9 +26,6 @@ urlpatterns = [
 
     path('thread/<threads:thread>/hot/', views.ThreadsView.as_view(template_name='blog/thread.html'),
          {'location': 'thread/sort/hot'}, name='thread-hot'),
-
-    path('thread/<threads:key>/subscribe/', Subscribe.as_view(model=Thread), name='subscribe-thread'),
-
 
     path('thread/<threads:thread>/', RedirectView.as_view(pattern_name='blog:thread-hot'), name='thread'),
 

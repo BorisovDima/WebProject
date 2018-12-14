@@ -1,6 +1,7 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
 {% load static %}
+{% load like_tag %}
 
 {% block head %}
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
@@ -36,7 +37,13 @@
         <h5 class="pl-2 pt-2">{{ objs.name }}</h5>
     </li>
 </ul>
-      Community: {{ objs.participant.count }} {% thread_part user objs %}
+      Community: <span id="count-followers">{{ objs.my_followers.all.count }}</span>
+
+      {% if user.is_authenticated %}
+
+      {% subscribe_html objs 'thread' user %}
+
+      {% endif %}
 
   </div>
 </div>
@@ -73,5 +80,5 @@
     </div>
 </div>
 
-
+<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
 {% endblock %}

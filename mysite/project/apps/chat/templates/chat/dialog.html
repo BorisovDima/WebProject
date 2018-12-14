@@ -5,6 +5,7 @@
 
 {% block head %}
 {% load_navbar user id_dialog=dialog.id %}
+ <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
 {% endblock %}
 
 
@@ -30,14 +31,14 @@
    <ul class="list-inline mb-2 pb-2">
        <li class="text-center">
             <strong>
-                <a href="#">{{ dialog.from_user }}</a> -
-                <a href="#">{{ dialog.to_user }}</a>
+                <a href="{{ dialog.from_user.get_absolute_url }}">{{ dialog.from_user }}</a> -
+                <a href="{{ dialog.to_user.get_absolute_url }}">{{ dialog.to_user }}</a>
             </strong>
             </li>
  </ul>
 
 {{ form.text }}
-<input class="btn btn-primary mt-3" id="send-message" type="submit" value="Send"/>
+<input class="btn btn-primary mt-3" id="send-message" onclick="" type="submit" value="Send"/>
 </div>
 {% endblock %}
     </div>
@@ -55,6 +56,7 @@
 {% block buttom %}
 <input type="hidden" value="{{ status }}" id="status_dialog">
 <input type="hidden" value="{{ dialog.id }}" id="id_dialog">
-<script src="{% static 'chat/js/websocket_chat.js' %}"></script>
+
+<script async src="{% static 'chat/js/websocket_chat.js' %}"></script>
 {% endblock %}
 

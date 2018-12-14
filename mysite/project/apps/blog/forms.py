@@ -136,8 +136,6 @@ class CreateThreadForm(BaseCreateForm):
         if ' ' in self.cleaned_data['name']:
             raise ValidationError('Space character, use only _')
 
-        self.cleaned_data['name'] = self.cleaned_data['name'].lower()
-
         return self.cleaned_data['name']
 
 

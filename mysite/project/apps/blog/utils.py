@@ -45,6 +45,7 @@ def make_thumbnail(image, size, icon=False):
         icon[1].save(name, ContentFile(fileobj.read()), save=False)
         fileobj.close()
 
+    name = file + 'new-' + str(img.width) + '-' + str(img.height) + ex
     img.thumbnail(size, Image.ANTIALIAS)
 
     fileobj = BytesIO()

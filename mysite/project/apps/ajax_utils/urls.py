@@ -3,7 +3,7 @@ from . import views
 from project.apps.blog.models import Article, Thread
 from project.apps.account.models import Profile
 from django.conf import settings
-
+from  django.contrib.auth import get_user_model
 app_name = 'ajax_utils'
 
 urlpatterns = [
@@ -14,7 +14,9 @@ urlpatterns = [
 
     path('load/users/', views.Loader_sorted.as_view(model=Profile,
                                              template_name='blog/list_users.html',
-                                             paginate=15), name='usr_loader'),
+                                             paginate=15,
+                                             sorted_kwargs={'sorted': 'all'}),
+                                             name='usr_loader'),
 
 
 
@@ -39,7 +41,8 @@ urlpatterns = [
 
     path('load/user-articles/<slug:key>/', views.Loader_sorted.as_view(model=Article,
                                            template_name='blog/articles.html',
-                                           sorted_kwargs={'field': 'author__username'}),
+                                           sorted_kwargs={'field': 'author__username',
+                                                          'sorted': 'all'}),
                                            name='art_loader'),
 
 
@@ -65,7 +68,12 @@ urlpatterns = [
 
     path('load/home/', views.Loader_home.as_view(model=Article,
                                                 template_name='blog/articles.html',
-                                                paginate=15), name='home-feed')
+                                                paginate=15), name='home-feed'),
 
+
+    path('load/dialogs/<int:id>/', views.Loader_dialogs.as_view(model=get_user_model(),
+                                                       template_name='chat/list_dialog.html',
+                                                       paginate=15),
+                                                       name='dialogs-loader'),
 
 ]

@@ -1,16 +1,17 @@
 {% load blog_tags %}
 {% load static %}
+{% load like_tag %}
 
-<script src="{% static 'blog/js/article.js' %}"></script>
+
 
 
 {% for thread in objs %}
-<div class="row border article" onclick="detail_thread('{{ thread.name }}')">
-    <div class="col-sm-12 px-1">
-            <div class="card border-0">
+<div class="row border" >
+    <div class="col-sm-12 px-0">
+            <div class="card border-0 article">
 
-                <div class="card-body pb-2 pt-2">
-
+                <div class="card-body pb-1 pt-2" >
+                    <div onclick="detail_thread('{{ thread.name }}')">
                     <ul class="nav">
                         <li class="nav-item">
                             <article class="item ml-0">
@@ -24,25 +25,32 @@
                           <li class="nav-item">
                               <a href="{{ thread.get_absolute_url }}" class="text-dark"><h5 class="pl-2 pt-2">{{ thread.name }}</h5></a>
                             </li>
+                        <li class="nav-item">
+
+                        </li>
                     </ul>
 
                       <small class="card-subtitle mb-2 text-muted">
-                          {% if thread.sub %}{{ thread.sub }}{% else %} ...{% endif %}</small><br>
+                          {% if thread.sub %}{{ thread.sub }}{% else %} ...{% endif %}</small>
 
-                     <a style="font-size: 11px;"> Community: {{ thread.participant.count }}</a>
+                        </div>
+                    <a style="font-size: 11px;"> Community: {{ thread.my_followers.all.count }}</a>
                     <a style="font-size: 11px;"> / Posts: {{ thread.article_set.all.count }}</a>
-                           {% if user.is_authenticated %}
-                     {% thread_part user thread %}
-                            {% csrf_token %}
-                                </form>
-                            {% endif %}
+                    {% if user.is_authenticated %}
+                    {% subscribe_html thread 'thread' user %}
+                                    {% endif %}
+
 </div>
+
+
 </div>
+
     </div>
 </div>
 {% endfor %}
 
 
+<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
 
 
 

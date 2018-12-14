@@ -6,6 +6,9 @@
 {% post_form %}
 {% endif %}
 
+{% if user.is_authenticated %}
+{% my_messages user %}
+{% endif %}
 <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
 <img src="{% static 'blog/img/logo.img' %}" width="35" height="35" class="rounded-circle">
@@ -58,14 +61,14 @@
               </nav>
             {% endif %}
 
-        <nav class="navbar p-1 ml-2">
-            <a class="navbar-brand" href="{% url 'chat:list-dialog' user.username %}">
+        <nav class="navbar pt-2 p-1 ml-2">
+            <a type="button" class="btn" id="load-my-dialogs" data-id="{{ user.pk }}" data-toggle="modal" data-target="#modal-dialogs-window">
                  <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
-                <img  class="ml-1" src="{% static 'blog/img/baseline-message-24px(3).svg' %}">
+                <img  class="ml-1" src="{% static 'blog/img/baseline-mail_outline-24px.svg' %}">
                 <input type="hidden" id="message-dispatch" value="">
-                <input type="hidden" id="message-window-n" value="{{ list_dialogs }}">
             </a>
         </nav>
+
 
         <nav class="navbar p-1 ml-2">
             <a class="navbar-brand" href="#">
@@ -96,5 +99,7 @@
 </nav>
 
 {% if user.is_authenticated %}
+<script src="{% static 'ajax_utils/js/paginate-dialogs.js' %}"></script>
+<script src="{% static 'chat/js/list-dialogs.js'%}"></script>
 <script src="{% static 'event_handler/js/websocket_event_handler.js' %}"></script>
 {% endif %}

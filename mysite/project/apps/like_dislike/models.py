@@ -8,23 +8,26 @@ from django.conf import settings
 """
                     Article
                       /
-LikeDislike:ForeingK
+Like:ForeingK
                       \
                        Comment
 """
-
-class LikeDislike(models.Model):
-
-    VOTES = (
-        (1, 'Like'),
-        (-1, 'Dislike')
-    )
-
-
+class BaseLike(models.Model):
     data = models.DateTimeField(default=timezone.now)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.SET('delete'))
-    vote = models.IntegerField(choices=VOTES)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
+
+    class Meta:
+        abstract = True
+    
+
+class Like(BaseLike):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.SET_NULL, null=True, blank=True)
+
+
+class Subscribe(BaseLike):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE)
+
+

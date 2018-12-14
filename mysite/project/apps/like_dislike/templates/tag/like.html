@@ -1,0 +1,10 @@
+{% load static %}
+
+
+<li type="button" class="btn border-0 btn-outline-light btn-sm mb-2" data-action="like-counter" data-type='{{ type }}' data-id="{{ id }}">
+        <img src="{% static 'like_dislike/img/like.png' %}" width="20">
+        <span data-count='like'  class="badge badge-light">{{ count }}</span>
+</li>
+
+
+

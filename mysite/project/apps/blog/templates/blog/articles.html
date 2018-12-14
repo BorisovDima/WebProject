@@ -1,24 +1,27 @@
 {% load humanize %}
 {% load static %}
-
+{% load like_tag %}
 
 <script src="{% static 'blog/js/article.js' %}"></script>
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
 
     {% for article in objs %}
 
-    {{ article.rating }}
-<div class="row border article" onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
-             <div class="col-sm-12 pb-0">
+<div class="row border" >
+             <div class="col-sm-12 pb-0 px-0">
+<div class="card border-0 article">
+  <div class="card-body pt-0  pb-1">
+      <div onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
 
-<div class="card border-0">
-  <div class="card-body px-1 pt-0  pb-1">
          <ul class="list-inline mb-2">
       <li class="drop-left">
          <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url }}"  width="30" height="30">
           <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
-              <small>{{ article.author.profile.pref_name }}{% if article.thread %} / {{ article.thread }} {% endif %}</small>
-          </a>
+              <small>{{ article.author.profile.pref_name }}</small></a>
+          {% if article.thread %}
+          <a href="{{ article.thread.get_absolute_url }}" class="text-dark"><small>/ {{ article.thread }}</small></a>
+          {% endif %}
+
           <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
       </li>
 
@@ -29,18 +32,14 @@
       {% endif %}
       <input type="hidden" id="action-id-article">
   </div>
+
+    <a style="font-size: 14px;">Comments: {{ article.comment_set.count }} / </a>
+     <a style="font-size: 14px;"> Views: {{ article.views.count }} / </a>
+    {% like_html article 'post' %}
+
+</div>
 </div>
 
-<nav aria-label="breadcrumb article">
-  <ol class="breadcrumb bg-white mb-0 pt-0">
-
-
-    <li class="breadcrumb-item"><a style="font-size: 14px;">Comments: {{ article.comment_set.count }} </a></li>
-      <li class="breadcrumb-item"><a style="font-size: 14px;"> Views: {{ article.views.count }} </a></li>
-    <li class="breadcrumb-item"><a style="font-size: 14px;"> rating </a></li>
-
-  </ol>
-</nav>
 
 </div>
 </div>
@@ -49,7 +48,7 @@
 
 
 
-
+<script src="{% static 'like_dislike/js/like.js' %}"></script>
 
 
 

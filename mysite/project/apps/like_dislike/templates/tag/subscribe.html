@@ -1,0 +1,5 @@
+
+<button type="button" class="text-white btn {% if action %} btn-success {% else %} btn-danger {% endif %} float-right btn-sm"
+        style="font-size: 12px" data-action="user-subscribe" data-type='{{ type }}' data-id="{{ id }}">
+    {% if action %} Unsubscribe {% else %} Subscribe {% endif %}
+</button>

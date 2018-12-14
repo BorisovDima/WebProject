@@ -49,24 +49,8 @@ class ProfileView(UpdateView):
         else:
             context['user_status'] = 'owner' \
                 if self.kwargs['login'] == self.request.user.profile.login else 'user'
-            context['location'] = self.kwargs.get('location')
+            context['location'] = self.kwargs['location'] + '/' + self.kwargs['login']
         return context
-
-
-class Subscribe(LoginRequiredMixin, View):
-    model = None
-
-    def get(self, *args, **kwargs):
-        raise Http404
-
-    def post(self, *args, **kwargs):
-        objs = self.model.objects.get(username=kwargs['key']) if self.model == get_user_model() else \
-            self.model.objects.get(name=kwargs['key'])
-        follower = self.request.user
-        if follower not in objs.get_subscribers():
-            objs.set_subscriber(follower)
-        return redirect(objs.get_absolute_url())
-
 
 
 class Vertify_account(RedirectView):

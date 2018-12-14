@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'social_django',
     'bootstrap4',
     'project.apps.chat',
     'project.apps.event_handler.apps.EventHandlerConfig',
@@ -74,6 +75,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -119,6 +122,18 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+'django.contrib.auth.backends.ModelBackend',
+'social_core.backends.vk.VKOAuth2'
+)
+
+
+SOCIAL_AUTH_VK_OAUTH2_KEY = '6779396'
+SOCIAL_AUTH_VK_OAUTH2_SECRET = '2soVKpmPpEiL3nZ7XIhA'
+
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 
 # Internationalization
