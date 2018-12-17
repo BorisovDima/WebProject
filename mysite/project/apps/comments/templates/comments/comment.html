@@ -1,32 +1,37 @@
 {% load humanize %}
 {% load static %}
-
-<div class="media" id="comment-{{ comment_id }}">
-    <a href="#"><img class="mr-2" src="{% static 'blog/img/logo.img' %}" alt="img"  width="25" height="25"></a>
-    <div class="media-body">
-        <h6 class="text-primary mb-0" style="font-size: 14px">{{ author }}</h6>
-        <ul class="nav ">
-            {% if parent_id %}
-            <li class="nav-item">
-                <input type="button" class="btn btn-link btn-sm pt-1" value="Ответил {{ parent_name }}"
-                  onclick="scroll_to_parent('{{ parent_id }}')">
-            </li>
+{% load chat_tags %}
+<div class="card border-0" id="comment-{{ comment_id }}">
+    <ul class="list-inline mb-2">
+        <li class="drop-left">
+            {% if del %}
+            <button type="button" class="close float-right" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}" title="Удалить">
+                <span aria-hidden="true">&times;</span>
+            </button>
             {% endif %}
-            <li class="nav-item mt-2">
-                     <h6  class="text-muted"  style="font-size: 14px">{{ create_data | naturaltime }}</h6>
-            </li>
-            {% if user.is_authenticated %}
-             <li class="nav-item">
-            <input type="button" class="btn btn-link btn-sm" value="Ответить"
-                  onclick="Answer({{ comment_id }}, '{{ author }}')">
-            </li>
+            {% chat_image author  %}
+        {% if parent_id %}
+            {% if parent_active %}
+                <input type="button" class="btn btn-link btn-sm  pt-0 mt-0 text-info" value="Ответил {{ parent_name }}"
+                   onclick="scroll_to_parent('{{ parent_id }}')" style="font-size: 13px">
+            {% else %}
+                <a class="text-muted" style="font-size: 13px">Ответил {{ parent_name }}</a>
+        </li>
             {% endif %}
+        {% endif %}
+    </ul>
+    <div class="card-body py-0">
+        <h6 class="ml-0 pl-0 py-0 my-0"  style="font-size: 14px; font-family: Arial"> {{ text }} </h6>
+         <ul class="list-inline mb-2">
+            <li class="drop-left">
+                 {% if user.is_authenticated %}
+                    <input type="button" class="btn btn-link pl-0" value="Ответить"
+                    onclick="Answer({{ comment_id }}, '{{ author }}')" style="font-size: 14px">
+                 {% endif %}
+                 <a  class="text-muted pt-0"  style="font-size: 14px"> {{ create_data | naturaltime }}</a>
+            </li>
         </ul>
-
-        <h6 class="mt-0"  style="font-size: 14px"> {{ text }} </h6>
-
-
     </div>
 </div>
-<hr class="mt-0  mb-1">
+<hr class="mt-0  mb-2">
 

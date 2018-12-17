@@ -1,32 +1,19 @@
-function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie != '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
+var ready = true
 
-
-$.ajaxSetup({
-       headers: { "X-CSRFToken": getCookie("csrftoken") }
- });
-
-
- $('[data-action="user-subscribe"]').click(function() {
+$(document).on('click', '[data-action="user-subscribe"]', function() {
    var subscribe = $(this)
    var type = subscribe.data('type')
    var id = subscribe.data('id')
+    if (ready) {
     $.ajax({
         url: '/api/subscribe/' + type + '/' + id + '/',
-        method: 'POST'
+        method: 'POST',
+        beforeSend: function() {
+                ready = false // что бы больше не один scroll не вызвал ajax до завершения этого
+        },
+        complete: function() {
+                ready = true // теперь может вызываться следующий ajax
+        }
     }).success(function(data) {
           if (data.add == true) {
                 subscribe.removeClass( "btn-danger" ).addClass( "btn-success" );
@@ -39,5 +26,5 @@ $.ajaxSetup({
                 $('#count-followers').text(data.count)
           }
     })
-
+    }
 });

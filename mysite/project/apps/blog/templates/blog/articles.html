@@ -1,54 +1,75 @@
 {% load humanize %}
 {% load static %}
 {% load like_tag %}
-
-<script src="{% static 'blog/js/article.js' %}"></script>
- <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
+{% load blog_tags %}
 
     {% for article in objs %}
+<div class="row border py-1 border-0" id="wrapper_post-{{ article.id }}">
+    <div class="col-sm-12 pb-0 px-0 border">
+        <div class="card border-0 article">
+            <div class="card-body pt-0  pb-0 mb-0">
+                <div onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
+                    <ul class="list-inline mb-2">
+                         <li class="drop-left">
+                             <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url }}"  width="30" height="30">
+                             <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
+                            <small>{{ article.author.profile.pref_name }}</small></a>
+                            {% if article.thread %}
+                            <a href="{{ article.thread.get_absolute_url }}" class="text-dark"><small>/ {{ article.thread }}</small></a>
+                            {% endif %}
+                            <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
+                        </li>
+                    </ul>
+                    <h6 class="card-text" style="font-size: 15px;">{{ article.text }}</h6>
+                    {% if  article.image %}
+                    <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
+                    {% endif %}
+                    <input type="hidden" id="action-id-article">
+                </div>
+                <hr class="py-0 my-0">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">
+                            <img src="{% static 'blog/img/top.png' %}" width="20">
+                            <span  class="badge badge-light">{{ article.views.count }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">
+                            <img src="{% static 'blog/img/comment.png' %}" width="20">
+                            <span class="badge badge-light">{% count_comments article %}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        {% like_html article 'post' user %}
+                    </li>
 
-<div class="row border" >
-             <div class="col-sm-12 pb-0 px-0">
-<div class="card border-0 article">
-  <div class="card-body pt-0  pb-1">
-      <div onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
 
-         <ul class="list-inline mb-2">
-      <li class="drop-left">
-         <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url }}"  width="30" height="30">
-          <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
-              <small>{{ article.author.profile.pref_name }}</small></a>
-          {% if article.thread %}
-          <a href="{{ article.thread.get_absolute_url }}" class="text-dark"><small>/ {{ article.thread }}</small></a>
-          {% endif %}
-
-          <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
+      <li class="nav-item">
+<div class="dropdown">
+        <a class="btn btn-outline-light border-0  btn-sm mb-0 pb-0" href="#" role="button" data-toggle="dropdown">
+            <h5 class="text-dark">...</h5>
+        </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        {% if article.author == user %}
+        <a class="dropdown-item btn" data-action="delete_object" data-type="post" data-id="{{ article.id }}">Удалить запись</a>
+            {% endif %}
+        <div class="dropdown-divider"></div>
+    </div>
+</div>
       </li>
 
-   </ul>
-    <h6 class="card-text" style="font-size: 15px;">{{ article.text }}</h6>
-      {% if  article.image %}
-     <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
-      {% endif %}
-      <input type="hidden" id="action-id-article">
-  </div>
+</ul>
 
-    <a style="font-size: 14px;">Comments: {{ article.comment_set.count }} / </a>
-     <a style="font-size: 14px;"> Views: {{ article.views.count }} / </a>
-    {% like_html article 'post' %}
 
 </div>
 </div>
-
 
 </div>
 </div>
 
     {% endfor %}
 
-
-
-<script src="{% static 'like_dislike/js/like.js' %}"></script>
 
 
 

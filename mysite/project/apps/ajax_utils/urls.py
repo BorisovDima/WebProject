@@ -4,6 +4,9 @@ from project.apps.blog.models import Article, Thread
 from project.apps.account.models import Profile
 from django.conf import settings
 from  django.contrib.auth import get_user_model
+from project.apps.account.models import Notification
+
+
 app_name = 'ajax_utils'
 
 urlpatterns = [
@@ -71,9 +74,12 @@ urlpatterns = [
                                                 paginate=15), name='home-feed'),
 
 
-    path('load/dialogs/<int:id>/', views.Loader_dialogs.as_view(model=get_user_model(),
+    path('load/dialogs/', views.Loader_dialogs.as_view(model=get_user_model(),
                                                        template_name='chat/list_dialog.html',
-                                                       paginate=15),
-                                                       name='dialogs-loader'),
+                                                       paginate=15), name='dialogs-loader'),
+
+    path('load/notify/', views.Loader_notify.as_view(model=Notification,
+                                                     template_name='event_handler/notifications.html',
+                                                     paginate=15,), name='notify-loader'),
 
 ]

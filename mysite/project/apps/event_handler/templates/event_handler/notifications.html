@@ -1,0 +1,22 @@
+{% load static %}
+{% load notify_tags %}
+
+{% for obj in objs %}
+
+      {% if obj.event == 'CP' %}
+      {% comment obj user %}
+      {% endif %}
+
+      {% if obj.event == 'C' %}
+      {% parent_comment obj user %}
+      {% endif %}
+
+      {% if obj.event == 'L' %}
+      {% notify_like obj user %}
+      {% endif %}
+
+      {% if obj.event == 'S' %}
+      {% subs obj user %}
+      {% endif  %}
+
+{% endfor %}

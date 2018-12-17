@@ -79,8 +79,8 @@ class ProfileForm(forms.ModelForm):
             if self.cleaned_data['user_img'].size > (1000 * 1000):
                 raise forms.ValidationError('Very big size photo')
 
-            if self.cleaned_data['user_img'].image.height < 250 or \
-                    self.cleaned_data['user_img'].image.width < 250:
+            if self.cleaned_data['user_img'].image.height < 100 or \
+                    self.cleaned_data['user_img'].image.width < 100:
                 raise forms.ValidationError('Very big size photo')
         return self.cleaned_data['user_img']
 

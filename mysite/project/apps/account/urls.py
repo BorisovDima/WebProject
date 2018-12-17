@@ -15,6 +15,5 @@ urlpatterns = [
     path('verify/<uuid:uuid>/', views.Vertify_account.as_view(), name='verify'),
     path('profile/<slug:login>/', views.ProfileView.as_view(), {'location': 'user-articles'}, name='profile'),
 
-
 ]
 

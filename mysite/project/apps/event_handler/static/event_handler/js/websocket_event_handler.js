@@ -32,7 +32,11 @@ Socket.onmessage = function(event) {
                 var new_html = '<div id="' + wrapper + '">' + html + '</div>'
                 $('#All-dialogs').prepend(new_html)
                 }
-
+    }
+    else {
+            var count = Number($('#counter-notify').text())
+            var new_count = count + 1
+            $('#counter-notify').text(new_count)
     }
 }
 

@@ -5,6 +5,7 @@
 
 {% block head %}
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
+ <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 {% post_form objs %}
 
 {% load_navbar user add_post='False' back_to_treads='True'%}
@@ -80,5 +81,6 @@
     </div>
 </div>
 
+<script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
 <script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
 {% endblock %}

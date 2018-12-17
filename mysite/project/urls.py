@@ -24,11 +24,11 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', include('project.apps.blog.urls')),
-    path('', include('project.apps.comments.urls')),
     path('', include('project.apps.account.urls')),
     path('', include('project.apps.chat.urls')),
     path('', include('social_django.urls', namespace='social')),
     path('api/', include('project.apps.ajax_utils.urls')),
     path('api/', include('project.apps.like_dislike.urls')),
+    path('api/', include('project.apps.comments.urls'))
 
 ]

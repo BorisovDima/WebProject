@@ -12,7 +12,7 @@ class BaseArticle(models.Model):
     create_data = models.DateTimeField(default=timezone.now)
     last_modify_data = models.DateTimeField(default=timezone.now)
     rating = models.IntegerField(default=0)
-
+    active = models.BooleanField(default=True)
 
     def _save(self,  *args, **kwargs):
         return super().save(*args, **kwargs)
@@ -22,6 +22,15 @@ class BaseArticle(models.Model):
         if self.image:
             make_thumbnail(self.image, (self.max_width, self.max_height))
         return super().save(*args, **kwargs)
+
+
+    def _delete(self):
+        self.active = False
+        self.save(update_fields=['active'])
+
+    def _return(self):
+        self.active = True
+        self.save(update_fields=['active'])
 
 
     class Meta:
@@ -107,8 +116,6 @@ class Article(BaseArticle):
     class Meta:
         ordering = ['-id']
 
-    def __str__(self):
-        return str(self.id)
 
 
 

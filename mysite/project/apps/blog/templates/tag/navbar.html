@@ -3,103 +3,80 @@
 
 
 {% if add_post != 'False' %}
-{% post_form %}
+    {% post_form %}
 {% endif %}
 
 {% if user.is_authenticated %}
-{% my_messages user %}
+    {% my_messages user %}
+    {% my_notify user %}
 {% endif %}
 <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
-<img src="{% static 'blog/img/logo.img' %}" width="35" height="35" class="rounded-circle">
+        <img src="{% static 'blog/img/logo.img' %}" width="35" height="35" class="rounded-circle">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"> </span>
-  </button>
-
-{% if back_to_treads %}
-<ul class="navbar-nav mr-auto">
-
-<li class="nav-item">
-    <a class="nav-link" href="{% url 'blog:threads' %}">< Back to treads </a>
-</li>
-
-</ul>
-{% endif %}
-
-
+        <span class="navbar-toggler-icon"> </span>
+    </button>
+    {% if back_to_treads %}
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'blog:threads' %}">< Back to treads </a>
+            </li>
+        </ul>
+    {% endif %}
     <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
             {% if not user.is_authenticated %}
           <ul class="navbar-nav mr-auto">
-
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:registration' %}">Regist</a>
               </li>
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:login' %}">Login</a>
               </li>
-
-
-        </ul>
-        {% endif %}
-
-
+          </ul>
+                {% endif %}
          <ul class="navbar-nav mr-auto">
          </ul>
-
-
-
-
         {% if user.is_authenticated %}
-
             {% if add_post != 'False' %}
-
               <nav class="navbar p-1 ml-2">
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
                        What's new?
                   </button>
               </nav>
             {% endif %}
-
-        <nav class="navbar pt-2 p-1 ml-2">
-            <a type="button" class="btn" id="load-my-dialogs" data-id="{{ user.pk }}" data-toggle="modal" data-target="#modal-dialogs-window">
-                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
-                <img  class="ml-1" src="{% static 'blog/img/baseline-mail_outline-24px.svg' %}">
-                <input type="hidden" id="message-dispatch" value="">
-            </a>
-        </nav>
-
-
+            <nav class="navbar pt-2 p-1 ml-2">
+                <a type="button" class="btn" data-action="load-modal-notifications" data-type="dialogs" data-toggle="modal" data-target="#modal-dialogs-window">
+                    <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
+                    <img  class="ml-1" src="{% static 'blog/img/baseline-mail_outline-24px.svg' %}">
+                    <input type="hidden" id="message-dispatch" value="">
+                </a>
+            </nav>
         <nav class="navbar p-1 ml-2">
-            <a class="navbar-brand" href="#">
-                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0"  style="font-size: 9px;"></span></small>
+            <a type="button" class="btn" data-action="load-modal-notifications" data-type="notify" data-toggle="modal" data-target="#modal-notify-window">
+                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-notify"  style="font-size: 9px;">{% notify_count user %}</span></small>
                 <img  class="ml-1" src="{% static 'blog/img/baseline-notification_important-24px.svg' %}">
             </a>
         </nav>
-
-
          <ul class="navbar-nav mr-0">
                <li class="nav-item dropdown">
         <button class="btn btn-light dropdown-toggle pr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ user.profile.pref_name }}
+            {{ user.profile.pref_name }}
             <img src="{{ user.profile.thumbnail.url }}" class="rounded-circle" width="35" height="35">
-      </button>
-
+        </button>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'account:profile' user.profile.login %}">My page</a>
-
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'account:logout' %}">Logout</a>
-        </div>
+            <a class="dropdown-item" href="{% url 'account:profile' user.profile.login %}">My page</a>
+                <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'account:logout' %}">Logout</a>
+                </div>
                </li>
-
          </ul>
-         {% endif %}
+     {% endif %}
     </div>
 </nav>
 
 {% if user.is_authenticated %}
-<script src="{% static 'ajax_utils/js/paginate-dialogs.js' %}"></script>
-<script src="{% static 'chat/js/list-dialogs.js'%}"></script>
-<script src="{% static 'event_handler/js/websocket_event_handler.js' %}"></script>
+    <script src="{% static 'ajax_utils/js/paginate-dialogs.js' %}"></script>
+    <script src="{% static 'chat/js/list-dialogs.js'%}"></script>
+    <script src="{% static 'event_handler/js/websocket_event_handler.js' %}"></script>
 {% endif %}

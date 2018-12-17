@@ -49,7 +49,7 @@ class ProfileView(UpdateView):
         else:
             context['user_status'] = 'owner' \
                 if self.kwargs['login'] == self.request.user.profile.login else 'user'
-            context['location'] = self.kwargs['location'] + '/' + self.kwargs['login']
+        context['location'] = self.kwargs['location'] + '/' + self.kwargs['login']
         return context
 
 

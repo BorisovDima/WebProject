@@ -1,0 +1,47 @@
+{% load humanize %}
+{% load static %}
+
+
+<div  {% if not obj.readed %} class="card border-0 article notread" {% else %}  class="card border-0 article" {% endif %}>
+  <div class="card-body px-1 py-1" >
+      <ul class="list-inline mb-1">
+          <li class="drop-left">
+              <img class="mr-2 mt-2 rounded-circle" src="{{ from_user.profile.thumbnail.url }}"  width="30" height="30">
+              <a class="text-dark" href="{{ from_user.get_absolute_url }}">@{{ from_user }}</a>
+              <a  href="{{ post.get_absolute_url }}" style="font-size: 14px;" >оценил ваш пост</a>
+          </li>
+      </ul>
+
+
+
+<div class="card border-1">
+  <div class="card-body pt-0  pb-1">
+
+         <ul class="list-inline mb-2">
+      <li class="drop-left">
+         <img class="mr-2 mt-2 rounded-circle" src="{{ post.author.profile.thumbnail.url }}"  width="25" height="25">
+          <a href="{{ post.author.profile.get_absolute_url }}" class="text-dark pt-2">
+              <small>{{ post.author.profile.pref_name }}</small></a>
+          {% if post.thread %}
+          <a href="{{ post.thread.get_absolute_url }}" class="text-dark"><small>/ {{ post.thread }}</small></a>
+          {% endif %}
+
+          <small class="text-muted float-right mt-2" >{{ post.create_data | naturaltime }}</small>
+      </li>
+
+   </ul>
+      <div>
+      {% if post.text %}
+    <h6 class="card-text" style="font-size: 14px;">{{ post.text |truncatechars:50  }}</h6>
+      {% endif %}
+      {% if  post.image %}
+     <img class="img-fluid  rounded" src="{{ post.image.url }}" style="max-height: 150px">
+      {% endif %}
+        </div>
+  </div>
+</div>
+    {{ obj.read }}
+  </div>
+</div>
+
+<hr class="py-0 my-0">

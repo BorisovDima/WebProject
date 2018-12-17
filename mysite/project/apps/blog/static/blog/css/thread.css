@@ -17,9 +17,10 @@
 }
 
 .article:hover {
-   background: #edf5f7
+   background-color: #edf5f7
 
 }
 
-.article {
-     background-color: #ffffff;
+.notread {
+    background-color: #edf5f7;
+}

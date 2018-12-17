@@ -5,105 +5,80 @@
 {% load static %}
 {% bootstrap_messages %}
 {% load blog_tags %}
+
 <html lang="en">
 <head>
-
-
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
 <body>
-
-<div class="pt-0" style="background-color: #f4f4f4">
-
-
-{% block head %}
-
-{% load_navbar user %}
-
-{% endblock %}
-
-
-<div class="container-fluid">
-
-        <div class="row text-left mt-1">
-            <div class="col-lg-6  offset-md-1" id="add-loader">
-                {% block body %}
-
-
-                {% endblock %}
-
-            </div>
-
-            <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
-                {% block additional %}
-                <div class="card" style="width: 18rem;">
-                <div class="card-body">
-
-                         <ul class="list-group list-group-flush">
-
-                        <li class="list-group-item">
-                            <a href="/" class="text-muted" >Main</a>
-                        </li>
-                        <li class="list-group-item">
-                           <a href="{% url 'blog:threads' %}" class="text-muted">Communities</a>
-                        </li>
-                         {% if user.is_authenticated %}
-                        <li class="list-group-item">
-                            <a href="{% url 'blog:home' %}" class="text-muted" >Home</a>
-                        </li>
-                        {% endif %}
-                        <li class="list-group-item">
-                            <a href="{% url 'blog:users' %}" class="text-muted" >Users</a>
-                        </li>
-                        <li class="list-group-item">
-                        </li>
-                    </ul>
+    <div class="pt-0" style="background-color: #f4f4f4">
+    {% block head %}
+    {% load_navbar user %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
+    <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+    {% endblock %}
+        <div class="container-fluid">
+            <div class="row text-left mt-1">
+                <div class="col-lg-6  offset-md-1" id="add-loader">
+                    {% block body %}
+                    {% endblock %}
                 </div>
-                </div>
-                {% endblock %}
+                <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+                    {% block additional %}
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <a href="/" class="text-muted" >Main</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="{% url 'blog:threads' %}" class="text-muted">Communities</a>
+                                </li>
+                                {% if user.is_authenticated %}
+                                    <li class="list-group-item">
+                                        <a href="{% url 'blog:home' %}" class="text-muted" >Home</a>
+                                    </li>
+                                {% endif %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'blog:users' %}" class="text-muted" >Users</a>
+                                </li>
+                                <li class="list-group-item">
+                                 </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {% endblock %}
                     <div style="position: fixed">
                         {% block sidebar %}
-
                         {% top_treads %}
-
                         {% endblock %}
-
-                </div>
-
+                    </div>
+                 </div>
             </div>
-
-
-        </div>
-</div>
-
+    </div>
 
 {% block event_hidden %}
-
 <div class="fixed-bottom w-25 pl-3 border-danger border " id="wrapper-show-message" style="background-color:#f4f2f9; display:none">
-
-<button type="button" class="close pr-2" aria-label="Close" onclick="close_modal()">
-  <span aria-hidden="true">&times;</span>
-</button>
+    <button type="button" class="close pr-2" aria-label="Close" onclick="close_modal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
     <div id="show-message">
-
-
     </div>
 </div>
-
 {% endblock %}
 
 
 {% block buttom %}
-
-<input id="location" value="{{ location }}" type="hidden">
-<script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
-
-
+    <input id="location" value="{{ location }}" type="hidden">
+    <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
+    <script src="{% static 'blog/js/article.js' %}"></script>
+    <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+    <script src="{% static 'like_dislike/js/like.js' %}"></script>
 {% endblock %}
-
- </div>
+</div>
 
 
 </body>

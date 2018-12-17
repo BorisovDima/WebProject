@@ -6,7 +6,7 @@ from .models import Dialog, Message
 import json
 from django.utils import timezone
 from project.apps.blog.shortcuts import render_to_html
-
+from .forms import DialogForm
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
@@ -25,15 +25,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         data = json.loads(text_data)
-        kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
-        self.status = b'Dont_new'
-        to_user, msg_id = await database_sync_to_async(Message.objects.create_message)(**kwargs)
-        kwargs['name_author'] = self.scope['user'].username
-        kwargs['to_user'] = to_user.username
-        kwargs['msg_id'] = msg_id
-        await self.channel_layer.group_send(self.group_d,
-                                            {'type': 'send_msg',
-                                             'kwargs': kwargs})
+        form = DialogForm(data)
+        if not form.is_valid():
+            await self.send(json.dumps({'status': 'invalid'}))
+        else:
+            kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
+            self.status = b'Dont_new'
+            to_user, msg_id = await database_sync_to_async(Message.objects.create_message)(**kwargs)
+            kwargs['name_author'] = self.scope['user'].username
+            kwargs['to_user'] = to_user.username
+            kwargs['msg_id'] = msg_id
+            await self.channel_layer.group_send(self.group_d,
+                                                {'type': 'send_msg',
+                                                'kwargs': kwargs})
 
 
     async def send_msg(self, event):
@@ -43,7 +47,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         kwargs['data_publish'] = 'Now'
         kwargs['dialog_read'] = True
         html = await sync_to_async(render_to_html)('chat/message.html', kwargs) # async def __call__
-        await self.send(json.dumps({'message': html}))
+        await self.send(json.dumps({'message': html, 'status': 'ok'}))
 
 
 

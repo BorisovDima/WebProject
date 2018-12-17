@@ -4,9 +4,10 @@ from django import template
 register = template.Library()
 
 @register.inclusion_tag('tag/like.html')
-def like_html(obj, type):
-    likes = obj.like.all().count()
-    return {'count':likes, 'type': type, 'id': obj.id}
+def like_html(obj, type, user):
+    likes = obj.like.all()
+    action = likes.filter(user=user).exists() if user.is_authenticated else False
+    return {'count': likes.count(), 'type': type, 'id': obj.id, 'action': action}
 
 
 @register.inclusion_tag('tag/subscribe.html')

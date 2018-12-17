@@ -10,7 +10,7 @@ class DialogForm(ModelForm):
         self.fields['text'].widget = widgets.Textarea(attrs={'Class': 'form-control',
                                                              'rows': 3, 'style':
                                                              'resize:none; font-size: 14px',
-                                                             'maxlength': 1024,
+                                                             'maxlength': 500,
                                                              'id': 'id_text_dialog'
                                                              })
 

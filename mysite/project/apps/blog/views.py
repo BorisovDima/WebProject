@@ -22,8 +22,9 @@ class DetailArticle(DetailView):
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
+        if not obj.active:
+            raise Http404
         user = self.request.user
-        print(obj.rating)
         if user.is_authenticated:
             obj.viewed(user)
         return obj

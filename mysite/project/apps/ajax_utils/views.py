@@ -20,7 +20,7 @@ class Loader_search(View):
 
     def get(self, req, **kwargs):
         since = req.GET.get('since')
-        objects = self.model.objects.filter(**{self.sorted_kwargs.get('field'): req.GET.get('search')})
+        objects = self.model.objects.filter(**{self.sorted_kwargs.get('field'): req.GET.get('search')}, active=True)
         if since:
             objects = objects.filter(id__lt=int(since))
         objs = list(objects[:self.paginate])
@@ -48,14 +48,14 @@ class Loader_sorted(Loader_search):
                              'status': 'ok'})
 
     def top(self, params):
-        objects = self.model.objects.filter(**params).exclude(rating=0).order_by('rating')
+        objects = self.model.objects.filter(**params, active=True).exclude(rating=0).order_by('rating')
         if self.since: objects = objects.filter(rating__gt=self.since)
         objs = list(objects[:self.paginate])
         since = objs[-1].rating if objs else None
         return objs, since
 
     def hot(self, params, count):
-        objects = self.model.objects.filter(**params)
+        objects = self.model.objects.filter(**params, active=True)
         objects = objects.annotate(sort=Count('views')).filter(sort__gte=count)
         if self.since: objects = objects.filter(id__lt=self.since)
         objs = list(objects[:self.paginate])
@@ -64,7 +64,7 @@ class Loader_sorted(Loader_search):
 
 
     def all(self, params):
-        objects = self.model.objects.filter(**params)
+        objects = self.model.objects.filter(**params, active=True)
         if self.since: objects = objects.filter(id__lt=self.since)
         objs = list(objects[:self.paginate])
         since = objs[-1].id if objs else None
@@ -83,7 +83,8 @@ class Loader_home(Loader_search):
         thread = ContentType.objects.get_for_model(Thread)
         user = ContentType.objects.get_for_model(get_user_model())
         objects = self.model.objects.filter(Q(author__id__in=subs.filter(content_type=user).values('object_id'))
-                                           |Q(thread__id__in=subs.filter(content_type=thread).values('object_id')))
+                                           |Q(thread__id__in=subs.filter(content_type=thread).values('object_id'))
+                                            , active = True)
 
         if since:
             objects = objects.filter(id__lt=since)
@@ -95,19 +96,25 @@ class Loader_home(Loader_search):
 
 class Loader_dialogs(LoginRequiredMixin, Loader_search):
 
-
-    def get(self, req, **kwargs):
-        user = self.model.objects.get(id=kwargs['id'])
-        if req.user != user:
-            raise Http404
-        objs = user.profile.get_user_dialogs()
+    def send_data(self, objs, req):
         since = req.GET.get('since')
         if since:
             objs = objs.filter(id__lt=since)
         button = objs.count() > self.paginate
         objs = list(objs[:self.paginate])
-        print(objs[-1].id, button)
-        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
+        if not objs: return JsonResponse({'status': 'end'})
+        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, req),
                              'since': objs[-1].id,
                              'status': 'ok',
                              'button': button})
+
+    def get(self, req, **kwargs):
+        objs = req.user.profile.get_user_dialogs()
+        return self.send_data(objs, req)
+
+
+class Loader_notify(Loader_dialogs):
+    def get(self, req, **kwargs):
+        objs = self.model.objects.filter(owner=req.user)
+        return self.send_data(objs, req)
+

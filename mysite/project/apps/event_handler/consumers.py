@@ -13,12 +13,18 @@ class EventConsumer(AsyncWebsocketConsumer):
         await self.accept()
 
 
+    async def disconnect(self, code):
+        await self.channel_layer.group_discard(self.group,
+                                               self.channel_name)
 
     async def get_event(self, event):
         notification = event['event']
-        kwargs = event['kwargs']
-        kwargs['data_publish'] = 'Now'
-        kwargs['add'] = True
-        html = await sync_to_async(render_to_html)('chat/message.html', kwargs)
-        dialog = kwargs['id_dialog']
-        await self.send(json.dumps({'event': notification, 'dialog': dialog, 'html': html}))
+        if notification == 'message':
+            kwargs = event['kwargs']
+            kwargs['data_publish'] = 'Now'
+            kwargs['add'] = True
+            html = await sync_to_async(render_to_html)('chat/message.html', kwargs)
+            dialog = kwargs['id_dialog']
+            await self.send(json.dumps({'event': notification, 'dialog': dialog, 'html': html}))
+        else:
+            await self.send(json.dumps({'event': notification}))

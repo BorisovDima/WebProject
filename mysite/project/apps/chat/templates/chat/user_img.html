@@ -1,6 +1,6 @@
 
-<ul class="nav ml-2 pb-2">
-  <li class="nav-item">
+<ul class="nav ml-2 pb-2  pt-0">
+  <li class="nav-item pt-0">
     <article class="item ml-1">
     <div class="photo">
         <img class="personPhoto" src="{{from.thumbnail.url }}">
@@ -8,14 +8,14 @@
     </article>
   </li>
     <li class="nav-item">
-        <a class="nav-link  pl-0 pr-2" href="{{ from.get_absolute_url }}">{{ from.login}} </a>
+        <a class="nav-link pl-2 pr-2" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.login}} </a>
     </li>
     {% if to %}
     <li class="nav-item">
-        <a class="nav-link text-dark px-0"> - </a>
+        <a class="nav-link text-dark px-0"  style="font-size: 15px;" > - </a>
     </li>
         <li class="nav-item">
-        <a class="nav-link pl-2 pr-0" href="{{ to.get_absolute_url }}">  {{ to.login }}</a>
+        <a class="nav-link pl-2 pr-2" href="{{ to.get_absolute_url }}" style="font-size: 15px;">  {{ to.login }}</a>
     </li>
   <li class="nav-item">
     <article class="item ml-1">

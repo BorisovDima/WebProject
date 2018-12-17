@@ -7,7 +7,7 @@
 {% load_navbar user  %}
 
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/thread.css' %}">
-
+ <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 {% endblock %}
 
 
@@ -55,6 +55,7 @@
 {% endblock %}
 
 {% block buttom %}
+<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
 <script src="{% static 'blog/js/article.js' %}"></script>
 <script src="{% static 'ajax_utils/js/search.js' %}"></script>
 <input id="location" value="{{ location }}" type="hidden">

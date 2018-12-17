@@ -24,6 +24,13 @@ def msg_count(user, id_dialog=None):
         if last_msg.to_() == user and not last_msg.readed and dialog.id != id_dialog: count += 1
     return count or ''
 
+
+from project.apps.account.models import Notification
+
+@register.simple_tag
+def notify_count(user):
+    return Notification.objects.filter(owner=user).filter(readed=False).count() or ''
+
 @register.inclusion_tag('tag/form_post.html')
 def post_form(thread=None):
     form = CreatePostForm() if not thread else CreatePostForm(initial={'thread': thread})
@@ -39,4 +46,10 @@ def top_treads():
 def my_messages(user):
     return {'user': user}
 
+@register.inclusion_tag('tag/modal-notify.html')
+def my_notify(user):
+    return {'user': user}
 
+@register.simple_tag
+def count_comments(obj):
+    return obj.comment_set.filter(active=True).count()

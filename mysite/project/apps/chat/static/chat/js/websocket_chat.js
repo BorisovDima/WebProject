@@ -13,11 +13,15 @@ var Socket = new WebSocket('ws://' + window.location.host + '/ws/dialog/' + id_d
 
 Socket.onmessage = function(event) {
     var data = JSON.parse(event.data);
-    var message = data['message']
-    $('#message-list').append(message)
-    $('#id_text_dialog').val('')
-    $("html,body").scrollTop($(document).height())
-
+    if (data['status'] == 'ok') {
+        var message = data['message']
+        $('#message-list').append(message)
+        $('#id_text_dialog').val('')
+        $("html,body").scrollTop($(document).height())
+    }
+    else {
+        console.log("INVALID")
+    }
 }
 
 

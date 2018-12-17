@@ -1,14 +1,18 @@
 {% load static %}
 {% load comment_tags %}
+
+ <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
 <div>
 
 <div id="answer"></div>
+
 <script src="{% static 'comments/js/answer_comment.js' %}"> </script>
 
-
-<div id="comments-list" class="mt-1">
-{% for c in comments %}
+<div id="comments-list" class="mt-1 pb-2">
+{% for c in objs %}
+    {% if c.active %}
         {% get_comment c user %}
+    {% endif %}
 
 {% endfor %}
     </div>

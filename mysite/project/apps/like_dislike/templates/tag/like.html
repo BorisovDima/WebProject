@@ -1,10 +1,14 @@
 {% load static %}
 
 
-<li type="button" class="btn border-0 btn-outline-light btn-sm mb-2" data-action="like-counter" data-type='{{ type }}' data-id="{{ id }}">
-        <img src="{% static 'like_dislike/img/like.png' %}" width="20">
+<a type="button" class="btn border-0 btn-outline-light btn-sm mb-1" data-action="like-counter" data-type='{{ type }}' data-id="{{ id }}">
+        {% if action %}
+        <img src="{% static 'blog/img/icon-like-active.png' %}" width="20" data-target='like-image'>
+        {% else %}
+        <img src="{% static 'blog/img/icon-like.png' %}" width="20" data-target='like-image'>
+        {% endif %}
         <span data-count='like'  class="badge badge-light">{{ count }}</span>
-</li>
+</a>
 
 
 
