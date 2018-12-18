@@ -37,28 +37,14 @@ class BlogUser(AbstractUser):
 
 
 class Profile(models.Model):
+     user_name = models.CharField(max_length=40, null=True, blank=True)
      login = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      date_of_birth = models.DateTimeField(null=True, blank=True)
      current_city = models.CharField(max_length=99, null=True, blank=True)
      about_me = models.CharField(max_length=255, null=True, blank=True)
      user_img = models.ImageField(upload_to='user_img/', default=DEFAULT_USER_IMG)
      thumbnail = models.ImageField(upload_to='user_img/thumbnails/')
-
-     @classmethod
-     def from_db(cls, db, field_names, values):
-          new = super().from_db(db, field_names, values)
-          new._load_data = dict(zip(field_names, values))
-          return new
-
-
-     def save(self, *args, **kwargs):
-          if self._state.adding or (self._load_data['user_img'] != self.user_img):
-               make_thumbnail(self.user_img, (settings.MAX_WIDTH_IMG, settings.MAX_HEIGHT_IMG),
-                        icon=(settings.USER_ICON, self.thumbnail))
-               if not self._state.adding:
-                    self.about_me = self._load_data['about_me']
-          return super().save(*args, **kwargs)
-
+     user_head = models.ImageField(upload_to='user_img/', null=True, blank=True)
 
      def get_user_dialogs(self):
           return Dialog.objects.get_user_dialogs(self.bloguser)
@@ -77,8 +63,7 @@ class Profile(models.Model):
           return self.bloguser.date_joined
 
      def get_user_name(self):
-          return False if not self.bloguser.first_name or not self.bloguser.last_name else \
-               self.bloguser.first_name + ' ' + self.bloguser.last_name
+          return self.user_name
 
      def get_absolute_url(self):
           return reverse('account:profile', kwargs={'login': self.login})

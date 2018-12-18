@@ -20,8 +20,8 @@
 
 
 {% block sidebar %}
-
-
+<div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+    <div style="position: fixed;">
 <div class="card" style="width: 18rem;">
    <div class="card-body text-center">
       {% if user.is_authenticated %}
@@ -51,7 +51,8 @@
   </div>
 </div>
 </div>
-
+</div>
+</div>
 {% endblock %}
 
 {% block buttom %}

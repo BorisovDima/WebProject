@@ -14,20 +14,30 @@
 </head>
 
 <body>
-    <div class="pt-0" style="background-color: #f4f4f4">
+
+
+<div class="pt-0" style="background-color: #f4f4f4;" >
     {% block head %}
     {% load_navbar user %}
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
     <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+
     {% endblock %}
+
+
+    {% block user_head %}
+    {% endblock %}
+
         <div class="container-fluid">
             <div class="row text-left mt-1">
                 <div class="col-lg-6  offset-md-1" id="add-loader">
                     {% block body %}
                     {% endblock %}
                 </div>
-                <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
-                    {% block additional %}
+
+                    {% block sidebar %}
+                    <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+
                     <div class="card" style="width: 18rem;">
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
@@ -50,13 +60,12 @@
                             </ul>
                         </div>
                     </div>
-                    {% endblock %}
-                    <div style="position: fixed">
-                        {% block sidebar %}
+                    <div style="position: fixed;">
                         {% top_treads %}
-                        {% endblock %}
                     </div>
-                 </div>
+
+                </div>
+                    {% endblock %}
             </div>
     </div>
 

@@ -39,7 +39,7 @@ class ProfileView(UpdateView):
     model = Profile
     slug_field = 'login'
     slug_url_kwarg = 'login'
-    form_class = ProfileForm
+    form_class = None
 
     def get_context_data(self, **kwargs):
 

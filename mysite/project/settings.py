@@ -169,7 +169,9 @@ AUTH_USER_MODEL = 'account.BlogUser'
 LOGIN_URL = '/login/'
 
 
+MAX_HEIGHT_HEAD = 200
 
+MAX_WIDTH_HEAD = 1500
 
 MAX_WIDTH_IMG = 565
 

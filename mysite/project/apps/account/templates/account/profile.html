@@ -2,13 +2,13 @@
 {% load blog_tags %}
 {% load static %}
 {% load like_tag %}
-
+{% load account_tags %}
 
 {% block head %}
  <link rel="stylesheet" type="text/css" href="{% static 'account/css/account.css' %}">
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
  <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
-<!-- Modal -->
+{% if user_status == 'owner' %}
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -19,7 +19,7 @@
         </button>
       </div>
       <div class="modal-body text-center">
-          <form method="POST" enctype="multipart/form-data" id="change-photo-form">
+          <form method="POST" enctype="multipart/form-data" id="change-photo-form" action="{% url 'account:change-photo' profile.login %}">
                 {% csrf_token %}
                 <label class="btn btn-primary text-center" for="change-photo">
                 <input id="change-photo" name="{{ form.user_img.html_name }}" type="file" style="display:none"
@@ -32,51 +32,86 @@
   </div>
 </div>
 
-
+<div class="modal fade" id="modal-header-img" tabindex="-1" role="dialog" aria-labelledby="modal-header-img" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h6 class="form-text text-muted"> Max length files 1mb </h6>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center">
+          <form method="POST" enctype="multipart/form-data" id="change-head-form" action="{% url 'account:change-head' profile.login %}">
+                {% csrf_token %}
+              <label class="btn btn-primary text-center" for="change-header">
+                <input id="change-header" name="{{ form.user_head.html_name }}" type="file" style="display:none">
+                Choice new header
+              </label>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 {% load_navbar user %}
-
 {% endblock %}
+
+
+
+{% block user_head %}
+{% head_user user_status user profile%}
+{% endblock %}
+
+
 
 {% block body %}
 <div class="row  border">
     <div class="col-sm-12 px-0" style="background-color: #ffffff">
         <div class="card border-light">
             <div class="card-body">
+                <div id="my-profile-info">
                 {% if profile.get_user_name %}
-                    <h5 class="card-text">profile.get_user_name</h5>
-                {% else %}
-                     <a href="#" class="text-muted"><h5>What your name?</h5></a>
+                    <h5 class="card-text">{{ profile.get_user_name }}</h5>
+                    {% else %}
+                    <h5 class="card-text">@{{ profile.login }}</h5>
                 {% endif %}
                 <hr>
                 <h6 class="card-text text-muted" style="font-size: 14px;">Data registration: {{ profile.get_user_joined }} </h6>
                 {% if profile.date_of_birth %}
-                    <h6 class="card-text text-muted" style="font-size: 14px;">Date of birth:  {{ profile.date_of_birth }} </h6>
+                    <h6 class="card-text text-muted" style="font-size: 14px;">Date of birth:  {{ profile.date_of_birth  }} </h6>
                 {% endif %}
                {% if profile.current_city %}
                     <h6 class="card-text text-muted" style="font-size: 14px;">Current city: {{ profile.current_city }}  </h6>
                 {% endif %}
-                <h6 class="card-text" style="font-size: 14px;" >About me</h6>
-                {% if user_status == 'owner' %}
-                    <a class="text-dark" data-toggle="collapse" href="#about-me"
-                    role="button" aria-expanded="false" aria-controls="about-me" style="font-size: 14px;"  title="Write about you">
+                    <hr class="py-0 my-0">
                 {% if profile.about_me %}
                     {{ profile.about_me }}
-                {% else %}
-                    ...
                 {% endif %}
-                    </a>
-                <div class="collapse" id="about-me">
-                    <form method="POST">
-                        <div class="form-group">
-                            {{ form.about_me }}
-                            {% csrf_token %}
-                            <input type="submit" class="btn btn-link" value="Change">
-                        </div>
-                    </form>
                 </div>
-                {% else %}
-                    <a class="text-dark" style="font-size: 14px;"> {% if profile.about_me %} {{ profile.about_me }} {% else %} ... {% endif %} </a>
-                {% endif %}
+                <form method="POST" style="display:none" data-type="hide_form">
+                            {% csrf_token %}
+                        <div class="form-group border-bottom">
+                            {{ form.user_name }}
+                        </div>
+                        {{ form.date_of_birth.label }}
+                        <div class="form-group border-bottom">
+                            {{ form.date_of_birth }}
+                        </div>
+                        <div class="form-group border-bottom">
+                            {{ form.current_city }}
+                        </div>
+                            {{ form.about_me.label }}
+                            {{ form.about_me }}
+                     <nav class="navbar fixed-bottom navbar-light bg-primary">
+                         <ul class="navbar-nav">
+                         <li class="nav-item">
+                        <input class=" btn btn-outline-danger text-dark" type="submit"  value="Применить">
+                             <a class="btn btn-outline-danger text-dark" data-action="profile-cancel">Отменить</a>
+                         </li>
+                         </ul>
+                    </nav>
+                </form>
             </div>
             <div class="card border-light">
                 <ul class="nav nav-tabs">
@@ -94,7 +129,6 @@
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
                             New Post
                         </button>
-                        <a href="{% url 'blog:create_article' %}" class="btn btn-primary"> New article </a>
                     </div>
                 </div>
             {% endif %}
@@ -114,43 +148,6 @@
 {% endblock %}
 
 {% block sidebar %}
-<div class="card" style="width: 18rem;">
-        {% if user_status == 'owner' %}
-            <div class="dropdown">
-                <div id="photo-change" class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Change photo </button>
-                </div>
-            </div>
-        <div  id="holder-image">
-            <img class="card-img-top img-rounded" src="{{ profile.user_img.url }}" id="user-image">
-            <div id="block-image" class="text-center">
-                <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn btn-link" style="padding-top: 150px;">Change photo</button>
-            </div>
-        </div>
-        {% else %}
-    <img class="card-img-top img-rounded" src="{{ profile.user_img.url }}">
-        {% endif %}
-    <div class="card-body pt-0  px-1">
-        <ul class="list-group list-group-flush mt-2">
-            <li class="list-group-item pt-0 pl-1 border-light">
-                <h4 class="card-link">@{{ profile.login }}</h4>
-            </li>
-            {% if user_status == 'owner' %}
-                <li class="list-group-item pt-2">
-                    <a href="settings/" class="card-link">Edit profile</a>
-                </li>
-            {% endif %}
-            {% if user_status == 'user' %}
-            <li class="list-group-item">
-                    <a href="{% url 'chat:dialog' profile.login %}" class="btn btn-primary " role="button">Send message</a>
-             </li>
-            <li class="list-group-item">
-                {% subscribe_html profile.bloguser 'user' user %}
-            </li>
-            {% endif %}
-        </ul>
-    </div>
-</div>
 
 {% if user.is_authenticated %}
     <script src="{% static 'like_dislike/js/like.js' %}"></script>
@@ -158,6 +155,10 @@
 {% endif %}
 
 {% if user_status == 'owner' %}
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
     <script src="{% static 'account/js/account_utils.js' %}"></script>
 {% endif %}
 
@@ -165,10 +166,7 @@
 
 {% block buttom %}
     <input id="location" value="{{ location }}" type="hidden">
-    <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
     <script src="{% static 'blog/js/article.js' %}"></script>
     <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
-{% endblock %}
 
-{% block additional %}
 {% endblock %}

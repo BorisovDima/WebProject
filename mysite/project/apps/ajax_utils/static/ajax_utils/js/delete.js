@@ -9,11 +9,9 @@ $(document).on('click', '[data-action="delete_object"]', function() {
         if (data.status == 'ok') {
             if (data.event == 'comment'){
                 $('#comment-' + id).html(data.html)
-                $('#comment-' + id).on('click', '[data-action="return_object"]', comeback)
             }
             else {
                 $('#wrapper_post-' + id).html(data.html)
-                $('#wrapper_post-' + id).on('click', '[data-action="return_object"]', comeback)
             }
         }
         else {
@@ -22,7 +20,7 @@ $(document).on('click', '[data-action="delete_object"]', function() {
     })
 })
 
-
+$(document).on('click', '[data-action="return_object"]', comeback)
 function comeback() {
     type = $(this).data('type')
     id = $(this).data('id')
