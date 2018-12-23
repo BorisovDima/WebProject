@@ -9,7 +9,7 @@ $(document).on('click', '[data-action="like-counter"]', function(e){
         url: '/api/like/' + type + '/' + id + '/',
         method: 'POST',
         beforeSend: function() {
-          ready = false // что бы больше не один scroll не вызвал ajax до завершения этого
+          ready = false // что бы больше  не вызвал ajax до завершения этого
         },
         complete: function() {
            ready = true // теперь может вызываться следующий ajax

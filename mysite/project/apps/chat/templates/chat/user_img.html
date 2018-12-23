@@ -8,14 +8,14 @@
     </article>
   </li>
     <li class="nav-item">
-        <a class="nav-link pl-2 pr-2" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.login}} </a>
+        <a class="nav-link pl-2 pr-2" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.name}} </a>
     </li>
     {% if to %}
     <li class="nav-item">
         <a class="nav-link text-dark px-0"  style="font-size: 15px;" > - </a>
     </li>
         <li class="nav-item">
-        <a class="nav-link pl-2 pr-2" href="{{ to.get_absolute_url }}" style="font-size: 15px;">  {{ to.login }}</a>
+        <a class="nav-link pl-2 pr-2" href="{{ to.get_absolute_url }}" style="font-size: 15px;">  {{ to.name }}</a>
     </li>
   <li class="nav-item">
     <article class="item ml-1">

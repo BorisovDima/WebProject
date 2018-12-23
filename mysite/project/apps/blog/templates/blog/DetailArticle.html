@@ -22,7 +22,7 @@
                             <li class="drop-left mb-0">
                                 <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url}}"  width="30" height="30">
                                 <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
-                                    @{{ article.author.profile.login }}
+                                    @{{ article.author.profile.name }}
                                 </a>
                                 <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
                             </li>

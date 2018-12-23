@@ -52,4 +52,4 @@ def my_notify(user):
 
 @register.simple_tag
 def count_comments(obj):
-    return obj.comment_set.filter(active=True).count()
+    return obj.comment_set.filter(is_active=True).count()

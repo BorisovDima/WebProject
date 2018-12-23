@@ -2,8 +2,16 @@
 {% load like_tag %}
 
 <div class="container-fluid">
-   <div class="row" style=" background: {% if not profile.user_head %} #f442a4 {% else %} url('{{ profile.user_head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 200px;">
-        <div class="col-lg-6  offset-md-1">
+   <div class="row" id='profile-head-main' style=" background: {% if not profile.head %} #f442a4 {% else %} url('{{ profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 200px;">
+
+        <div class="col-lg-6  offset-md-1 text-center">
+
+            <div id="hide-change-header" style="display:none">
+            <a type="button" class="btn" data-toggle="modal" data-target="#modal-header-img" data-type="change-header" data-action="modal-image-change" data-id="{{ profile.name }}">
+                <img class="ml-1" src="{% static 'blog/img/icons8-изображение-целиком-100.png' %}" width="100" height="100">
+                <h3 class="text-white ml-1">Change header</h3>
+            </a>
+            </div>
 
             </div>
                 <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4 pt-4">
@@ -15,18 +23,21 @@
                                 </div>
                             </div>
                             <div  id="holder-image">
-                                <img class="card-img-top img-rounded" src="{{ profile.user_img.url }}" id="user-image">
+                                <img class="card-img-top img-rounded" src="{{ profile.image.url }}" id="user-image">
                                 <div id="block-image" class="text-center">
-                                    <button data-toggle="modal" data-target="#exampleModalCenter" type="button" class="btn btn-link" style="padding-top: 150px;">Change photo</button>
+                                    <a data-toggle="modal" data-target="#modal-photo-img" type="button" data-action="modal-image-change" data-type="change-photo" data-id="{{ profile.name }}" class="btn btn-link" style="padding-top: 150px;">
+                                        <img class="ml-1" src="{% static 'blog/img/icons8-изображение-целиком-100.png' %}" width="50" height="50">
+                                        Change photo
+                                    </a>
                                 </div>
                             </div>
                         {% else %}
-                        <img class="card-img-top img-rounded" src="{{ profile.user_img.url }}">
+                        <img class="card-img-top img-rounded" src="{{ profile.image.url }}">
                         {% endif %}
                         <div class="card-body pt-0  px-1">
                             <ul class="list-group list-group-flush mt-2">
                                 <li class="list-group-item pt-0 pl-1 border-light">
-                                    <h4 class="card-link">@{{ profile.login }}</h4>
+                                    <h4 class="card-link">@{{ profile.name }}</h4>
                                 </li>
                                 {% if user_status == 'owner' %}
                                     <li class="list-group-item pt-2">
@@ -35,7 +46,7 @@
                                 {% endif %}
                                 {% if user_status == 'user' %}
                                     <li class="list-group-item">
-                                        <a href="{% url 'chat:dialog' profile.login %}" class="btn btn-primary " role="button">Send message</a>
+                                        <a href="{% url 'chat:dialog' profile.name %}" class="btn btn-primary " role="button">Send message</a>
                                     </li>
                                     <li class="list-group-item">
                                         {% subscribe_html profile.bloguser 'user' user %}
@@ -46,11 +57,4 @@
                 </div>
             </div>
     </div>
-     <div class="row" style="display: none;" id="header_user">
-         <div class="col-lg-6  offset-md-1 text-center bg-white border">
-                <div >
-                    <button data-toggle="modal" data-target="#modal-header-img" type="button" class="btn btn-outline-danger btn-sm" >Change photo</button>
-                </div>
-         </div>
-         </div>
 </div>

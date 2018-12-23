@@ -21,10 +21,10 @@ class BaseCreateForm(ModelForm):
     def clean_image(self):
         if getattr(self.cleaned_data['image'], 'image', None):
             if self.cleaned_data['image'].size > (1000 * 1000):
-                raise ValidationError('Very big size photo')
+                raise ValidationError('Максимальный размер файла 1mb')
             file, ext = splitext(self.cleaned_data['image'].name.lower())
             if ext not in ('.jpeg', '.jpg', '.png', '.gif'):
-                raise ValidationError('Not support format')
+                raise ValidationError('Неподдерживаемый формат')
 
         return self.cleaned_data['image']
 
@@ -151,11 +151,6 @@ class CreateThreadForm(BaseCreateForm):
             raise ValidationError('Not valid')
 
         return self.cleaned_data['sub']
-
-
-
-
-
 
 
     class Meta:

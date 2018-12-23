@@ -1,45 +1,56 @@
 $(document).ready(function(){
     // жду когда загрузится DOM. потом сразу же собираю инфу из селекторов и отправляют ajax запрос
     // с текущим 'obj_id' (может быть категория, пост или None).
+
     var inProgress = true
     var since = ''
-    var location = $('#search-ajax').val() +'-search'
-    var search = ''
-        $("#search-form-ajax-btn").click(function() {
-                search = $('#search-form-ajax').val()
-                console.log('dadadadada')
-                if (search.length > 0) {
-                    $('#search-form-ajax').val('')
-                     $("html, body").scrollTop(0, 0)
-                    $(window).unbind('scroll')
-
-                    $.ajax({
-                        url: '/api/load/' + location + '/',
-                        data: {'search': search},
-                    }).success(function(data) {
-                         if (data.status == 'ok') {
-                            $('#add-loader').html(data.html)
-                            since = data.since
-                            inProgress = false
-                            $(window).bind('scroll', serch_loader)
-                        }
-                        else {
-                            $('#add-loader').html('<h1> Nothing </h1>')
-
-                        }
-    })          }
-})
+    var start_location = $('#location').val()
+    start_loder()
 
 
-    function serch_loader()  {
+    $('[data-action="profile-paginate"]').click(function(){
+        inProgress = true
+        since = ''
+        var event = $(this)
+        $('[data-action="profile-paginate"]').removeClass('active')
+        event.addClass('active')
+        var type = event.data('type')
+        if (type) {
+            path = start_location + '/' + type
+           }
+        else {
+            path = start_location
+        }
+        $('#location').val(path)
+        $('#add-loader').html('')
+        start_loder()
+    })
 
+
+
+    function start_loder() {
+        var location = $('#location').val()
+        $.ajax({
+            url: '/api/load/' + location + '/',
+            method: 'GET'
+        }).success(function(data) {
+            $('#add-loader').append(data.html) // При 200 ОК append в div c id 'add-loader'.
+            since = data.since      // c какого id делать выборку
+            inProgress = false     //( для условия && !inProgress)
+        })
+    }
+
+    $(window).bind('scroll', loader)
+    function loader() {
         //  Жду пока scroll достигнет Button-200 и выполнится первый ajax запрос, чтобы поставить
         // inProgress в false
+
         if ((($(window).height() + $(window).scrollTop()) > ($(document).height() - 200)) && !inProgress){
+                 var location = $('#location').val()
                  $.ajax({
-                    url: '/api/load/' + location  + '/',
+                    url: '/api/load/' + location + '/',
                     method: 'GET',
-                    data: {'since': since, 'search': search}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
+                    data: {'since': since}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {
                         inProgress = true // что бы больше не один scroll не вызвал ajax до завершения этого
                     },
@@ -61,5 +72,6 @@ $(document).ready(function(){
                  })
         }
     }
+
 
 })

@@ -28,17 +28,17 @@ class Comment(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     like = GenericRelation(Like, related_query_name='Comment')
-    active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     objects = MyManager()
 
     def _delete(self, *args, **kwargs):
-        self.active = False
-        self.save(update_fields=['active'])
+        self.is_active = False
+        self.save(update_fields=['is_active'])
 
     def _return(self):
-        self.active = True
-        self.save(update_fields=['active'])
+        self.is_active = True
+        self.save(update_fields=['is_active'])
 
     class Meta:
         ordering = ['-id']

@@ -1,0 +1,21 @@
+{% load account_tags %}
+
+<div class="auto-comp">
+    <nav aria-label="breadcrumb p-0 m-0">
+  <ol class="breadcrumb p-0 m-0" style="background-color: #ffffff">
+       <li class="nav-item">
+            <img src="{{ obj.profile.thumbnail.url }}" class="rounded-circle" width="40" height="40">
+       </li>
+        <li class="nav-item">
+            <a class="pb-0" style="font-size: 15px">@{{ obj.profile.name}}</a>
+            {% if obj.profile.user_name %}
+            <a class="text-muted pt-0" style="font-size: 14px">{{ obj.profile.user_name }}</a>
+            {% endif %}
+        </li>
+
+      <li class="nav-item pl-3">
+          <small>{% user_online obj %}</small>
+        </li>
+  </ol>
+</nav>
+</div>

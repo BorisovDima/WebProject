@@ -23,7 +23,7 @@ def change_rating(model, field, *args):
                                                     *args,'-count_')[:250].iterator()):
         try:
             post.rating = rating+1
-            post._save()
+            post._save(update_fields=['rating'])
             logger.info(str(rating))
         except Exception:
             logger.error(str(post) + ' Error')

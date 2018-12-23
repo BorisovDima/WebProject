@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'social_django',
     'bootstrap4',
+    'project.apps.autocomplete',
     'project.apps.chat',
     'project.apps.event_handler.apps.EventHandlerConfig',
     'project.apps.back_task.apps.BackTaskConfig',
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'project.middleware.SimpleMiddleware',
 ]
 
 ROOT_URLCONF = 'project.urls'
@@ -169,7 +171,7 @@ AUTH_USER_MODEL = 'account.BlogUser'
 LOGIN_URL = '/login/'
 
 
-MAX_HEIGHT_HEAD = 200
+MAX_HEIGHT_HEAD = 250
 
 MAX_WIDTH_HEAD = 1500
 

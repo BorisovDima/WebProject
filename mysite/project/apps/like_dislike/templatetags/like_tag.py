@@ -11,6 +11,6 @@ def like_html(obj, type, user):
 
 
 @register.inclusion_tag('tag/subscribe.html')
-def subscribe_html(obj, type, user):
+def subscribe_html(obj, type, user, size=None):
     action = obj.my_followers.filter(user=user).exists()
-    return {'type': type, 'id': obj.id, 'action': action}
+    return {'type': type, 'id': obj.id, 'action': action, 'size': size}

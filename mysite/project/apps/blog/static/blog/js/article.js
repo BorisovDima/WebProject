@@ -8,3 +8,4 @@ function detail_thread(thread) {
     window.location.pathname = '/thread/' + thread + '/'
 
 }
+

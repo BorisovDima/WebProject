@@ -12,7 +12,7 @@ class BaseArticle(models.Model):
     create_data = models.DateTimeField(default=timezone.now)
     last_modify_data = models.DateTimeField(default=timezone.now)
     rating = models.IntegerField(default=0)
-    active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
 
     def _save(self,  *args, **kwargs):
         return super().save(*args, **kwargs)
@@ -25,12 +25,12 @@ class BaseArticle(models.Model):
 
 
     def _delete(self):
-        self.active = False
-        self.save(update_fields=['active'])
+        self.is_active = False
+        self.save(update_fields=['is_active'])
 
     def _return(self):
-        self.active = True
-        self.save(update_fields=['active'])
+        self.is_active = True
+        self.save(update_fields=['is_active'])
 
 
     class Meta:
@@ -52,11 +52,11 @@ class Thread(BaseArticle):
     max_width = settings.MAX_WIDTH_IMG-400
     max_height = settings.MAX_HEIGHT_IMG-400
 
-
     name = models.CharField(max_length=30, unique=True, db_index=True)
     sub = models.CharField(max_length=124)
     image = models.ImageField(upload_to='thread_img/', default=settings.DEFAULT_COMMUNITY_IMG)
     my_followers = GenericRelation(Subscribe, related_query_name='thread_followers')
+
     objects = ThreadManager()
 
     def __str__(self):

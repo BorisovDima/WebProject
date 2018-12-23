@@ -8,7 +8,11 @@
 
 <html lang="en">
 <head>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -22,6 +26,28 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
     <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border mb-0  pb-0">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav ml-5 nav-tabs border-0">
+      <li class="nav-item px-2">
+        <a class="nav-link text-dark"     data-type="" data-action="ajax-paginate-btn">Top</a>
+      </li>
+        <li class="nav-item active px-2">
+            <a class="nav-link text-dark" data-type="popular" data-action="ajax-paginate-btn">Popular</a>
+      </li>
+      <li class="nav-item px-2">
+        <a class="nav-link text-dark"     data-type="new" data-action="ajax-paginate-btn">New</a>
+      </li>
+        <li class="nav-item px-2">
+        <a class="nav-link text-dark"     data-type="people" data-action="ajax-paginate-btn">People</a>
+      </li>
+      <li class="nav-item px-2 ">
+        <a class="nav-link text-dark"     data-type="community" data-action="ajax-paginate-btn">Community</a>
+      </li>
+    </ul>
+  </div>
+
+</nav>
     {% endblock %}
 
 
@@ -30,44 +56,41 @@
 
         <div class="container-fluid">
             <div class="row text-left mt-1">
-                <div class="col-lg-6  offset-md-1" id="add-loader">
+                <div class="col-lg-6  offset-md-1 ">
                     {% block body %}
+                    <div id="add-loader">
+
+                    </div>
                     {% endblock %}
                 </div>
 
                     {% block sidebar %}
                     <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+                        <div class="card" style="width: 18rem; display:none" id="search-main" >
+                            <div class="card-body text-center pl-1">
 
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <a href="/" class="text-muted" >Main</a>
-                                </li>
-                                <li class="list-group-item">
-                                    <a href="{% url 'blog:threads' %}" class="text-muted">Communities</a>
-                                </li>
-                                {% if user.is_authenticated %}
-                                    <li class="list-group-item">
-                                        <a href="{% url 'blog:home' %}" class="text-muted" >Home</a>
-                                    </li>
-                                {% endif %}
-                                <li class="list-group-item">
-                                    <a href="{% url 'blog:users' %}" class="text-muted" >Users</a>
-                                </li>
-                                <li class="list-group-item">
-                                 </li>
-                            </ul>
+                        <select class="custom-select custom-select-sm" data-action="choice-sort">
+                            <option value="people-top" selected>Популярные</option>
+                            <option value="people-new">Новые</option>
+                        </select>
+                        <hr class="mb-0">
+                    </div>
+                            <div class="input-group mb-0">
+                                    <input id="search-form-ajax" data-action="input-search-main" data-type="{{ search_loc }}" type="text"  class="form-control" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button" id="search-form-ajax-btn">Go!</button>
+                            </div>
+                         </div>
                         </div>
                     </div>
-                    <div style="position: fixed;">
-                        {% top_treads %}
-                    </div>
-
-                </div>
                     {% endblock %}
+                </div>
             </div>
     </div>
+
+
+
+
 
 {% block event_hidden %}
 <div class="fixed-bottom w-25 pl-3 border-danger border " id="wrapper-show-message" style="background-color:#f4f2f9; display:none">
@@ -81,14 +104,18 @@
 
 
 {% block buttom %}
-    <input id="location" value="{{ location }}" type="hidden">
+    <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_loc }}">
     <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
     <script src="{% static 'blog/js/article.js' %}"></script>
-    <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+    <script src="{% static 'ajax_utils/js/test.js' %}"></script>
     <script src="{% static 'like_dislike/js/like.js' %}"></script>
+
 {% endblock %}
 </div>
 
 
 </body>
 </html>
+
+
+

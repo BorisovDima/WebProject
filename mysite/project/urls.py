@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('social_django.urls', namespace='social')),
     path('api/', include('project.apps.ajax_utils.urls')),
     path('api/', include('project.apps.like_dislike.urls')),
-    path('api/', include('project.apps.comments.urls'))
+    path('api/', include('project.apps.comments.urls')),
+    path('api/', include('project.apps.autocomplete.urls'))
 
 ]

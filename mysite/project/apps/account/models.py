@@ -2,12 +2,12 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
 from project.apps.chat.models import Dialog
-from django.conf import settings
-from project.apps.blog.utils import make_thumbnail
 from uuid import uuid4
 from django.utils import timezone
 from project.apps.like_dislike.models import Subscribe
 from django.contrib.contenttypes.fields import GenericRelation
+from project.apps.blog.models import Thread
+from django.contrib.contenttypes.models import ContentType
 
 DEFAULT_USER_IMG = 'user_img/default_user_img.png'
 
@@ -18,9 +18,7 @@ class BlogUser(AbstractUser):
      is_verified = models.BooleanField(default=False)
      uuid = models.UUIDField(default=uuid4)
      email = models.EmailField('email', unique=True)
-     last_verify = models.DateTimeField(default=timezone.now)
-
-     rating = models.IntegerField(default=0)
+     last_activity = models.DateTimeField(default=timezone.now)
 
      def get_subscribers(self):
           return self.my_followers.all()
@@ -34,17 +32,19 @@ class BlogUser(AbstractUser):
      def get_full_url(self):
           pass
 
+     class Meta:
+          ordering = ['-id']
 
 
 class Profile(models.Model):
      user_name = models.CharField(max_length=40, null=True, blank=True)
-     login = models.SlugField(allow_unicode=True, unique=True, max_length=255)
+     name = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      date_of_birth = models.DateTimeField(null=True, blank=True)
      current_city = models.CharField(max_length=99, null=True, blank=True)
-     about_me = models.CharField(max_length=255, null=True, blank=True)
-     user_img = models.ImageField(upload_to='user_img/', default=DEFAULT_USER_IMG)
+     about_me = models.CharField(max_length=120, null=True, blank=True)
+     image = models.ImageField(upload_to='user_img/', default=DEFAULT_USER_IMG)
      thumbnail = models.ImageField(upload_to='user_img/thumbnails/')
-     user_head = models.ImageField(upload_to='user_img/', null=True, blank=True)
+     head = models.ImageField(upload_to='user_img/', null=True, blank=True)
 
      def get_user_dialogs(self):
           return Dialog.objects.get_user_dialogs(self.bloguser)
@@ -53,8 +53,11 @@ class Profile(models.Model):
      def get_user_followers(self):
           return self.bloguser.my_followers.all()
 
-     def get_user_subscriptions(self):
-          return Subscribe.objects.filter(user=self.bloguser)
+     def get_user_community_sub(self):
+          return Subscribe.objects.filter(user=self.bloguser, content_type=ContentType.objects.get_for_model(Thread))
+
+     def get_user_people_sub(self):
+          return Subscribe.objects.filter(user=self.bloguser, content_type=ContentType.objects.get_for_model(BlogUser))
 
      def get_user_articles(self):
           return self.bloguser.article_set.all()
@@ -66,11 +69,11 @@ class Profile(models.Model):
           return self.user_name
 
      def get_absolute_url(self):
-          return reverse('account:profile', kwargs={'login': self.login})
+          return reverse('account:profile', kwargs={'login': self.name})
 
      @property
      def pref_name(self):
-          return '@' + self.login
+          return '@' + self.name
 
 
      class Meta:

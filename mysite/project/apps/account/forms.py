@@ -72,7 +72,8 @@ class ProfileForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['about_me'].widget = widgets.Textarea(attrs={'Class': 'form-control', 'rows': 2,
-                                                                 'style':'resize:none; font-size: 14px'})
+                                                                 'style':'resize:none; font-size: 14px',
+                                                                 'maxlength': 120})
 
         self.fields['about_me'].label = 'About me'
 
@@ -92,51 +93,56 @@ class ProfileForm(forms.ModelForm):
                   'style':'font-size: 14px; box-shadow: none;',
                    'placeholder':'Your location'})
     def clean(self):
-        print(self.cleaned_data)
         return super().clean()
-
 
     class Meta:
         model = Profile
-        fields = ['about_me', 'date_of_birth', 'current_city', 'user_name', 'user_img', 'user_head']
+        fields = ['about_me', 'date_of_birth', 'current_city', 'user_name', 'image', 'head']
+
+
 
 from project.apps.blog.utils import make_thumbnail
 from django.conf import settings
 
-class ProfileFormPhoto(forms.ModelForm):
+from os.path import splitext
 
-    def clean_user_img(self):
-        if getattr(self.cleaned_data['user_img'], 'image', None):
-            if self.cleaned_data['user_img'].size > (1000 * 1000):
-                raise forms.ValidationError('Very big size photo')
+class BaseUserPhotoForm(forms.ModelForm):
 
-            if self.cleaned_data['user_img'].image.height < 100 or \
-                    self.cleaned_data['user_img'].image.width < 100:
-                raise forms.ValidationError('Very big size photo')
-        return self.cleaned_data['user_img']
+    def check_image(self, image):
+        print(getattr(image, 'image', None), '----')
+        if getattr(image, 'image', None):
+            if image.size > (1000 * 1000):
+                raise forms.ValidationError('Максимальный размер файла 1mb')
+            file, ext = splitext(image.name.lower())
+            if ext not in ('.jpeg', '.jpg', '.png', '.gif'):
+                raise forms.ValidationError('Неподдерживаемый формат')
+
+class ProfileFormPhoto(BaseUserPhotoForm):
+
+    def clean_image(self):
+        self.check_image(self.cleaned_data['image'])
+        return self.cleaned_data['image']
 
     def save(self, commit=True):
-        make_thumbnail(self.instance.user_img, (settings.MAX_WIDTH_IMG, settings.MAX_HEIGHT_IMG),
+        make_thumbnail(self.instance.image, (settings.MAX_WIDTH_IMG, settings.MAX_HEIGHT_IMG),
                        icon=(settings.USER_ICON, self.instance.thumbnail))
         return super().save(commit)
 
     class Meta:
         model = Profile
-        fields = ['user_img']
+        fields = ['image']
 
 
-class ProfileFormHead(forms.ModelForm):
+class ProfileFormHead(BaseUserPhotoForm):
 
-    def clean_user_head(self):
-        if getattr(self.cleaned_data['user_head'], 'image', None):
-            if self.cleaned_data['user_head'].size > (1000 * 1000):
-                raise forms.ValidationError('Very big size photo')
-        return self.cleaned_data['user_head']
+    def clean_head(self):
+        self.check_image(self.cleaned_data['head'])
+        return self.cleaned_data['head']
 
     def save(self, commit=True):
-        make_thumbnail(self.instance.user_head, (settings.MAX_WIDTH_HEAD, settings.MAX_HEIGHT_HEAD))
+        make_thumbnail(self.instance.head, (settings.MAX_WIDTH_HEAD, settings.MAX_HEIGHT_HEAD))
         return super().save(commit)
 
     class Meta:
         model = Profile
-        fields = ['user_head']
+        fields = ['head']

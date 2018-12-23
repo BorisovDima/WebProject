@@ -7,68 +7,61 @@ from project.apps.blog.models import Thread
 from django.http import Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-class Loader_search(View):
+
+class Loader_sorted(View):
     template_name = None # Указывается в urls.py
     model = None         # Указывается в urls.py
     sorted_kwargs = {}
     paginate = 10
-    """
-    Получаю обьект по которому производить сортировку и id с которого отбирать множество (rows.id < since). 
-    Обертываю QuerySet в list и у последего обьекта беру id с которого при следующем запросе брать множество, 
-    если пустой QuerySet, то возвращаю json со стасуом != "ok". Html рендю в обычный текст.
-    """
-
-    def get(self, req, **kwargs):
-        since = req.GET.get('since')
-        objects = self.model.objects.filter(**{self.sorted_kwargs.get('field'): req.GET.get('search')}, active=True)
-        if since:
-            objects = objects.filter(id__lt=int(since))
-        objs = list(objects[:self.paginate])
-        if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
-                             'since': objs[-1].id,
-                             'status': 'ok'})
-
-
-class Loader_sorted(Loader_search):
 
     def get(self, req, **kwargs):
         self.since = req.GET.get('since')
         sort = self.sorted_kwargs.get('sorted')
         params = {self.sorted_kwargs.get('field'): self.kwargs.get('key')} \
             if self.sorted_kwargs.get('field') else {}
+        params.update({'is_active': True})
         if sort == 'top': objs, since = self.top(params)
         elif sort == 'hot':
-            count = 0 if not params else Thread.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
+            count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Thread.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
             objs, since = self.hot(params, count)
+        elif sort == 'search': objs, since = self.search()
+        elif sort == 'followers': objs, since = self.followers()
         else: objs, since = self.all(params)
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
                              'since': since,
                              'status': 'ok'})
 
-    def top(self, params):
-        objects = self.model.objects.filter(**params, active=True).exclude(rating=0).order_by('rating')
-        if self.since: objects = objects.filter(rating__gt=self.since)
+    def return_objs(self, objects, field, since_):
+        if self.since: objects = objects.filter(**{since_: self.since})
         objs = list(objects[:self.paginate])
-        since = objs[-1].rating if objs else None
+        since = getattr(objs[-1], field) if objs else None
         return objs, since
+
+    def followers(self):
+        return self.return_objs(self.model.objects.annotate(count=Count('my_followers')).order_by('-count'),
+                                                                                            'count', 'count__lt')
+    def search(self):
+        params = {self.sorted_kwargs.get('field'): self.request.GET.get('search')}
+        return self.return_objs(self.model.objects.filter(**params), 'id', 'id__lt')
+
+    def top(self, params):
+        objects = self.model.objects.filter(**params).exclude(rating=0).order_by('rating')
+        return self.return_objs(objects, 'rating', 'rating__gt')
 
     def hot(self, params, count):
-        objects = self.model.objects.filter(**params, active=True)
+        objects = self.model.objects.filter(**params)
         objects = objects.annotate(sort=Count('views')).filter(sort__gte=count)
-        if self.since: objects = objects.filter(id__lt=self.since)
-        objs = list(objects[:self.paginate])
-        since = objs[-1].id if objs else None
-        return objs, since
-
+        return self.return_objs(objects, 'id', 'id__lt')
 
     def all(self, params):
-        objects = self.model.objects.filter(**params, active=True)
-        if self.since: objects = objects.filter(id__lt=self.since)
-        objs = list(objects[:self.paginate])
-        since = objs[-1].id if objs else None
-        return objs, since
+        objects = self.model.objects.filter(**params)
+        return self.return_objs(objects, 'id', 'id__lt')
+
+
+
+
+
 
 from django.db.models import Q
 from project.apps.like_dislike.models import Subscribe
@@ -76,7 +69,7 @@ from project.apps.blog.models import Thread
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 
-class Loader_home(Loader_search):
+class Loader_home(Loader_sorted):
     def get(self, req, **kwargs):
         since = req.GET.get('since')
         subs = Subscribe.objects.filter(user=req.user)
@@ -84,7 +77,7 @@ class Loader_home(Loader_search):
         user = ContentType.objects.get_for_model(get_user_model())
         objects = self.model.objects.filter(Q(author__id__in=subs.filter(content_type=user).values('object_id'))
                                            |Q(thread__id__in=subs.filter(content_type=thread).values('object_id'))
-                                            , active = True)
+                                            , is_active = True)
 
         if since:
             objects = objects.filter(id__lt=since)
@@ -94,7 +87,7 @@ class Loader_home(Loader_search):
                              'since': objs[-1].id,
                              'status': 'ok'})
 
-class Loader_dialogs(LoginRequiredMixin, Loader_search):
+class Loader_dialogs(LoginRequiredMixin, Loader_sorted):
 
     def send_data(self, objs, req):
         since = req.GET.get('since')

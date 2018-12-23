@@ -45,3 +45,4 @@ def subs(obj, user):
     except Exception:
         return None
     return {'from_user': from_user, 'obj': obj}
+

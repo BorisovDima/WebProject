@@ -1,19 +1,20 @@
 from django.shortcuts import redirect
-from django.views.generic import CreateView, DetailView, TemplateView, FormView, ListView
+from django.views.generic import CreateView, DetailView, TemplateView
 from .models import Article, Thread
-from django.shortcuts import get_object_or_404
-from .shortcuts import render_to_html
 from project.apps.comments.forms import CommentForm
-from  .forms import CreateArticleForm, CreatePostForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
-from django.urls import reverse
+
 
 class MainPage(TemplateView):
 
+    def get(self, req, *args, **kwargs):
+        return super().get(req, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         self.template_name = self.kwargs['template_name']
-        return super().get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        return context
 
 
 class DetailArticle(DetailView):
@@ -22,7 +23,7 @@ class DetailArticle(DetailView):
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
-        if not obj.active:
+        if not obj.is_active:
             raise Http404
         user = self.request.user
         if user.is_authenticated:
@@ -69,9 +70,6 @@ class ThreadsView(TemplateView):
             cont['location'] = cont['location'].replace('sort', self.kwargs['thread'])
         cont['search_loc'] = self.kwargs.get('search')
         return cont
-
-
-
 
 
 

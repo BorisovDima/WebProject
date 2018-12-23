@@ -30,4 +30,8 @@ class Like(BaseLike):
 class Subscribe(BaseLike):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, models.CASCADE)
 
+    class Meta:
+        ordering = ['-id']
 
+    def __str__(self):
+        return str(self.content_object) + ' '  + str(self.user)

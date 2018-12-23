@@ -10,6 +10,8 @@
     {% my_messages user %}
     {% my_notify user %}
 {% endif %}
+<link rel="stylesheet" type="text/css" href="{% static 'autocomplete/css/autocomplete.css' %}">
+
 <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
     <a href="/" class="navbar-brand">
         <img src="{% static 'blog/img/logo.img' %}" width="35" height="35" class="rounded-circle">
@@ -33,9 +35,21 @@
               <li class="nav-item">
                    <a class="nav-link" href="{% url 'account:login' %}">Login</a>
               </li>
+
           </ul>
                 {% endif %}
          <ul class="navbar-nav mr-auto">
+             <li class="nav-item">
+                 <a class="btn btn-outline-danger border-0 border-buttom" href="/home/">Home</a>
+             </li>
+             <li class="nav-item">
+                 <a class="btn btn-outline-danger border-0" href="/">Public</a>
+             </li>
+             <li class="nav-item">
+                 <form class="form-inline my-2 my-lg-0 pr-5 mb-4" id="form-search">
+                     <input class="form-control mr-sm-2 pr-5" type="search" maxlength="30" placeholder="Search Mysite" id="id_input" aria-label="input">
+                 </form>
+             </li>
          </ul>
         {% if user.is_authenticated %}
             {% if add_post != 'False' %}
@@ -65,16 +79,18 @@
             <img src="{{ user.profile.thumbnail.url }}" class="rounded-circle" width="35" height="35">
         </button>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'account:profile' user.profile.login %}">My page</a>
+            <a class="dropdown-item" href="{% url 'account:profile' user.profile.name %}">My page</a>
                 <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="{% url 'account:logout' %}">Logout</a>
                 </div>
                </li>
          </ul>
      {% endif %}
+
     </div>
 </nav>
 
+<script src="{% static 'autocomplete/js/autocomplete.js' %}"></script>
 {% if user.is_authenticated %}
     <script src="{% static 'ajax_utils/js/paginate-dialogs.js' %}"></script>
     <script src="{% static 'chat/js/list-dialogs.js'%}"></script>

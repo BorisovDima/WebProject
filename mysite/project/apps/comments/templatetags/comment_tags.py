@@ -14,7 +14,7 @@ def get_comment(comment, user):
     context = {}
     if comment.parent_comment:
         context['parent_id'] = comment.parent_comment.id
-        context['parent_active'] = comment.parent_comment.active
+        context['parent_active'] = comment.parent_comment.is_active
         if comment.parent_comment.author:
             context['parent_name'] = comment.parent_comment.author.username
     context['create_data'] = comment.create_data

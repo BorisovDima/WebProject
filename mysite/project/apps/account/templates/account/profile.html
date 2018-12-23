@@ -7,10 +7,12 @@
 {% block head %}
  <link rel="stylesheet" type="text/css" href="{% static 'account/css/account.css' %}">
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css">
+
  <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 {% if user_status == 'owner' %}
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="modal-photo-img" tabindex="-1" role="dialog" aria-labelledby="modal-photo-img" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg w-50" role="document">
     <div class="modal-content">
       <div class="modal-header">
           <h6 id="loginHelp" class="form-text text-muted"> Max length files 1mb </h6>
@@ -19,21 +21,22 @@
         </button>
       </div>
       <div class="modal-body text-center">
-          <form method="POST" enctype="multipart/form-data" id="change-photo-form" action="{% url 'account:change-photo' profile.login %}">
-                {% csrf_token %}
                 <label class="btn btn-primary text-center" for="change-photo">
-                <input id="change-photo" name="{{ form.user_img.html_name }}" type="file" style="display:none"
-                onchange="$('#upload-file-info').html(this.files[0].name)">
+                <input id="change-photo" data-action="change-profile-image" name="{{ form.image.html_name }}" type="file" style="display:none">
                 Choice file
                 </label>
-          </form>
+          <div style="height: 60vh" id="container-change-photo">
+          </div>
+          <div class="modal-footer px-3">
+              <button class="btn btn-primary" data-action='change-photo-button' style="display:none">Готово</button>
+          </div>
       </div>
     </div>
   </div>
 </div>
 
 <div class="modal fade" id="modal-header-img" tabindex="-1" role="dialog" aria-labelledby="modal-header-img" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
           <h6 class="form-text text-muted"> Max length files 1mb </h6>
@@ -42,13 +45,15 @@
         </button>
       </div>
       <div class="modal-body text-center">
-          <form method="POST" enctype="multipart/form-data" id="change-head-form" action="{% url 'account:change-head' profile.login %}">
-                {% csrf_token %}
               <label class="btn btn-primary text-center" for="change-header">
-                <input id="change-header" name="{{ form.user_head.html_name }}" type="file" style="display:none">
+                <input id="change-header" data-action="change-profile-image" name="{{ form.head.html_name }}" type="file" style="display:none" >
                 Choice new header
               </label>
-          </form>
+          <div style="height: 60vh" id="container-change-header">
+          </div>
+          <div class="modal-footer px-3">
+              <button class="btn btn-primary" data-action='change-photo-button' style="display:none">Готово</button>
+          </div>
       </div>
     </div>
   </div>
@@ -66,15 +71,15 @@
 
 
 {% block body %}
-<div class="row  border">
-    <div class="col-sm-12 px-0" style="background-color: #ffffff">
-        <div class="card border-light">
+<div class="row">
+    <div class="col-sm-12 px-0 " style="background-color: #f4f4f4;">
+        <div class="card">
             <div class="card-body">
                 <div id="my-profile-info">
                 {% if profile.get_user_name %}
                     <h5 class="card-text">{{ profile.get_user_name }}</h5>
                     {% else %}
-                    <h5 class="card-text">@{{ profile.login }}</h5>
+                    <h5 class="card-text">@{{ profile.name }}</h5>
                 {% endif %}
                 <hr>
                 <h6 class="card-text text-muted" style="font-size: 14px;">Data registration: {{ profile.get_user_joined }} </h6>
@@ -84,12 +89,12 @@
                {% if profile.current_city %}
                     <h6 class="card-text text-muted" style="font-size: 14px;">Current city: {{ profile.current_city }}  </h6>
                 {% endif %}
-                    <hr class="py-0 my-0">
+                    <hr class="pt-1 pb-0 my-0">
                 {% if profile.about_me %}
                     {{ profile.about_me }}
                 {% endif %}
                 </div>
-                <form method="POST" style="display:none" data-type="hide_form">
+                <form method="POST" style="display:none; " data-type="hide_form">
                             {% csrf_token %}
                         <div class="form-group border-bottom">
                             {{ form.user_name }}
@@ -106,8 +111,8 @@
                      <nav class="navbar fixed-bottom navbar-light bg-primary">
                          <ul class="navbar-nav">
                          <li class="nav-item">
-                        <input class=" btn btn-outline-danger text-dark" type="submit"  value="Применить">
-                             <a class="btn btn-outline-danger text-dark" data-action="profile-cancel">Отменить</a>
+                        <input class=" btn btn-outline-danger text-white" type="submit"  value="Применить">
+                             <a class="btn btn-outline-danger text-white" data-action="profile-cancel">Отменить</a>
                          </li>
                          </ul>
                     </nav>
@@ -116,10 +121,16 @@
             <div class="card border-light">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">Followers {{ profile.get_user_followers.count }} </a>
+                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-muted" href="#">Subscriptions {{ profile.get_user_subscriptions.count }} </a>
+                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="community"> Сообщества {{ profile.get_user_community_sub.count }} </a>
                     </li>
                 </ul>
             </div>
@@ -132,17 +143,21 @@
                     </div>
                 </div>
             {% endif %}
-            {% if profile.get_user_articles %}
-                    <div id="add-loader">
-                    </div>
-            {% else %}
-                <div class="card text-center">
-                    <div class="card-body ">
-                        <h5 class="card-title"> {{ profile.login }} nothing posting</h5>
-                    </div>
-                </div>
-            {% endif %}
         </div>
+
+
+        {% if profile.get_user_articles %}
+            <div id="add-loader" class="border-0 col-12">
+            </div>
+        {% else %}
+            <div class="card text-center">
+                <div class="card-body ">
+                    <h5 class="card-title"> {{ profile.login }} nothing posting</h5>
+                </div>
+            </div>
+        {% endif %}
+
+
     </div>
 </div>
 {% endblock %}
@@ -155,9 +170,6 @@
 {% endif %}
 
 {% if user_status == 'owner' %}
-    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
     <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
     <script src="{% static 'account/js/account_utils.js' %}"></script>
 {% endif %}
@@ -165,8 +177,9 @@
 {% endblock %}
 
 {% block buttom %}
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
     <input id="location" value="{{ location }}" type="hidden">
     <script src="{% static 'blog/js/article.js' %}"></script>
-    <script src="{% static 'ajax_utils/js/jquery_paginate.js' %}"></script>
+    <script src="{% static 'account/js/account_paginate.js' %}"></script>
 
 {% endblock %}

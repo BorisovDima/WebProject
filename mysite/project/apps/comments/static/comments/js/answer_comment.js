@@ -18,7 +18,8 @@ function close_comment() {
 
 function scroll_to_parent(parent_id) {
      var location = '#comment-' + parent_id
-     $("html,body").scrollTop($(location).offset().top - navheight)
+     height = $(window).height() / 2
+     $("html,body").scrollTop($(location).offset().top - height)
      $(location).css({'background' : '#f2aaa4'})
      setTimeout(function () {
            $(location).css({'background' : '#ffffff'});

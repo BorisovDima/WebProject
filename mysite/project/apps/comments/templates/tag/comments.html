@@ -10,7 +10,7 @@
 
 <div id="comments-list" class="mt-1 pb-2">
 {% for c in objs %}
-    {% if c.active %}
+    {% if c.is_active %}
         {% get_comment c user %}
     {% endif %}
 
