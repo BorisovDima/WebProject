@@ -1,14 +1,15 @@
  {% load humanize %}
 {% load like_tag %}
-<div class="row ">
+ {% load account_tags %}
 
+<div class="row ">
 {% for obj in objs %}
 <div class="col-6 px-0 pb-1" style="height: 250px">
     <div class="card mr-1 ml-1 my-1 h-100">
 
          <div class="card-body" style="{% if not obj.profile.head %}background: #f442a4 {% else %}background-image: url('{{ obj.profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 80px;">
             <div class="card-avatar float-right mt-4">
-                <a href="{{ obj.get_absolute_url }}"><img class="personPhoto" src="{{ obj.profile.thumbnail.url }}"></a>
+                <a href="{{ obj.get_absolute_url }}"><img class="personPhoto" src="{% user_image obj.profile 't' %}"></a>
             </div>
         </div>
 

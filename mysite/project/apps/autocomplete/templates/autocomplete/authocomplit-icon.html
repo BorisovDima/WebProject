@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb p-0 m-0">
   <ol class="breadcrumb p-0 m-0" style="background-color: #ffffff">
        <li class="nav-item">
-            <img src="{{ obj.profile.thumbnail.url }}" class="rounded-circle" width="40" height="40">
+            <img src="{% user_image obj.profile 't' %}" class="rounded-circle" width="40" height="40">
        </li>
         <li class="nav-item">
             <a class="pb-0" style="font-size: 15px">@{{ obj.profile.name}}</a>

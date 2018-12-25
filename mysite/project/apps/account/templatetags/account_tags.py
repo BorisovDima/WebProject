@@ -1,6 +1,7 @@
 from django import template
-from project.apps.blog.models import Thread
+from project.apps.blog.models import Community
 from django.contrib.auth import get_user_model
+from django.conf import settings
 register = template.Library()
 
 @register.inclusion_tag('account/tag/user_head.html')
@@ -16,3 +17,10 @@ def user_online(user):
         return format_html('<a class="text-info">Online</a>')
     else:
         return format_html('<a class="text-muted">offline</a>')
+
+
+@register.simple_tag
+def user_image(profile, size):
+    if not profile.image:
+        return settings.DEFAULT_USER_IMG
+    return profile.thumbnail.url if size == 't' else profile.image.url

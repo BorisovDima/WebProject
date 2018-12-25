@@ -1,18 +1,81 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
-
+{% load static %}
 
 {% block head %}
-{% load_navbar user %}
-{% endblock %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 
+<div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="regModallLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong><h5 class="modal-title">Registration</h5></strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body" id="registration-body-modal">
+          {% for field in reg_form %}
+           <div class="form-group">
+                {{ field }}
+               <small id="error-{{ field.html_name }}" data-type="info-error" class="form-text text-danger"> </small>
+           </div>
+        {% endfor %}
+          <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LenZoQUAAAAAC5tKBi0fHFZaZnpADswyZcqEEqE"></div>
+          </div>
+         <small id="error-captcha" class="form-text text-danger" data-type="info-error"></small>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="btn-registr">Registr</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade"  tabindex="-1" role="dialog" id="forgot-pass-modal" aria-labelledby="modal-forgot-pass" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header py-1">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body border" id="reset-password-body">
+                    Мы отправим вам письмо с сылкой на изменение пароля
+          <div class="modal-footer border-0">
+          <input type="email" class="form-control" maxlength="50" placeholder="Введите свой email" id="forgot-pass-input">
+              <button class="btn btn-outline-info" id="forgot-pass-btn">Искать</button>
+          </div>
+        </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
 {% block body %}
 
 
 
-<div class="row  border">
-             <div class="col-sm-12" style="background-color: #ffffff">
+<div class="row  pt-5 mt-0 ">
+    <div class="col-sm-12 border" style="background-color: #ffffff">
+        <ul class="nav pt-3">
+            <li class="nav-item">
+                <strong>  <a class="nav-link active">Log in or</a></strong>
+            </li>
+            <li class="nav-item mt-1">
+                <button type="button" class="btn btn-outline-info"  data-toggle="modal" data-target="#regModal">
+                    join
+                </button>
+             </li>
+        </ul>
       <hr>
+    <div id="body-login">
 <form method="POST">
     {% for field in form %}
  <div class="form-group">
@@ -25,20 +88,37 @@
 {% csrf_token %}
 <input type="hidden" name="next" value="/">
   <button type="submit" class="btn btn-primary ">Submit</button>
-    <hr>
 </form>
     <small id="error" class="form-text text-danger">   {{ form.non_field_errors  }} </small>
-
-
+          </div>
+        <hr class="mb-0">
+      <button type="button" class="btn btn-link"  data-toggle="modal" data-target="#forgot-pass-modal">
+          Забыли пароль?
+      </button>
+        <a type="button" class="btn btn-link float-right" href="{% url 'account:login-help' %}">
+          Help
+      </a>
       </div>
 </div>
 {% endblock %}
 
 {% block sidebar %}
+
 {% endblock %}
 
 {% block buttom %}
+<nav class="navbar fixed-bottom navbar-light bg-light border">
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="px-3">About</a>
+            <a class="px-3">Info</a>
+            <a class="px-3">Help</a>
+        </li>
+    </ul>
+</nav>
+<script src="{% static 'account/js/reg.js' %}"></script>
 {% endblock %}
 
 {% block additional %}
+
 {% endblock %}

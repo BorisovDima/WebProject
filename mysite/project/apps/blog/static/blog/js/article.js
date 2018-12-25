@@ -4,8 +4,8 @@ function detail_article(login, id) {
 }
 
 
-function detail_thread(thread) {
-    window.location.pathname = '/thread/' + thread + '/'
+function detail_community(community) {
+    window.location.pathname = '/community/' + community + '/'
 
 }
 

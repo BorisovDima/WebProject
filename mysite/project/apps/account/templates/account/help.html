@@ -1,0 +1,55 @@
+{% extends "blog/MainPage.html" %}
+{% load static %}
+
+
+{% block head %}
+<script src='https://www.google.com/recaptcha/api.js'></script>
+ <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+
+<div class="row  pt-5 mt-0 ">
+    <div class="col-sm-12 border" style="background-color: #ffffff; height: 400px">
+
+    <button class="btn btn-link mt-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Не пришло письмо с ссыллкой на акивацию аккаунта?
+    </button>
+
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+      <div id="body-activate-email">
+     <div class="form-group">
+         <label for="id_email">
+             Введите email на который был зарегестрирован ваш аккаунт, мы оправим вам новое письмо для активации
+         </label>
+         {{ form.email }}
+                 <button class="btn btn-primary mt-3" id="send-activate">Отправить</button>
+         </div>
+      <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LenZoQUAAAAAC5tKBi0fHFZaZnpADswyZcqEEqE"></div>
+          </div>
+      </div>
+      <small id="error-captcha" data-type="error" class="form-text text-danger"></small>
+      <small id="error-email" data-type="error" class="form-text text-danger"></small>
+      <small id="info-success"  class="form-text text-success"></small>
+
+  </div>
+</div>
+        <hr class="my-0">
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+{% endblock %}
+
+{% block event_hidden %}
+{% endblock %}
+
+
+{% block buttom %}
+ <script src="{% static 'account/js/help.js' %}"></script>
+{% endblock %}

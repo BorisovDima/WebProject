@@ -1,12 +1,13 @@
 {% load humanize %}
 {% load static %}
 {% load like_tag %}
+{% load account_tags %}
 
 <div  {% if not obj.readed %} class="card border-0 article notread" {% else %}  class="card border-0 article" {% endif %}>
   <div class="card-body px-1 py-1" >
       <ul class="list-inline mb-2">
           <li class="drop-left">
-              <img class="mr-2 mt-2 rounded-circle" src="{{ from_user.profile.thumbnail.url }}"  width="30" height="30">
+              <img class="mr-2 mt-2 rounded-circle" src="{% user_image from_user.profile 't' %}"  width="30" height="30">
               <a class="text-dark" href="{{ from_user.get_absolute_url }}">@{{ from_user }}</a>
               <a style="font-size: 14px;" >Ответил на ваш комментарий </a>
           </li>
@@ -16,7 +17,7 @@
           </a>
            </li>
         <li class="drop-left pl-5">
-          <img class="mr-2 mt-2 rounded-circle" src="{{ parent.author.profile.thumbnail.url }}"  width="30" height="30">
+          <img class="mr-2 mt-2 rounded-circle" src="{% user_image parent.author.profile 't' %}"  width="30" height="30">
           <a href="{{ parent.article.get_absolute_url }}" >
             <h6 class="card-text text-muted" style="font-size: 14px;">{{ parent.text|truncatechars:120  }}</h6>
           </a>

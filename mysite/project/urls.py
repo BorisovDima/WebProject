@@ -23,6 +23,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
+    path('captcha/', include('captcha.urls')),
     path('', include('project.apps.blog.urls')),
     path('', include('project.apps.account.urls')),
     path('', include('project.apps.chat.urls')),

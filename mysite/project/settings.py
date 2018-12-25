@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'captcha',
     'social_django',
     'bootstrap4',
     'project.apps.autocomplete',
@@ -132,6 +133,8 @@ AUTHENTICATION_BACKENDS = (
 )
 
 
+GOOGLE_RECAPTCHA_SECRET_KEY = '6LenZoQUAAAAAEK32pHfYCClLx0ypVm3p_fiJGRM'
+
 SOCIAL_AUTH_VK_OAUTH2_KEY = '6779396'
 SOCIAL_AUTH_VK_OAUTH2_SECRET = '2soVKpmPpEiL3nZ7XIhA'
 
@@ -181,11 +184,13 @@ MAX_HEIGHT_IMG = 600
 
 USER_ICON = (100, 100)
 
-DEFAULT_COMMUNITY_IMG = 'thread_img/thread_default.jpg'
+DEFAULT_COMMUNITY_IMG = 'community_img/community_default.jpg'
 
 HOT_POST = 2
 
+DEFAULT_USER_IMG = '/static/account/img/default_user.png'
 
+DEFAULT_FROM_EMAIL = 'sup.raychan@mail.ru'
 
 #######  CHANNELS #################
 
@@ -216,3 +221,4 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_HOST_USER = 'sup.raychan@mail.ru'
 EMAIL_HOST_PASSWORD = '19960213Z26a'
 EMAIL_PORT = 465
+

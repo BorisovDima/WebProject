@@ -1,0 +1,83 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+{% load like_tag %}
+
+{% block head %}
+ <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+{% post_form objs %}
+
+{% load_navbar user add_post='False' back_to_treads='True'%}
+
+{% endblock %}
+
+
+{% block additional %}
+{% endblock %}
+
+
+{% block sidebar %}
+
+<div class="card" style="width: 18rem;">
+  <div class="card-body pt-1 ">
+
+
+
+<ul class="nav">
+    <li class="nav-item">
+        <article class="item ml-0">
+            <div class="photo">
+                <img class="personPhoto" src="{{ objs.image.url }}">
+            </div>
+        </article>
+
+    </li>
+
+    <li class="nav-item">
+        <h5 class="pl-2 pt-2">{{ objs.name }}</h5>
+    </li>
+</ul>
+      Community: <span id="count-followers">{{ objs.my_followers.all.count }}</span>
+
+      {% if user.is_authenticated %}
+
+      {% subscribe_html objs 'community' user %}
+
+      {% endif %}
+
+  </div>
+</div>
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body text-center px-0">
+
+        </div>
+    </div>
+
+<div class="card p-0" style="width: 18rem;">
+        <div class="card-body p-2">
+        <div class="card-body border">
+        </div>
+        </div>
+</div>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+    {% if user.is_authenticated %}
+              <nav class="navbar p-1 ">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
+                       Create post
+                  </button>
+              </nav>
+
+     {% else %}
+        <h5 class="card-title">Registration</h5>
+        <p class="card-text">Registrations </p>
+        <a href="{% url 'account:registration' %}" class="btn btn-primary">Registr</a>
+     {% endif %}
+    </div>
+</div>
+
+<script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
+<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
+{% endblock %}

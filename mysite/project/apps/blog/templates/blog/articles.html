@@ -2,9 +2,9 @@
 {% load static %}
 {% load like_tag %}
 {% load blog_tags %}
+{% load account_tags %}
 
     {% for article in objs %}
-{{ article.rating }}
 <div class="row border py-1 border-0" id="wrapper_post-{{ article.id }}">
     <div class="col-sm-12 pb-0 px-0 border">
         <div class="card border-0 article">
@@ -12,11 +12,11 @@
                 <div onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
                     <ul class="list-inline mb-2">
                          <li class="drop-left">
-                             <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url }}"  width="30" height="30">
+                             <img class="mr-2 mt-2 rounded-circle" src="{% user_image article.author.profile 't' %}"  width="30" height="30">
                              <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
                             <small>{{ article.author.profile.pref_name }}</small></a>
-                            {% if article.thread %}
-                            <a href="{{ article.thread.get_absolute_url }}" class="text-dark"><small>/ {{ article.thread }}</small></a>
+                            {% if article.community %}
+                            <a href="{{ article.community.get_absolute_url }}" class="text-dark"><small>/ {{ article.community }}</small></a>
                             {% endif %}
                             <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
                         </li>

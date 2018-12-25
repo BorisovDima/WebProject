@@ -6,11 +6,14 @@ from .models import Profile #ProfileImg
 
 class MyRegForm(UserCreationForm):
 
-    email = forms.EmailField(required=True, widget=
-                    forms.widgets.EmailInput(attrs={'Class': 'form-control'}))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.fields['email'].widget.attrs.update({'Class': 'form-control',
+                                                    'placeholder': 'Email',
+                                                    })
+
         self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
                                                                   'placeholder': 'Login'})
 
@@ -20,16 +23,18 @@ class MyRegForm(UserCreationForm):
         self.fields['password1'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
                                                                   'placeholder': 'Password'})
         self.fields['password2'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
-                                                                   'placeholder': 'Password'})
+                                                                   'placeholder': 'Password agan'})
 
-    def clean_username(self):
-        if len(self.cleaned_data['username']) < 5:
-            raise forms.ValidationError('Too short!')
-        return self.cleaned_data['username']
+
 
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields =['username']
+        fields =['username', 'email']
+
+    def clean_username(self):
+        if len(self.cleaned_data['username']) < 3:
+            raise forms.ValidationError('Too short!')
+        return self.cleaned_data['username']
 
 
     def clean_email(self):
@@ -63,7 +68,8 @@ class MyLoginForm(AuthenticationForm):
             raise self.get_invalid_login_error()
         if not user.is_verified:
             id = user.id
-            raise forms.ValidationError('User not verified, please check email', code='not verify', params={'id': id})
+            raise forms.ValidationError('User not verified,'
+                                        ' please check email', code='not verify', params={'id': id})
 
         return self.cleaned_data['username']
 
@@ -146,3 +152,37 @@ class ProfileFormHead(BaseUserPhotoForm):
     class Meta:
         model = Profile
         fields = ['head']
+
+from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
+from project.apps.back_task.tasks import sendler_mail
+from django.template.loader import render_to_string
+
+class MyPasswordResetForm(PasswordResetForm):
+
+    def send_mail(self, subject_template_name, email_template_name,
+                  context, from_email, to_email, html_email_template_name=None):
+        subject = render_to_string(subject_template_name, context)
+        subject = ''.join(subject.splitlines())
+        body = 'Reset mail'
+        html_email = render_to_string(html_email_template_name, context)
+        sendler_mail.delay(subject, body, from_email, [to_email], html_email)
+
+class MySetPasswordForm(SetPasswordForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['new_password1'].widget.attrs.update({'Class': 'form-control col-6',
+                                                     'placeholder': 'Password',
+                                                     })
+        self.fields['new_password2'].widget.attrs.update({'Class': 'form-control col-6',
+                                                     'placeholder': 'Password again',
+                                                     })
+class ActivEmail(forms.Form):
+
+    email = forms.EmailField(required=True)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['email'].widget.attrs.update({'Class': 'form-control',
+                                                    'placeholder': 'Email',
+                                                    })
+

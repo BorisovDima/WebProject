@@ -3,7 +3,7 @@ from django.views.generic import View, DetailView
 from project.apps.blog.shortcuts import render_to_html
 from django.conf import settings
 from django.db.models import Count
-from project.apps.blog.models import Thread
+from project.apps.blog.models import Community
 from django.http import Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -22,10 +22,9 @@ class Loader_sorted(View):
         params.update({'is_active': True})
         if sort == 'top': objs, since = self.top(params)
         elif sort == 'hot':
-            count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Thread.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
+            count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Community.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
             objs, since = self.hot(params, count)
         elif sort == 'search': objs, since = self.search()
-        elif sort == 'followers': objs, since = self.followers()
         else: objs, since = self.all(params)
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
@@ -38,12 +37,12 @@ class Loader_sorted(View):
         since = getattr(objs[-1], field) if objs else None
         return objs, since
 
-    def followers(self):
-        return self.return_objs(self.model.objects.annotate(count=Count('my_followers')).order_by('-count'),
-                                                                                            'count', 'count__lt')
     def search(self):
-        params = {self.sorted_kwargs.get('field'): self.request.GET.get('search')}
-        return self.return_objs(self.model.objects.filter(**params), 'id', 'id__lt')
+        objs = self.model.objects.filter(**{self.sorted_kwargs['field']: self.request.GET.get('search')})
+        if self.sorted_kwargs.get('option') == 'new':
+            return self.return_objs(objs, 'id', 'id__lt')
+        return self.return_objs(objs.annotate(count=Count('my_followers')).order_by('-count'),
+                                                                        'count', 'count__lt')
 
     def top(self, params):
         objects = self.model.objects.filter(**params).exclude(rating=0).order_by('rating')
@@ -65,7 +64,6 @@ class Loader_sorted(View):
 
 from django.db.models import Q
 from project.apps.like_dislike.models import Subscribe
-from project.apps.blog.models import Thread
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth import get_user_model
 
@@ -73,11 +71,11 @@ class Loader_home(Loader_sorted):
     def get(self, req, **kwargs):
         since = req.GET.get('since')
         subs = Subscribe.objects.filter(user=req.user)
-        thread = ContentType.objects.get_for_model(Thread)
+        community = ContentType.objects.get_for_model(Community)
         user = ContentType.objects.get_for_model(get_user_model())
         objects = self.model.objects.filter(Q(author__id__in=subs.filter(content_type=user).values('object_id'))
-                                           |Q(thread__id__in=subs.filter(content_type=thread).values('object_id'))
-                                            , is_active = True)
+                                           |Q(community__id__in=subs.filter(content_type=community).values('object_id'))
+                                            ,is_active = True)
 
         if since:
             objects = objects.filter(id__lt=since)

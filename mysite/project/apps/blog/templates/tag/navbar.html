@@ -1,6 +1,6 @@
 {% load static %}
 {% load blog_tags %}
-
+{% load account_tags %}
 
 {% if add_post != 'False' %}
     {% post_form %}
@@ -19,13 +19,6 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"> </span>
     </button>
-    {% if back_to_treads %}
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'blog:threads' %}">< Back to treads </a>
-            </li>
-        </ul>
-    {% endif %}
     <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
             {% if not user.is_authenticated %}
           <ul class="navbar-nav mr-auto">
@@ -76,7 +69,7 @@
                <li class="nav-item dropdown">
         <button class="btn btn-light dropdown-toggle pr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{ user.profile.pref_name }}
-            <img src="{{ user.profile.thumbnail.url }}" class="rounded-circle" width="35" height="35">
+                <img src="{% user_image user.profile 't' %}" class="rounded-circle" width="35" height="35">
         </button>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'account:profile' user.profile.name %}">My page</a>

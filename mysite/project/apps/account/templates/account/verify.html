@@ -1,32 +1,8 @@
-{% extends "blog/MainPage.html" %}
-{% load blog_tags %}
-
-
-{% block head %}
-{% load_navbar user %}
-{% endblock %}
-
-{% block body %}
-
-
-
-
 <div class="card text-center">
   <div class="card-header">
-  Подтверди свой email
+    <strong>Подтверди свой email</strong>
   </div>
   <div class="card-body">
-    <p class="card-text">Мы отправили письмо на твой email, пожалуйста перейди по ссылке в письме и авторизуйся</p>
-    <a href="/" class="btn btn-primary">На главную</a>
+    <p class="card-text"> {{ user }} Мы отправили письмо на твой email {{ mail }}, пожалуйста перейди по ссылке в письме и авторизуйся</p>
   </div>
 </div>
-{% endblock %}
-
-{% block sidebar %}
-{% endblock %}
-
-{% block buttom %}
-{% endblock %}
-
-{% block additional %}
-{% endblock %}

@@ -1,15 +1,13 @@
 from django.shortcuts import redirect
 from django.views.generic import CreateView, DetailView, TemplateView
-from .models import Article, Thread
+from .models import Article, Community
 from project.apps.comments.forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 
 
-class MainPage(TemplateView):
+class MainPage(LoginRequiredMixin, TemplateView):
 
-    def get(self, req, *args, **kwargs):
-        return super().get(req, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         self.template_name = self.kwargs['template_name']
@@ -60,14 +58,14 @@ class CreateArticle(LoginRequiredMixin, CreateView):
         return redirect(self.not_success) if self.not_success else super().form_invalid(form)
 
 
-class ThreadsView(TemplateView):
+class CommunityView(TemplateView):
     template_name = None
 
     def get_context_data(self, **kwargs):
         cont = super().get_context_data(**kwargs)
-        if self.kwargs.get('thread'):
-            cont['objs'] = Thread.objects.get(name=self.kwargs.get('thread'))
-            cont['location'] = cont['location'].replace('sort', self.kwargs['thread'])
+        if self.kwargs.get('community'):
+            cont['objs'] = Community.objects.get(name=self.kwargs.get('community'))
+            cont['location'] = cont['location'].replace('sort', self.kwargs['community'])
         cont['search_loc'] = self.kwargs.get('search')
         return cont
 

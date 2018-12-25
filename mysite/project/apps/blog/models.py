@@ -41,32 +41,29 @@ class BaseArticle(models.Model):
 class Tag(BaseArticle):
     name = models.CharField(max_length=124, unique=True, db_index=True)
 
-
-
-
-class ThreadManager(models.Manager):
+class CommunityManager(models.Manager):
     pass
 
-class Thread(BaseArticle):
+class Community(BaseArticle):
 
     max_width = settings.MAX_WIDTH_IMG-400
     max_height = settings.MAX_HEIGHT_IMG-400
 
     name = models.CharField(max_length=30, unique=True, db_index=True)
     sub = models.CharField(max_length=124)
-    image = models.ImageField(upload_to='thread_img/', default=settings.DEFAULT_COMMUNITY_IMG)
-    my_followers = GenericRelation(Subscribe, related_query_name='thread_followers')
+    image = models.ImageField(upload_to='community_img/', default=settings.DEFAULT_COMMUNITY_IMG)
+    my_followers = GenericRelation(Subscribe, related_query_name='community_followers')
 
-    objects = ThreadManager()
+    objects = CommunityManager()
 
     def __str__(self):
         return str(self.name)
 
     def get_sub_url(self):
-        return reverse('blog:subscribe-thread', kwargs={'key': self.name})
+        return reverse('blog:subscribe-community', kwargs={'key': self.name})
 
     def get_absolute_url(self):
-        return reverse('blog:thread', kwargs={'thread': self.name})
+        return reverse('blog:community', kwargs={'slug': self.name})
 
     def get_hot(self):
         return self.my_followers.all().count() * 0.25
@@ -97,7 +94,7 @@ class Article(BaseArticle):
     text = models.TextField(max_length=2024,  null=True, blank=True)
     views = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True, related_name='article_set_views')
     image = models.ImageField(upload_to='post_img/', null=True, blank=True)
-    thread = models.ForeignKey(Thread, on_delete=models.CASCADE,  null=True, blank=True)
+    community = models.ForeignKey(Community, on_delete=models.CASCADE,  null=True, blank=True)
     tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     like = GenericRelation(Like, related_query_name='article')

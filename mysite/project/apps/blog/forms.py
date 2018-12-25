@@ -1,16 +1,16 @@
 from django.forms import ModelForm, widgets, ValidationError
-from .models import Article, Thread
+from .models import Article, Community
 from .utils import replacer
 from PIL import Image
 from os.path import splitext
 
 MAX_LENGTH_POST = 484
 
-MAX_LENGTH_SUB_THREAD = 124
-MAX_LENGTH_NAME_THREAD = 50
+MAX_LENGTH_SUB_COMMUNITY = 124
+MAX_LENGTH_NAME_COMMUNITY = 50
 
-MIN_LENGTH_SUB_THREAD = 17
-MIN_LENGTH_NAME_THREAD = 3
+MIN_LENGTH_SUB_COMMUNITY = 17
+MIN_LENGTH_NAME_COMMUNITY = 3
 
 class BaseCreateForm(ModelForm):
 
@@ -43,9 +43,9 @@ class CreateArticleForm(BaseCreateForm):
                                                               'resize:none; font-size: 14px',
                                                                'placeholder': 'Body'})
 
-        self.fields['thread'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
+        self.fields['community'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
         self.fields['tags'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
-        self.fields['thread'].empty_label = 'Choice category...'
+        self.fields['community'].empty_label = 'Choice category...'
 
 
     def clean_title(self):
@@ -64,7 +64,7 @@ class CreateArticleForm(BaseCreateForm):
 
     class Meta:
         model = Article
-        fields = ['title', 'text', 'thread', 'tags', 'image', 'status']
+        fields = ['title', 'text', 'community', 'tags', 'image', 'status']
 
 
 
@@ -80,7 +80,7 @@ class CreatePostForm(BaseCreateForm):
                                                               'maxlength': MAX_LENGTH_POST,
                                                               'id': 'navbar-create_post_form'})
 
-        self.fields['thread'].widget.attrs.update({'style': 'display:none'})
+        self.fields['community'].widget.attrs.update({'style': 'display:none'})
 
     def clean_text(self):
 
@@ -98,11 +98,11 @@ class CreatePostForm(BaseCreateForm):
 
     class Meta:
         model = Article
-        fields = ['text', 'thread', 'tags', 'image', 'status']
+        fields = ['text', 'community', 'tags', 'image', 'status']
 
 
 
-class CreateThreadForm(BaseCreateForm):
+class CreateCommunityForm(BaseCreateForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -110,25 +110,25 @@ class CreateThreadForm(BaseCreateForm):
         self.fields['sub'].widget = widgets.Textarea(attrs={'Class': 'form-control',
                                                               'rows': 3, 'style':
                                                               'resize:none; font-size: 14px',
-                                                              'maxlength':MAX_LENGTH_SUB_THREAD,
-                                                              'id': 'create_thread_sub_form'})
-        self.fields['sub'].help_text = 'Description: max lenght-' + str(MAX_LENGTH_SUB_THREAD)
+                                                              'maxlength':MAX_LENGTH_SUB_COMMUNITY,
+                                                              'id': 'create_community_sub_form'})
+        self.fields['sub'].help_text = 'Description: max lenght-' + str(MAX_LENGTH_SUB_COMMUNITY)
 
         self.fields['name'].widget = widgets.TextInput(attrs={'Class': 'form-control',
                                                             'style': 'resize:none; font-size: 14px',
-                                                            'maxlength': MAX_LENGTH_NAME_THREAD,
-                                                            'id': 'create_thread_name_form'})
-        self.fields['name'].help_text = 'Name thread: format <name> or <name>_<name>'
+                                                            'maxlength': MAX_LENGTH_NAME_COMMUNITY,
+                                                            'id': 'create_community_name_form'})
+        self.fields['name'].help_text = 'Name community: format <name> or <name>_<name>'
         self.fields['image'].help_text = 'Choice image: max size 1mb'
 
 
     def clean_name(self):
 
-        if len(self.cleaned_data['name']) > MAX_LENGTH_NAME_THREAD:
-            raise ValidationError('Max length ' + str(MAX_LENGTH_NAME_THREAD))
+        if len(self.cleaned_data['name']) > MAX_LENGTH_NAME_COMMUNITY:
+            raise ValidationError('Max length ' + str(MAX_LENGTH_NAME_COMMUNITY))
 
-        if len(self.cleaned_data['name']) < MIN_LENGTH_NAME_THREAD:
-            raise ValidationError('Min length ' + str(MIN_LENGTH_NAME_THREAD))
+        if len(self.cleaned_data['name']) < MIN_LENGTH_NAME_COMMUNITY:
+            raise ValidationError('Min length ' + str(MIN_LENGTH_NAME_COMMUNITY))
 
         if replacer(self.cleaned_data['name'], 20, bool_=True):
             raise ValidationError('Not valid')
@@ -141,11 +141,11 @@ class CreateThreadForm(BaseCreateForm):
 
     def clean_sub(self):
 
-        if len(self.cleaned_data['sub']) > MAX_LENGTH_SUB_THREAD:
-            raise ValidationError('Max length ' + str(MAX_LENGTH_SUB_THREAD))
+        if len(self.cleaned_data['sub']) > MAX_LENGTH_SUB_COMMUNITY:
+            raise ValidationError('Max length ' + str(MAX_LENGTH_SUB_COMMUNITY))
 
-        if len(self.cleaned_data['sub']) < MIN_LENGTH_SUB_THREAD:
-            raise ValidationError('Min length ' + str(MIN_LENGTH_SUB_THREAD))
+        if len(self.cleaned_data['sub']) < MIN_LENGTH_SUB_COMMUNITY:
+            raise ValidationError('Min length ' + str(MIN_LENGTH_SUB_COMMUNITY))
 
         if replacer(self.cleaned_data['sub'], 30, bool_=True):
             raise ValidationError('Not valid')
@@ -154,5 +154,5 @@ class CreateThreadForm(BaseCreateForm):
 
 
     class Meta:
-        model = Thread
+        model = Community
         fields = ['name', 'sub', 'image']

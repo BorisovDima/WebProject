@@ -63,15 +63,12 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                         processData: false,
                         contentType: false,
                     }).success(function(data){
-                        console.log(data)
-                        if (data.status == 'ok') {
                             location.reload()
-                        }
-                        else {
+
+                    }).fail(function(data){
                             html = '<h2 class="text-danger" data-type="error-image"></h2>'
                             $('#container-' +  type).html(html)
-                            $('[data-type="error-image"]').text(data.error[1])
-                        }
+                            $('[data-type="error-image"]').text('Error')
                     })
 
                 }

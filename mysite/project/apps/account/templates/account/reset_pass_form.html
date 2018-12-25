@@ -1,0 +1,35 @@
+{% extends "blog/MainPage.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+{% if validlink %}
+<form method="POST">
+    {% for field in form %}
+ <div class="form-group">
+        {{ field.label }}
+        {{ field }}
+       <small  class="form-text text-danger">   {{ field.errors}} </small>
+  <small  class="form-text text-muted"> {{ field.help_text }} </small>
+  </div>
+    {% endfor %}
+{% csrf_token %}
+<input type="hidden" name="next" value="/">
+  <button type="submit" class="btn btn-primary ">Изменить</button>
+    <hr>
+</form>
+{% else %}
+<h1>Ссылка больше не активна </h1>
+{% endif %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block event_hidden %}
+{% endblock %}
+
+
+{% block buttom %}
+{% endblock %}

@@ -8,7 +8,7 @@ from project.apps.comments.models import Comment
 from channels.layers import get_channel_layer
 from django.contrib.auth import get_user_model
 from project.apps.back_task.tasks import send_verify
-from project.apps.blog.models import Article
+from project.apps.blog.models import Article, Community
 
 #my_message_signal = dispatch.Signal(providing_args=['instance', 'to_user', 'dialog_id'])
 
@@ -17,7 +17,7 @@ from project.apps.blog.models import Article
 def user_handler(sender, **kwargs):
     user = kwargs['instance']
     if not user.is_verified:
-        uuid, email, name  = user.uuid, user.email, user.username
+        uuid, email, name = user.uuid, user.email, user.username
         send_verify.delay(uuid, email, name)
 
 
@@ -40,7 +40,7 @@ def msg_handler(sender, **kwargs):
                                                  'kwargs': mykwargs
                                                   })
 
-from project.apps.account.models import Notification
+from .models import Notification
 
 
 def notify(id, owner, initiator, content_object, event):
@@ -62,11 +62,10 @@ def like_handler(sender, **kwargs):
         return
     notify(user.id, user, kwargs['instance'].user, kwargs['instance'], 'L')
 
-from project.apps.blog.models import Thread
 
 @receiver(post_save, sender=Subscribe, dispatch_uid="my_subs_handler")
 def subs_handler(sender, **kwargs):
-    if kwargs['instance'].content_object.__class__ != Thread:
+    if kwargs['instance'].content_object.__class__ != Community:
         user = kwargs['instance'].content_object
         notify(user.id, user, kwargs['instance'].user, kwargs['instance'], 'S')
 

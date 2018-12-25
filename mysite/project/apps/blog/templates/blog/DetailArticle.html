@@ -4,6 +4,7 @@
 {% load comment_tags %}
 {% load static %}
 {% load humanize %}
+{% load account_tags %}
 
 {% block head %}
     {% load_navbar user article.category %}
@@ -20,7 +21,7 @@
                     <div class="reply-body">
                         <ul class="list-inline">
                             <li class="drop-left mb-0">
-                                <img class="mr-2 mt-2 rounded-circle" src="{{ article.author.profile.thumbnail.url}}"  width="30" height="30">
+                                <img class="mr-2 mt-2 rounded-circle" src="{% user_image article.author.profile 't' %}"  width="30" height="30">
                                 <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
                                     @{{ article.author.profile.name }}
                                 </a>

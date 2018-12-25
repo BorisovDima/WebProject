@@ -1,7 +1,6 @@
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.contenttypes.models import ContentType
-import json
 from django.http import JsonResponse
 
 

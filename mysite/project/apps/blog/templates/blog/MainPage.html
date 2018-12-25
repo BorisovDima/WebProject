@@ -12,18 +12,16 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
-
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 
-<body>
+<body style="background-color: #f4f4f4;" >
 
 
-<div class="pt-0" style="background-color: #f4f4f4;" >
     {% block head %}
     {% load_navbar user %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
     <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light border mb-0  pb-0">
@@ -42,7 +40,7 @@
         <a class="nav-link text-dark"     data-type="people" data-action="ajax-paginate-btn">People</a>
       </li>
       <li class="nav-item px-2 ">
-        <a class="nav-link text-dark"     data-type="community" data-action="ajax-paginate-btn">Community</a>
+        <a class="nav-link text-dark"     data-type="communities" data-action="ajax-paginate-btn">Community</a>
       </li>
     </ul>
   </div>
@@ -70,23 +68,25 @@
                             <div class="card-body text-center pl-1">
 
                         <select class="custom-select custom-select-sm" data-action="choice-sort">
-                            <option value="people-top" selected>Популярные</option>
-                            <option value="people-new">Новые</option>
+                            <option value="search-top" selected>Популярные</option>
+                            <option value="search-new">Новые</option>
                         </select>
                         <hr class="mb-0">
                     </div>
+                            <label class="ml-4 text-muted" id="search-cur-value" for="search-form-ajax"></label>
                             <div class="input-group mb-0">
-                                    <input id="search-form-ajax" data-action="input-search-main" data-type="{{ search_loc }}" type="text"  class="form-control" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input id="search-form-ajax" data-action="input-search-main" data-type="{{ search_loc }}" type="text"  class="form-control" placeholder="Поиск"  aria-label="Recipient's username" aria-describedby="button-addon2" maxlength="30">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button" id="search-form-ajax-btn">Go!</button>
+                                <button class="btn btn-outline-secondary" disabled><img src="{% static 'blog/img/search_icon.png' %}" width="20" height="20"></button>
                             </div>
                          </div>
                         </div>
+                        {% top_communities user %}
                     </div>
                     {% endblock %}
                 </div>
             </div>
-    </div>
+
 
 
 
@@ -107,11 +107,14 @@
     <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_loc }}">
     <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
     <script src="{% static 'blog/js/article.js' %}"></script>
-    <script src="{% static 'ajax_utils/js/test.js' %}"></script>
+    <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
+
+{% if user.is_authenticated %}
     <script src="{% static 'like_dislike/js/like.js' %}"></script>
+    <script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
+{% endif %}
 
 {% endblock %}
-</div>
 
 
 </body>

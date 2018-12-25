@@ -6,18 +6,17 @@ from uuid import uuid4
 from django.utils import timezone
 from project.apps.like_dislike.models import Subscribe
 from django.contrib.contenttypes.fields import GenericRelation
-from project.apps.blog.models import Thread
+from project.apps.blog.models import Community
 from django.contrib.contenttypes.models import ContentType
 
-DEFAULT_USER_IMG = 'user_img/default_user_img.png'
+
 
 class BlogUser(AbstractUser):
-     profile = models.OneToOneField('Profile', on_delete=models.CASCADE)
 
      my_followers = GenericRelation(Subscribe, related_query_name='user_followers')
      is_verified = models.BooleanField(default=False)
      uuid = models.UUIDField(default=uuid4)
-     email = models.EmailField('email', unique=True)
+     email = models.EmailField('email', unique=True, blank=False, null=False)
      last_activity = models.DateTimeField(default=timezone.now)
 
      def get_subscribers(self):
@@ -37,13 +36,15 @@ class BlogUser(AbstractUser):
 
 
 class Profile(models.Model):
+     bloguser = models.OneToOneField(BlogUser, on_delete=models.CASCADE)
+
      user_name = models.CharField(max_length=40, null=True, blank=True)
      name = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      date_of_birth = models.DateTimeField(null=True, blank=True)
      current_city = models.CharField(max_length=99, null=True, blank=True)
      about_me = models.CharField(max_length=120, null=True, blank=True)
-     image = models.ImageField(upload_to='user_img/', default=DEFAULT_USER_IMG)
-     thumbnail = models.ImageField(upload_to='user_img/thumbnails/')
+     image = models.ImageField(upload_to='user_img/', null=True, blank=True)
+     thumbnail = models.ImageField(upload_to='user_img/thumbnails/', null=True, blank=True)
      head = models.ImageField(upload_to='user_img/', null=True, blank=True)
 
      def get_user_dialogs(self):
@@ -54,7 +55,7 @@ class Profile(models.Model):
           return self.bloguser.my_followers.all()
 
      def get_user_community_sub(self):
-          return Subscribe.objects.filter(user=self.bloguser, content_type=ContentType.objects.get_for_model(Thread))
+          return Subscribe.objects.filter(user=self.bloguser, content_type=ContentType.objects.get_for_model(Community))
 
      def get_user_people_sub(self):
           return Subscribe.objects.filter(user=self.bloguser, content_type=ContentType.objects.get_for_model(BlogUser))
@@ -79,33 +80,47 @@ class Profile(models.Model):
      class Meta:
           ordering = ['-id']
 
-
-from django.contrib.contenttypes.fields import GenericForeignKey
-from django.contrib.contenttypes.models import ContentType
-
-class Notification(models.Model):
-
-     event_choice = (
-          ('C', 'comment'),
-          ('CP', 'comment-post'),
-          ('L', 'like'),
-          ('S', 'subscription')
-     )
+from django.utils import timezone
+from django.shortcuts import render_to_response
 
 
-     owner = models.ForeignKey(BlogUser, related_name='notify_owner', on_delete=models.CASCADE)
-     initiator = models.ForeignKey(BlogUser, related_name='notify_initiator', on_delete=models.CASCADE)
-     event = models.CharField(choices=event_choice, max_length=20)
-     readed = models.BooleanField(default=False)
+class BanList(models.Model):
+     ban_24h_template = 'account/ban_24.html'
+     ban_15m_template = 'account/ban_15.html'
 
-     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-     object_id = models.PositiveIntegerField()
-     content_object = GenericForeignKey('content_type', 'object_id')
+     ban = models.BooleanField(default=False)
+     attempts = models.IntegerField(default=0)
+     time_unblock = models.DateTimeField(default=timezone.now)
+     ip = models.GenericIPAddressField()
 
-     def read(self):
-          self.readed = True
-          self.save(update_fields=['readed'])
-          return ''
+     def __str__(self):
+          return 'stat-{}: attempt-{}: time-{}: {}'.format(self.ban, self.attempts, self.time_unblock, self.ip)
 
-     class Meta:
-          ordering = ['-id']
+     def banned(self):
+          self.attempts += 1
+          if self.attempts in [3,6,9]:
+               self.time_unblock = timezone.now() + timezone.timedelta(minutes=15) \
+                    if self.attempts in [3,6] \
+                    else timezone.now() + timezone.timedelta(hours=24)
+               self.ban = True
+          elif self.attempts > 9:
+               self.attempts = 1
+          self.save()
+
+     def check_ban(self):
+          if self.ban and timezone.now() < self.time_unblock:
+               if self.attempts in [3,6,9]:
+                    template = self.ban_15m_template if self.attempts in [3,6] else self.ban_24h_template
+                    return {'status': 'ban', 'response': render_to_response(template)}
+          elif self.ban and timezone.now() > self.time_unblock:
+               self.ban = False
+               self.save(update_fields=['ban'])
+          return {'status': 'ok'}
+
+     def ban_15m(self):
+          self.time_unblock = timezone.now() + timezone.timedelta(minutes=15)
+          self.save(update_fields=['time_unblock'])
+
+     def ban_24h(self):
+          self.time_unblock = timezone.now() + timezone.timedelta(hours=24)
+          self.save(update_fields=['time_unblock'])

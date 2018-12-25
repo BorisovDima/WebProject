@@ -11,19 +11,19 @@
         </button>
       </div>
     <div class="modal-body">
-    {% if thread %}
+    {% if community %}
    <ul class="nav">
        <li class="nav-item">
           <article class="item ml-0">
-              {% if thread.image %}
+              {% if community.image %}
              <div class="photo">
-                 <img class="personPhoto" src="{{ thread.image.url }}">
+                 <img class="personPhoto" src="{{ community.image.url }}">
              </div>
               {% endif %}
           </article>
        </li>
        <li class="nav-item">
-           <h5 class="pl-2 pt-2">Posted in {{ thread.name }}</h5>
+           <h5 class="pl-2 pt-2">Posted in {{ community.name }}</h5>
        </li>
    </ul>
     {% endif %}
@@ -45,8 +45,8 @@
         <input type='file' onchange="readURL(this);"  id="image-post-input" name="{{ form.image.html_name }}" style="display:none">
     </label>
     <input type="submit" class="btn btn-primary" value="Post" id="send-form-post" style="display:none">
-    {% if thread %}
-    {{ form.thread }}
+    {% if community %}
+    {{ form.community }}
     {% endif %}
     </form>
     </div>

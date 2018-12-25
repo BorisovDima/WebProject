@@ -1,11 +1,12 @@
 from django.urls import path, register_converter
-from . import views, converters
-from .models import  Article, Thread
-from .forms import CreatePostForm, CreateArticleForm, CreateThreadForm
+from . import views
+from .models import  Article, Community
+from .forms import CreatePostForm, CreateArticleForm, CreateCommunityForm
 from django.views.generic import RedirectView
 from project.apps.account.models import Profile
 
-register_converter(converters.CategoryConverter, 'threads')
+
+
 app_name = 'blog'
 
 urlpatterns = [
@@ -26,14 +27,14 @@ urlpatterns = [
          name='people'),
 
     path('communities/',views.MainPage.as_view(),
-         {'template_name': 'blog/threads.html', 'location': 'main-page/communities', 'start_loc': 'main-page'},
+         {'template_name': 'blog/MainPage.html', 'location': 'main-page/communities', 'start_loc': 'main-page'},
          name='communities'),
 
     path('home/', views.MainPage.as_view(),
          {'template_name': 'blog/Home.html', 'location': 'home'}, name='home'),
 #
 
-    path('community/<threads:thread>/', views.ThreadsView.as_view(),name='thread'),
+    path('community/<slug:slug>/', views.CommunityView.as_view(), name='community'),
 
 
     path('post/<slug:login>/<int:pk>/', views.DetailArticle.as_view(), name='detail_article'),
@@ -51,8 +52,8 @@ urlpatterns = [
                                                     {'not-get': True},
                                                      name='create_post'),
 
-    path('create-thread/', views.CreateArticle.as_view(form_class=CreateThreadForm, model=Thread),
-                                                      name='create_thread'),
+    path('create-community/', views.CreateArticle.as_view(form_class=CreateCommunityForm, model=Community),
+                                                      name='create_community'),
 
 
 ]

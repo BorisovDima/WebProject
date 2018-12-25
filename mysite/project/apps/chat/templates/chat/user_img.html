@@ -1,9 +1,10 @@
+{% load account_tags %}
 
 <ul class="nav ml-2 pb-2  pt-0">
   <li class="nav-item pt-0">
     <article class="item ml-1">
     <div class="photo">
-        <img class="personPhoto" src="{{from.thumbnail.url }}">
+        <img class="personPhoto" src="{% user_image from 't' %}">
     </div>
     </article>
   </li>
@@ -20,7 +21,7 @@
   <li class="nav-item">
     <article class="item ml-1">
     <div class="photo">
-        <img class="personPhoto" src="{{ to.thumbnail.url  }}">
+        <img class="personPhoto" src="{% user_image to 't' %}">
     </div>
 </article>
   </li>

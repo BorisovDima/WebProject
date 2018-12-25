@@ -1,5 +1,6 @@
 {% load static %}
 {% load like_tag %}
+{% load account_tags %}
 
 <div class="container-fluid">
    <div class="row" id='profile-head-main' style=" background: {% if not profile.head %} #f442a4 {% else %} url('{{ profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 200px;">
@@ -23,7 +24,7 @@
                                 </div>
                             </div>
                             <div  id="holder-image">
-                                <img class="card-img-top img-rounded" src="{{ profile.image.url }}" id="user-image">
+                                <img class="card-img-top img-rounded" src="{% user_image profile 'm' %}" id="user-image">
                                 <div id="block-image" class="text-center">
                                     <a data-toggle="modal" data-target="#modal-photo-img" type="button" data-action="modal-image-change" data-type="change-photo" data-id="{{ profile.name }}" class="btn btn-link" style="padding-top: 150px;">
                                         <img class="ml-1" src="{% static 'blog/img/icons8-изображение-целиком-100.png' %}" width="50" height="50">
@@ -32,7 +33,7 @@
                                 </div>
                             </div>
                         {% else %}
-                        <img class="card-img-top img-rounded" src="{{ profile.image.url }}">
+                                <img class="card-img-top img-rounded" src="{% user_image profile 'm' %}">
                         {% endif %}
                         <div class="card-body pt-0  px-1">
                             <ul class="list-group list-group-flush mt-2">
