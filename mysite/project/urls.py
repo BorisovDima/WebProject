@@ -16,15 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from django.conf.urls.static import static
-from django.conf import settings
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('captcha/', include('captcha.urls')),
     path('', include('project.apps.blog.urls')),
+    path('', include('project.apps.myauth.urls')),
     path('', include('project.apps.account.urls')),
     path('', include('project.apps.chat.urls')),
     path('', include('social_django.urls', namespace='social')),

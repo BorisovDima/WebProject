@@ -16,6 +16,7 @@ class CommentForm(ModelForm):
             'text': forms.Textarea(attrs={'rows': 3, 'Class': 'form-control',
                                           'maxlength': 424,
                                           'style': 'resize:none; font-size: 14px',
+                                          'data-type': 'data-form',
                                           })
         }
 

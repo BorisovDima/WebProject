@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import redirect
-from .utils import check_google_captcha
+from project.apps.myauth.utils import check_google_captcha
 
 class NotLoginRequiredMixin:
     def dispatch(self, request, *args, **kwargs):

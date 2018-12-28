@@ -1,9 +1,7 @@
-from django.views.generic import DeleteView
+from django.views.generic import DeleteView, DetailView
 from django.http import Http404, JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
-from project.apps.blog.shortcuts import render_to_html
+from django.template.loader import render_to_string
 
 class DeleteObj(LoginRequiredMixin, DeleteView):
     model = None
@@ -14,11 +12,23 @@ class DeleteObj(LoginRequiredMixin, DeleteView):
         if request.user != obj.author:
             return JsonResponse({'status': 'invalid'})
         obj._delete() if kwargs['action'] == 'delete' else obj._return()
-        html = render_to_html(self.template_name, {'event': kwargs['event'], 'id': obj.id, 'objs': (obj,)}, request)
+        html = render_to_string(self.template_name, {'event': kwargs['event'], 'id': obj.id, 'objs': (obj,)}, request)
         return JsonResponse({'status': 'ok', 'event': kwargs['event'], 'html': html})
 
     def get(self, request, *args, **kwargs):
         raise Http404
+
+
+class GetChild(DetailView):
+
+    def get(self, req, *args, **kwargs):
+        comment_parent = self.get_object()
+        initial = comment_parent.id
+        comments = comment_parent.initial_comment_set.all().reverse()
+        return JsonResponse({'html': render_to_string(self.template_name, {'comments': comments,
+                                                                           'initial': initial},
+                                                                                         req)})
+
 
 
 

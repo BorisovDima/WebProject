@@ -1,28 +1,33 @@
 
-var navheight = $('#navbar').innerHeight()
+$(document).on("mouseenter", '[data-action="parent-color"]', function (event) {
+     var location = '#comment-' + $(this).data('id')
+     $(location).css({'background' : '#d3dcea'})
 
-function Answer(id_parent, parent_name) {
-      $("html,body").scrollTop($("#form").offset().top - navheight - 10)
-      $("#id_text").focus()
-      $("#id_text").val('')
-      $("#id_parent").val(id_parent)
-      $("#name_parent").val(parent_name)
-      var html = '<p>Ответить @' + parent_name + '<button onclick="close_comment()" type="button" class="close" aria-label="Close"> <span aria-hidden="true" class="text-danger">&times;</span></button></p><hr class="py-0 my-0">'
-      $("#answer").html(html)
-}
-function close_comment() {
-      $("#id_parent").val('')
-      $("#name_parent").val('')
-      $("#answer").html('')
-}
+})
 
-function scroll_to_parent(parent_id) {
-     var location = '#comment-' + parent_id
-     height = $(window).height() / 2
-     $("html,body").scrollTop($(location).offset().top - height)
-     $(location).css({'background' : '#f2aaa4'})
-     setTimeout(function () {
-           $(location).css({'background' : '#ffffff'});
-     }, 1000);
 
-}
+$(document).on("mouseleave", '[data-action="parent-color"]', function (event) {
+     var location = '#comment-' + $(this).data('id')
+     $(location).css({'background' : '#ffffff'})
+
+})
+
+$(document).on('click', '[data-action="answer"]', function(e) {
+    var initial = $(this).data('initial')
+    var parent = $(this).data('id')
+    var name = $(this).data('name')
+    html = '<div class="form-group mb-0"> <input type="hidden" value="' + parent + '"><input class="form-control form-control-sm " maxlength="220" placeholder="Ответить ' + name + '" data-type="data-form" >  <input data-action="comment-send" type="button" class="btn btn-link btn-sm mb-0" value="Отправить"/></div>'
+    $('#comment-answer-' + initial).html(html)
+})
+
+
+$(document).on('click', '[data-action="loader-child"]', function(e) {
+    var initial = $(this).data('id')
+    $.ajax({
+        url: '/api/load-comment-child/' + initial + '/',
+        method: 'GET',
+        success: function(data) {
+            $('#comment-new-' + initial).html(data.html)
+        }
+    })
+})

@@ -1,10 +1,9 @@
 from django.http import JsonResponse
 from django.views.generic import View, DetailView
-from project.apps.blog.shortcuts import render_to_html
+from django.template.loader import render_to_string
 from django.conf import settings
 from django.db.models import Count
 from project.apps.blog.models import Community
-from django.http import Http404
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -27,7 +26,7 @@ class Loader_sorted(View):
         elif sort == 'search': objs, since = self.search()
         else: objs, since = self.all(params)
         if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
+        return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, self.request),
                              'since': since,
                              'status': 'ok'})
 
@@ -81,7 +80,7 @@ class Loader_home(Loader_sorted):
             objects = objects.filter(id__lt=since)
         objs = list(objects[:self.paginate])
         if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, self.request),
+        return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, self.request),
                              'since': objs[-1].id,
                              'status': 'ok'})
 
@@ -94,7 +93,7 @@ class Loader_dialogs(LoginRequiredMixin, Loader_sorted):
         button = objs.count() > self.paginate
         objs = list(objs[:self.paginate])
         if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_html(self.template_name, {'objs': objs}, req),
+        return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, req),
                              'since': objs[-1].id,
                              'status': 'ok',
                              'button': button})
@@ -109,3 +108,7 @@ class Loader_notify(Loader_dialogs):
         objs = self.model.objects.filter(owner=req.user)
         return self.send_data(objs, req)
 
+class Loader_comments(Loader_dialogs):
+    def get(self, req, **kwargs):
+        objs = self.model.objects.filter(article_id=kwargs['key'], initial_comment=None)
+        return self.send_data(objs, req)

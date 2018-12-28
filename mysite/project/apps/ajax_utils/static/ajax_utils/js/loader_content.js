@@ -49,14 +49,14 @@ $(document).ready(function(){
         $('#location').val(path)
         $('#add-loader').html('')
         location = path
-        window.history.pushState("", "", '/' + type);
+        window.history.pushState("", "", '/' + start_location + '/' + type);
         start_loader()
     })
 
     //////////////////////////////////////////////////////////
 
     function start_loader() {
-        if ($('#location').val()  == 'main-page/people' || $('#location').val()   ==  'main-page/communities') {
+        if ($('#location').val()  == 'm/people' || $('#location').val()   ==  'm/communities') {
             $('#search-main').show()
         }
         else {
@@ -66,7 +66,7 @@ $(document).ready(function(){
             url: '/api/load/' + location + '/',
             method: 'GET',
             data: {'search': search_data},
-        }).success(function(data) {
+            success: function(data) {
             if (data.status == 'ok') {
                 $('#add-loader').append(data.html) // При 200 ОК append в div c id 'add-loader'.
                 since = data.since      // c какого id делать выборку
@@ -75,6 +75,7 @@ $(document).ready(function(){
             else {
                 $('#add-loader').append('<h1>Ничего не найдено</h1>')
             }
+           }
         })
     }
 
@@ -92,8 +93,8 @@ $(document).ready(function(){
                     data: {'since': since, 'search': search_data}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {
                         inProgress = true // что бы больше не один scroll не вызвал ajax до завершения этого
-                    }
-                 }).success(function(data) {
+                    },
+                   success: function(data) {
                         if (data.status == 'ok') {           // при 'ok' продолжаю
                             $('#add-loader').append(data.html)
                             since = data.since
@@ -102,6 +103,7 @@ $(document).ready(function(){
                         else {
                             inProgress = true
                         }
+                    }
 
                  })
         }

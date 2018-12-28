@@ -1,38 +1,61 @@
 {% load humanize %}
 {% load static %}
-{% load chat_tags %}
+{% load account_tags %}
+
 <div class="card border-0" id="comment-{{ comment_id }}">
-    <ul class="list-inline mb-2">
+
+
+    <ul class="list-inline mb-0">
         <li class="drop-left">
             {% if del %}
-            <button type="button" class="close float-right" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}" title="Удалить">
-                <span aria-hidden="true">&times;</span>
-            </button>
+                <button type="button" class="close float-right" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}" title="Удалить">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             {% endif %}
-            {% chat_image author  %}
-        {% if parent_id %}
-            {% if parent_active %}
-                <input type="button" class="btn btn-link btn-sm  pt-0 mt-0 text-info" value="Ответил {{ parent_name }}"
-                   onclick="scroll_to_parent('{{ parent_id }}')" style="font-size: 13px">
-            {% else %}
-                <a class="text-muted" style="font-size: 13px">Ответил {{ parent_name }}</a>
+
+
+            <ul class="nav ml-2 pb-1  pt-0">
+              <li class="nav-item pt-0">
+                    <div class="card-avatar mt-0">
+                        <a href="{{ author_profile.get_absolute_url }}"><img class="personPhoto" src="{% user_image author_profile 't' %}"></a>
+                    </div>
+              </li>
+               <li class="nav-item">
+                    <a class="nav-link pl-2 pr-2 pb-1" href="{{ author_profile.get_absolute_url }}" style="font-size: 14px;">{{ author_profile.name}} </a>
+               </li>
+                {% if parent_id %}
+                <li class="nav-item">
+                    {% if parent_active %}
+                    <a data-action="parent-color"  data-id="{{ parent_id }}" class="nav-link text-info" href="{{ parent_profile.get_absolute_url }}" style="font-size: 13px;"> ответил {{ parent_profile.name }}</a>
+                    {% else %}
+                        <a class="nav-link text-muted" style="font-size: 13px;"> ответил {{ parent_profile.name }}</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
+                    <div class="card-avatar_to mt-0">
+                        <a href="{{ parent_profile.get_absolute_url }}"><img class="personPhoto_to" src="{% user_image parent_profile 't' %}"></a>
+                    </div>
+                </li>
+                {% endif %}
+            </ul>
         </li>
-            {% endif %}
-        {% endif %}
     </ul>
+
+
     <div class="card-body py-0">
         <h6 class="ml-0 pl-0 py-0 my-0"  style="font-size: 14px; font-family: Arial"> {{ text }} </h6>
-         <ul class="list-inline mb-2">
-            <li class="drop-left">
+        <ul class="nav">
+            <li class="nav-item">
                  {% if user.is_authenticated %}
-                    <input type="button" class="btn btn-link pl-0" value="Ответить"
-                    onclick="Answer({{ comment_id }}, '{{ author }}')" style="font-size: 14px">
+                    <a type="button" class="btn btn-link pl-0 pb-0" href="#comment-answer-{{ initial }}"
+                       data-action="answer" data-name="{{ author }}" data-id="{{ comment_id }}" data-initial="{{ initial }}" style="font-size: 12px">Ответить</a>
                  {% endif %}
-                 <a  class="text-muted pt-0"  style="font-size: 14px"> {{ create_data | naturaltime }}</a>
             </li>
+             <li class="nav-item">
+                <a  class="nav-link text-muted pl-0 ml-0 pb-0"  style="font-size: 12px"> {{ create_data | naturaltime }}</a>
+             </li>
         </ul>
     </div>
-    <hr class="mt-1  mb-2">
 </div>
 
 

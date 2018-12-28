@@ -1,0 +1,26 @@
+{% load static %}
+{% load comment_tags %}
+
+
+{% for c in objs %}
+    {% if c.is_active %}
+      <div class="row">
+           <div class="col-md pl-0">
+                {% get_comment c user c.id %}
+           </div>
+      </div>
+     <hr class="mt-0 mb-1 mx-3">
+     <div class="row">
+         <div class="col-md offset-md-1" id="comment-new-{{ c.id }}">
+             {% if c.initial_comment_set.all %}
+                {% get_comment_child c user %}
+             {% endif %}
+         </div>
+     </div>
+    <div id="comment-answer-{{ c.id }}">
+    </div>
+    {% endif %}
+{% endfor %}
+
+
+

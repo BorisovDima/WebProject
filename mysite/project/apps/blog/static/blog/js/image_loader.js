@@ -14,8 +14,6 @@ function readURL(input) {
   }
 };
 
-
-
 $(function() {
     $("textarea[id='navbar-create_post_form']").keyup(function count(){
     number = $("textarea[id='navbar-create_post_form']").val().length;
@@ -47,4 +45,38 @@ function show_submit() {
          $('#send-form-post').hide()
     }
 }
+
+$('#send-form-post').on('click', function() {
+    var img = $('#image-post-input').prop('files')[0];
+    var text = $("textarea[id='navbar-create_post_form']").val();
+    console.log(img, text);
+    var formData = new FormData();
+    formData.append("text", text);
+    formData.append("image", img);
+    console.log(formData);
+
+    $.ajax({
+        url: '/create-post/',
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data) {
+            $('#content-creation-post').hide()
+            $('#post-create-success').html(data.html)
+            setTimeout(function () {
+                $('#Create-post').modal('hide')
+               $('#post-create-success').html('')
+                $('#content-creation-post').show()
+            }, 1500);
+            close_file_choice()
+       },
+        fail: function(data) {
+            errors = JSON.parse(data.responseText)
+            console.log(errors)
+            close_file_choice()
+        }
+    })
+
+})
 

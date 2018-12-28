@@ -66,9 +66,16 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                             location.reload()
 
                     }).fail(function(data){
-                            html = '<h2 class="text-danger" data-type="error-image"></h2>'
+                            html = '<h5 class="text-danger" data-type="error-image"></h5>'
                             $('#container-' +  type).html(html)
-                            $('[data-type="error-image"]').text('Error')
+                            data = JSON.parse(data.responseText)
+                            if (data['image']) {
+                                $('[data-type="error-image"]').text(data['image'])
+                            }
+                            else {
+                                $('[data-type="error-image"]').text(data['head'])
+                            }
+
                     })
 
                 }

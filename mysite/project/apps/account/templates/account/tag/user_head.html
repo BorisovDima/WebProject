@@ -42,7 +42,10 @@
                                 </li>
                                 {% if user_status == 'owner' %}
                                     <li class="list-group-item pt-2">
-                                        <a type="button" class="btn btn-primary" data-action="edit-profile-show">Edit profile</a>
+                                        <a type="button" class="btn" data-action="edit-profile-show"><strong>Edit profile</strong></a>
+                                    </li>
+                                <li class="list-group-item pt-2 pb-0">
+                                        <a type="button" class="btn text-dark" href="{% url 'account:profile-settings' user %}"> <strong>Settings</strong></a>
                                     </li>
                                 {% endif %}
                                 {% if user_status == 'user' %}

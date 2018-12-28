@@ -53,3 +53,9 @@ def my_notify(user):
 @register.simple_tag
 def count_comments(obj):
     return obj.comment_set.filter(is_active=True).count()
+
+from project.apps.comments.forms import CommentForm
+@register.inclusion_tag('tag/post.html')
+def detail_post(user):
+    return {'user': user, 'form_comment': CommentForm()}
+

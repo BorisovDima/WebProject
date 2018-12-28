@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.contenttypes.fields import GenericRelation
 from project.apps.like_dislike.models import Like, Subscribe
 from django.conf import settings
 from django.urls import reverse
@@ -98,12 +97,9 @@ class Article(BaseArticle):
     tags = models.ManyToManyField(Tag, blank=True)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     like = GenericRelation(Like, related_query_name='article')
-    status = models.CharField(choices=STATUS_CHOICES, max_length=12, blank=True)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=12, blank=True, default='P')
 
     objects = ArticleManager()
-
-    def get_absolute_url(self):
-        return reverse('blog:detail_article', kwargs={'login': self.author, 'pk': self.pk})
 
     def viewed(self, user):
         if not self.views.filter(username=user.username).exists():

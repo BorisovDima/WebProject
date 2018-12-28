@@ -13,8 +13,8 @@ $(document).on('click', '[data-action="like-counter"]', function(e){
         },
         complete: function() {
            ready = true // теперь может вызываться следующий ajax
-        }
-    }).success(function(data) {
+        },
+       success: function(data) {
           like.find('[data-count="like"]').text(data.count)
           if (data.add == true) {
                 like.find('[data-target="like-image"]').attr('src', '/static/blog/img/icon-like-active.png')
@@ -22,6 +22,7 @@ $(document).on('click', '[data-action="like-counter"]', function(e){
           else {
                 like.find('[data-target="like-image"]').attr('src', '/static/blog/img/icon-like.png')
           }
+        }
     })
     }
 });

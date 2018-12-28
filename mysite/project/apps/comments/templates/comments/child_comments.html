@@ -1,0 +1,11 @@
+{% load static %}
+{% load comment_tags %}
+
+
+{% get_comment child user initial %}
+    <hr class="mt-0 mb-1 mx-4">
+{% if next %}
+<a class="btn btn-link text-muted" style="font-size: 14px" data-action="loader-child" data-id="{{ initial }}">{{ count }} comments</a>
+{% endif %}
+
+

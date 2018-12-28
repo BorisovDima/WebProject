@@ -1,77 +1,10 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.forms import widgets
 from django import forms
 from .models import Profile #ProfileImg
-
-class MyRegForm(UserCreationForm):
-
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        self.fields['email'].widget.attrs.update({'Class': 'form-control',
-                                                    'placeholder': 'Email',
-                                                    })
-
-        self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
-                                                                  'placeholder': 'Login'})
-
-        self.fields['username'].help_text += ' And length login minimum  characters'
-
-        self.fields['username'].label = 'Login'
-        self.fields['password1'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
-                                                                  'placeholder': 'Password'})
-        self.fields['password2'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
-                                                                   'placeholder': 'Password agan'})
+from django_countries.widgets import CountrySelectWidget
 
 
-
-    class Meta(UserCreationForm.Meta):
-        model = get_user_model()
-        fields =['username', 'email']
-
-    def clean_username(self):
-        if len(self.cleaned_data['username']) < 3:
-            raise forms.ValidationError('Too short!')
-        return self.cleaned_data['username']
-
-
-    def clean_email(self):
-        email = self.cleaned_data.get('email')
-        if not email:
-            raise forms.ValidationError('requared')
-        if get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('Email already exist')
-        return self.cleaned_data['email']
-
-    def save(self, commit=True):
-        user = super().save(commit=False)
-        user.email = self.cleaned_data['email']
-        user.save()
-        return user
-
-class MyLoginForm(AuthenticationForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['username'].widget = widgets.TextInput(attrs={'Class': 'form-control',
-                                                                  'placeholder': 'Login'})
-        self.fields['password'].widget = widgets.PasswordInput(attrs={'Class': 'form-control',
-                                                                       'placeholder': 'Password'})
-
-    def clean_username(self):
-        model = get_user_model()
-        try:
-            user = model.objects.get(username=self.cleaned_data.get('username'))
-        except model.DoesNotExist:
-            raise self.get_invalid_login_error()
-        if not user.is_verified:
-            id = user.id
-            raise forms.ValidationError('User not verified,'
-                                        ' please check email', code='not verify', params={'id': id})
-
-        return self.cleaned_data['username']
 
 class ProfileForm(forms.ModelForm):
 
@@ -94,16 +27,15 @@ class ProfileForm(forms.ModelForm):
 
         self.fields['date_of_birth'].label = 'Date of birthday'
 
-        self.fields['current_city'].widget = widgets.TextInput(
-            attrs={'Class': 'col-6 my-1 border-0',
-                  'style':'font-size: 14px; box-shadow: none;',
-                   'placeholder':'Your location'})
+
+
     def clean(self):
         return super().clean()
 
     class Meta:
         model = Profile
         fields = ['about_me', 'date_of_birth', 'current_city', 'user_name', 'image', 'head']
+        widgets = {'current_city': CountrySelectWidget()}
 
 
 
@@ -153,36 +85,17 @@ class ProfileFormHead(BaseUserPhotoForm):
         model = Profile
         fields = ['head']
 
-from django.contrib.auth.forms import PasswordResetForm, SetPasswordForm
-from project.apps.back_task.tasks import sendler_mail
-from django.template.loader import render_to_string
+class ChangeEmail(forms.ModelForm):
 
-class MyPasswordResetForm(PasswordResetForm):
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not email:
+            raise forms.ValidationError('requared')
+        if get_user_model().objects.filter(email=email).exists():
+            raise forms.ValidationError('Email already exist')
+        return self.cleaned_data['email']
 
-    def send_mail(self, subject_template_name, email_template_name,
-                  context, from_email, to_email, html_email_template_name=None):
-        subject = render_to_string(subject_template_name, context)
-        subject = ''.join(subject.splitlines())
-        body = 'Reset mail'
-        html_email = render_to_string(html_email_template_name, context)
-        sendler_mail.delay(subject, body, from_email, [to_email], html_email)
 
-class MySetPasswordForm(SetPasswordForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['new_password1'].widget.attrs.update({'Class': 'form-control col-6',
-                                                     'placeholder': 'Password',
-                                                     })
-        self.fields['new_password2'].widget.attrs.update({'Class': 'form-control col-6',
-                                                     'placeholder': 'Password again',
-                                                     })
-class ActivEmail(forms.Form):
-
-    email = forms.EmailField(required=True)
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['email'].widget.attrs.update({'Class': 'form-control',
-                                                    'placeholder': 'Email',
-                                                    })
-
+    class Meta:
+        model = get_user_model()
+        fields = ['email']

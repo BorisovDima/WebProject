@@ -29,6 +29,8 @@ class Comment(models.Model):
     parent_comment = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, null=True)
     like = GenericRelation(Like, related_query_name='Comment')
     is_active = models.BooleanField(default=True)
+    initial_comment = models.ForeignKey('self', on_delete=models.CASCADE, related_name='initial_comment_set'
+                                         ,blank=True, null=True)
 
     objects = MyManager()
 

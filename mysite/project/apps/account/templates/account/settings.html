@@ -9,35 +9,67 @@
 
 
 {% block body %}
-<div class="row  border">
-             <div class="col-sm-12" style="background-color: #ffffff">
-      <hr>
-<form method="POST">
-    {% for field in form %}
- <div class="form-group">
-        {{ field.label }}
-        {{ field }}
-       <small id="loginerror" class="form-text text-danger">   {{ field.errors}} </small>
-  <small id="loginHelp" class="form-text text-muted"> {{ field.help_text }} </small>
-  </div>
-    {% endfor %}
-{% csrf_token %}
-<input type="hidden" name="next" value="/">
-  <button type="submit" class="btn btn-primary ">Submit</button>
-    <hr>
-</form>
-    <small id="error" class="form-text text-danger">   {{ form.non_field_errors  }} </small>
+<div class="row  pt-5 mt-0 ">
+    <div class="col-sm-12 border pb-4" style="background-color: #ffffff;">
 
 
+
+  <button class="btn btn-link pt-3" type="button" data-toggle="collapse" data-target="#change-pass" aria-expanded="false" aria-controls="change-pass">
+    Изменить пароль
+  </button>
+
+<div class="collapse" id="change-pass">
+  <div class="card card-body pb-0">
+      <div class="form-group" id="form-pass">
+                    <small class="text-danger" id="old_password-error"></small>
+         <input name="old_password" type="password" class="form-control my-2 col-4" maxlength="50" placeholder="Старый пароль" >
+          <small class="text-danger" id="new_password1-error"></small>
+        <input name="new_password1" type="password" class="form-control my-2 col-4" maxlength="50" placeholder="Новый пароль" >
+          <small class="text-danger" id="new_password2-error"></small>
+        <input name="new_password2" type="password" class="form-control my-2 col-4" maxlength="50" placeholder="Повторите пароль">
+
+        <button class="btn btn-link" data-action="change-settings" data-event="password" data-type="settings/change-pass">Изменить</button>
       </div>
+      <small class="text-success" id="pass-success"></small>
+  </div>
 </div>
+<hr class="my-1">
 
+<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#change-email" aria-expanded="false" aria-controls="change-email">
+    Изменить email
+  </button>
+        <a id="cur_email">{{ user.email }}</a>
+
+<div class="collapse" id="change-email">
+  <div class="card card-body">
+        <div class="form-group" id="form-email">
+            <small class="text-danger" id="email-error"></small>
+             <input name="email" type="email" class="form-control my-2 col-6" placeholder="Новый email" >
+        <button class="btn btn-outline-info" data-action="change-settings"  data-event="email" data-type="{{ user.username }}/settings">Изменить</button>
+        </div>
+      <small class="text-success" id="email-success"></small>
+  </div>
+</div>
+    <hr class="my-1">
+
+
+    </div>
+</div>
 {% endblock %}
 
 {% block sidebar %}
+<div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4 pt-5">
+    <div class="card" style="width: 18rem; height: 200px"  >
+        <div class="card-body pl-1 pl-5">
+            <a href="#"> Основные</a>
+            <hr class="my-1">
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block buttom %}
+<script src="{% static 'account/js/setting.js' %}"></script>
 {% endblock %}
 
 {% block additional %}

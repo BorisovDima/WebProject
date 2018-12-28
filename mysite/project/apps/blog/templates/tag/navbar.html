@@ -9,6 +9,7 @@
 {% if user.is_authenticated %}
     {% my_messages user %}
     {% my_notify user %}
+<script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 {% endif %}
 <link rel="stylesheet" type="text/css" href="{% static 'autocomplete/css/autocomplete.css' %}">
 
@@ -20,17 +21,6 @@
         <span class="navbar-toggler-icon"> </span>
     </button>
     <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
-            {% if not user.is_authenticated %}
-          <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                   <a class="nav-link" href="{% url 'account:registration' %}">Regist</a>
-              </li>
-              <li class="nav-item">
-                   <a class="nav-link" href="{% url 'account:login' %}">Login</a>
-              </li>
-
-          </ul>
-                {% endif %}
          <ul class="navbar-nav mr-auto">
              <li class="nav-item">
                  <a class="btn btn-outline-danger border-0 border-buttom" href="/home/">Home</a>
@@ -73,8 +63,10 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="{% url 'account:profile' user.profile.name %}">My page</a>
+            <div class="dropdown-divider"></div>
+             <a class="dropdown-item" href="{% url 'account:profile-settings' user %}">Settings</a>
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'account:logout' %}">Logout</a>
+                    <a class="dropdown-item" href="{% url 'myauth:logout' %}">Logout</a>
                 </div>
                </li>
          </ul>

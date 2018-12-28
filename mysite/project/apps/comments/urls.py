@@ -15,6 +15,8 @@ urlpatterns = [
          {'event': 'comment', 'action': 'return'}, name='return-comment'),
 
     path('post/return/<int:pk>/', views.DeleteObj.as_view(model=Article, template_name='blog/articles.html'),
-         {'event': 'post', 'action': 'return'}, name='return-post')
+         {'event': 'post', 'action': 'return'}, name='return-post'),
 
+    path('load-comment-child/<int:pk>/', views.GetChild.as_view(model=Comment,
+                                            template_name='comments/child_comments_list.html'))
 ]

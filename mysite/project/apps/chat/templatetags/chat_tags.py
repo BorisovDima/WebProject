@@ -16,7 +16,7 @@ def color_dialog(author, user, readed):
 
 
 @register.inclusion_tag('chat/user_img.html')
-def chat_image(from_, to=None):
+def chat_image(from_, to=None, data=None):
     from_ = get_user_model().objects.get(username=from_).profile
     if to: to = get_user_model().objects.get(username=to).profile
-    return {'from': from_, 'to': to}
+    return {'from': from_, 'to': to, 'data': data}

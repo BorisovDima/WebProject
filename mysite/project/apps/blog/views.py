@@ -1,7 +1,7 @@
-from django.shortcuts import redirect
+from django.template.loader import render_to_string
 from django.views.generic import CreateView, DetailView, TemplateView
 from .models import Article, Community
-from project.apps.comments.forms import CommentForm
+from project.apps.account.mixins import AjaxMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 
@@ -10,52 +10,39 @@ class MainPage(LoginRequiredMixin, TemplateView):
 
 
     def get_context_data(self, **kwargs):
+        print(self.request.user.id)
         self.template_name = self.kwargs['template_name']
         context = super().get_context_data(**kwargs)
         return context
 
 
-class DetailArticle(DetailView):
-    model = Article
-    template_name = 'blog/DetailArticle.html'
-
-    def get_object(self, queryset=None):
-        obj = super().get_object(queryset)
-        if not obj.is_active:
-            raise Http404
-        user = self.request.user
-        if user.is_authenticated:
-            obj.viewed(user)
-        return obj
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form_comment'] = CommentForm()
-        return context
-
-
-
-class CreateArticle(LoginRequiredMixin, CreateView):
-    template_name = 'blog/CreateArticle.html'
+class CreateArticle(LoginRequiredMixin, AjaxMixin, CreateView):
+    template_name = None
     model = None
     form_class = None
-    status = None
-    not_success = None
+    success_url = '/'
 
     def get(self, *args, **kwargs):
-        if self.kwargs.get('not-get'):
-            raise Http404
-        return super().get(*args, **kwargs)
+        raise Http404
+
+    def get_data(self, form):
+        return {'html': render_to_string('blog/publish.html')}
 
     def form_valid(self, form):
-        if self.model == Article:
-            form.instance.author = self.request.user
-            form.instance.status = self.status
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
-    def form_invalid(self, form):
-        return redirect(self.not_success) if self.not_success else super().form_invalid(form)
+from django.http import JsonResponse
+class ViewPost(DetailView):
+    model = Article
+
+    def post(self, req, *args, **kwargs):
+        post = self.get_object()
+        post.viewed(req.user)
+        return JsonResponse({})
+
+
 
 
 class CommunityView(TemplateView):

@@ -9,7 +9,7 @@
     <div class="col-sm-12 pb-0 px-0 border">
         <div class="card border-0 article">
             <div class="card-body pt-0  pb-0 mb-0">
-                <div onclick="detail_article('{{ article.author.username }}', '{{ article.id }}')">
+                <div data-action="detail-post" data-id="{{ article.id }}">
                     <ul class="list-inline mb-2">
                          <li class="drop-left">
                              <img class="mr-2 mt-2 rounded-circle" src="{% user_image article.author.profile 't' %}"  width="30" height="30">
@@ -23,12 +23,12 @@
                     </ul>
                     <h6 class="card-text" style="font-size: 15px;">{{ article.text }}</h6>
                     {% if  article.image %}
-                    <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
+                    <img id="post-img" class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
                     {% endif %}
                     <input type="hidden" id="action-id-article">
                 </div>
                 <hr class="py-0 my-0">
-                <ul class="nav">
+                <ul class="nav" id="post-additional">
                     <li class="nav-item">
                         <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">
                             <img src="{% static 'blog/img/top.png' %}" width="20">

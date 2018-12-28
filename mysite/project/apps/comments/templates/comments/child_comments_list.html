@@ -1,0 +1,7 @@
+{% load comment_tags %}
+
+{% for comment in comments %}
+
+    {% get_comment comment user initial %}
+    <hr class="mt-0 mb-1 mx-4">
+{% endfor %}

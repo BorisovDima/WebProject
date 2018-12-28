@@ -4,12 +4,13 @@
 {% load like_tag %}
 {% load account_tags %}
 
+
 {% block head %}
  <link rel="stylesheet" type="text/css" href="{% static 'account/css/account.css' %}">
  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/article.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css">
 
- <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
 {% if user_status == 'owner' %}
 <div class="modal fade" id="modal-photo-img" tabindex="-1" role="dialog" aria-labelledby="modal-photo-img" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg w-50" role="document">
@@ -60,6 +61,9 @@
 </div>
 {% endif %}
 {% load_navbar user %}
+
+{% detail_post user %}
+
 {% endblock %}
 
 
@@ -74,7 +78,7 @@
 <div class="row">
     <div class="col-sm-12 px-0 " style="background-color: #f4f4f4;">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body" >
                 <div id="my-profile-info">
                 {% if profile.get_user_name %}
                     <h5 class="card-text">{{ profile.get_user_name }}</h5>
@@ -118,45 +122,27 @@
                     </nav>
                 </form>
             </div>
-            <div class="card border-light">
+            <div class="card border-0">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
+                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
+                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
+                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="profile-paginate" data-type="community"> Сообщества {{ profile.get_user_community_sub.count }} </a>
+                        <button class="nav-link text-muted btn"  disabled> Сообщества </button>
                     </li>
                 </ul>
             </div>
-            {% if user_status == 'owner' %}
-                <div class="card  text-center">
-                    <div class="card-body py-2 px-0">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
-                            New Post
-                        </button>
-                    </div>
-                </div>
-            {% endif %}
         </div>
 
 
-        {% if profile.get_user_articles %}
             <div id="add-loader" class="border-0 col-12">
             </div>
-        {% else %}
-            <div class="card text-center">
-                <div class="card-body ">
-                    <h5 class="card-title"> {{ profile.login }} nothing posting</h5>
-                </div>
-            </div>
-        {% endif %}
-
 
     </div>
 </div>
@@ -178,8 +164,7 @@
 
 {% block buttom %}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
-    <input id="location" value="{{ location }}" type="hidden">
-    <script src="{% static 'blog/js/article.js' %}"></script>
+    <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_location }}">
     <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
 
 {% endblock %}

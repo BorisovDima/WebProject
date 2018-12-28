@@ -16,7 +16,7 @@ from project.apps.blog.models import Article, Community
 @receiver(post_save, sender=get_user_model(), dispatch_uid="my_user_handler")
 def user_handler(sender, **kwargs):
     user = kwargs['instance']
-    if not user.is_verified:
+    if not user.is_verified and user.email:
         uuid, email, name = user.uuid, user.email, user.username
         send_verify.delay(uuid, email, name)
 

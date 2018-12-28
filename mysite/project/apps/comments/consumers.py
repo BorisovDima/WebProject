@@ -1,11 +1,10 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 import json
-from project.apps.blog.models import Article
 from .forms import CommentForm
 from django.utils import timezone
 from .models import Comment
-from project.apps.blog.shortcuts import render_to_html
+from django.template.loader import render_to_string
 from asgiref.sync import sync_to_async
 
 class CommentConsumer(AsyncWebsocketConsumer):
@@ -29,22 +28,36 @@ class CommentConsumer(AsyncWebsocketConsumer):
             kwargs = {'text': data['text'], 'author_id': self.scope['user'].id, 'article_id': self.id_article}
             mykwargs = kwargs.copy()
             if data['id_parent']:
-                kwargs['parent_comment_id'] = data['id_parent']
-                mykwargs['parent_name'] = data['name_parent']
-                mykwargs['parent_id'] = data['id_parent']
-
+                parent = await database_sync_to_async(self.get_parent)(data['id_parent'])
+                mykwargs['parent_name'] = parent.author.username
+                mykwargs['parent_id'] = kwargs['parent_comment_id'] = parent.id
+                if parent.initial_comment:
+                    kwargs['initial_comment_id'] = parent.initial_comment.id
+                else:
+                    kwargs['initial_comment_id'] = parent.id
             comment_id = await database_sync_to_async(Comment.objects.add_comment)(**kwargs)
+
+            mykwargs['initial'] = kwargs.get('initial_comment_id', comment_id)
+            mykwargs['add'] = 'child' if kwargs.get('initial_comment_id') else 'new'
             mykwargs['comment_id'] = comment_id
             mykwargs['author'] = self.scope['user'].username
+            print(kwargs)
             await self.channel_layer.group_send(self.group,
                                           {'type': 'send_comment',
                                               'kwargs': mykwargs})
     async def send_comment(self, event):
         kwargs = event['kwargs']
         kwargs.update({'create_data': timezone.now(), 'user': self.scope['user']})
-        html = await sync_to_async(render_to_html)('comments/comment.html', kwargs)
-        await self.send(json.dumps({'comment': html, 'status': 'ok'}))
+        if kwargs['add'] == 'child':
+            html = await sync_to_async(render_to_string)('comments/comment.html', kwargs)
+        else:
+            html = await sync_to_async(render_to_string)('comments/new_comment.html', kwargs)
+        await self.send(
+            json.dumps({'comment': html, 'status': 'ok', 'add': kwargs['add'],'initial': kwargs['initial']}))
 
 
     async def delete_post(self, event):
         await self.send(json.dumps({'status': 'del_post'}))
+
+    def get_parent(self, id):
+        return Comment.objects.get(id=id)

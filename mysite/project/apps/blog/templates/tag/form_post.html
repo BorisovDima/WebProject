@@ -1,10 +1,13 @@
 {% load static %}
 
-<script src="{% static 'blog/js/image_loader.js' %}"></script>
-
 <div class="modal fade bd-example-modal-lg px-2" tabindex="-1" id="Create-post" role="dialog" aria-labelledby="Create-postTitle" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
+        <div id="post-create-success" class="text-success">
+
+
+        </div>
+        <div id="content-creation-post">
       <div class="modal-header pt-1 pb-1 border-light">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -27,8 +30,8 @@
        </li>
    </ul>
     {% endif %}
-    <form method="POST" action="{% url 'blog:create_post' %}"  enctype="multipart/form-data">
-       {% csrf_token %}
+
+
         <div class="form-group">
     {{ form.text }}
             <ul class="nav justify-content-left pt-2">
@@ -44,11 +47,12 @@
         <img id="holder-image-load" class="ml-1 btn-outline-primar" width='35' src="{% static 'blog/img/baseline-add_photo_alternate-24px(3).svg' %}" data-toggle="tooltip" data-placement="top" title="Change image">
         <input type='file' onchange="readURL(this);"  id="image-post-input" name="{{ form.image.html_name }}" style="display:none">
     </label>
-    <input type="submit" class="btn btn-primary" value="Post" id="send-form-post" style="display:none">
+        <button class="btn btn-outline-info" id="send-form-post" style="display:none">Опубликовать</button>
     {% if community %}
     {{ form.community }}
     {% endif %}
-    </form>
+
+
     </div>
         <div class="row">
             <div class="col-lg-3 col-md-4 col-6">
@@ -62,6 +66,9 @@
         </div>
     </div>
   </div>
+  </div>
 </div>
 
 
+
+<script src="{% static 'blog/js/image_loader.js' %}"></script>

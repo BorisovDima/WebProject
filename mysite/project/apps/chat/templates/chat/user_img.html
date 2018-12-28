@@ -1,29 +1,30 @@
 {% load account_tags %}
+{% load humanize %}
 
-<ul class="nav ml-2 pb-2  pt-0">
+<ul class="nav ml-2 pb-1  pt-0">
   <li class="nav-item pt-0">
-    <article class="item ml-1">
-    <div class="photo">
-        <img class="personPhoto" src="{% user_image from 't' %}">
-    </div>
-    </article>
+      <div class="card-avatar mt-0">
+          <a href="{{ from.get_absolute_url }}"><img class="personPhoto" src="{% user_image from 't' %}"></a>
+      </div>
   </li>
     <li class="nav-item">
         <a class="nav-link pl-2 pr-2" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.name}} </a>
     </li>
     {% if to %}
-    <li class="nav-item">
-        <a class="nav-link text-dark px-0"  style="font-size: 15px;" > - </a>
-    </li>
-        <li class="nav-item">
-        <a class="nav-link pl-2 pr-2" href="{{ to.get_absolute_url }}" style="font-size: 15px;">  {{ to.name }}</a>
+        <li class="nav-item mb-0 pb-0">
+        <a class="btn btn-link btn-sm text-info  mb-0 pb-0" href="{{ to.get_absolute_url }}" style="font-size: 13px;"> ответил {{ to.name }}</a>
     </li>
   <li class="nav-item">
-    <article class="item ml-1">
-    <div class="photo">
-        <img class="personPhoto" src="{% user_image to 't' %}">
-    </div>
-</article>
+      <div class="card-avatar_to mt-0">
+          <a href="{{ to.get_absolute_url }}"><img class="personPhoto_to" src="{% user_image to 't' %}"></a>
+      </div>
   </li>
     {% endif %}
+    {% if data %}
+    <li class="nav-item">
+        <a  class=" nav-link text-muted"  style="font-size: 12px"> {{ data | naturaltime }}</a>
+    </li>
+    {% endif %}
 </ul>
+
+

@@ -1,0 +1,38 @@
+{% load static %}
+
+ <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comment.css' %}">
+<div class="modal fade" id="detail-post-container" tabindex="-1" role="dialog" aria-labelledby="detail-post-container" aria-hidden="true">
+  <div class="modal-dialog modal-lg w-50" role="document">
+    <div class="modal-content">
+      <div class="modal-body pt-1 pb-0" id="detail-post-container-body">
+      </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12" style="background-color: #ffffff">
+                {% if user.is_authenticated %}
+                    <div class="form-group mt-2">
+                        {{ form_comment.text }}
+                        <input type="hidden" value="">
+                        <input data-action="comment-send" type="button" class="btn btn-danger" value="Отправить"/>
+                    </div>
+                {% endif %}
+                 <hr class="pb-0 mb-0">
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <div id="container-comments" class="mt-1 pb-2">
+            </div>
+        </div>
+        <div class="modal-footer align-self-center py-1">
+            <button type="button" id="button-comments-loader" class="btn btn-outline-danger align-self-center btn-sm py-0" style="display: none">Загрузить еще</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'blog/js/detail_post.js' %}"></script>
+<script src="{% static 'comments/js/answer_comment.js' %}"> </script>
+
+

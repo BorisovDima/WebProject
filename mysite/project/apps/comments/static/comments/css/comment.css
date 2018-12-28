@@ -1,0 +1,48 @@
+.personPhoto {
+    width: 40px;
+    height: 40px;
+    background: #fff
+}
+
+
+.card-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 2px solid #fff;
+
+}
+
+
+.personPhoto_to {
+    width: 30px;
+    height: 30px;
+    background: #fff
+}
+
+
+.card-avatar_to {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: -60px;
+    overflow: hidden;
+    border: 2px solid #fff;
+
+}
+
+
+
+.article:hover {
+   background: #edf5f7
+
+
+}
+
+.notread {
+    background-color: #edf5f7;
+}
+
+
