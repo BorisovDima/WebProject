@@ -62,10 +62,10 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                         data: formData,
                         processData: false,
                         contentType: false,
-                    }).success(function(data){
+                        success: function(data){
                             location.reload()
-
-                    }).fail(function(data){
+                        },
+                        fail: function(data) {
                             html = '<h5 class="text-danger" data-type="error-image"></h5>'
                             $('#container-' +  type).html(html)
                             data = JSON.parse(data.responseText)
@@ -75,7 +75,7 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                             else {
                                 $('[data-type="error-image"]').text(data['head'])
                             }
-
+                        }
                     })
 
                 }

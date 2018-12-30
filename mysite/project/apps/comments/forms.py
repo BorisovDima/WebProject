@@ -13,10 +13,11 @@ class CommentForm(ModelForm):
         model = Comment
         fields = ['text']
         widgets = {
-            'text': forms.Textarea(attrs={'rows': 3, 'Class': 'form-control',
+            'text': forms.Textarea(attrs={'rows': 1, 'Class': 'form-control',
                                           'maxlength': 424,
                                           'style': 'resize:none; font-size: 14px',
                                           'data-type': 'data-form',
+                                          'placeholder': 'Оставить комментарий'
                                           })
         }
 

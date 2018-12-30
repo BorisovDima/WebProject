@@ -15,14 +15,15 @@ $('[data-action="load-modal-notifications"]').click(function(){
     $(body).html('')
     $.ajax({
         url: '/api/load/' + type + '/',
-        method: 'GET'
-    }).success(function(data) {
+        method: 'GET',
+        success: function(data) {
           $(body).append(data.html) // При 200 ОК append в div c id 'add-loader'.
           since = data.since      // c какого id делать выборку
           if (data.button) {
                 $(div).html(btn)
                 $(div).bind('click', loader_dialogs)
-          }
+           }
+        }
     })
 })
 
@@ -31,14 +32,15 @@ function loader_dialogs(){
             url: '/api/load/' + type + '/',
             method: 'GET',
             data: {'since': since}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
-            }).success(function(data) {
+            success: function(data) {
                    $(body).append(data.html) // При 200 ОК append в div c id 'add-loader'.
                     since = data.since      // c какого id делать выборку
                     if (!data.button) {
                            $(div).html('')
                            $(div).unbind('click')
                      }
-            })
+            }
+    })
 }
 
 

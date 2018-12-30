@@ -13,21 +13,20 @@ $(document).ready(function(){
         url: '/registration/',
         method: 'POST',
         data: {'username': login, 'password1': pas1, 'password2': pas2, 'email': mail, 'g-recaptcha-response': sgk},
-    }).success(function(data){
+        success: function(data){
             $('[data-type="info-error"]').text('')
             console.log(data)
             $('#registration-body-modal').html(data.html)
-
-    }).fail(function(data){
-        data = JSON.parse(data.responseText)
-        $('#error-username').text(data['username'] || '')
-        $('#error-password1').text(data['password1'] || '')
-        $('#error-password2').text(data['password2'] || '')
-        $('#error-email').text(data['email'] || '')
-        $('#error-captcha').text(data['captcha'] || '')
-
-        $('#btn-registr').show()
-
+        },
+        fail: function(data){
+            data = JSON.parse(data.responseText)
+            $('#error-username').text(data['username'] || '')
+            $('#error-password1').text(data['password1'] || '')
+            $('#error-password2').text(data['password2'] || '')
+            $('#error-email').text(data['email'] || '')
+            $('#error-captcha').text(data['captcha'] || '')
+            $('#btn-registr').show()
+        }
 
     })
 
@@ -40,8 +39,9 @@ $(document).ready(function(){
                 url: '/login/password-reset/',
                 method: 'POST',
                 data: {'email': data},
-             }).success(function(data){
+                success: function(data){
                     $('#reset-password-body').html(data.html)
+                }
              })
         }
 

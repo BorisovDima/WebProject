@@ -5,17 +5,18 @@ $(document).on('click', '[data-action="delete_object"]', function() {
     $.ajax({
         url: '/api/' + type +  '/delete/' + id + '/',
         method: 'POST',
-    }).success( function(data) {
-        if (data.status == 'ok') {
-            if (data.event == 'comment'){
-                $('#comment-' + id).html(data.html)
+        success: function(data) {
+            if (data.status == 'ok') {
+                if (data.event == 'comment'){
+                    $('#comment-' + id).html(data.html)
+                }
+                else {
+                    $('#wrapper_post-' + id).html(data.html)
+                }
             }
             else {
-                $('#wrapper_post-' + id).html(data.html)
+                console.log('INVALID')
             }
-        }
-        else {
-            console.log('INVALID')
         }
     })
 })
@@ -28,17 +29,18 @@ function comeback() {
     $.ajax({
         url: '/api/' + type +  '/return/' + id + '/',
         method: 'POST',
-    }).success( function(data) {
-          if (data.status == 'ok') {
-            if (data.event == 'comment'){
-                $('#comment-' + id).replaceWith(data.html)
+        success: function(data) {
+            if (data.status == 'ok') {
+                if (data.event == 'comment'){
+                    $('#comment-' + id).replaceWith(data.html)
+                }
+                else {
+                    $('#wrapper_post-' + id).replaceWith(data.html)
+                }
             }
             else {
-                $('#wrapper_post-' + id).replaceWith(data.html)
+                console.log('INVALID')
             }
-        }
-        else {
-            console.log('INVALID')
         }
     })
 }

@@ -85,6 +85,7 @@
                     {% else %}
                     <h5 class="card-text">@{{ profile.name }}</h5>
                 {% endif %}
+                    <strong>{% user_online profile.bloguser %} </strong>
                 <hr>
                 <h6 class="card-text text-muted" style="font-size: 14px;">Data registration: {{ profile.get_user_joined }} </h6>
                 {% if profile.date_of_birth %}
@@ -124,17 +125,17 @@
             </div>
             <div class="card border-0">
                 <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
+                    <li class="nav-item px-2">
+                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
+                    <li class="nav-item  px-2">
+                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-muted btn" data-action="ajax-paginate-btn" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
+                    <li class="nav-item  px-2">
+                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
                     </li>
-                    <li class="nav-item">
-                        <button class="nav-link text-muted btn"  disabled> Сообщества </button>
+                    <li class="nav-item  px-2">
+                        <a class="my_link_profile text-muted"> Сообщества </a>
                     </li>
                 </ul>
             </div>

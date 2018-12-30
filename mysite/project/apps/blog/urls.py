@@ -10,7 +10,7 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': '', 'start_loc': 'm'},
+         {'template_name': 'blog/MainPage.html', 'location': 'm', 'start_loc': 'm'},
          name='main_page'),
 
     path('m/', RedirectView.as_view(pattern_name='blog:main_page')),
@@ -35,7 +35,7 @@ urlpatterns = [
          {'template_name': 'blog/Home.html', 'location': 'home'}, name='home'),
 #
 
-    path('community/<slug:slug>/', views.CommunityView.as_view(), name='community'),
+ #   path('community/<slug:slug>/', views.CommunityView.as_view(), name='community'),
 
 
    # path('create-article/', views.CreateArticle.as_view(form_class=CreateArticleForm,

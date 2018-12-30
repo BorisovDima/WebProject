@@ -26,19 +26,19 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-5 nav-tabs border-0">
       <li class="nav-item px-2">
-        <a class="nav-link text-dark"     data-type="" data-action="ajax-paginate-btn">Top</a>
+        <a class="my_link"     data-type="" data-action="ajax-paginate-btn">Top</a>
       </li>
         <li class="nav-item active px-2">
-            <a class="nav-link text-dark" data-type="popular" data-action="ajax-paginate-btn">Popular</a>
+            <a class="my_link" data-type="popular" data-action="ajax-paginate-btn">Popular</a>
       </li>
       <li class="nav-item px-2">
-        <a class="nav-link text-dark"     data-type="new" data-action="ajax-paginate-btn">New</a>
+        <a class="my_link"     data-type="new" data-action="ajax-paginate-btn">New</a>
       </li>
         <li class="nav-item px-2">
-        <a class="nav-link text-dark"     data-type="people" data-action="ajax-paginate-btn">People</a>
+        <a class="my_link"  data-type="people" data-action="ajax-paginate-btn">People</a>
       </li>
       <li class="nav-item px-2 ">
-        <button class="nav-link text-dark"  disabled>Community</button>
+        <a class="my_link text-muted"  >Community</a>
       </li>
     </ul>
   </div>
@@ -48,6 +48,8 @@
 
 
     {% block user_head %}
+
+    {% detail_post user %}
     {% endblock %}
 
         <div class="container-fluid">
@@ -104,7 +106,6 @@
 {% block buttom %}
     <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_loc }}">
     <script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
-    <script src="{% static 'blog/js/article.js' %}"></script>
     <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
 
 {% if user.is_authenticated %}

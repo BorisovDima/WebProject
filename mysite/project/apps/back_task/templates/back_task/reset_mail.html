@@ -8,9 +8,9 @@
 
 
 <h1>Someone asked for password reset for email {{ email }}. Follow the link below:</h1>
-<a href="{{ protocol}}://{{ domain }}{% url 'account:password_reset_confirm' uidb64=uid token=token %}">
+<a href="{{ protocol}}://{{ domain }}{% url 'myauth:password_reset_confirm' uidb64=uid token=token %}">
 
-    {{ protocol}}://{{ domain }}{% url 'account:password_reset_confirm' uidb64=uid token=token %}
+    {{ protocol}}://{{ domain }}{% url 'myauth:password_reset_confirm' uidb64=uid token=token %}
 </a>
 
 </body>

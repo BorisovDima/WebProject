@@ -8,18 +8,24 @@ from django.contrib.auth import get_user_model
 app_name = 'like'
 urlpatterns = [
     path('like/post/<int:id>/', views.LikeSubscribe.as_view(model=Article, foreign_model=models.Like,
-                                                            type='like'),
+                                                            type='A',
+                                                            event='like'),
                                                             name='post-like'),
 
     path('like/comment/<int:id>/', views.LikeSubscribe.as_view(model=Comment, foreign_model=models.Like,
-                                                               type='like'),
+                                                               type='C',
+                                                               event='like'),
                                                                name='comment-like'),
 
     path('subscribe/user/<int:id>/', views.LikeSubscribe.as_view(model=get_user_model(), foreign_model=models.Subscribe,
-                                                                 type='subscribe'),
+                                                                 type='U',
+                                                                 event='subs'),
                                                                  name='subscribe-user'),
 
+
+
     path('subscribe/community/<int:id>/', views.LikeSubscribe.as_view(model=Community, foreign_model=models.Subscribe,
-                                                                   type='subscribe'),
+                                                                   type='Com',
+                                                                   event='subs'),
                                                                    name='subscribe-community')
 ]

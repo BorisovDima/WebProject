@@ -14,7 +14,6 @@ $(document).ready(function(){
             inProgress = true
             location = $('#location').val()
             location = location + '/' + $('[data-action="choice-sort"]').val()
-            $("html, body").scrollTop(0, 0)
             $('#add-loader').html('')
             start_loader()
         }
@@ -37,8 +36,8 @@ $(document).ready(function(){
         $("#search-form-ajax").val('')
         $('#search-cur-value').text('')
         var event = $(this)
-        $('[data-action="ajax-paginate-btn"]').removeClass('active')
-        event.addClass('active')
+        $('[data-action="ajax-paginate-btn"]').removeClass('my_active')
+        event.addClass('my_active')
         var type = event.data('type')
         if (type) {
             path = start_location + '/' + type

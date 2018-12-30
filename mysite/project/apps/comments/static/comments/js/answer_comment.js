@@ -16,8 +16,9 @@ $(document).on('click', '[data-action="answer"]', function(e) {
     var initial = $(this).data('initial')
     var parent = $(this).data('id')
     var name = $(this).data('name')
-    html = '<div class="form-group mb-0"> <input type="hidden" value="' + parent + '"><input class="form-control form-control-sm " maxlength="220" placeholder="Ответить ' + name + '" data-type="data-form" >  <input data-action="comment-send" type="button" class="btn btn-link btn-sm mb-0" value="Отправить"/></div>'
+    html = '<div class="form-group mb-0"> <input type="hidden" value="' + parent + '"><textarea style="resize: none; font-size: 14px; overflow: hidden; overflow-wrap: break-word;" rows="1" class="form-control" maxlength="220" placeholder="Ответить ' + name + '"  colls="40" data-type="data-form" ></textarea> <input data-action="comment-send" type="button" class="btn btn-link btn-sm mb-0" value="Отправить"/></div>'
     $('#comment-answer-' + initial).html(html)
+    autosize($('#comment-answer-' + initial).find('textarea[data-type="data-form"]'));
 })
 
 

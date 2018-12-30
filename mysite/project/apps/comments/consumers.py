@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Comment
 from django.template.loader import render_to_string
 from asgiref.sync import sync_to_async
+from project.apps.account.models import Profile
 
 class CommentConsumer(AsyncWebsocketConsumer):
 
@@ -41,13 +42,12 @@ class CommentConsumer(AsyncWebsocketConsumer):
             mykwargs['add'] = 'child' if kwargs.get('initial_comment_id') else 'new'
             mykwargs['comment_id'] = comment_id
             mykwargs['author'] = self.scope['user'].username
-            print(kwargs)
             await self.channel_layer.group_send(self.group,
                                           {'type': 'send_comment',
                                               'kwargs': mykwargs})
     async def send_comment(self, event):
         kwargs = event['kwargs']
-        kwargs.update({'create_data': timezone.now(), 'user': self.scope['user']})
+        kwargs.update({'create_data': timezone.now(), 'user': self.scope['user'], 'is_active': True})
         if kwargs['add'] == 'child':
             html = await sync_to_async(render_to_string)('comments/comment.html', kwargs)
         else:

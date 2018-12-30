@@ -13,18 +13,19 @@ $(document).on('click', '[data-action="user-subscribe"]', function() {
         },
         complete: function() {
                 ready = true // теперь может вызываться следующий ajax
-        }
-    }).success(function(data) {
-          if (data.add == true) {
-                subscribe.removeClass( "btn-danger" ).addClass( "btn-success" );
-                subscribe.text('Unsubscribe')
-                $('#count-followers').text(data.count)
-          }
-          else {
-                subscribe.removeClass( "btn-success" ).addClass( "btn-danger" );
-                subscribe.text('Subscribe')
-                $('#count-followers').text(data.count)
-          }
+        },
+        success: function(data) {
+                if (data.add == true) {
+                    subscribe.removeClass( "btn-danger" ).addClass( "btn-success" );
+                    subscribe.text('Unsubscribe')
+                    $('#count-followers').text(data.count)
+            }
+            else {
+                    subscribe.removeClass( "btn-success" ).addClass( "btn-danger" );
+                    subscribe.text('Subscribe')
+                    $('#count-followers').text(data.count)
+             }
+         },
     })
     }
 });

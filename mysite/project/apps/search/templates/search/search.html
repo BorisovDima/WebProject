@@ -1,0 +1,68 @@
+{% extends "blog/MainPage.html" %}
+{% load blog_tags %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
+
+{% load_navbar user %}
+
+<div class="container-fluid bg-light">
+    <div class="row">
+         <div class="col">
+             <ul class="nav nav-tabs">
+                 <li class="nav-item px-2 border-bottom">
+                     <div class="input-group-append">
+                         <button class="btn border-0 bg-light pb-0" disabled><img src="{% static 'blog/img/search_icon.png' %}" width="20" height="20"></button>
+                         <input maxlength="50" type="text" id="search-q" class="text-dark border-0 bg-light mb-0 pb-0 my_link" value="{{ search }}">
+                     </div>
+                 </li>
+             </ul>
+         </div>
+    </div>
+
+<div class="row pl-5">
+    <div class="col">
+
+    <ul class="nav nav-tabs border-0">
+      <li class="nav-item px-2">
+        <a class="my_link my_active" data-type="posts-search" data-action="ajax-paginate-btn">Posts</a>
+      </li>
+        <li class="nav-item px-2">
+        <a class="my_link" data-type="people-search" data-action="ajax-paginate-btn">People</a>
+      </li>
+      <li class="nav-item px-2 ">
+        <a class="my_link text-muted" >Community</a>
+      </li>
+    </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block body %}
+<div id="add-loader">
+
+</div>
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block buttom %}
+<input id="location" value="{{ location }}" type="hidden">
+<script src="{% static 'search/js/main_search.js' %}"></script>
+<script src="{% static 'ajax_utils/js/delete.js' %}"> </script>
+<script src="{% static 'like_dislike/js/like.js' %}"></script>
+<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
+
+{% endblock %}
+
+{% block additional %}
+{% endblock %}

@@ -1,43 +1,28 @@
 {% load humanize %}
 {% load static %}
-{% load account_tags %}
+{% load comment_tags %}
 
 <div class="card border-0" id="comment-{{ comment_id }}">
 
-
+    {% if is_active %}
     <ul class="list-inline mb-0">
         <li class="drop-left">
+            <button class="btn-outline-light border-0 dropdown-toggle  float-right" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{% static 'blog/img/images.png' %}" width="20" height="20">
+            </button>
+
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% if del %}
-                <button type="button" class="close float-right" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}" title="Удалить">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+            <a class="dropdown-item btn" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}">Удалить</a>
+            {% endif %}
+        </div>
+
+            {% if parent_id %}
+                {% get_comm_img comment_id parent_id %}
+            {% else %}
+                {% get_comm_img comment_id %}
             {% endif %}
 
-
-            <ul class="nav ml-2 pb-1  pt-0">
-              <li class="nav-item pt-0">
-                    <div class="card-avatar mt-0">
-                        <a href="{{ author_profile.get_absolute_url }}"><img class="personPhoto" src="{% user_image author_profile 't' %}"></a>
-                    </div>
-              </li>
-               <li class="nav-item">
-                    <a class="nav-link pl-2 pr-2 pb-1" href="{{ author_profile.get_absolute_url }}" style="font-size: 14px;">{{ author_profile.name}} </a>
-               </li>
-                {% if parent_id %}
-                <li class="nav-item">
-                    {% if parent_active %}
-                    <a data-action="parent-color"  data-id="{{ parent_id }}" class="nav-link text-info" href="{{ parent_profile.get_absolute_url }}" style="font-size: 13px;"> ответил {{ parent_profile.name }}</a>
-                    {% else %}
-                        <a class="nav-link text-muted" style="font-size: 13px;"> ответил {{ parent_profile.name }}</a>
-                    {% endif %}
-                </li>
-                <li class="nav-item">
-                    <div class="card-avatar_to mt-0">
-                        <a href="{{ parent_profile.get_absolute_url }}"><img class="personPhoto_to" src="{% user_image parent_profile 't' %}"></a>
-                    </div>
-                </li>
-                {% endif %}
-            </ul>
         </li>
     </ul>
 
@@ -56,6 +41,17 @@
              </li>
         </ul>
     </div>
+    {% else %}
+        <div class="card-body pb-0">
+    <h5 class="card-title text-info">Комментарий удален</h5>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a  class="nav-link text-muted pt-0"  style="font-size: 12px"> {{ create_data | naturaltime }}</a>
+                </li>
+        </ul>
+
+        </div>
+    {% endif %}
 </div>
 
 

@@ -13,6 +13,7 @@ from django.utils import timezone
 
 @register.simple_tag
 def user_online(user):
+    print(user)
     if ((timezone.now() - user.last_activity).total_seconds() // 60) < 10:
         return format_html('<a class="text-info">Online</a>')
     else:

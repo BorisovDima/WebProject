@@ -82,6 +82,7 @@ class ResetPass(AjaxMixin, PasswordResetView):
     html_email_template_name = 'back_task/reset_mail.html'
     form_class = MyPasswordResetForm
 
+
     def get(self, req, *args, **kwargs): raise Http404
 
     def get_data(self, form):

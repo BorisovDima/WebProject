@@ -1,12 +1,15 @@
 {% load static %}
+<script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
 
  <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comment.css' %}">
+
 <div class="modal fade" id="detail-post-container" tabindex="-1" role="dialog" aria-labelledby="detail-post-container" aria-hidden="true">
-  <div class="modal-dialog modal-lg w-50" role="document">
+  <div class="modal-dialog modal-lg w-50  modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body pt-1 pb-0" id="detail-post-container-body">
       </div>
-
+        <div id="footer-post-container-body">
+      </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12" style="background-color: #ffffff">
@@ -14,7 +17,7 @@
                     <div class="form-group mt-2">
                         {{ form_comment.text }}
                         <input type="hidden" value="">
-                        <input data-action="comment-send" type="button" class="btn btn-danger" value="Отправить"/>
+                        <input data-action="comment-send" type="button" class="btn btn-link" value="Отправить"/>
                     </div>
                 {% endif %}
                  <hr class="pb-0 mb-0">

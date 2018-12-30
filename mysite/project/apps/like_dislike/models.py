@@ -13,7 +13,14 @@ Like:ForeingK
                        Comment
 """
 class BaseLike(models.Model):
+
+    types = (('A', 'article',),
+             ('C', 'comments'),
+             ('U', 'user'),
+             ('Com', 'community'))
+
     data = models.DateTimeField(default=timezone.now)
+    type = models.CharField(choices=types, max_length=30)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()

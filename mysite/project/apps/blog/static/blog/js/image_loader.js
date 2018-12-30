@@ -53,8 +53,7 @@ $('#send-form-post').on('click', function() {
     var formData = new FormData();
     formData.append("text", text);
     formData.append("image", img);
-    console.log(formData);
-
+    formData.append("path", window.location.pathname);
     $.ajax({
         url: '/create-post/',
         method: 'POST',
@@ -62,6 +61,9 @@ $('#send-form-post').on('click', function() {
         processData: false,
         contentType: false,
         success: function(data) {
+            if (data.add) {
+                $('#add-loader').prepend(data.post)
+            }
             $('#content-creation-post').hide()
             $('#post-create-success').html(data.html)
             setTimeout(function () {

@@ -42,6 +42,9 @@ class Comment(models.Model):
         self.is_active = True
         self.save(update_fields=['is_active'])
 
+    def check_child(self):
+        return self.initial_comment_set.filter(is_active=True).count() > 0
+
     class Meta:
         ordering = ['-id']
 

@@ -33,29 +33,29 @@ $.extend( proto, {
 })( jQuery );
 
 
-$("#id_input").on('keyup', function(){
+$("#id_input").on('keyup', function(e){
         var value = $(this).val();
-        $.ajax({
-            url: '/api/autocomplete/',
-            data: {
-              'value': value
-            },
-            dataType: 'json',
-         }).success(function (data) {
-
-                list = data.list;
-                $("#id_input").autocomplete({
-                    source: list,
-                    minLength: 2,
-                    html: 'html',
-                    open: function( event, ui ) {
-                        $('#ui-id-1').css('top', '+=6vh')
-                      },
-                    select: function( event, ui ) {
-                        login = ui.item['login']
-                        $("#form-search").html('<input class="form-control mr-sm-2 pr-5">')
-                        window.location.pathname = '/profile/' + login + '/'
-                    },
-                })
-          });
+        if (value && e.which == 13) {
+            window.location.replace('/search/posts/?q=' + value );
+        }
+        else {
+            $.ajax({
+                url: '/api/autocomplete/',
+                data: {'value': value},
+                dataType: 'json',
+                success: function (data) {
+                    list = data.list;
+                    $("#id_input").autocomplete({
+                        source: list,
+                        minLength: 2,
+                        html: 'html',
+                        select: function( event, ui ) {
+                            login = ui.item['login']
+                            $("#form-search").html('<input class="form-control mr-sm-2 pr-5">')
+                            window.location.pathname = '/profile/' + login + '/'
+                        },
+                    })
+                }
+            })
+        }
 });

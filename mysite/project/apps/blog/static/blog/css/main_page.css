@@ -40,3 +40,19 @@
     overflow: hidden;
     border: 2px solid #fff;
 }
+
+.my_link {
+ font-size: 20px;
+font-weight: 700;
+
+cursor: pointer;
+color: white;
+display: inline-block;
+line-height: unset;
+margin-right: 0px;
+padding: 15px 12px 12px;
+}
+
+.my_active {
+    border-bottom: 5px solid red;
+}

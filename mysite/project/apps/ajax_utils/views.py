@@ -5,7 +5,8 @@ from django.conf import settings
 from django.db.models import Count
 from project.apps.blog.models import Community
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.db.models import Q
+from project.apps.like_dislike.models import Subscribe
 
 class Loader_sorted(View):
     template_name = None # Указывается в urls.py
@@ -24,6 +25,7 @@ class Loader_sorted(View):
             count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Community.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
             objs, since = self.hot(params, count)
         elif sort == 'search': objs, since = self.search()
+        elif sort == 'home': objs, since = self.home(req)
         else: objs, since = self.all(params)
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, self.request),
@@ -40,12 +42,14 @@ class Loader_sorted(View):
         objs = self.model.objects.filter(**{self.sorted_kwargs['field']: self.request.GET.get('search')})
         if self.sorted_kwargs.get('option') == 'new':
             return self.return_objs(objs, 'id', 'id__lt')
-        return self.return_objs(objs.annotate(count=Count('my_followers')).order_by('-count'),
-                                                                        'count', 'count__lt')
+        return self.return_objs(objs.annotate(count=
+                                              Count(self.sorted_kwargs['top_field'])).
+                                              order_by('-count'),
+                                             'count', 'count__lt')
 
     def top(self, params):
-        objects = self.model.objects.filter(**params).exclude(rating=0).order_by('rating')
-        return self.return_objs(objects, 'rating', 'rating__gt')
+        objects = self.model.objects.filter(**params).annotate(v=Count('views')).order_by('-v')
+        return self.return_objs(objects, 'v', 'v__lt')
 
     def hot(self, params, count):
         objects = self.model.objects.filter(**params)
@@ -57,32 +61,14 @@ class Loader_sorted(View):
         return self.return_objs(objects, 'id', 'id__lt')
 
 
-
-
-
-
-from django.db.models import Q
-from project.apps.like_dislike.models import Subscribe
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.auth import get_user_model
-
-class Loader_home(Loader_sorted):
-    def get(self, req, **kwargs):
-        since = req.GET.get('since')
+    def home(self, req):
         subs = Subscribe.objects.filter(user=req.user)
-        community = ContentType.objects.get_for_model(Community)
-        user = ContentType.objects.get_for_model(get_user_model())
-        objects = self.model.objects.filter(Q(author__id__in=subs.filter(content_type=user).values('object_id'))
-                                           |Q(community__id__in=subs.filter(content_type=community).values('object_id'))
-                                            ,is_active = True)
+        objects = self.model.objects.filter(Q(author__id__in=subs.filter(type='U').values('object_id'))
+                                            | Q(community__id__in=subs.filter(type='Com').values('object_id'))
+                                            , is_active=True)
+        return self.return_objs(objects, 'id', 'id__lt')
 
-        if since:
-            objects = objects.filter(id__lt=since)
-        objs = list(objects[:self.paginate])
-        if not objs: return JsonResponse({'status': 'end'})
-        return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, self.request),
-                             'since': objs[-1].id,
-                             'status': 'ok'})
+
 
 class Loader_dialogs(LoginRequiredMixin, Loader_sorted):
 

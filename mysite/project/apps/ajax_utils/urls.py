@@ -30,14 +30,16 @@ urlpatterns = [
                                              paginate=10,
                                              sorted_kwargs={'sorted': 'search',
                                                             'option': 'top',
-                                                            'field': 'username__icontains',}),
+                                                            'field': 'username__icontains',
+                                                            'top_field': 'my_followers'}),
                                                                 name='usr_loader'),
 
     path('load/m/communities/', views.Loader_sorted.as_view(model=Community,
                                                                          template_name='blog/communities.html',
                                                                          sorted_kwargs={'field': 'name__icontains',
                                                                                         'sorted': 'search',
-                                                                                        'option': 'top',},
+                                                                                        'option': 'top',
+                                                                                        'top_field': 'my_followers'},
                                                                          paginate=10), name='communities'),
 
 
@@ -47,7 +49,8 @@ urlpatterns = [
                                              paginate=10,
                                              sorted_kwargs={'sorted': 'search',
                                                             'option': 'top',
-                                                            'field': 'username__icontains',}),
+                                                            'field': 'username__icontains',
+                                                            'top_field': 'my_followers'}),
                                                                 name='usr_loader-top'),
 
     path('load/m/people/search-new/', views.Loader_sorted.as_view(model=get_user_model(),
@@ -59,8 +62,6 @@ urlpatterns = [
                                                                           name='usr_loader-new'),
 
 
-
-
     path('load/m/community-search/', views.Loader_sorted.as_view(model=Community,
                                                                          template_name='blog/communities.html',
                                                                          sorted_kwargs={'field': 'name__icontains',
@@ -68,27 +69,26 @@ urlpatterns = [
                                                                          paginate=10), name='communities-search'),
 
 
-    ###
-    path('load/community/<slug:key>/top/', views.Loader_sorted.as_view(model=Article,
-                                                            template_name='blog/articles.html',
-                                                            sorted_kwargs={'field': 'community__name',
-                                                                            'sorted': 'top'}),
-                                                            name='art_loader-top'),
 
-    path('load/community/<slug:key>/all/', views.Loader_sorted.as_view(model=Article,
-                                                             template_name='blog/articles.html',
-                                                             sorted_kwargs={'field': 'community__name',
-                                                                            'sorted': 'all'}),
-                                                             name='art_loader-all'),
+   # path('load/community/<slug:key>/top/', views.Loader_sorted.as_view(model=Article,
+                                                           # template_name='blog/articles.html',
+                                                           # sorted_kwargs={'field': 'community__name',
+                                                          #                  'sorted': 'top'}),
+                                                           # name='art_loader-top'),
 
-    path('load/community/<slug:key>/hot/', views.Loader_sorted.as_view(model=Article,
-                                                             template_name='blog/articles.html',
-                                                             sorted_kwargs={'field': 'community__name',
-                                                                            'sorted': 'hot'}),
-                                                             name='art_loader-hot'),
+   # path('load/community/<slug:key>/all/', views.Loader_sorted.as_view(model=Article,
+                                                           #  template_name='blog/articles.html',
+                                                          #   sorted_kwargs={'field': 'community__name',
+                                                          #                  'sorted': 'all'}),
+                                                          #   name='art_loader-all'),
+
+   # path('load/community/<slug:key>/hot/', views.Loader_sorted.as_view(model=Article,
+                                                         #    template_name='blog/articles.html',
+                                                         #    sorted_kwargs={'field': 'community__name',
+                                                         #                   'sorted': 'hot'}),
+                                                         #    name='art_loader-hot'),
 
 
-###
 
 
 
@@ -122,9 +122,11 @@ urlpatterns = [
 
 
 
-    path('load/home/', views.Loader_home.as_view(model=Article,
+    path('load/home/', views.Loader_sorted.as_view(model=Article,
                                                 template_name='blog/articles.html',
-                                                paginate=15), name='home-feed'),
+                                                paginate=15,
+                                                sorted_kwargs={'sorted': 'home'}),
+                                                name='home-feed'),
 
 
 
@@ -137,6 +139,24 @@ urlpatterns = [
                                                      paginate=5,), name='notify-loader'),
 
     path('post/comments/<int:key>/', views.Loader_comments.as_view(model=Comment,
-                                                                template_name='comments/comments.html'))
+                                                                template_name='comments/comments.html')),
+
+    path('load/posts-search/', views.Loader_sorted.as_view(model=Article,
+                                                        template_name='blog/articles.html',
+                                                        sorted_kwargs={'sorted': 'search',
+                                                                    'option': 'top',
+                                                                    'field': 'text__icontains',
+                                                                    'top_field': 'views'},
+                                                           )),
+
+    path('load/people-search/', views.Loader_sorted.as_view(model=get_user_model(),
+                                                        template_name='blog/users.html',
+                                                        sorted_kwargs={'sorted': 'search',
+                                                                    'option': 'top',
+                                                                    'field': 'username__icontains',
+                                                                    'top_field': 'my_followers'},
+                                                            ))
+
+
 
 ]

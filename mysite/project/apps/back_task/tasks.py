@@ -14,7 +14,7 @@ logger = logging.getLogger()
 @shared_task
 def send_verify(uuid, email, name):
     html_mail = render_to_string('back_task/mail_registr.html',
-                                 {'link': 'http://localhost%s' %  reverse('account:verify',
+                                 {'link': 'http://localhost%s' %  reverse('myauth:verify',
                                                                             kwargs={'uuid': uuid})})
     text_mail = 'Follow this link to verify your account:'
     msg = EmailMultiAlternatives('Verify your account %s ' % name, text_mail, 'sup.raychan@mail.ru', [email])

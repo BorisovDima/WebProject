@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'project.apps.search',
     'project.apps.myauth',
     'captcha',    #
     'django_countries', #
