@@ -3,10 +3,7 @@
 {% load static %}
 
 {% block head %}
-
 {% load_navbar user  %}
-
-
 {% endblock %}
 
 
@@ -15,32 +12,18 @@
 <div id="add-loader">
 
 </div>
-
-
 {% endblock %}
 
 
 {% block sidebar %}
-
-
-<div class="card" style="width: 18rem;">
-
-   </div>
-
-
-
-<div class="card" style="width: 18rem;">
-
-
+<div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
+{% home_sidebar user %}
 </div>
-
-
-
-
 {% endblock %}
 
-{% block buttom %}
 
+
+{% block buttom %}
 <input id="location" value="{{ location }}" type="hidden">
 <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
 <script src="{% static 'like_dislike/js/like.js' %}"></script>

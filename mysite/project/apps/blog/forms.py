@@ -29,42 +29,42 @@ class BaseCreateForm(ModelForm):
         return self.cleaned_data['image']
 
 
-class CreateArticleForm(BaseCreateForm):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['title'].widget = widgets.Textarea(attrs={'Class': 'form-control',
-                                                              'rows': 6, 'style':
-                                                              'resize:none; font-size: 14px',
-                                                              'placeholder': 'Title'})
-
-        self.fields['text'].widget = widgets.Textarea(attrs={'Class': 'form-control',
-                                                              'rows': 11, 'style':
-                                                              'resize:none; font-size: 14px',
-                                                               'placeholder': 'Body'})
-
-        self.fields['community'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
-        self.fields['tags'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
-        self.fields['community'].empty_label = 'Choice category...'
-
-
-    def clean_title(self):
-        title = self.cleaned_data.get('title')
-        if not title or len(title) < 50:
-            raise ValidationError('Not Title')
-        title = replacer(title, 44)
-        return title
-
-    def clean_text(self):
-        text = self.cleaned_data.get('text')
-        if not text or len(text) < 100:
-            raise ValidationError('Not Text')
-        return super().clean_text()
-
-
-    class Meta:
-        model = Article
-        fields = ['title', 'text', 'community', 'tags', 'image', 'status']
+#class CreateArticleForm(BaseCreateForm):
+#
+#    def __init__(self, *args, **kwargs):
+#        super().__init__(*args, **kwargs)
+#        self.fields['title'].widget = widgets.Textarea(attrs={'Class': 'form-control',
+#                                                              'rows': 6, 'style':
+#                                                              'resize:none; font-size: 14px',
+#                                                              'placeholder': 'Title'})
+#
+#        self.fields['text'].widget = widgets.Textarea(attrs={'Class': 'form-control',
+#                                                              'rows': 11, 'style':
+#                                                              'resize:none; font-size: 14px',
+#                                                               'placeholder': 'Body'})
+#
+#        self.fields['community'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
+ #       self.fields['tags'].widget.attrs.update({'Class': 'custom-select my-1 mr-sm-2'})
+ #       self.fields['community'].empty_label = 'Choice category...'
+#
+#
+#    def clean_title(self):
+#        title = self.cleaned_data.get('title')
+#        if not title or len(title) < 50:
+#            raise ValidationError('Not Title')
+#        title = replacer(title, 44)
+#        return title
+#
+#    def clean_text(self):
+#        text = self.cleaned_data.get('text')
+#        if not text or len(text) < 100:
+#            raise ValidationError('Not Text')
+#        return super().clean_text()
+#
+#
+#    class Meta:
+ #       model = Article
+#        fields = ['title', 'text', 'community', 'tags', 'image', 'status']
 
 
 
@@ -99,6 +99,8 @@ class CreatePostForm(BaseCreateForm):
     class Meta:
         model = Article
         fields = ['text', 'community', 'tags', 'image', 'status']
+
+
 
 
 

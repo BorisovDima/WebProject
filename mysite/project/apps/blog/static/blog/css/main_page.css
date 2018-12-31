@@ -10,15 +10,15 @@
 
 
 .personPhoto {
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     background: #fff
 }
 
 
 .card-avatar {
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     border-radius: 50%;
     margin-top: -60px;
     overflow: hidden;

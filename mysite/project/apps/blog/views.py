@@ -1,13 +1,13 @@
 from django.template.loader import render_to_string
 from django.views.generic import CreateView, DetailView, TemplateView
-from .models import Article, Community
+from .models import Article
 from project.apps.account.mixins import AjaxMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.urls import reverse
 
-class MainPage(LoginRequiredMixin, TemplateView):
 
+class MainPage(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         self.template_name = self.kwargs['template_name']
@@ -31,7 +31,6 @@ class CreateArticle(LoginRequiredMixin, AjaxMixin, CreateView):
     def get_data(self, form):
         context = {'html': render_to_string('blog/publish.html'), 'add': False}
         user_home = reverse('account:profile', kwargs={'login': self.request.user.username})
-        print(user_home, self.path)
         if user_home == self.path:
             context.update({'post': render_to_string('blog/articles.html',
                                                      {'objs': (self.object,)},
@@ -41,7 +40,9 @@ class CreateArticle(LoginRequiredMixin, AjaxMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        form.instance.set_tags()
+        return response
 
 
 from django.http import JsonResponse

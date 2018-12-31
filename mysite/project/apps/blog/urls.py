@@ -1,7 +1,7 @@
-from django.urls import path, register_converter
+from django.urls import path
 from . import views
 from .models import  Article, Community
-from .forms import CreatePostForm, CreateArticleForm, CreateCommunityForm
+from .forms import CreatePostForm, CreateCommunityForm
 from django.views.generic import RedirectView
 from project.apps.account.models import Profile
 

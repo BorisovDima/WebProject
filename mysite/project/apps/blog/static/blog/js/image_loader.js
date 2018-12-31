@@ -28,6 +28,7 @@ function close_file_choice(input) {
     $('#image-load-post')
         .attr('src', '')
      $('#wrapper-image-load-post').hide()
+     $('#navbar-create_post_form').val('')
     show_submit()
 }
 
@@ -49,11 +50,11 @@ function show_submit() {
 $('#send-form-post').on('click', function() {
     var img = $('#image-post-input').prop('files')[0];
     var text = $("textarea[id='navbar-create_post_form']").val();
-    console.log(img, text);
     var formData = new FormData();
     formData.append("text", text);
     formData.append("image", img);
     formData.append("path", window.location.pathname);
+    $('#send-form-post').hide()
     $.ajax({
         url: '/create-post/',
         method: 'POST',
@@ -73,11 +74,18 @@ $('#send-form-post').on('click', function() {
             }, 1500);
             close_file_choice()
        },
-        fail: function(data) {
-            errors = JSON.parse(data.responseText)
-            console.log(errors)
-            close_file_choice()
-        }
+        error: function(data) {
+            if (data.status == 400) {
+                errors = JSON.parse(data.responseText)
+                $("#post-create-error-img").text(errors['image'] || '')
+                $("#post-create-error-text").text(errors['text'] || '')
+                setTimeout(function () {
+                    $("#post-create-error-img").text('')
+                    $("#post-create-error-text").text('')
+                    }, 1500);
+                close_file_choice()
+            }
+        },
     })
 
 })

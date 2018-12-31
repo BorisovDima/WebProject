@@ -34,8 +34,8 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['about_me', 'date_of_birth', 'current_city', 'user_name', 'image', 'head']
-        widgets = {'current_city': CountrySelectWidget()}
+        fields = ['about_me', 'date_of_birth', 'country', 'user_name', 'image', 'head']
+        widgets = {'country': CountrySelectWidget(attrs={'class': 'border-0 custom-select shadow-none'})}
 
 
 
@@ -49,7 +49,8 @@ class BaseUserPhotoForm(forms.ModelForm):
     def check_image(self, image):
         print(getattr(image, 'image', None), '----')
         if getattr(image, 'image', None):
-            if image.size > (1000 * 1000):
+            print(image.size)
+            if image.size > (2000 * 1000):
                 raise forms.ValidationError('Максимальный размер файла 1mb')
             file, ext = splitext(image.name.lower())
             if ext not in ('.jpeg', '.jpg', '.png', '.gif'):

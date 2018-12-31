@@ -17,23 +17,22 @@
                         <ul class="list-inline mb-2">
                             <li class="drop-left">
                                 <img class="mr-2 mt-2 rounded-circle" src="{% user_image article.author.profile 't' %}"  width="30" height="30">
-                                <a href="{{ article.author.profile.get_absolute_url }}" class="text-dark pt-2">
-                                <small>{{ article.author.profile.pref_name }}</small></a>
+                                <a href="{{ article.author.profile.get_absolute_url }}" style="font-size: 14px" class="text-dark pt-2">{{ article.author.profile.pref_name }}</a>
                                 {% if article.community %}
                                 <a href="{{ article.community.get_absolute_url }}" class="text-dark"><small>/ {{ article.community }}</small></a>
                                 {% endif %}
                                 <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
                             </li>
                         </ul>
-                        <h6 class="card-text" style="font-size: 15px;" data-type="text-post-body">{{ article.text }}</h6>
+                        <h6 class="card-text" style="font-size: 15px;" data-type="text-post-body">{{ article.text|hashtags }}</h6>
                         {% if  article.image %}
                         <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
                         {% endif %}
+                        <hr class="mb-1 pt-1 mx-2">
                     </div>
                 </div>
 
                 <div data-type="post-footer-body">
-                    <hr class="pb-0 mx-2">
                     <ul class="nav">
                         <li class="nav-item">
                             <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">

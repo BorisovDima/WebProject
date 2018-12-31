@@ -53,7 +53,7 @@
     {% endblock %}
 
         <div class="container-fluid">
-            <div class="row text-left mt-1">
+            <div class="row text-left mt-1 mb-5 pb-5">
                 <div class="col-lg-6  offset-md-1 ">
                     {% block body %}
                     <div id="add-loader">
@@ -64,7 +64,7 @@
 
                     {% block sidebar %}
                     <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
-                        <div class="card" style="width: 18rem; display:none" id="search-main" >
+                        <div class="card mb-4" style="width: 18rem; display:none" id="search-main" >
                             <div class="card-body text-center pl-1">
 
                         <select class="custom-select custom-select-sm" data-action="choice-sort">
@@ -81,7 +81,7 @@
                             </div>
                          </div>
                         </div>
-                        {% top_communities user %}
+                        {% top_tags %}
                     </div>
                     {% endblock %}
                 </div>

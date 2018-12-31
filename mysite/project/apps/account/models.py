@@ -42,7 +42,7 @@ class Profile(models.Model):
      user_name = models.CharField(max_length=40, null=True, blank=True)
      name = models.SlugField(allow_unicode=True, unique=True, max_length=255)
      date_of_birth = models.DateTimeField(null=True, blank=True)
-     current_city = CountryField(null=True, blank=True)
+     country = CountryField(null=True, blank=True)
      about_me = models.CharField(max_length=120, null=True, blank=True)
      image = models.ImageField(upload_to='user_img/', null=True, blank=True)
      thumbnail = models.ImageField(upload_to='user_img/thumbnails/', null=True, blank=True)
@@ -80,4 +80,5 @@ class Profile(models.Model):
 
      class Meta:
           ordering = ['-id']
+
 

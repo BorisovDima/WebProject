@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, IntegrityError
 from django.utils import timezone
 from project.apps.like_dislike.models import Like, Subscribe
 from django.conf import settings
@@ -6,6 +6,8 @@ from django.urls import reverse
 from .utils import make_thumbnail
 from project.apps.like_dislike.models import Subscribe
 from django.contrib.contenttypes.fields import GenericRelation
+from os.path import splitext
+
 
 class BaseArticle(models.Model):
     create_data = models.DateTimeField(default=timezone.now)
@@ -19,7 +21,11 @@ class BaseArticle(models.Model):
 
     def save(self,  *args, **kwargs):
         if self.image:
-            make_thumbnail(self.image, (self.max_width, self.max_height))
+            text, ex = splitext(self.image.name.lower())
+            print(ex)
+            if ex != '.gif':
+                print('NE GIF')
+                make_thumbnail(self.image, (self.max_width, self.max_height))
         return super().save(*args, **kwargs)
 
 
@@ -36,9 +42,24 @@ class BaseArticle(models.Model):
         abstract = True
 
 
+class TagManger(models.Manager):
 
-class Tag(BaseArticle):
-    name = models.CharField(max_length=124, unique=True, db_index=True)
+    def top_tags(self):
+        return self.annotate(sort=models.Count('article')).order_by('-sort')[:10]
+
+
+class Tag(models.Model):
+    create_data = models.DateTimeField(default=timezone.now)
+    name = models.CharField(max_length=44, unique=True)
+
+    objects = TagManger()
+
+    def popular(self):
+        return self.article_set.count()
+
+    def __str__(self):
+        return self.name
+
 
 class CommunityManager(models.Manager):
     pass
@@ -79,6 +100,10 @@ class ArticleManager(models.Manager):
     def get_last_rating(self):
         return self.order_by('-rating').last()
 
+
+from .utils import do_hashtags
+
+
 class Article(BaseArticle):
 
     max_width = settings.MAX_WIDTH_IMG
@@ -104,6 +129,12 @@ class Article(BaseArticle):
     def viewed(self, user):
         if not self.views.filter(username=user.username).exists():
             self.views.add(user)
+
+    def set_tags(self):
+        if self.text:
+            for hashtag in do_hashtags(self.text):
+                tag, stat = Tag.objects.get_or_create(name=hashtag, defaults={'name': hashtag})
+                self.tags.add(tag)
 
 
     class Meta:

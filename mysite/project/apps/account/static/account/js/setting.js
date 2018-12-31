@@ -22,14 +22,16 @@ $('[data-action="change-settings"]').on('click', function() {
 
             }
         },
-        fail: function(data) {
-            data = JSON.parse(data.responseText)
-            $('#old_password-error').text(data['old_password'] || '')
-            $('#new_password1-error').text(data['new_password1'] || '')
-            $('#new_password2-error').text(data['new_password2'] || '')
-            $('#email-error').text(data['email'] || '')
-            $(this).show()
-            $('[data-action="change-settings"]').show()
+        error: function(data) {
+            if (data.status == 400) {
+                data = JSON.parse(data.responseText)
+                $('#old_password-error').text(data['old_password'] || '')
+                $('#new_password1-error').text(data['new_password1'] || '')
+                $('#new_password2-error').text(data['new_password2'] || '')
+                $('#email-error').text(data['email'] || '')
+                $(this).show()
+                $('[data-action="change-settings"]').show()
+            }
         }
     })
 })

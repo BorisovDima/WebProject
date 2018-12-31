@@ -1,5 +1,5 @@
 from django import template
-from project.apps.blog.models import Community
+from project.apps.blog.models import Community, Tag
 from project.apps.blog.forms import CreatePostForm, MAX_LENGTH_POST
 from django.utils.text import mark_safe
 from django.urls import reverse
@@ -58,4 +58,52 @@ from project.apps.comments.forms import CommentForm
 @register.inclusion_tag('tag/post.html')
 def detail_post(user):
     return {'user': user, 'form_comment': CommentForm()}
+
+@register.inclusion_tag('tag/post.html')
+def home_sidebar(user):
+    return {'user': user, 'form_comment': CommentForm()}
+
+from django.template.defaultfilters import stringfilter
+from project.apps.blog.utils import hashtag_pattern
+import re
+
+from django.utils.html import conditional_escape
+
+@register.filter(needs_autoescape=True)
+@stringfilter
+def hashtags(text, autoescape=True):
+    text = conditional_escape(text)
+    call = lambda a: '<a href="' + reverse('search:search-posts') + \
+                     '?q=' + a.group(1) + '">' + a.group(0) + '</a>'
+    resp = mark_safe(hashtag_pattern.sub(call, text))
+    return resp
+
+@register.inclusion_tag('tag/tags.html')
+def top_tags():
+    return {'tags': Tag.objects.top_tags() }
+
+import random
+from django.contrib.auth import get_user_model
+
+from project.apps.like_dislike.models import Subscribe
+
+
+@register.inclusion_tag('tag/home_sidebar.html')
+def home_sidebar(user):
+    users, model = [], get_user_model()
+    follow = model.objects.filter(my_followers__user=user)
+    for f in follow.annotate(sort=Count('my_followers')).order_by('-sort'):
+        fol = Subscribe.objects.filter(user=f, type='U').exclude(object_id=user.id)
+        if fol: users.append(random.choice(fol).content_object)
+        if len(users) > 8:
+            return {'users': users}
+    location = user.profile.country
+    for m in model.objects.filter(
+            profile__country=location).annotate(sort=Count('my_followers')).order_by('-sort').exclude(id=user.id):
+        users.append(m)
+        if len(users) > 8:
+            break
+    return {'users': users}
+
+
 

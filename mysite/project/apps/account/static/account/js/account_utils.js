@@ -29,7 +29,7 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                 minCropW =  250
                 }
                 else {
-                ratio =  30/9
+                ratio =  34/9
                 minCropH =  200
                 minCropW =  1200
             }
@@ -65,17 +65,20 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                         success: function(data){
                             location.reload()
                         },
-                        fail: function(data) {
-                            html = '<h5 class="text-danger" data-type="error-image"></h5>'
-                            $('#container-' +  type).html(html)
-                            data = JSON.parse(data.responseText)
-                            if (data['image']) {
-                                $('[data-type="error-image"]').text(data['image'])
+                        error: function(data) {
+                            if (data.status == 400) {
+                                html = '<h5 class="text-danger" data-type="error-image"></h5>'
+                                $('#container-' +  type).html(html)
+                                data = JSON.parse(data.responseText)
+                                if (data['image']) {
+                                    $('[data-type="error-image"]').text(data['image'])
+                                }
+                                else {
+                                    $('[data-type="error-image"]').text(data['head'])
+                                }
                             }
-                            else {
-                                $('[data-type="error-image"]').text(data['head'])
-                            }
-                        }
+                        },
+
                     })
 
                 }

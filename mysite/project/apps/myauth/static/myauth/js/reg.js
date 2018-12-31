@@ -18,14 +18,16 @@ $(document).ready(function(){
             console.log(data)
             $('#registration-body-modal').html(data.html)
         },
-        fail: function(data){
-            data = JSON.parse(data.responseText)
-            $('#error-username').text(data['username'] || '')
-            $('#error-password1').text(data['password1'] || '')
-            $('#error-password2').text(data['password2'] || '')
-            $('#error-email').text(data['email'] || '')
-            $('#error-captcha').text(data['captcha'] || '')
-            $('#btn-registr').show()
+        error: function(data){
+            if (data.status == 400) {
+                data = JSON.parse(data.responseText)
+                $('#error-username').text(data['username'] || '')
+                $('#error-password1').text(data['password1'] || '')
+                $('#error-password2').text(data['password2'] || '')
+                $('#error-email').text(data['email'] || '')
+                $('#error-captcha').text(data['captcha'] || '')
+                $('#btn-registr').show()
+            }
         }
 
     })

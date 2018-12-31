@@ -12,12 +12,12 @@
                 <a href="{{ obj.get_absolute_url }}"><img class="personPhoto" src="{% user_image obj.profile 't' %}"></a>
             </div>
         </div>
-
         <div class="card-body pt-2  pr-3 pb-0">
             <a href="{{ obj.get_absolute_url }}"> <h5 class="card-title  pb-0 pt-0 mt-0 mb-1">@{{ obj.username }}</h5></a>
             <ul class="list-inline mb-2">
                 <li class="drop-left">
-                    <p class="text-secondary mb-0 pb-1 pr-2 " style="font-size:12px">{{ obj.my_followers.count|intword }} followers</p>
+                    <a class="text-secondary mb-0 pb-1 pr-2 " style="font-size:12px">{{ obj.my_followers.count|intword }} followers</a>
+                    <strong class="float-right">{% user_online obj %} </strong>
                 </li>
                 <li class="drop-left  mt-0 pt-0">
                     {% if user.is_authenticated %}

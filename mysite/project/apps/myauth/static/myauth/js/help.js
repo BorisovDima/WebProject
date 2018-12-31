@@ -14,10 +14,12 @@ $('#send-activate').on('click', function(){
             text = 'Письмо с ссылкой на активацию было успешно отправленно на вашу почту ' + data.email
             $('#info-success').text(text)
         },
-        fail: function(data){
+        error: function(data){
+            if (data.status == 400) {
             data = JSON.parse(data.responseText)
             $("#error-captcha").text(data['captcha'] || '')
             $("#error-email").text(data['email'] || '')
+            }
         }
     })
 

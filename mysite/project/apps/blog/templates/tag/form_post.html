@@ -34,6 +34,7 @@
 
         <div class="form-group">
     {{ form.text }}
+            <a class="text-danger" id="post-create-error-text"></a>
             <ul class="nav justify-content-left pt-2">
                 <li class="nav-item">
                     <h6 id="count_message">0 </h6>
@@ -47,6 +48,7 @@
         <img id="holder-image-load" class="ml-1 btn-outline-primar" width='35' src="{% static 'blog/img/baseline-add_photo_alternate-24px(3).svg' %}" data-toggle="tooltip" data-placement="top" title="Change image">
         <input type='file' onchange="readURL(this);"  id="image-post-input" name="{{ form.image.html_name }}" style="display:none">
     </label>
+        <a class="text-danger" id="post-create-error-img"></a>
         <button class="btn btn-outline-info" id="send-form-post" style="display:none">Опубликовать</button>
     {% if community %}
     {{ form.community }}

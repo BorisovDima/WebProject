@@ -10,6 +10,7 @@ $(document).ready(function(){
         if(e.which == 13) {
             var value = $(this).val()
             if (value) {
+                $('#add-loader').html('')
                 search_data = value
                 window.history.pushState("", "", window.location.pathname + '?q=' + search_data);
                 start_loader()

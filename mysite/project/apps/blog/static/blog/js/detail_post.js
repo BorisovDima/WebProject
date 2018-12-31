@@ -7,7 +7,13 @@ var since = ''
 var Socket = ''
 var inProgress = ''
 
-$(document).on('click', '[data-action="detail-post"]', function(){
+$(document).on('click', '[data-action="detail-post"]', function(event){
+    if (event.target.nodeName == 'A') {
+        console.log(event.target)
+        window.location.replace(event.target.href);
+        return false
+    }
+    console.log(event.target.nodeName)
     var post = $(this)
     inProgress = true
     var body = post.find('[data-type="detail-post-body"]')

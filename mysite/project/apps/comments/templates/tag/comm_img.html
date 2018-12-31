@@ -2,8 +2,8 @@
 
 <ul class="nav ml-2 pb-1  pt-0">
               <li class="nav-item pt-0">
-                    <div class="card-avatar mt-0">
-                        <a href="{{ author.author.get_absolute_url }}"><img class="personPhoto" src="{% user_image author.author.profile 't' %}"></a>
+                    <div class="card-avatar_com mt-0">
+                        <a href="{{ author.author.get_absolute_url }}"><img class="personPhoto_com" src="{% user_image author.author.profile 't' %}"></a>
                     </div>
               </li>
                <li class="nav-item">
@@ -12,7 +12,7 @@
                 {% if parent %}
                 <li class="nav-item">
                     {% if parent.is_active %}
-                    <a data-action="parent-color"  data-id="{{ parent.id }}" class="nav-link text-info" href="{{ parent.author.get_absolute_url }}" style="font-size: 13px;"> ответил {{ parent.author.username }}</a>
+                    <a data-action="parent-color"  data-id="{{ parent.id }}" class="nav-link text-info" href="#comment-{{ parent.id }}" style="font-size: 13px;"> ответил {{ parent.author.username }}</a>
                     {% else %}
                         <a class="nav-link text-muted" style="font-size: 13px;"> ответил {{ parent.author.username}}</a>
                     {% endif %}

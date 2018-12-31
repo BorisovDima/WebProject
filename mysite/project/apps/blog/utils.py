@@ -27,7 +27,7 @@ def replacer(text, count, bool_=False):
 
 def make_thumbnail(image, size, icon=False):
 
-    file, ex = os.path.splitext(image.name)
+    file, ex = os.path.splitext(image.name.lower())
     if ex in ['.jpg', '.jpeg']: thumb_ex = 'JPEG'
     elif ex == 'GIF': thumb_ex = 'GIF'
     else: thumb_ex = 'PNG'
@@ -54,6 +54,15 @@ def make_thumbnail(image, size, icon=False):
 
     image.save(name, ContentFile(fileobj.read()), save=False)
     fileobj.close()
+
+import re
+hashtag_pattern = re.compile(r'#([\w-]+)')
+
+
+def do_hashtags(text):
+    for hashtag in hashtag_pattern.findall(text):
+        if len(hashtag) < 44:
+            yield hashtag
 
 
 
