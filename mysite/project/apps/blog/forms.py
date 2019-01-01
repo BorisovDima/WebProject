@@ -1,16 +1,10 @@
 from django.forms import ModelForm, widgets, ValidationError
 from .models import Article, Community
 from .utils import replacer
-from PIL import Image
 from os.path import splitext
 
 MAX_LENGTH_POST = 484
 
-MAX_LENGTH_SUB_COMMUNITY = 124
-MAX_LENGTH_NAME_COMMUNITY = 50
-
-MIN_LENGTH_SUB_COMMUNITY = 17
-MIN_LENGTH_NAME_COMMUNITY = 3
 
 class BaseCreateForm(ModelForm):
 
@@ -83,7 +77,6 @@ class CreatePostForm(BaseCreateForm):
         self.fields['community'].widget.attrs.update({'style': 'display:none'})
 
     def clean_text(self):
-
         if len(self.cleaned_data['text']) > MAX_LENGTH_POST:
             raise ValidationError('Very big size')
         return super().clean_text()
@@ -98,63 +91,74 @@ class CreatePostForm(BaseCreateForm):
 
     class Meta:
         model = Article
-        fields = ['text', 'community', 'tags', 'image', 'status']
+        fields = ['text', 'community', 'image']
 
 
-
-
-
-class CreateCommunityForm(BaseCreateForm):
+class UpdatePostForm(CreatePostForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['sub'].widget = widgets.Textarea(attrs={'Class': 'form-control',
-                                                              'rows': 3, 'style':
-                                                              'resize:none; font-size: 14px',
-                                                              'maxlength':MAX_LENGTH_SUB_COMMUNITY,
-                                                              'id': 'create_community_sub_form'})
-        self.fields['sub'].help_text = 'Description: max lenght-' + str(MAX_LENGTH_SUB_COMMUNITY)
-
-        self.fields['name'].widget = widgets.TextInput(attrs={'Class': 'form-control',
-                                                            'style': 'resize:none; font-size: 14px',
-                                                            'maxlength': MAX_LENGTH_NAME_COMMUNITY,
-                                                            'id': 'create_community_name_form'})
-        self.fields['name'].help_text = 'Name community: format <name> or <name>_<name>'
-        self.fields['image'].help_text = 'Choice image: max size 1mb'
+        self.fields['text'].widget = widgets.Textarea(attrs={'Class': 'form-control',
+                                                              'style':
+                                                              'box-shadow: none; resize:none; font-size: 14px',
+                                                              'maxlength': MAX_LENGTH_POST,
+                                                              'id': 'update-post-text',
+                                                               'rows': ''})
 
 
-    def clean_name(self):
 
-        if len(self.cleaned_data['name']) > MAX_LENGTH_NAME_COMMUNITY:
-            raise ValidationError('Max length ' + str(MAX_LENGTH_NAME_COMMUNITY))
+#class CreateCommunityForm(BaseCreateForm):
 
-        if len(self.cleaned_data['name']) < MIN_LENGTH_NAME_COMMUNITY:
-            raise ValidationError('Min length ' + str(MIN_LENGTH_NAME_COMMUNITY))
+#    def __init__(self, *args, **kwargs):
+#        super().__init__(*args, **kwargs)
 
-        if replacer(self.cleaned_data['name'], 20, bool_=True):
-            raise ValidationError('Not valid')
-
-        if ' ' in self.cleaned_data['name']:
-            raise ValidationError('Space character, use only _')
-
-        return self.cleaned_data['name']
-
-
-    def clean_sub(self):
-
-        if len(self.cleaned_data['sub']) > MAX_LENGTH_SUB_COMMUNITY:
-            raise ValidationError('Max length ' + str(MAX_LENGTH_SUB_COMMUNITY))
-
-        if len(self.cleaned_data['sub']) < MIN_LENGTH_SUB_COMMUNITY:
-            raise ValidationError('Min length ' + str(MIN_LENGTH_SUB_COMMUNITY))
-
-        if replacer(self.cleaned_data['sub'], 30, bool_=True):
-            raise ValidationError('Not valid')
-
-        return self.cleaned_data['sub']
-
-
-    class Meta:
-        model = Community
-        fields = ['name', 'sub', 'image']
+#        self.fields['sub'].widget = widgets.Textarea(attrs={'Class': 'form-control',
+#                                                              'rows': 3, 'style':
+#                                                              'resize:none; font-size: 14px',
+#                                                              'maxlength':MAX_LENGTH_SUB_COMMUNITY,
+#                                                              'id': 'create_community_sub_form'})
+#        self.fields['sub'].help_text = 'Description: max lenght-' + str(MAX_LENGTH_SUB_COMMUNITY)
+#
+#        self.fields['name'].widget = widgets.TextInput(attrs={'Class': 'form-control',
+#                                                            'style': 'resize:none; font-size: 14px',
+#                                                            'maxlength': MAX_LENGTH_NAME_COMMUNITY,
+#                                                            'id': 'create_community_name_form'})
+#        self.fields['name'].help_text = 'Name community: format <name> or <name>_<name>'
+#        self.fields['image'].help_text = 'Choice image: max size 1mb'
+#
+#
+#    def clean_name(self):
+#
+#        if len(self.cleaned_data['name']) > MAX_LENGTH_NAME_COMMUNITY:
+#            raise ValidationError('Max length ' + str(MAX_LENGTH_NAME_COMMUNITY))
+#
+ #       if len(self.cleaned_data['name']) < MIN_LENGTH_NAME_COMMUNITY:
+ #           raise ValidationError('Min length ' + str(MIN_LENGTH_NAME_COMMUNITY))
+#
+#        if replacer(self.cleaned_data['name'], 20, bool_=True):
+#            raise ValidationError('Not valid')
+#
+ #       if ' ' in self.cleaned_data['name']:
+ #           raise ValidationError('Space character, use only _')
+#
+#        return self.cleaned_data['name']
+#
+#
+#    def clean_sub(self):
+#
+#        if len(self.cleaned_data['sub']) > MAX_LENGTH_SUB_COMMUNITY:
+#            raise ValidationError('Max length ' + str(MAX_LENGTH_SUB_COMMUNITY))
+#
+#        if len(self.cleaned_data['sub']) < MIN_LENGTH_SUB_COMMUNITY:
+##            raise ValidationError('Min length ' + str(MIN_LENGTH_SUB_COMMUNITY))
+#
+#        if replacer(self.cleaned_data['sub'], 30, bool_=True):
+ #           raise ValidationError('Not valid')
+#
+ #       return self.cleaned_data['sub']
+#
+#
+ #   class Meta:
+#        model = Community
+ #       fields = ['name', 'sub', 'image']

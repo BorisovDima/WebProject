@@ -1,11 +1,11 @@
 from django.template.loader import render_to_string
-from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic import CreateView, DetailView, TemplateView, UpdateView
 from .models import Article
 from project.apps.account.mixins import AjaxMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import Http404
 from django.urls import reverse
-
+from django.http import HttpResponseForbidden
 
 class MainPage(LoginRequiredMixin, TemplateView):
 
@@ -43,6 +43,30 @@ class CreateArticle(LoginRequiredMixin, AjaxMixin, CreateView):
         response = super().form_valid(form)
         form.instance.set_tags()
         return response
+
+class UpdateArticle(LoginRequiredMixin, AjaxMixin, UpdateView):
+    model = None
+    form_class = None
+    success_url = '/'
+    template_name = None
+
+    def get_data(self, form):
+        return {'html': render_to_string('blog/articles.html', {'objs': (self.object,)}, self.request)}
+
+    def get(self, req, *args, **kwargs):
+        self.object = self.get_object()
+        return JsonResponse({'html': render_to_string(self.template_name, self.get_context_data())})
+
+    def form_valid(self, form):
+        if self.request.user != self.object.author:
+            return HttpResponseForbidden()
+        if self.request.POST.get('delete'):
+            form.instance.image = None
+        print(self.request.POST, self.request.FILES, form.cleaned_data)
+        return super().form_valid(form)
+
+
+
 
 
 from django.http import JsonResponse

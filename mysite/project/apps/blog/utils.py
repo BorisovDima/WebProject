@@ -55,6 +55,10 @@ def make_thumbnail(image, size, icon=False):
     image.save(name, ContentFile(fileobj.read()), save=False)
     fileobj.close()
 
+
+
+
+
 import re
 hashtag_pattern = re.compile(r'#([\w-]+)')
 

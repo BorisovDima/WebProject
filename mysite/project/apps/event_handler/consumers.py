@@ -1,7 +1,7 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 from channels.db import database_sync_to_async
 from asgiref.sync import sync_to_async
-from project.apps.blog.shortcuts import render_to_html
+from django.template.loader import render_to_string
 import json
 
 
@@ -23,7 +23,7 @@ class EventConsumer(AsyncWebsocketConsumer):
             kwargs = event['kwargs']
             kwargs['data_publish'] = 'Now'
             kwargs['add'] = True
-            html = await sync_to_async(render_to_html)('chat/message.html', kwargs)
+            html = await sync_to_async(render_to_string)('chat/message.html', kwargs)
             dialog = kwargs['id_dialog']
             await self.send(json.dumps({'event': notification, 'dialog': dialog, 'html': html}))
         else:

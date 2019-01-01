@@ -24,10 +24,11 @@
                                 <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
                             </li>
                         </ul>
-                        <h6 class="card-text" style="font-size: 15px;" data-type="text-post-body">{{ article.text|hashtags }}</h6>
+                                <h6 class="card-text" style="font-size: 15px;" data-type="text-post-body">{{ article.text|hashtags }}</h6>
                         {% if  article.image %}
-                        <img class="img-fluid  rounded" src="{{ article.image.url }}" style="max-height: 485px">
+                                 <img class=" img-fluid  rounded {% if article.text %} pt-3 {% endif %}" src="{{ article.image.url }}" style="max-height: 485px">
                         {% endif %}
+
                         <hr class="mb-1 pt-1 mx-2">
                     </div>
                 </div>
@@ -57,7 +58,10 @@
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     {% if article.author == user %}
                                         <a class="dropdown-item btn" data-action="delete_object" data-type="post" data-id="{{ article.id }}">Удалить запись</a>
-                                    {% endif %}
+                                       <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item btn" data-action="update_object" data-id="{{ article.id }}">Редактировать</a>
+                                     {% endif %}
+
                                     <div class="dropdown-divider"></div>
                                 </div>
                             </div>

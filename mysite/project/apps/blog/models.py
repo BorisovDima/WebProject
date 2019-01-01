@@ -18,14 +18,18 @@ class BaseArticle(models.Model):
     def _save(self,  *args, **kwargs):
         return super().save(*args, **kwargs)
 
+    @classmethod
+    def from_db(cls, db, field_names, values):
+        instance = super().from_db(db, field_names, values)
+        instance._image_values = values[field_names.index('image')]
+        return instance
 
     def save(self,  *args, **kwargs):
         if self.image:
-            text, ex = splitext(self.image.name.lower())
-            print(ex)
-            if ex != '.gif':
-                print('NE GIF')
-                make_thumbnail(self.image, (self.max_width, self.max_height))
+            if self._state.adding or self._image_values != self.image:
+                text, ex = splitext(self.image.name.lower())
+                if ex != '.gif':
+                    make_thumbnail(self.image, (self.max_width, self.max_height))
         return super().save(*args, **kwargs)
 
 
@@ -102,7 +106,6 @@ class ArticleManager(models.Manager):
 
 
 from .utils import do_hashtags
-
 
 class Article(BaseArticle):
 

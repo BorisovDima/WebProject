@@ -1,19 +1,18 @@
 
 $(document).ready(function(){
 
-autosize($('[data-type="data-form"]'));
+autosize($('textarea'));
 var path = ''
 var since = ''
 var Socket = ''
 var inProgress = ''
 
-$(document).on('click', '[data-action="detail-post"]', function(event){
+
+$(document).on('click', '[data-action="detail-post"]', function (event){
     if (event.target.nodeName == 'A') {
-        console.log(event.target)
         window.location.replace(event.target.href);
         return false
     }
-    console.log(event.target.nodeName)
     var post = $(this)
     inProgress = true
     var body = post.find('[data-type="detail-post-body"]')
@@ -76,9 +75,6 @@ $(document).on('click', '[data-action="comment-send"]', function(e) {
         var data = event.val()
         var id_parent = $(this).parent().find('input[type="hidden"]').val()
         if (data) {
-            console.log(data.length)
-            }
-        if (data) {
             Socket.send(JSON.stringify({'text': data, 'id_parent':id_parent}))
         }
 })
@@ -103,5 +99,94 @@ $('#button-comments-loader').on('click', function(){
         })
     }
 })
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+
+var redactor = false
+var del = false
+var id_post_update = ''
+$(document).on('click', '[data-action="update_object"]', function(){
+        del = false
+        id_post_update = $(this).data('id')
+        $.ajax({
+            url: '/update-post/' + id_post_update +'/',
+            method: 'GET',
+            success: function(data) {
+                $('#update-post-container').html(data.html)
+                autosize($('#update-post-text'));
+                $('#update-modal').modal('show')
+                redactor = false
+            },
+            error: function(data) {
+                 if (data.status == 400) {
+                    console.log('Invalid')
+                 }
+            },
+       })
+
+
+ })
+
+
+
+    $(document).on('change', '#update_post_input_file', function(e) {
+         del = false
+         input = $(this)[0]
+        if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#user_update_img').attr('src', e.target.result)
+        };
+        reader.readAsDataURL(input.files[0]);
+        }
+    })
+
+    $(document).on('click', '[data-action="save_update"]', function(e) {
+     if (!redactor) {
+        redactor = true
+        var image = $('#update_post_input_file').prop('files')[0] || ''
+        var text = $('#update-post-text').val()
+        if (!image && !text) {
+            return false
+        }
+        var formData = new FormData();
+        formData.append("image", image);
+        formData.append("text", text);
+        if (del) {
+            formData.append("delete", del);
+        }
+        $.ajax({
+            url: '/update-post/' + id_post_update +'/',
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            complete: function() {
+                redactor = false
+             },
+            success: function(data) {
+                $('#wrapper_post-' + id_post_update).replaceWith(data.html)
+                $('#update-modal').modal('hide')
+            },
+            error: function(data) {
+                console.log('INVALID')
+                if (data.status == 400) {
+                    console.log('Invalid')
+                }
+            }
+        })
+       }
+    })
+
+    $(document).on('click', '[data-action="delete_update_img" ]', function() {
+        del = true
+        $('#user_update_img').attr('src', '')
+        $('#update_post_input_file').val('')
+    })
 
 })

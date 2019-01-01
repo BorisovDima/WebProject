@@ -36,7 +36,7 @@ $.extend( proto, {
 $("#id_input").on('keyup', function(e){
         var value = $(this).val();
         if (value && e.which == 13) {
-            window.location.replace('/search/posts/?q=' + value );
+            window.location.replace('/search/?q=' + value );
         }
         else {
             $.ajax({

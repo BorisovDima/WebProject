@@ -18,6 +18,8 @@ class BlogUser(AbstractUser):
      uuid = models.UUIDField(default=uuid4)
      email = models.EmailField('email', blank=True, null=True)
      last_activity = models.DateTimeField(default=timezone.now)
+     #geo_city =
+
 
      def get_subscribers(self):
           return self.my_followers.all()

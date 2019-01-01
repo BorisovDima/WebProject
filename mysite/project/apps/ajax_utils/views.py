@@ -63,9 +63,10 @@ class Loader_sorted(View):
 
     def home(self, req):
         subs = Subscribe.objects.filter(user=req.user)
-        objects = self.model.objects.filter(Q(author__id__in=subs.filter(type='U').values('object_id'))
-                                            | Q(community__id__in=subs.filter(type='Com').values('object_id'))
-                                            , is_active=True)
+        #objects = self.model.objects.filter(Q(author__id__in=subs.filter(type='U').values('object_id'))
+                                           # | Q(community__id__in=subs.filter(type='Com').values('object_id'))
+                                           # , is_active=True)
+        objects = self.model.objects.filter(author__id__in=subs.filter(type='U').values('object_id'))
         return self.return_objs(objects, 'id', 'id__lt')
 
 

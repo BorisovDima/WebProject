@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 app_name ='search'
 
 urlpatterns = [
-    path('search/posts/', views.Search.as_view(model=Article), {'location': 'posts-search'},
+    path('search/', views.Search.as_view(model=Article), {'location': 'posts-search'},
          name='search-posts'),
 
 ]

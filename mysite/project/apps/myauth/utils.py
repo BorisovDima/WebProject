@@ -28,7 +28,6 @@ from project.apps.account.models import Profile
 def social_user(backend, user, response, *args, **kwargs):
     profile = Profile.objects.filter(bloguser=user)
     if not profile:
-        print('dadad')
         Profile.objects.create(bloguser=user, name=user.username)
         user.is_verified = True
         user.save(update_fields=['is_verified'])

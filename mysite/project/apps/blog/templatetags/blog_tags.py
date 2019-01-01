@@ -65,7 +65,6 @@ def home_sidebar(user):
 
 from django.template.defaultfilters import stringfilter
 from project.apps.blog.utils import hashtag_pattern
-import re
 
 from django.utils.html import conditional_escape
 
@@ -82,9 +81,9 @@ def hashtags(text, autoescape=True):
 def top_tags():
     return {'tags': Tag.objects.top_tags() }
 
+
 import random
 from django.contrib.auth import get_user_model
-
 from project.apps.like_dislike.models import Subscribe
 
 

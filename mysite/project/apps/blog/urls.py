@@ -1,9 +1,8 @@
 from django.urls import path
 from . import views
 from .models import  Article, Community
-from .forms import CreatePostForm, CreateCommunityForm
+from .forms import CreatePostForm, UpdatePostForm
 from django.views.generic import RedirectView
-from project.apps.account.models import Profile
 
 
 app_name = 'blog'
@@ -46,7 +45,12 @@ urlpatterns = [
                                                      model=Article),
                                                      name='create_post'),
 
-  #  path('create-community/', views.CreateArticle.as_view(form_class=CreateCommunityForm, model=Community),
+    path('update-post/<int:pk>/', views.UpdateArticle.as_view(form_class=UpdatePostForm,
+                                                   template_name='blog/update_post.html',
+                                                     model=Article),
+                                                    name='update_post'),
+
+    #  path('create-community/', views.CreateArticle.as_view(form_class=CreateCommunityForm, model=Community),
     #                                                  name='create_community'),
     path('api/post/<int:pk>/view/', views.ViewPost.as_view())
 

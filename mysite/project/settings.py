@@ -238,3 +238,10 @@ EMAIL_HOST_USER = 'sup.raychan@mail.ru'
 EMAIL_HOST_PASSWORD = '19960213Z26a'
 EMAIL_PORT = 465
 
+############ geo ##########
+
+GEOIP_COUNTRY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-Country.mmdb'
+
+GEOIP_CITY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-City.mmdb'
+
+GEOIP_PATH = '/srv/WebProject/mysite/etc/geoip'
