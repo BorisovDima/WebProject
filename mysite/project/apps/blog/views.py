@@ -62,7 +62,6 @@ class UpdateArticle(LoginRequiredMixin, AjaxMixin, UpdateView):
             return HttpResponseForbidden()
         if self.request.POST.get('delete'):
             form.instance.image = None
-        print(self.request.POST, self.request.FILES, form.cleaned_data)
         return super().form_valid(form)
 
 

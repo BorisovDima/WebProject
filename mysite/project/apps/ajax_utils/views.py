@@ -16,17 +16,10 @@ class Loader_sorted(View):
 
     def get(self, req, **kwargs):
         self.since = req.GET.get('since')
-        sort = self.sorted_kwargs.get('sorted')
         params = {self.sorted_kwargs.get('field'): self.kwargs.get('key')} \
             if self.sorted_kwargs.get('field') else {}
         params.update({'is_active': True})
-        if sort == 'top': objs, since = self.top(params)
-        elif sort == 'hot':
-            count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Community.objects.get(name=self.kwargs['key']).get_hot() * settings.HOT_POST
-            objs, since = self.hot(params, count)
-        elif sort == 'search': objs, since = self.search()
-        elif sort == 'home': objs, since = self.home(req)
-        else: objs, since = self.all(params)
+        objs, since = self.get_objs(params, req)
         if not objs: return JsonResponse({'status': 'end'})
         return JsonResponse({'html': render_to_string(self.template_name, {'objs': objs}, self.request),
                              'since': since,
@@ -38,7 +31,27 @@ class Loader_sorted(View):
         since = getattr(objs[-1], field) if objs else None
         return objs, since
 
-    def search(self):
+
+class All(Loader_sorted):
+    def get_objs(self, params, req):
+        objects = self.model.objects.filter(**params)
+        return self.return_objs(objects, 'id', 'id__lt')
+
+class Hot(Loader_sorted):
+    def get_objs(self, params, req):
+        count = self.sorted_kwargs.get('count') if not self.kwargs.get('key') else Community.objects.get(
+            name=self.kwargs['key']).get_hot() * settings.HOT_POST
+        objects = self.model.objects.filter(**params)
+        objects = objects.annotate(sort=Count('views')).filter(sort__gte=count)
+        return self.return_objs(objects, 'id', 'id__lt')
+
+class Top(Loader_sorted):
+    def get_objs(self, params, req):
+        objects = self.model.objects.filter(**params).annotate(v=Count('views')).order_by('-v')
+        return self.return_objs(objects, 'v', 'v__lt')
+
+class Search(Loader_sorted):
+    def get_objs(self, params, req):
         objs = self.model.objects.filter(**{self.sorted_kwargs['field']: self.request.GET.get('search')})
         if self.sorted_kwargs.get('option') == 'new':
             return self.return_objs(objs, 'id', 'id__lt')
@@ -47,28 +60,15 @@ class Loader_sorted(View):
                                               order_by('-count'),
                                              'count', 'count__lt')
 
-    def top(self, params):
-        objects = self.model.objects.filter(**params).annotate(v=Count('views')).order_by('-v')
-        return self.return_objs(objects, 'v', 'v__lt')
-
-    def hot(self, params, count):
-        objects = self.model.objects.filter(**params)
-        objects = objects.annotate(sort=Count('views')).filter(sort__gte=count)
-        return self.return_objs(objects, 'id', 'id__lt')
-
-    def all(self, params):
-        objects = self.model.objects.filter(**params)
-        return self.return_objs(objects, 'id', 'id__lt')
-
-
-    def home(self, req):
+class Home(Loader_sorted):
+    def get_objs(self, params, req):
         subs = Subscribe.objects.filter(user=req.user)
-        #objects = self.model.objects.filter(Q(author__id__in=subs.filter(type='U').values('object_id'))
-                                           # | Q(community__id__in=subs.filter(type='Com').values('object_id'))
-                                           # , is_active=True)
         objects = self.model.objects.filter(author__id__in=subs.filter(type='U').values('object_id'))
         return self.return_objs(objects, 'id', 'id__lt')
 
+
+
+##############################################################
 
 
 class Loader_dialogs(LoginRequiredMixin, Loader_sorted):

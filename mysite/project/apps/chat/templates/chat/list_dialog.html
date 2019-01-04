@@ -3,6 +3,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'chat/css/chat.css' %}">
 
+
 <div class="card border-0" id="All-dialogs">
 {% for dialog in objs %}
   {% if dialog.message_set.all %}

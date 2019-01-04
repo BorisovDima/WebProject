@@ -6,7 +6,7 @@ from django.utils import timezone
 from .models import Comment
 from django.template.loader import render_to_string
 from asgiref.sync import sync_to_async
-from project.apps.account.models import Profile
+
 
 class CommentConsumer(AsyncWebsocketConsumer):
 

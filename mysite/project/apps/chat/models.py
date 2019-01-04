@@ -49,7 +49,7 @@ class MessageManager(models.Manager):
 
 
 class Message(models.Model):
-    text = models.TextField(max_length=500)
+    text = models.TextField(max_length=300)
     dialog = models.ForeignKey(Dialog, on_delete=models.CASCADE)
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True, blank=True)
     data_publish = models.DateTimeField(default=timezone.now)

@@ -25,6 +25,7 @@ urlpatterns = [
     path('', include('project.apps.account.urls')),
     path('', include('project.apps.chat.urls')),
     path('', include('social_django.urls', namespace='social')),
+    path('api/', include('project.apps.delete_app.urls')),
     path('api/', include('project.apps.ajax_utils.urls')),
     path('api/', include('project.apps.like_dislike.urls')),
     path('api/', include('project.apps.comments.urls')),

@@ -50,7 +50,7 @@
                                 {% endif %}
                                 {% if user_status == 'user' %}
                                     <li class="list-group-item">
-                                        <a href="{% url 'chat:dialog' profile.name %}" class="btn btn-primary " role="button">Send message</a>
+                                        <a href="{% url 'chat:dialog' profile.name %}" id="send_message_profile_user" class="btn btn-primary " role="button">Send message</a>
                                     </li>
                                     <li class="list-group-item">
                                         {% subscribe_html profile.bloguser 'user' user %}

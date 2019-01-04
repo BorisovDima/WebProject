@@ -26,12 +26,11 @@ Socket.onmessage = function(event) {
 
 
 Socket.onclose = function(event) {
-    Socket.send(JSON.stringify({'text': "TEST"}))
-    console.error('WebSocket close');
+    console.error('WebSocket close', event);
 }
 
 Socket.onerror = function(error) {
-
+     console.error('WebSocket error ', error);
 
 }
 

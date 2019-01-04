@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
+    'project.apps.delete_app',
     'project.apps.search',
     'project.apps.myauth',
     'captcha',             #
@@ -99,9 +100,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mysite',
         'USER': 'mysiteadmin',
-        'PASSWORD': '1996'
+        'PASSWORD': '1996',
+        'TEST': {
+            'CHARSET': 'utf8',
+            'COLLATION': 'utf8_general_ci',
+        }
+
     }
+
 }
+
+
 
 CACHES = {
     'default': {
@@ -245,3 +254,5 @@ GEOIP_COUNTRY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-Country.mmdb'
 GEOIP_CITY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-City.mmdb'
 
 GEOIP_PATH = '/srv/WebProject/mysite/etc/geoip'
+
+DOMAIN = 'http://localhost/'

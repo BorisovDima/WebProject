@@ -4,7 +4,6 @@ from asgiref.sync import sync_to_async
 from urllib.parse import parse_qs
 from .models import Dialog, Message
 import json
-from django.utils import timezone
 from django.template.loader import render_to_string
 from .forms import DialogForm
 
@@ -46,7 +45,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
             await database_sync_to_async(self.readed)(kwargs['msg_id'])
         kwargs['data_publish'] = 'Now'
         kwargs['dialog_read'] = True
-        html = await sync_to_async(render_to_string)('chat/message.html', kwargs) # async def __call__
+        html = await sync_to_async(render_to_string)('chat/message.html', kwargs)
         await self.send(json.dumps({'message': html, 'status': 'ok'}))
 
 

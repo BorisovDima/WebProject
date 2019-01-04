@@ -93,6 +93,8 @@ class CreatePostForm(BaseCreateForm):
         model = Article
         fields = ['text', 'community', 'image']
 
+from django.utils import timezone
+
 
 class UpdatePostForm(CreatePostForm):
 
@@ -106,7 +108,11 @@ class UpdatePostForm(CreatePostForm):
                                                               'id': 'update-post-text',
                                                                'rows': ''})
 
-
+    def clean(self):
+        cleaned_data = super().clean()
+        if timezone.now() > self.instance.create_data + timezone.timedelta(hours=24):
+            raise ValidationError('Time expired')
+        return cleaned_data
 
 #class CreateCommunityForm(BaseCreateForm):
 

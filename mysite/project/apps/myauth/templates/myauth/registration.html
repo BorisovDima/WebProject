@@ -93,7 +93,7 @@
     {% endfor %}
 {% csrf_token %}
 <input type="hidden" name="next" value="/">
-  <button type="submit" class="btn btn-primary ">Login</button>
+  <button type="submit" id="button_login" class="btn btn-primary ">Login</button>
 </form>
     <small id="error" class="form-text text-danger">   {{ form.non_field_errors  }} </small>
           </div>

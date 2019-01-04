@@ -9,63 +9,56 @@ from project.apps.comments.models import Comment
 app_name = 'ajax_utils'
 
 urlpatterns = [
-    path('load/m/', views.Loader_sorted.as_view(model=Article,
-                                                        template_name='blog/articles.html',
-                                                        sorted_kwargs={'sorted': 'top'}),
+    path('load/m/', views.Top.as_view(model=Article,
+                                                        template_name='blog/articles.html'),
                                                         name='top_loader'),
 
-    path('load/m/popular/', views.Loader_sorted.as_view(model=Article,
+    path('load/m/popular/', views.Hot.as_view(model=Article,
                                                         template_name='blog/articles.html',
-                                                        sorted_kwargs={'sorted': 'hot',
-                                                                       'count': 2}),
+                                                        sorted_kwargs={'count': 2}),
                                                         name='popular_loader'),
 
-    path('load/m/new/', views.Loader_sorted.as_view(model=Article,
-                                                        template_name='blog/articles.html',
-                                                        sorted_kwargs={'sorted': 'all'}),
+    path('load/m/new/', views.All.as_view(model=Article,
+                                                        template_name='blog/articles.html'),
                                                         name='new_loader'),
 
-    path('load/m/people/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/m/people/', views.Search.as_view(model=get_user_model(),
                                              template_name='blog/users.html',
                                              paginate=10,
-                                             sorted_kwargs={'sorted': 'search',
-                                                            'option': 'top',
+                                             sorted_kwargs={'option': 'top',
                                                             'field': 'username__icontains',
                                                             'top_field': 'my_followers'}),
                                                                 name='usr_loader'),
 
-    path('load/m/communities/', views.Loader_sorted.as_view(model=Community,
+    path('load/m/communities/', views.Search.as_view(model=Community,
                                                                          template_name='blog/communities.html',
                                                                          sorted_kwargs={'field': 'name__icontains',
-                                                                                        'sorted': 'search',
                                                                                         'option': 'top',
                                                                                         'top_field': 'my_followers'},
                                                                          paginate=10), name='communities'),
 
 
 
-    path('load/m/people/search-top/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/m/people/search-top/', views.Search.as_view(model=get_user_model(),
                                              template_name='blog/users.html',
                                              paginate=10,
-                                             sorted_kwargs={'sorted': 'search',
-                                                            'option': 'top',
+                                             sorted_kwargs={'option': 'top',
                                                             'field': 'username__icontains',
                                                             'top_field': 'my_followers'}),
                                                                 name='usr_loader-top'),
 
-    path('load/m/people/search-new/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/m/people/search-new/', views.Search.as_view(model=get_user_model(),
                                                                           template_name='blog/users.html',
-                                                                          sorted_kwargs={'sorted': 'search',
-                                                                                         'option': 'new',
+                                                                          sorted_kwargs={'option': 'new',
                                                                                         'field': 'username__icontains'},
                                                                           paginate=10),
                                                                           name='usr_loader-new'),
 
 
-    path('load/m/community-search/', views.Loader_sorted.as_view(model=Community,
+    path('load/m/community-search/', views.Search.as_view(model=Community,
                                                                          template_name='blog/communities.html',
                                                                          sorted_kwargs={'field': 'name__icontains',
-                                                                                        'sorted': 'search'},
+                                                                                        },
                                                                          paginate=10), name='communities-search'),
 
 
@@ -93,39 +86,37 @@ urlpatterns = [
 
 
 
-    path('load/profile/<slug:key>/followers/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/profile/<slug:key>/followers/', views.All.as_view(model=get_user_model(),
                                            template_name='blog/users.html',
                                            sorted_kwargs={'field': 'subscribe__user_followers__username',
-                                                          'sorted': 'all'}),
+                                                          }),
                                                                 name='followers-load'),
 
-    path('load/profile/<slug:key>/following/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/profile/<slug:key>/following/', views.All.as_view(model=get_user_model(),
                                                                  template_name='blog/users.html',
                                                                  sorted_kwargs={'field': 'my_followers__user__username',
-                                                                                'sorted': 'all'}),
+                                                                                }),
                                                                 name='following-load'),
 
-    path('load/profile/<slug:key>/community/', views.Loader_sorted.as_view(model=Community,
+    path('load/profile/<slug:key>/community/', views.All.as_view(model=Community,
                                                                            template_name='blog/communities.html',
                                                                            sorted_kwargs={
                                                                                'field': 'my_followers__user__username',
-                                                                               'sorted': 'all',
                                                                                'active': True}),
                                                                  name='commynity-load'),
 
 
-    path('load/profile/<slug:key>/', views.Loader_sorted.as_view(model=Article,
+    path('load/profile/<slug:key>/', views.All.as_view(model=Article,
                                                                  template_name='blog/articles.html',
                                                                  sorted_kwargs={'field': 'author__username',
-                                                                                'sorted': 'all'}),
+                                                                                }),
                                                                     name='art_loader'),
 
 
 
-    path('load/home/', views.Loader_sorted.as_view(model=Article,
+    path('load/home/', views.Home.as_view(model=Article,
                                                 template_name='blog/articles.html',
-                                                paginate=15,
-                                                sorted_kwargs={'sorted': 'home'}),
+                                                paginate=15),
                                                 name='home-feed'),
 
 
@@ -141,18 +132,16 @@ urlpatterns = [
     path('post/comments/<int:key>/', views.Loader_comments.as_view(model=Comment,
                                                                 template_name='comments/comments.html')),
 
-    path('load/posts-search/', views.Loader_sorted.as_view(model=Article,
+    path('load/posts-search/', views.Search.as_view(model=Article,
                                                         template_name='blog/articles.html',
-                                                        sorted_kwargs={'sorted': 'search',
-                                                                    'option': 'top',
+                                                        sorted_kwargs={'option': 'top',
                                                                     'field': 'text__icontains',
                                                                     'top_field': 'views'},
                                                            )),
 
-    path('load/people-search/', views.Loader_sorted.as_view(model=get_user_model(),
+    path('load/people-search/', views.Search.as_view(model=get_user_model(),
                                                         template_name='blog/users.html',
-                                                        sorted_kwargs={'sorted': 'search',
-                                                                    'option': 'top',
+                                                        sorted_kwargs={'option': 'top',
                                                                     'field': 'username__icontains',
                                                                     'top_field': 'my_followers'},
                                                             ))

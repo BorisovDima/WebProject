@@ -105,4 +105,12 @@ def home_sidebar(user):
     return {'users': users}
 
 
+from django.utils import timezone
+@register.inclusion_tag('tag/edit_button.html')
+def redact_post(post):
+    if timezone.now() < post.create_data + timezone.timedelta(hours=24):
+        return {'edit': True , 'post': post}
+    return {'edit': False}
+
+
 

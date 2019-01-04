@@ -55,6 +55,7 @@ $(document).ready(function(){
     //////////////////////////////////////////////////////////
 
     function start_loader() {
+        console.log(location)
         if ($('#location').val()  == 'm/people' || $('#location').val()   ==  'm/communities') {
             $('#search-main').show()
         }

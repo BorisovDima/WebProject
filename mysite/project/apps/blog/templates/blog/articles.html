@@ -38,7 +38,7 @@
                         <li class="nav-item">
                             <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">
                             <img src="{% static 'blog/img/top.png' %}" width="20">
-                            <span  class="badge badge-light">{{ article.views.count }}</span>
+                            <span  data-type="counter-views-footer-post" class="badge badge-light">{{ article.views.count }}</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -59,7 +59,7 @@
                                     {% if article.author == user %}
                                         <a class="dropdown-item btn" data-action="delete_object" data-type="post" data-id="{{ article.id }}">Удалить запись</a>
                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item btn" data-action="update_object" data-id="{{ article.id }}">Редактировать</a>
+                                        {% redact_post article %}
                                      {% endif %}
 
                                     <div class="dropdown-divider"></div>
