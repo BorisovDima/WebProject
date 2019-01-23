@@ -1,0 +1,22 @@
+{% load static %}
+
+<div class="card bg-light border-0" style="width: 18rem;">
+
+      <div class="card-body py-2 px-0">
+          <ul class="nav">
+              <li class="nav-item">
+                  <a href="{% url 'info:dispatch' 'about' %}" class="nav-link text-muted py-1" style="font-size: 11px"><strong>About</strong></a>
+                  <a href="{% url 'info:dispatch' 'privacy_policy' %}" class="nav-link text-muted py-1" style="font-size: 11px"><strong>Privacy policy</strong></a>
+              </li>
+              <li class="nav-item">
+                   <a href="{% url 'info:dispatch' 'help' %}" class="nav-link text-muted py-1" style="font-size: 11px"><strong>Help</strong></a>
+                  <a href="{% url 'info:dispatch' 'contacts' %}" class="nav-link text-muted py-1" style="font-size: 11px"><strong>Contacts</strong></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link text-muted py-1" href="{% url 'info:dispatch' 'support' %}" style="font-size: 11px"><strong>Support</strong></a>
+                  <a class="nav-link text-muted py-1" style="font-size: 11px"><strong>Language</strong></a>
+              </li>
+          </ul>
+      </div>
+</div>
+

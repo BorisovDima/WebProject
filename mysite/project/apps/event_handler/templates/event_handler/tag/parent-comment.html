@@ -2,14 +2,17 @@
 {% load static %}
 {% load like_tag %}
 {% load account_tags %}
+{% load i18n %}
+
+{% with comm=obj.content_object %}
 
 <div  {% if not obj.readed %} class="card border-0 article notread" {% else %}  class="card border-0 article" {% endif %}>
   <div class="card-body px-1 py-1" >
       <ul class="list-inline mb-2">
           <li class="drop-left">
-              <img class="mr-2 mt-2 rounded-circle" src="{% user_image from_user.profile 't' %}"  width="30" height="30">
-              <a class="text-dark" href="{{ from_user.get_absolute_url }}">@{{ from_user }}</a>
-              <a style="font-size: 14px;" >Ответил на ваш комментарий </a>
+              <img class="mr-2 mt-2 rounded-circle" src="{% user_image obj.initiator.profile 't' %}"  width="30" height="30">
+              <a class="text-dark" href="{{ obj.initiator.get_absolute_url }}">@{{ obj.initiator }}</a>
+              <a style="font-size: 14px;" >{% trans "Replied to your comment" %}</a>
           </li>
         <li class="drop-left pl-4">
           <a href="{{ comm.article.get_absolute_url }}" >
@@ -17,9 +20,9 @@
           </a>
            </li>
         <li class="drop-left pl-5">
-          <img class="mr-2 mt-2 rounded-circle" src="{% user_image parent.author.profile 't' %}"  width="30" height="30">
-          <a href="{{ parent.article.get_absolute_url }}" >
-            <h6 class="card-text text-muted" style="font-size: 14px;">{{ parent.text|truncatechars:120  }}</h6>
+          <img class="mr-2 mt-2 rounded-circle" src="{% user_image comm.parent_comment.author.profile 't' %}"  width="30" height="30">
+          <a href="{{ comm.parent_comment.article.get_absolute_url }}" >
+            <h6 class="card-text text-muted" style="font-size: 14px;">{{ comm.parent_comment.text|truncatechars:120  }}</h6>
           </a>
         </li>
       </ul>
@@ -30,3 +33,4 @@
 </div>
 
 <hr class="py-0 my-0">
+{% endwith %}

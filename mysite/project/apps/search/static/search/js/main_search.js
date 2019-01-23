@@ -3,6 +3,7 @@ $(document).ready(function(){
     var inProgress = true
     var since = ''
     var location =  $('#location').val()
+    var type = $('#location').data('type')
     start_loader()
 
    $("#search-q").on('keypress', function(e) {
@@ -24,18 +25,19 @@ $(document).ready(function(){
         var event = $(this)
         $('[data-action="ajax-paginate-btn"]').removeClass('my_active')
         event.addClass('my_active')
-        var type = event.data('type')
-        $('#location').val(type)
-        location = type
+        type = event.data('type')
+        location = event.data('sort')
+        $('#location').val(location)
         start_loader()
     })
 
 
     function start_loader() {
+    console.log('/api/load/' + type + '/' + location + '/')
         $.ajax({
-            url: '/api/load/' + location + '/',
+            url: '/api/load/' + type + '/' + location + '/',
             method: 'GET',
-            data: {'search': search_data},
+            data: {'q': search_data},
             success: function(data) {
             if (data.status == 'ok') {
                 $('#add-loader').html(data.html) // При 200 ОК append в div c id 'add-loader'.
@@ -56,9 +58,9 @@ $(document).ready(function(){
 
         if ((($(window).height() + $(window).scrollTop()) > ($(document).height() - 200)) && !inProgress){
                  $.ajax({
-                    url: '/api/load/' + location + '/',
+                    url: '/api/load/' + type + '/' + location + '/',
                     method: 'GET',
-                    data: {'since': since, 'search': search_data}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
+                    data: {'since': since, 'q': search_data}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {
                         inProgress = true // что бы больше не один scroll не вызвал ajax до завершения этого
                     },

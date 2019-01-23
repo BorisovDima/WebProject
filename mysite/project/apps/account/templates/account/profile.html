@@ -3,6 +3,7 @@
 {% load static %}
 {% load like_tag %}
 {% load account_tags %}
+{% load i18n %}
 
 
 {% block head %}
@@ -11,11 +12,12 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css">
 
 {% if user_status == 'owner' %}
+
 <div class="modal fade" id="modal-photo-img" tabindex="-1" role="dialog" aria-labelledby="modal-photo-img" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg w-50" role="document">
     <div class="modal-content">
       <div class="modal-header">
-          <h6 id="loginHelp" class="form-text text-muted"> Max length files 1mb </h6>
+          <h6  class="form-text text-info"> {{ form.image.help_text }} </h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -23,41 +25,20 @@
       <div class="modal-body text-center">
                 <label class="btn btn-primary text-center" for="change-photo">
                 <input id="change-photo" data-action="change-profile-image" name="{{ form.image.html_name }}" type="file" style="display:none">
-                Choice file
+                {% trans "Choice file" %}
                 </label>
           <div style="height: 60vh" id="container-change-photo">
           </div>
+          <h5 class="text-danger" data-action="change-img-errors" data-type="error-change-photo"></h5>
+          <h5 class="text-danger" data-action="change-img-errors" data-type="error-change-header"></h5>
           <div class="modal-footer px-3">
-              <button class="btn btn-primary" data-action='change-photo-button' style="display:none">Готово</button>
+              <button class="btn btn-primary" data-action='change-photo-button' style="display:none"> {% trans "Change" %} </button>
           </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="modal fade" id="modal-header-img" tabindex="-1" role="dialog" aria-labelledby="modal-header-img" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-          <h6 class="form-text text-muted"> Max length files 1mb </h6>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body text-center">
-              <label class="btn btn-primary text-center" for="change-header">
-                <input id="change-header" data-action="change-profile-image" name="{{ form.head.html_name }}" type="file" style="display:none" >
-                Choice new header
-              </label>
-          <div style="height: 60vh" id="container-change-header">
-          </div>
-          <div class="modal-footer px-3">
-              <button class="btn btn-primary" data-action='change-photo-button' style="display:none">Готово</button>
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
 {% endif %}
 {% load_navbar user %}
 
@@ -79,19 +60,14 @@
         <div class="card">
             <div class="card-body pt-2" >
                 <div id="my-profile-info">
-                {% if profile.get_user_name %}
-                    <h5 class="card-text">{{ profile.get_user_name }}</h5>
-                    {% else %}
-                    <h5 class="card-text">@{{ profile.name }}</h5>
-                {% endif %}
                     <strong>{% user_online profile.bloguser %} </strong>
                 <hr class="mb-2 mt-1">
-                <h6 class="card-text text-muted" style="font-size: 14px;">Data registration: {{ profile.get_user_joined }} </h6>
+                    <h6 class="card-text text-muted" style="font-size: 14px;">{% trans "Joined" %}: <a class="text-info">{{ profile.get_user_joined }} </a></h6>
                 {% if profile.date_of_birth %}
-                    <h6 class="card-text text-muted" style="font-size: 14px;">Date of birth:  {{ profile.date_of_birth  }} </h6>
+                    <h6 class="card-text text-muted" style="font-size: 14px;">{% trans "Birth" %}: <a class="text-info"> {{ profile.get_user_birth  }} </a></h6>
                 {% endif %}
                {% if profile.country %}
-                    <h6 class="card-text text-muted" style="font-size: 14px;">Country: {{ profile.country.name }}  </h6>
+                    <h6 class="card-text text-muted" style="font-size: 14px;">{% trans "Country" %}: <a class="text-info">{{ profile.country.name }}  </a></h6>
                 {% endif %}
                     <hr class="pt-1 pb-0 my-0">
                 {% if profile.about_me %}
@@ -126,16 +102,16 @@
             <div class="card border-0">
                 <ul class="nav nav-tabs">
                     <li class="nav-item px-2">
-                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type=""> Записи {{ profile.get_user_articles.count }} </a>
+                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-add="False" data-type="post" data-sort="profile" > {% trans "Posts" %} {{ profile.get_user_articles.count }} </a>
                     </li>
                     <li class="nav-item  px-2">
-                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type="followers"> Подписчики {{ profile.get_user_followers.count }} </a>
+                        <a class="my_link_profile" data-action="ajax-paginate-btn"  data-type="user" data-sort="followers"> {% trans "Followers" %} {{ profile.get_user_followers.count }} </a>
                     </li>
                     <li class="nav-item  px-2">
-                        <a class="my_link_profile" data-action="ajax-paginate-btn" data-type="following"> Подписки {{ profile.get_user_people_sub.count }} </a>
+                        <a class="my_link_profile" data-action="ajax-paginate-btn"  data-type="user" data-sort="following"> {% trans "Following" %} {{ profile.get_user_people_sub.count }} </a>
                     </li>
                     <li class="nav-item  px-2">
-                        <a class="my_link_profile text-muted"> Сообщества </a>
+                        <a class="my_link_profile text-muted"> {% trans "Communities" %} </a>
                     </li>
                 </ul>
             </div>
@@ -166,8 +142,11 @@
 {% endblock %}
 
 {% block buttom %}
+{% if init %}
+    <input type="hidden" id="init-post" data-id="{{ init }}">
+{% endif %}
  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.js"></script>
-    <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_location }}">
+    <input id="location" value="{{ location }}" type="hidden" data-detail="{{ id_location }}" data-type="{{ type }}" data-start="{{ start_location }}">
     <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
 
 {% endblock %}

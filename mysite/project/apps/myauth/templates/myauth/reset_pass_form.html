@@ -1,4 +1,6 @@
 {% extends "blog/MainPage.html" %}
+{% load i18n %}
+
 
 {% block head %}
 {% endblock %}
@@ -16,11 +18,11 @@
     {% endfor %}
 {% csrf_token %}
 <input type="hidden" name="next" value="/">
-  <button type="submit" class="btn btn-primary ">Изменить</button>
+  <button type="submit" class="btn btn-primary ">{% trans "Change" %}</button>
     <hr>
 </form>
 {% else %}
-<h1>Ссылка больше не активна </h1>
+<h1>{% trans "Link is no longer active" %}</h1>
 {% endif %}
 {% endblock %}
 

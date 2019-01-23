@@ -1,24 +1,25 @@
 {% load static %}
-
+{% load i18n %}
 
 <div class="modal fade" id="modal-notify-window" tabindex="-1" role="dialog" aria-labelledby="modal-notify-window" aria-hidden="true">
   <div class="modal-dialog modal-lg w-50" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Уведомления {{ user.username }}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  id="close-user-notify">
+        <h5 class="modal-title" data-id="title-dialog-notify"> {{ user.username }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"  id="close-user-dialogs">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body pt-1 pb-0" id="list-notify-body">
+      <div class="modal-body pt-1 pb-0" id="list-dialogs-notify-body">
 
       </div>
 
-      <div class="modal-footer align-self-center py-1" id="button-notify-div" data-id="{{ user.pk }}">
-
+      <div class="modal-footer align-self-center py-1" id="button-dialogs-div" data-id="{{ user.pk }}">
+        <button type="button" style="display:none" id="button-dialogs-notify-action" class="btn btn-outline-danger align-self-center btn-sm py-0">{% trans "load more" %}</button>
       </div>
 
     </div>
   </div>
 </div>
+
 

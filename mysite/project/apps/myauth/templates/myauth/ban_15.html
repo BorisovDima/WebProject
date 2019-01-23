@@ -1,4 +1,5 @@
 {% extends "blog/MainPage.html" %}
+{% load i18n %}
 
 {% block head %}
 {% endblock %}
@@ -8,10 +9,10 @@
 
 <div class="card text-center">
   <div class="card-header">
-    Из-за подозрительных действий мы заблокировали ваш ip-адресс
+    {% trans "Due to suspicious actions, we have blocked your ip-address" %}
   </div>
   <div class="card-body">
-    <p class="card-text">Вы сможете войти в аккаунт через 15 минут или воспользоваться авторизацией через социальные сети</p>
+    <p class="card-text">{% trans "You will be able to log in to your account after 15 minutes or use authorization through social networks." %}</p>
   </div>
 </div>
 

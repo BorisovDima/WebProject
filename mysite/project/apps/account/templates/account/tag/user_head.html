@@ -1,14 +1,17 @@
 {% load static %}
 {% load like_tag %}
 {% load account_tags %}
+{% load blog_tags %}
+{% load i18n %}
+
 
 <div class="container-fluid">
-   <div class="row" id='profile-head-main' style=" background: {% if not profile.head %} #f442a4 {% else %} url('{{ profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 200px;">
+   <div class="row" id='profile-head-main' style=" background: {% if not profile.head %} #4286f4 {% else %} url('{{ profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 200px;">
 
         <div class="col-lg-6  offset-md-1 text-center">
 
             <div id="hide-change-header" style="display:none">
-            <a type="button" class="btn" data-toggle="modal" data-target="#modal-header-img" data-type="change-header" data-action="modal-image-change" data-id="{{ profile.name }}">
+            <a type="button" class="btn" data-toggle="modal" data-target="#modal-photo-img" data-type="head" data-action="modal-image-change" data-id="{{ profile.name }}">
                 <img class="ml-1" src="{% static 'blog/img/icons8-изображение-целиком-100.png' %}" width="100" height="100">
                 <h3 class="text-white ml-1">Change header</h3>
             </a>
@@ -26,7 +29,7 @@
                             <div  id="holder-image">
                                 <img class="card-img-top img-rounded" src="{% user_image profile 'm' %}" id="user-image">
                                 <div id="block-image" class="text-center">
-                                    <a data-toggle="modal" data-target="#modal-photo-img" type="button" data-action="modal-image-change" data-type="change-photo" data-id="{{ profile.name }}" class="btn btn-link" style="padding-top: 150px;">
+                                    <a data-toggle="modal" data-target="#modal-photo-img" type="button" data-action="modal-image-change" data-type="image" data-id="{{ profile.name }}" class="btn btn-link" style="padding-top: 150px;">
                                         <img class="ml-1" src="{% static 'blog/img/icons8-изображение-целиком-100.png' %}" width="50" height="50">
                                         Change photo
                                     </a>
@@ -37,28 +40,30 @@
                         {% endif %}
                         <div class="card-body pt-0  px-1">
                             <ul class="list-group list-group-flush mt-2">
-                                <li class="list-group-item pt-0 pl-1 border-light">
-                                    <h4 class="card-link">@{{ profile.name }}</h4>
+                                <li class="list-group-item pt-0 pl-1">
+                                    <h4 class="card-link">{{ profile.get_user_name }}</h4>
+                                    <h6 style="font-size: 13px" class=" text-muted">@{{ profile.name }}</h6>
                                 </li>
                                 {% if user_status == 'owner' %}
                                     <li class="list-group-item pt-2">
-                                        <a type="button" class="btn" data-action="edit-profile-show"><strong>Edit profile</strong></a>
+                                        <a type="button" class="btn" data-action="edit-profile-show"><strong>{% trans "Edit profile" %}</strong></a>
                                     </li>
                                 <li class="list-group-item pt-2 pb-0">
-                                        <a type="button" class="btn text-dark" href="{% url 'account:profile-settings' user %}"> <strong>Settings</strong></a>
+                                        <a type="button" class="btn text-dark" href="{% url 'account:profile-settings'  %}"> <strong>{% trans "Settings" %}</strong></a>
                                     </li>
                                 {% endif %}
-                                {% if user_status == 'user' %}
+                                {% if user.is_authenticated and user_status != 'owner' %}
                                     <li class="list-group-item">
-                                        <a href="{% url 'chat:dialog' profile.name %}" id="send_message_profile_user" class="btn btn-primary " role="button">Send message</a>
+                                        <a href="{% url 'chat:dialog' profile.name %}" id="send_message_profile_user" class="btn btn-primary " role="button">{% trans "Send message" %}</a>
                                     </li>
-                                    <li class="list-group-item">
+                                    <li class="list-group-item float-left">
                                         {% subscribe_html profile.bloguser 'user' user %}
                                     </li>
                                 {% endif %}
                             </ul>
                     </div>
                 </div>
+                     {% about %}
             </div>
     </div>
 </div>

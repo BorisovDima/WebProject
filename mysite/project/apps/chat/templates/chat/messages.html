@@ -1,0 +1,21 @@
+{% load chat_tags %}
+
+{% for message in objs reversed %}
+        {% if not message.readed and message.to_ == user %}
+            {{ message.user_readed_msg }}
+        {% endif %}
+    <div class="row  border-0">
+        <div class="col-sm-12 px-0">
+            <div  class="dialogs-list-action">
+                <div class="media border-bottom border-light pt-2">
+                    <div class="media-body">
+                        <small class="text-muted float-right mb-0 pr-2">{{ message.data_publish }}</small>
+                            {% chat_image message.author.username  %}
+                            <h6 class="pt-0 pl-3" style="font-size: 14px;">{{ message.text }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}

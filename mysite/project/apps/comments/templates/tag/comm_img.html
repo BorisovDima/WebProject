@@ -1,4 +1,5 @@
 {% load account_tags %}
+{% load i18n %}
 
 <ul class="nav ml-2 pb-1  pt-0">
               <li class="nav-item pt-0">
@@ -12,9 +13,9 @@
                 {% if parent %}
                 <li class="nav-item">
                     {% if parent.is_active %}
-                    <a data-action="parent-color"  data-id="{{ parent.id }}" class="nav-link text-info" href="#comment-{{ parent.id }}" style="font-size: 13px;"> ответил {{ parent.author.username }}</a>
+                    <a data-action="parent-color"  data-id="{{ parent.id }}" class="nav-link text-info" href="#comment-{{ parent.id }}" style="font-size: 13px;"> {% trans "replied" %} {{ parent.author.username }}</a>
                     {% else %}
-                        <a class="nav-link text-muted" style="font-size: 13px;"> ответил {{ parent.author.username}}</a>
+                        <a class="nav-link text-muted" style="font-size: 13px;"> {% trans "replied" %} {{ parent.author.username}}</a>
                     {% endif %}
                 </li>
                 <li class="nav-item">

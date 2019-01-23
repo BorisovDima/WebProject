@@ -1,29 +1,30 @@
 
-
 var type = ''
 var user = ''
 
 $('[data-action="modal-image-change"]').on('click', function(){
-    $('[data-action="change-photo-button"]').hide()
+    $('[data-action="change-img-errors"]').text('')
     type = $(this).data('type')
     user = $(this).data('id')
-    console.log(type, user)
-    html = '<img id="' + type + '-user" class="img-fluid" >'
-    $('#container-' +  type).html(html)
-    $('[for="' + type + '"]').show()
+    $('#container-change-photo').html('<img id="change-photo-img-src" class="img-fluid" >')
+    $('[for="change-photo"]').show()
 })
 
+$('#modal-photo-img').on('hide.bs.modal', function(){
+    $('[data-action="change-photo-button"]').hide()
+    $('#container-change-photo').html('')
 
+})
 
 $('input[data-action="change-profile-image"]').on('change', function(){
         $('[data-action="change-photo-button"]').unbind('click')
         var input = $(this)
-        var field = input.attr('name')
+        var field = type
         if (input[0].files && input[0].files[0]) {
             var reader = new FileReader();
             var cropper = ''
             reader.onload = function (e) {
-                if (type == 'change-photo') {
+                if (type == 'image') {
                 ratio =  1/1
                 minCropH =  250
                 minCropW =  250
@@ -33,8 +34,8 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                 minCropH =  200
                 minCropW =  1200
             }
-            $('#' + type + '-user').attr('src', e.target.result)
-            image = document.getElementById(type + '-user');
+            $('#change-photo-img-src').attr('src', e.target.result)
+            image = document.getElementById('change-photo-img-src');
             cropper = new Cropper(image, {aspectRatio: ratio, viewMode: 1,
                 minCropBoxHeight: minCropH,
                 minCropBoxWidth: minCropW,
@@ -46,7 +47,7 @@ $('input[data-action="change-profile-image"]').on('change', function(){
             };
             reader.readAsDataURL(input[0].files[0]);
             $('[data-action="change-photo-button"]').show()
-            $('[for="' + type + '"]').hide()
+            $('[for="change-photo"]').hide()
 
             $('[data-action="change-photo-button"]').click(function(){
                 $('[data-action="change-photo-button"]').hide()
@@ -57,7 +58,7 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                     var formData = new FormData();
                     formData.append(field, file);
                     $.ajax({
-                        url: '/profile/' + user + '/' + type + '/',
+                        url: '/p/' + user + '/change/' + type + '/',
                         method: 'POST',
                         data: formData,
                         processData: false,
@@ -67,15 +68,14 @@ $('input[data-action="change-profile-image"]').on('change', function(){
                         },
                         error: function(data) {
                             if (data.status == 400) {
-                                html = '<h5 class="text-danger" data-type="error-image"></h5>'
-                                $('#container-' +  type).html(html)
                                 data = JSON.parse(data.responseText)
-                                if (data['image']) {
-                                    $('[data-type="error-image"]').text(data['image'])
-                                }
-                                else {
-                                    $('[data-type="error-image"]').text(data['head'])
-                                }
+                                 $('[data-type="error-change-photo"]').text(data['image'] || '')
+                                 $('[data-type="error-change-header"]').text(data['head'] || '')
+
+                                    setTimeout(function () {
+                                    $('#modal-photo-img').modal('hide')
+                                    }, 1000)
+
                             }
                         },
 

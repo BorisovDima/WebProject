@@ -25,13 +25,17 @@ SECRET_KEY = '1h07w#iq!h&_g$oahcj8*a@^4at$ollrgv3^dxr1qjl=9g+hj@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
 
+SITE_ID = 1
 
 INSTALLED_APPS = [
+    'project.apps.ajax_utils_',
+    'django.contrib.sitemaps',
+    'project.apps.info',
     'project.apps.delete_app',
     'project.apps.search',
     'project.apps.myauth',
@@ -60,7 +64,9 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,7 +80,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'temlates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -169,15 +175,22 @@ LOGIN_REDIRECT_URL = '/'
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+USE_L10N = False
 
 USE_TZ = True
+
+LANGUAGES = [
+  ('ru', ('Russian')),
+  ('en', ('English')),
+]
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -200,22 +213,17 @@ LOGIN_URL = '/login/'
 
 
 MAX_HEIGHT_HEAD = 250
-
 MAX_WIDTH_HEAD = 1500
-
 MAX_WIDTH_IMG = 565
-
 MAX_HEIGHT_IMG = 600
+MAX_POST_SIZE = 488
 
 USER_ICON = (100, 100)
-
-DEFAULT_COMMUNITY_IMG = 'community_img/community_default.jpg'
 
 HOT_POST = 2
 
 DEFAULT_USER_IMG = '/static/account/img/default_user.png'
 
-DEFAULT_FROM_EMAIL = 'sup.raychan@mail.ru'
 
 #######  CHANNELS #################
 
@@ -240,14 +248,16 @@ CELERY_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
 
 ########### mail #######
 
-
+DEFAULT_FROM_EMAIL = 'sup.signup@yahoo.com'#'info.signup@mail.ru'
 EMAIL_USE_SSL = True
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_HOST_USER = 'sup.raychan@mail.ru'
+EMAIL_HOST = 'smtp.mail.yahoo.com' #'smtp.mail.ru'
+EMAIL_HOST_USER = 'sup.signup@yahoo.com'#'info.signup@mail.ru'
 EMAIL_HOST_PASSWORD = '19960213Z26a'
 EMAIL_PORT = 465
 
 ############ geo ##########
+
+DEFAULT_GEO = 'RU'
 
 GEOIP_COUNTRY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-Country.mmdb'
 
@@ -256,3 +266,7 @@ GEOIP_CITY = '/srv/WebProject/mysite/etc/geoip/GeoLite2-City.mmdb'
 GEOIP_PATH = '/srv/WebProject/mysite/etc/geoip'
 
 DOMAIN = 'http://localhost/'
+
+
+
+

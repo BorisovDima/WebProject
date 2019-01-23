@@ -3,7 +3,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.utils import timezone
 from django.conf import settings
-
+from django.utils.translation import gettext_lazy as _
 
 """
                     Article
@@ -19,8 +19,8 @@ class BaseLike(models.Model):
              ('U', 'user'),
              ('Com', 'community'))
 
-    data = models.DateTimeField(default=timezone.now)
-    type = models.CharField(choices=types, max_length=30)
+    data = models.DateTimeField(_('Data'), default=timezone.now)
+    type = models.CharField(_('Type'), choices=types, max_length=30)
 
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
     object_id = models.PositiveIntegerField()

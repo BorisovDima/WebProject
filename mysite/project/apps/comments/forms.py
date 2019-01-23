@@ -14,7 +14,7 @@ class CommentForm(ModelForm):
         fields = ['text']
         widgets = {
             'text': forms.Textarea(attrs={'rows': 1, 'Class': 'form-control',
-                                          'maxlength': 424,
+                                          'maxlength': 300,
                                           'style': 'resize:none; font-size: 14px',
                                           'data-type': 'data-form',
                                           'placeholder': 'Оставить комментарий'

@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.i18n import i18n_patterns
+from django.contrib.sitemaps.views import sitemap
 
 
 urlpatterns = [
+    path('sitemap.xml', sitemap, name='django.contrib.sitemaps.views.sitemap'),
     path('admin/', admin.site.urls, name='admin'),
     path('', include('project.apps.search.urls')),
     path('', include('project.apps.blog.urls')),
@@ -32,3 +35,5 @@ urlpatterns = [
     path('api/', include('project.apps.autocomplete.urls'))
 
 ]
+
+urlpatterns += i18n_patterns(path('info/', include('project.apps.info.urls')))

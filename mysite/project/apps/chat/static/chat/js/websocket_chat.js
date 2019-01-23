@@ -1,6 +1,5 @@
 $(document).ready(function(){
-        $('body, html').scrollTop($(document).height())
-
+        autosize($('#id_text_dialog'));
 })
 
 

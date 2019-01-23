@@ -3,7 +3,7 @@ from django.forms import widgets
 from django import forms
 from .models import Profile #ProfileImg
 from django_countries.widgets import CountrySelectWidget
-
+from django.utils.translation import gettext as _
 
 
 class ProfileForm(forms.ModelForm):
@@ -19,13 +19,13 @@ class ProfileForm(forms.ModelForm):
         self.fields['user_name'].widget = widgets.TextInput(
             attrs={'Class': 'text-dark col-6 my-1 py-0 border-0 ',
                    'style':'font-size: 24px; box-shadow: none;',
-                    'placeholder':'Your name'})
+                    'placeholder': _('Your name')})
 
         self.fields['date_of_birth'].widget = widgets.SelectDateWidget(
             attrs={'Class': ' mx-1 my-1 col-3 border custom-select',
                    'style':  'box-shadow: none;',}, years=list(range(1950, 2018)))
 
-        self.fields['date_of_birth'].label = 'Date of birthday'
+        self.fields['date_of_birth'].label = _('Birthday')
 
 
 
@@ -47,14 +47,12 @@ from os.path import splitext
 class BaseUserPhotoForm(forms.ModelForm):
 
     def check_image(self, image):
-        print(getattr(image, 'image', None), '----')
         if getattr(image, 'image', None):
-            print(image.size)
             if image.size > (2000 * 1000):
-                raise forms.ValidationError('Максимальный размер файла 1mb')
+                raise forms.ValidationError(_('Max size file 2mb'))
             file, ext = splitext(image.name.lower())
-            if ext not in ('.jpeg', '.jpg', '.png', '.gif'):
-                raise forms.ValidationError('Неподдерживаемый формат')
+            if ext not in ('.jpeg', '.jpg', '.png'):
+                raise forms.ValidationError(_('Unsupported format'))
 
 class ProfileFormPhoto(BaseUserPhotoForm):
 
@@ -91,9 +89,9 @@ class ChangeEmail(forms.ModelForm):
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not email:
-            raise forms.ValidationError('requared')
+            raise forms.ValidationError(_('Requared'))
         if get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('Email already exist')
+            raise forms.ValidationError(_('User with this email already exists'))
         return self.cleaned_data['email']
 
 

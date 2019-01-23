@@ -1,5 +1,5 @@
 
-<button type="button" class="text-white btn my-0 py-0 {% if action %} btn-success {% else %} btn-danger {% endif %} float-right btn-sm"
-        data-action="user-subscribe" data-type='{{ type }}' data-id="{{ id }}" {% if size %} style="font-size:12px" {% endif %}>
+<button type="button" class="text-white btn my-0 py-0 {% if action %} btn-success {% else %} btn-danger {% endif %} {% if size %} float-right {% endif %} btn-sm"
+        data-action="user-subscribe" data-type='{{ type }}' data-id="{{ id }}" {% if size %} style="font-size:10px"{% endif %}>
     {% if action %} Unsubscribe {% else %} Subscribe {% endif %}
 </button>

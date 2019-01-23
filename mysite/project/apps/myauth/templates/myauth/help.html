@@ -1,6 +1,6 @@
 {% extends "blog/MainPage.html" %}
 {% load static %}
-
+{% load i18n %}
 
 {% block head %}
 <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -11,9 +11,9 @@
 
 <div class="row  pt-5 mt-0 ">
     <div class="col-sm-12 border" style="background-color: #ffffff; height: 400px">
-
+    <p><a class="btn" href="{% url 'myauth:login' %}"> < Login</a></p>
     <button class="btn btn-link mt-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Не пришло письмо с ссыллкой на акивацию аккаунта?
+    {% trans "Did not receive a letter with a link to account activation?" %}
     </button>
 
 <div class="collapse" id="collapseExample">
@@ -21,10 +21,10 @@
       <div id="body-activate-email">
      <div class="form-group">
          <label for="id_email">
-             Введите email на который был зарегестрирован ваш аккаунт, мы оправим вам новое письмо для активации
+             {% trans "Enter the email to which your account was registered, we will send you a new letter to activate" %}
          </label>
          {{ form.email }}
-                 <button class="btn btn-primary mt-3" id="send-activate">Отправить</button>
+                 <button class="btn btn-primary mt-3" id="send-activate">{% trans "Send" %}</button>
          </div>
       <div class="form-group">
                 <div class="g-recaptcha" data-sitekey="6LenZoQUAAAAAC5tKBi0fHFZaZnpADswyZcqEEqE"></div>

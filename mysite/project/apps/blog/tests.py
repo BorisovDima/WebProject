@@ -53,7 +53,6 @@ class TestBlogPost(UserAuth, StaticLiveServerTestCase):
         self.author.set_password(test_pass)
         self.author.save()
         self.driver = WebDriver()
-        Profile.objects.create(name=test_user, bloguser=self.author)
         self.user_auth(self.driver, (test_user, test_pass))
 
     def tearDown(self):
@@ -62,7 +61,7 @@ class TestBlogPost(UserAuth, StaticLiveServerTestCase):
     def test_post_not_in_user_page(self):
         self.driver.find_element_by_id('link_to_main-page').click()
         self.driver.find_element_by_xpath(
-            './/div[@id="navbarTogglerDemo02"]//button[@data-target="#Create-post"]').click()
+            './/div[@id="navbarToggler"]//button[@data-target="#Create-post"]').click()
         text = self.driver.find_element_by_id('navbar-create_post_form')
         key = str(uuid4())
         text.send_keys(key)
@@ -77,7 +76,7 @@ class TestBlogPost(UserAuth, StaticLiveServerTestCase):
 
     def test_post_in_user_page(self):
         self.driver.find_element_by_xpath(
-            './/div[@id="navbarTogglerDemo02"]//button[@data-target="#Create-post"]').click()
+            './/div[@id="navbarToggler"]//button[@data-target="#Create-post"]').click()
         text = self.driver.find_element_by_id('navbar-create_post_form')
         key = str(uuid4())
         text.send_keys(key)
@@ -90,7 +89,7 @@ class TestBlogPost(UserAuth, StaticLiveServerTestCase):
 
     def test_update_post(self):
         self.driver.find_element_by_xpath(
-            './/div[@id="navbarTogglerDemo02"]//button[@data-target="#Create-post"]').click()
+            './/div[@id="navbarToggler"]//button[@data-target="#Create-post"]').click()
         text = self.driver.find_element_by_id('navbar-create_post_form')
         text.send_keys('TEXT BEFORE UPDATE')
         self.driver.find_element_by_id('send-form-post').click()
@@ -134,7 +133,7 @@ class TestBlogPost(UserAuth, StaticLiveServerTestCase):
 
     def get_post(self, text):
         try:
-             WebDriverWait(self.driver, 5).\
+             WebDriverWait(self.driver, 20).\
                     until(lambda element: self.driver.find_element_by_xpath(
                     '//div[@id="add-loader"]//h6[contains(text(), "%s")]' % text))
              return True

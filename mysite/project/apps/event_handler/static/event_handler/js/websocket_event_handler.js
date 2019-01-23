@@ -15,6 +15,16 @@ Socket.onmessage = function(event) {
     var event = data['event']
     var locate = data['dialog']
     var html = data['html']
+    title = $('#title-head').text()
+    if (/\((\d+)\)/g.test(title)) {
+        $('#title-head').text($('#title-head').text().replace(/\((\d+)\)/g,  function(input, match1) {
+                                        return  '(' + String(Number(match1) + 1) + ')'
+                                                        }))
+    }
+    else {
+        $('#title-head').text('(1)' + $('#title-head').text())
+    }
+
     if (event == 'message') {
         if (Number(locate) != Number($('#message-dispatch').val())) {
             var count = Number($('#counter-message').text())

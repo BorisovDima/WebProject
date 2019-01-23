@@ -1,21 +1,24 @@
 {% load account_tags %}
 {% load humanize %}
+{% load i18n %}
+{% load cache %}
 
+{% cache 500 user_dialog_img from.name %}
 <ul class="nav ml-2 pb-1  pt-0">
   <li class="nav-item pt-0">
       <div class="card-avatar mt-0">
           <a href="{{ from.get_absolute_url }}"><img class="personPhoto" src="{% user_image from 't' %}"></a>
       </div>
   </li>
-    <li class="nav-item">
-        <a class="nav-link pl-2 pr-2" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.name}} </a>
+    <li class="nav-item pt-2">
+        <a class="px-2 pt-4" href="{{ from.get_absolute_url }}" style="font-size: 14px;">{{ from.name}} </a>
     </li>
     {% if to %}
-        <li class="nav-item mb-0 pb-0">
-        <a class="btn btn-link btn-sm text-info  mb-0 pb-0" href="{{ to.get_absolute_url }}" style="font-size: 13px;"> ответил {{ to.name }}</a>
+        <li class="nav-item pt-2 pr-2">
+            <span  style="font-size: 13px;" >{% trans "replied" %} <a class=" text-info" href="{{ to.get_absolute_url }}"> {{ to.name }}</a></span>
     </li>
   <li class="nav-item">
-      <div class="card-avatar_to mt-0">
+      <div class="card-avatar_to mt-2">
           <a href="{{ to.get_absolute_url }}"><img class="personPhoto_to" src="{% user_image to 't' %}"></a>
       </div>
   </li>
@@ -26,5 +29,5 @@
     </li>
     {% endif %}
 </ul>
-
+{% endcache %}
 

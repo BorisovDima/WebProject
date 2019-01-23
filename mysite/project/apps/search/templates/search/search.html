@@ -2,6 +2,7 @@
 {% load blog_tags %}
 {% load static %}
 
+
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
 
@@ -26,10 +27,10 @@
 
     <ul class="nav nav-tabs border-0">
       <li class="nav-item px-2">
-        <a class="my_link my_active" data-type="posts-search" data-action="ajax-paginate-btn">Posts</a>
+        <a class="my_link my_active"  data-type="post"  data-sort="post-search"  data-add="False" data-action="ajax-paginate-btn">Posts</a>
       </li>
         <li class="nav-item px-2">
-        <a class="my_link" data-type="people-search" data-action="ajax-paginate-btn">People</a>
+        <a class="my_link"  data-type="user" data-sort="people-search" data-add="False"  data-action="ajax-paginate-btn">People</a>
       </li>
       <li class="nav-item px-2 ">
         <a class="my_link text-muted" >Community</a>
@@ -56,13 +57,7 @@
 {% endblock %}
 
 {% block buttom %}
-<input id="location" value="{{ location }}" type="hidden">
-<script src="{% static 'search/js/main_search.js' %}"></script>
-<script src="{% static 'delete_app/js/delete.js' %}"> </script>
-<script src="{% static 'like_dislike/js/like.js' %}"></script>
-<script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
-
+<input id="location" value="{{ location }}" type="hidden" data-type="{{ type }}" data-start="{{ start_location }}">
+   <script src="{% static 'search/js/main_search.js' %}"></script>
 {% endblock %}
 
-{% block additional %}
-{% endblock %}

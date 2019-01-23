@@ -23,5 +23,4 @@ class LikeSubscribe(LoginRequiredMixin, View):
                 obj.my_followers.create(user=req.user, type=self.type)
             add = True
         count = obj.like.all() if self.event == 'like' else obj.my_followers.all()
-        print(self.type)
         return JsonResponse({'count': count.count(),'add': add})

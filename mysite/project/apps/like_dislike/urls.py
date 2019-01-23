@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views, models
-from project.apps.blog.models import Article, Community
+from project.apps.blog.models import Article
 from project.apps.comments.models import Comment
 from django.contrib.auth import get_user_model
 
@@ -21,11 +21,4 @@ urlpatterns = [
                                                                  type='U',
                                                                  event='subs'),
                                                                  name='subscribe-user'),
-
-
-
-    path('subscribe/community/<int:id>/', views.LikeSubscribe.as_view(model=Community, foreign_model=models.Subscribe,
-                                                                   type='Com',
-                                                                   event='subs'),
-                                                                   name='subscribe-community')
 ]

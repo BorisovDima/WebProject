@@ -1,5 +1,7 @@
+{% load i18n %}
+
 <div class="card text-center">
   <div class="card-body">
-    <p class="card-text"> Мы отправили ссылку для сброса пароля на твой email {{ email }}</p>
+    <p class="card-text"> {% trans "We sent a link to reset your password to your email" %} {{ email }}</p>
   </div>
 </div>

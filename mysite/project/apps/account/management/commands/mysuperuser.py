@@ -20,7 +20,6 @@ class Command(BaseCommand):
             user.is_verified = True
             user.set_password(pass_)
             user.save()
-            Profile.objects.create(name=user.username, bloguser=user)
         except Exception as er:
             self.stderr.write(str(er))
         else:

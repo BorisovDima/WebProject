@@ -5,40 +5,58 @@
 {% load static %}
 {% bootstrap_messages %}
 {% load blog_tags %}
+{% load title %}
+{% load i18n %}
+{% load cache %}
+
+
+
 
 <html lang="en">
 <head>
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
     <meta charset="UTF-8">
-    <title>Title</title>
+     <link rel="shortcut icon" href="{% static 'blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico' %}" type="image/x-icon">
+    {% block title %}
+
+    <title id="title-head">{% title request user %}</title>
+
+    {% endblock %}
 </head>
+<script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+
 
 <body style="background-color: #f4f4f4;" >
 
 
     {% block head %}
-    {% load_navbar user %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/css/main_page.css' %}">
+
+
+        {% load_navbar user loc='public' %}
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light border mb-0  pb-0">
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav ml-5 nav-tabs border-0">
       <li class="nav-item px-2">
-        <a class="my_link"     data-type="" data-action="ajax-paginate-btn">Top</a>
+        <a class="my_link  py-2"  data-type="post" data-sort="top"  data-add="False" data-action="ajax-paginate-btn">Top</a>
       </li>
         <li class="nav-item active px-2">
-            <a class="my_link" data-type="popular" data-action="ajax-paginate-btn">Popular</a>
+            <a class="my_link  py-2" data-type="post" data-sort="popular" data-action="ajax-paginate-btn">Popular</a>
       </li>
       <li class="nav-item px-2">
-        <a class="my_link"     data-type="new" data-action="ajax-paginate-btn">New</a>
+        <a class="my_link  py-2"     data-type="post" data-sort="new" data-action="ajax-paginate-btn">New</a>
       </li>
-        <li class="nav-item px-2">
-        <a class="my_link"  data-type="people" data-action="ajax-paginate-btn">People</a>
+        <li class="nav-item px-2 ">
+        <a class="my_link  py-2"  data-type="user" data-sort="people"  data-action="ajax-paginate-btn">People</a>
       </li>
       <li class="nav-item px-2 ">
-        <a class="my_link text-muted"  >Community</a>
+        <a class="my_link text-muted  py-2"  >Community</a>
       </li>
     </ul>
   </div>
@@ -56,7 +74,7 @@
     {% endblock %}
 
         <div class="container-fluid">
-            <div class="row text-left mt-1 mb-5 pb-5">
+            <div class="row text-left mt-0 mb-3 pb-3">
                 <div class="col-lg-6  offset-md-1 ">
                     {% block body %}
                     <div id="add-loader">
@@ -71,8 +89,8 @@
                             <div class="card-body text-center pl-1">
 
                         <select class="custom-select custom-select-sm" data-action="choice-sort">
-                            <option value="search-top" selected>Популярные</option>
-                            <option value="search-new">Новые</option>
+                            <option value="search-top" selected>{% trans 'Popular' %}</option>
+                            <option value="search-new">{% trans 'New' %}</option>
                         </select>
                         <hr class="mb-0">
                     </div>
@@ -84,7 +102,11 @@
                             </div>
                          </div>
                         </div>
-                        {% top_tags %}
+                        {% cache 500 top_tags %}
+                            {% top_tags %}
+                        {% endcache %}
+
+                        {% about %}
                     </div>
                     {% endblock %}
                 </div>
@@ -107,15 +129,17 @@
 
 
 {% block buttom %}
-    <input id="location" value="{{ location }}" type="hidden" data-id="{{ start_loc }}">
-    <script src="{% static 'delete_app/js/delete.js' %}"> </script>
+    <input id="location" value="{{ location }}" type="hidden" data-type="{{ type }}" data-start="{{ start_location }}">
     <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
+{% endblock %}
 
+
+{% block action_user %}
 {% if user.is_authenticated %}
+    <script src="{% static 'delete_app/js/delete.js' %}"> </script>
     <script src="{% static 'like_dislike/js/like.js' %}"></script>
     <script src="{% static 'like_dislike/js/subscribe.js' %}"></script>
 {% endif %}
-
 {% endblock %}
 
 </body>

@@ -1,6 +1,6 @@
-from django.conf import settings
 import requests
-
+from django.contrib.gis.geoip2 import GeoIP2
+from django.conf import settings
 
 def check_google_captcha(req):
     recaptcha_response = req.POST.get('g-recaptcha-response')
@@ -22,12 +22,27 @@ def handler_ip(request):
     return ip
 
 
-from project.apps.account.models import Profile
+def get_geo(request):
+    ip = handler_ip(request)
+    success = True
+    try:
+        geo = GeoIP2().country(ip)['country_code']
+    except Exception:
+        geo = settings.DEFAULT_GEO
+        success = False
+    return geo, success
+
+def set_geo(user, request):
+    geo, stat = get_geo(request)
+    user.geo = geo
+    user.save(update_fields=['geo'])
 
 
 def social_user(backend, user, response, *args, **kwargs):
-    profile = Profile.objects.filter(bloguser=user)
-    if not profile:
-        Profile.objects.create(bloguser=user, name=user.username)
+    if not user.is_verified:
+        set_geo(user, kwargs['request'])
         user.is_verified = True
         user.save(update_fields=['is_verified'])
+
+
+

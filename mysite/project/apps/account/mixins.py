@@ -1,6 +1,8 @@
-from django.http import JsonResponse
 from django.shortcuts import redirect
-from project.apps.myauth.utils import check_google_captcha
+from django.http import Http404
+
+from .models import BlogUser
+
 
 class NotLoginRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
@@ -8,25 +10,11 @@ class NotLoginRequiredMixin:
             return redirect('/')
         return super().dispatch(request, *args, **kwargs)
 
+class OnlyOwnerMixin:
+    def post(self, req, *args, **kwargs):
+        obj = self.get_object()
+        user = obj if isinstance(obj, BlogUser) else obj.get_user
+        if user != req.user:
+            raise Http404
+        return super().post(req, *args, **kwargs)
 
-
-
-class AjaxMixin:
-    captcha = None
-
-    def form_invalid(self, form, captcha=None):
-        response = super().form_invalid(form)
-        if self.request.is_ajax():
-            errors = form.errors if not captcha else {'captcha': 'Captcha error. Please try again'}
-            return JsonResponse(errors, status=400)
-        else:
-            return response
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        if self.request.is_ajax():
-            if self.captcha and not check_google_captcha(self.request):
-                return self.form_invalid(form, captcha=True)
-            return JsonResponse(self.get_data(form))
-        else:
-            return response

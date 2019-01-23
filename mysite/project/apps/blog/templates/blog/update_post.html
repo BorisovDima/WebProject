@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <div class="modal fade" id="update-modal" tabindex="-1" role="dialog" aria-labelledby="modal-update-modal" aria-hidden="true">
   <div class="modal-dialog modal-lg w-50" role="document">
     <div class="modal-content">
@@ -13,15 +15,17 @@
          <img id="user_update_img" class="img-fluid  rounded {% if article.text %} pt-3 {% endif %}" src="{% if article.image %}{{ article.image.url }}{% endif %}" style=" max-height: 485px">
 
       </div>
-
+        <small data-type="error-update-image" class="form-text text-danger"> </small>
+        <small data-type="error-update-text" class="form-text text-danger"> </small>
       <div class="modal-footer align-self-start py-1">
-          <a class="btn text-info pr-2" data-dismiss="modal">Отменить</a>
-          <a class="btn text-info pr-2" data-action="save_update">Сохранить</a>
+          <a class="btn text-info pr-2" data-dismiss="modal">{% trans "Cancel" %}</a>
+          <a class="btn text-info pr-2" data-action="save_update">{% trans "Save" %}</a>
 
           <label class="btn btn-outline-primar ml-5" for="update_post_input_file">
                 <img id="update_post_input" class="ml-1 btn-outline-primar" width='35' src="{% static 'blog/img/baseline-add_photo_alternate-24px(3).svg' %}" data-toggle="tooltip" data-placement="top" title="Change image">
                 <input type='file' id="update_post_input_file" name="{{ form.image.html_name }}" style="display:none">
           </label>
+
       </div>
 
     </div>

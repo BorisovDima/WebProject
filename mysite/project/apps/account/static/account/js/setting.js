@@ -7,7 +7,7 @@ $('[data-action="change-settings"]').on('click', function() {
     var type = $(this).data('type')
     $(this).hide()
     $.ajax({
-        url: '/profile/' + type + '/',
+        url: '/' + type + '/',
         method: 'POST',
         data: {"old_password": old, "new_password1": new1, "new_password2": new2, 'email': email},
         success: function(data){

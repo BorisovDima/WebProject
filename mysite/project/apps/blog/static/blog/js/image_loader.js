@@ -82,7 +82,7 @@ $('#send-form-post').on('click', function() {
                 setTimeout(function () {
                     $("#post-create-error-img").text('')
                     $("#post-create-error-text").text('')
-                    }, 1500);
+                    }, 2000);
                 close_file_choice()
             }
         },

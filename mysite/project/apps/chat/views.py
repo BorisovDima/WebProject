@@ -1,4 +1,3 @@
-from django.views.generic import DetailView
 from django.views.generic import FormView
 from .models import Dialog
 from django.contrib.auth import get_user_model
@@ -16,7 +15,8 @@ class DialogView(LoginRequiredMixin, FormView):
        context = super().get_context_data(**kwargs)
        if self.kwargs.get('id_dialog'):
            context['dialog'] = Dialog.objects.get(id=self.kwargs['id_dialog'])
-           context['dialog'].auth_user(self.request.user)
+           if context['dialog'].auth_user(self.request.user):
+               raise Http404
        else:
             user = get_user_model().objects.get(username=self.kwargs['username'])
             context['dialog'], context['status'] = Dialog.objects.get_or_create_dialog(self.request.user, user)

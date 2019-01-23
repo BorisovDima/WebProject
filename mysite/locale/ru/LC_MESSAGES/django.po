@@ -1,0 +1,571 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-01-08 13:40+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: project/apps/account/forms.py:22
+msgid "Your name"
+msgstr "Твое имя"
+
+#: project/apps/account/forms.py:28
+#, fuzzy
+#| msgid "Birhday"
+msgid "Birthday"
+msgstr "День рождения"
+
+#: project/apps/account/forms.py:52
+msgid "Max size file 2mb"
+msgstr "Максимальный размер файла 2мб"
+
+#: project/apps/account/forms.py:55
+msgid "Unsupported format"
+msgstr "Неподдерживаемый формат"
+
+#: project/apps/account/forms.py:92 project/apps/myauth/forms.py:46
+msgid "Requared"
+msgstr "Требуется"
+
+#: project/apps/account/forms.py:94 project/apps/myauth/forms.py:48
+msgid "User with this email already exists"
+msgstr "Пользователь с таким email уже существует"
+
+#: project/apps/account/mixins.py:28
+msgid "Captcha error. Please try again"
+msgstr ""
+
+#: project/apps/account/models.py:16
+#: project/apps/account/templates/account/profile.html:108
+msgid "Followers"
+msgstr "Подписчики"
+
+#: project/apps/account/models.py:17
+msgid "Is verified"
+msgstr ""
+
+#: project/apps/account/models.py:18
+msgid "Uuid"
+msgstr ""
+
+#: project/apps/account/models.py:19
+msgid "Email"
+msgstr ""
+
+#: project/apps/account/models.py:20
+msgid "Last activity"
+msgstr ""
+
+#: project/apps/account/models.py:21
+msgid "User geo"
+msgstr ""
+
+#: project/apps/account/models.py:41 project/apps/info/models.py:25
+msgid "User"
+msgstr ""
+
+#: project/apps/account/models.py:43
+msgid "User name"
+msgstr ""
+
+#: project/apps/account/models.py:44 project/apps/blog/models.py:56
+msgid "Name"
+msgstr ""
+
+#: project/apps/account/models.py:45
+msgid "Date of birth"
+msgstr ""
+
+#: project/apps/account/models.py:46
+#: project/apps/account/templates/account/profile.html:70
+msgid "Country"
+msgstr "Страна"
+
+#: project/apps/account/models.py:47
+msgid "About me"
+msgstr ""
+
+#: project/apps/account/models.py:48 project/apps/blog/models.py:120
+msgid "Image"
+msgstr ""
+
+#: project/apps/account/models.py:49 project/apps/account/models.py:54
+msgid "You can upload an image in JPG or PNG formats. Max size file 2mb"
+msgstr ""
+"Ты можешь загрузить изображение в формате JPG или PNG. Максимальный размер "
+"файла 2мб"
+
+#: project/apps/account/models.py:51
+msgid "Thumbnail"
+msgstr ""
+
+#: project/apps/account/models.py:53
+msgid "Head"
+msgstr ""
+
+#: project/apps/account/templates/account/profile.html:28
+msgid "Choice file"
+msgstr "Выбери файл"
+
+#: project/apps/account/templates/account/profile.html:35
+#: project/apps/account/templates/account/settings.html:33
+#: project/apps/account/templates/account/settings.html:50
+#: project/apps/myauth/templates/myauth/reset_pass_form.html:21
+msgid "Change"
+msgstr "Изменить"
+
+#: project/apps/account/templates/account/profile.html:65
+msgid "Joined"
+msgstr "Присоединился"
+
+#: project/apps/account/templates/account/profile.html:67
+msgid "Birth"
+msgstr "Дата рождения"
+
+#: project/apps/account/templates/account/profile.html:105
+#: project/apps/blog/templates/tag/tags.html:13
+msgid "Posts"
+msgstr "Посты"
+
+#: project/apps/account/templates/account/profile.html:111
+msgid "Following"
+msgstr "Подписки"
+
+#: project/apps/account/templates/account/profile.html:114
+msgid "Communities"
+msgstr "Сообщества"
+
+#: project/apps/account/templates/account/settings.html:20
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: project/apps/account/templates/account/settings.html:27
+msgid "Old password"
+msgstr "Старый пароль"
+
+#: project/apps/account/templates/account/settings.html:29
+msgid "New password"
+msgstr "Новый пароль"
+
+#: project/apps/account/templates/account/settings.html:31
+msgid "Confirm password"
+msgstr "Подтвердить пароль"
+
+#: project/apps/account/templates/account/settings.html:41
+msgid "Change email"
+msgstr "Изменить почту"
+
+#: project/apps/account/templates/account/settings.html:49
+msgid "New email"
+msgstr "Новый email"
+
+#: project/apps/account/templates/account/settings.html:66
+msgid "Main"
+msgstr "Основные"
+
+#: project/apps/account/templates/account/tag/user_head.html:49
+msgid "Edit profile"
+msgstr "Изменить профиль"
+
+#: project/apps/account/templates/account/tag/user_head.html:52
+msgid "Settings"
+msgstr "Настройки"
+
+#: project/apps/account/templates/account/tag/user_head.html:57
+msgid "Send message"
+msgstr "Отправить сообщение"
+
+#: project/apps/account/views.py:15
+msgid "Password change!"
+msgstr "Пароль изменен!"
+
+#: project/apps/account/views.py:30
+msgid "Email change!"
+msgstr "Email изменен!"
+
+#: project/apps/blog/forms.py:20
+msgid "You can upload an image in JPG, GIF or PNG formats. Max size file 1mb"
+msgstr "Ты можешь загрузить изображение в формате JPG, GIF или PNG"
+
+#: project/apps/blog/models.py:13 project/apps/blog/models.py:55
+#: project/apps/comments/models.py:24 project/apps/info/models.py:22
+msgid "Create data"
+msgstr ""
+
+#: project/apps/blog/models.py:14
+msgid "Last modify data"
+msgstr ""
+
+#: project/apps/blog/models.py:15 project/apps/comments/models.py:32
+msgid "Is active"
+msgstr ""
+
+#: project/apps/blog/models.py:117
+msgid "Title"
+msgstr ""
+
+#: project/apps/blog/models.py:118 project/apps/chat/models.py:52
+#: project/apps/comments/models.py:25
+msgid "Text"
+msgstr ""
+
+#: project/apps/blog/models.py:119
+msgid "Views"
+msgstr ""
+
+#: project/apps/blog/models.py:121
+msgid "Community"
+msgstr ""
+
+#: project/apps/blog/models.py:122
+msgid "Tags"
+msgstr ""
+
+#: project/apps/blog/models.py:123 project/apps/chat/models.py:54
+#: project/apps/comments/models.py:26
+msgid "Author"
+msgstr ""
+
+#: project/apps/blog/models.py:124 project/apps/comments/models.py:31
+msgid "Like"
+msgstr ""
+
+#: project/apps/blog/models.py:125
+msgid "Status"
+msgstr ""
+
+#: project/apps/blog/templates/blog/MainPage.html:85
+msgid "Popular"
+msgstr ""
+
+#: project/apps/blog/templates/blog/MainPage.html:86
+msgid "New"
+msgstr ""
+
+#: project/apps/blog/templates/blog/articles.html:61
+msgid "delete post"
+msgstr ""
+
+#: project/apps/blog/templates/blog/publish.html:5
+msgid "Post posted"
+msgstr "Пост опубликован!"
+
+#: project/apps/blog/templates/blog/update_post.html:21
+msgid "Cancel"
+msgstr ""
+
+#: project/apps/blog/templates/blog/update_post.html:22
+msgid "Save"
+msgstr ""
+
+#: project/apps/blog/templates/tag/edit_button.html:4
+msgid "Edit"
+msgstr ""
+
+#: project/apps/blog/templates/tag/home_sidebar.html:9
+msgid "People you may be interested in"
+msgstr "Люди, которые могут быть тебе интересны"
+
+#: project/apps/blog/templates/tag/modal-notify.html:18
+#: project/apps/blog/templates/tag/post.html:32
+msgid "load more"
+msgstr "Загрузить больше"
+
+#: project/apps/blog/templates/tag/navbar.html:32
+msgid "What's new?"
+msgstr ""
+
+#: project/apps/blog/templates/tag/post.html:20
+#: project/apps/myauth/templates/myauth/help.html:27
+msgid "Send"
+msgstr "Отправить"
+
+#: project/apps/blog/templates/tag/tags.html:8
+msgid "Popular now"
+msgstr "Популярно сейчас"
+
+#: project/apps/chat/models.py:23
+msgid "From user"
+msgstr ""
+
+#: project/apps/chat/models.py:25
+msgid "To user"
+msgstr ""
+
+#: project/apps/chat/models.py:53
+msgid "Dialog"
+msgstr ""
+
+#: project/apps/chat/models.py:55
+msgid "Data publish"
+msgstr ""
+
+#: project/apps/chat/models.py:56 project/apps/event_handler/models.py:20
+msgid "Readed"
+msgstr ""
+
+#: project/apps/chat/templates/chat/user_img.html:16
+#: project/apps/comments/templates/tag/comm_img.html:16
+#: project/apps/comments/templates/tag/comm_img.html:18
+msgid "replied"
+msgstr "ответил"
+
+#: project/apps/comments/models.py:28
+msgid "Article"
+msgstr ""
+
+#: project/apps/comments/models.py:29
+msgid "Parent comment"
+msgstr ""
+
+#: project/apps/comments/models.py:33
+msgid "Initial comment"
+msgstr ""
+
+#: project/apps/comments/templates/comments/comment.html:18
+msgid "delete"
+msgstr ""
+
+#: project/apps/comments/templates/comments/comment.html:38
+msgid "Reply"
+msgstr "Ответить"
+
+#: project/apps/comments/templates/comments/comment.html:48
+msgid "Comment has been deleted"
+msgstr "Коммениарий был удален"
+
+#: project/apps/delete_app/templates/delete_app/tag/delete_notify.html:9
+msgid "Post was deleted"
+msgstr "Пост был удален"
+
+#: project/apps/delete_app/templates/delete_app/tag/delete_notify.html:11
+#: project/apps/delete_app/templates/delete_app/tag/delete_notify.html:22
+msgid "You can restore it"
+msgstr "Отменить удаление"
+
+#: project/apps/delete_app/templates/delete_app/tag/delete_notify.html:21
+msgid "Comment was deleted"
+msgstr "Комментарий удален"
+
+#: project/apps/event_handler/models.py:17
+msgid "Owner"
+msgstr ""
+
+#: project/apps/event_handler/models.py:18
+msgid "Initiator"
+msgstr ""
+
+#: project/apps/event_handler/models.py:19
+msgid "Event"
+msgstr ""
+
+#: project/apps/event_handler/templates/event_handler/tag/comment.html:13
+msgid "Commented on your post"
+msgstr "Комментарии твоего поста"
+
+#: project/apps/event_handler/templates/event_handler/tag/notify-like.html:12
+msgid "Liked your post"
+msgstr "Понравился твой пост"
+
+#: project/apps/event_handler/templates/event_handler/tag/notify-subs.html:13
+msgid "Followed you"
+msgstr "Подписался на тебя"
+
+#: project/apps/event_handler/templates/event_handler/tag/parent-comment.html:13
+msgid "Replied to your comment"
+msgstr "Ответил на твой комментарий"
+
+#: project/apps/info/forms.py:13
+msgid "Subject matter"
+msgstr "Тема"
+
+#: project/apps/info/forms.py:19
+msgid "Detail of inquiry"
+msgstr "Детали запроса"
+
+#: project/apps/info/forms.py:25
+msgid "Question title very short!. Minimum 40 characters"
+msgstr "Тема вопроса очень короткая! Минимум 40 символов"
+
+#: project/apps/info/forms.py:30
+msgid "Question body very short!. Minimum 60 characters"
+msgstr "Описание вопроса очень короткое! Минимум 60 символов"
+
+#: project/apps/info/models.py:23
+msgid "Question title"
+msgstr ""
+
+#: project/apps/info/models.py:24
+msgid "Question body"
+msgstr ""
+
+#: project/apps/info/models.py:26
+msgid "Question open"
+msgstr ""
+
+#: project/apps/info/templates/info/success.html:11
+msgid "Email sent! We will reply you as soon as possible."
+msgstr "Письмо отправлено! Мы ответим вам как можно скорее."
+
+#: project/apps/info/templates/info/success.html:15
+msgid "Message sent. We will reply as soon as possible."
+msgstr "Сообщение отправлено! Мы ответим вам как можно скорее."
+
+#: project/apps/like_dislike/models.py:22
+msgid "Data"
+msgstr ""
+
+#: project/apps/like_dislike/models.py:23
+msgid "Type"
+msgstr ""
+
+#: project/apps/myauth/forms.py:39
+msgid "Too short!. 3 characters minimum"
+msgstr "Слишком короткое имя! Минимум 3 символа"
+
+#: project/apps/myauth/forms.py:76
+msgid "User not verified, please check email"
+msgstr "Пользователь еще не верифицирован, пожалуйста проверь почту"
+
+#: project/apps/myauth/forms.py:79
+msgid "User was deleted"
+msgstr ""
+
+#: project/apps/myauth/models.py:10
+msgid "Ban"
+msgstr ""
+
+#: project/apps/myauth/models.py:11
+msgid "Attempts"
+msgstr ""
+
+#: project/apps/myauth/models.py:12
+msgid "Time unblock"
+msgstr ""
+
+#: project/apps/myauth/models.py:13
+msgid "ip"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/ban_15.html:12
+#: project/apps/myauth/templates/myauth/ban_24.html:12
+msgid "Due to suspicious actions, we have blocked your ip-address"
+msgstr "Из-за подозрительных действий мы заблокировали ваш ip-адрес"
+
+#: project/apps/myauth/templates/myauth/ban_15.html:15
+msgid ""
+"You will be able to log in to your account after 15 minutes or use "
+"authorization through social networks."
+msgstr ""
+"Вы сможете войти в свой аккаунт через 15 минут или использовать авторизацию "
+"через социальные сети."
+
+#: project/apps/myauth/templates/myauth/ban_24.html:15
+msgid ""
+"You will be able to log into your account after 24 hours or use "
+"authorization through social networks."
+msgstr ""
+"Вы сможете войти в свой аккаунт через 24 часа или использовать авторизацию "
+"через социальные сети."
+
+#: project/apps/myauth/templates/myauth/help.html:16
+msgid "Did not receive a letter with a link to account activation?"
+msgstr "Не получили письмо со ссылкой на активацию аккаунта?"
+
+#: project/apps/myauth/templates/myauth/help.html:24
+msgid ""
+"Enter the email to which your account was registered, we will send you a new "
+"letter to activate"
+msgstr ""
+"Введите адрес электронной почты, на который был зарегистрирован ваш аккаунт, "
+"мы вышлем вам новоеписьмо для активации"
+
+#: project/apps/myauth/templates/myauth/registration.html:14
+#: project/apps/myauth/templates/myauth/registration.html:36
+msgid "Registration"
+msgstr "Регистрация"
+
+#: project/apps/myauth/templates/myauth/registration.html:32
+msgid "Registation via social network"
+msgstr "Регистрация через социальные сети"
+
+#: project/apps/myauth/templates/myauth/registration.html:55
+msgid "We will send you a letter with a link to change your password."
+msgstr "Мы отправим вам письмо со ссылкой для изменения пароля."
+
+#: project/apps/myauth/templates/myauth/registration.html:58
+msgid "Search"
+msgstr "Искать"
+
+#: project/apps/myauth/templates/myauth/registration.html:75
+msgid "Login via social network"
+msgstr "Войти через социальные сети"
+
+#: project/apps/myauth/templates/myauth/registration.html:104
+msgid "Forgot password?"
+msgstr "Забыл пароль?"
+
+#: project/apps/myauth/templates/myauth/registration.html:106
+msgid "Help login?"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/registration.html:117
+msgid "About"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/registration.html:130
+msgid "Help"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/registration.html:131
+msgid "Privacy policy"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/registration.html:132
+msgid "Contacts"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/registration.html:133
+msgid "Support"
+msgstr ""
+
+#: project/apps/myauth/templates/myauth/reset_pass.html:5
+msgid "We sent a link to reset your password to your email"
+msgstr "Мы отправили ссылку для сброса пароля на ваш электронный адрес"
+
+#: project/apps/myauth/templates/myauth/reset_pass_form.html:25
+msgid "Link is no longer active"
+msgstr "Ссылка больше не активна"
+
+#: project/apps/myauth/templates/myauth/verify.html:5
+msgid "Confirm your email"
+msgstr "Подтвердите ваш адрес электронной почты"
+
+#: project/apps/myauth/templates/myauth/verify.html:8
+msgid "We sent a letter to your email"
+msgstr "Мы отправили письмо на вашу электронную почту"
+
+#: project/apps/myauth/templates/myauth/verify.html:8
+msgid "please follow the link in the letter and log in"
+msgstr "Пожалуйста, пройдите по ссылке в письме и авторизуйтесь"
+
+#~ msgid "Подписчики"
+#~ msgstr "Followers"
+
+#~ msgid "День рождения"
+#~ msgstr "Birthday"

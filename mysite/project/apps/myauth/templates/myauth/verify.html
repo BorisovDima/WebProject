@@ -1,8 +1,10 @@
+{% load i18n %}
+
 <div class="card text-center">
   <div class="card-header">
-    <strong>Подтверди свой email</strong>
+    <strong>{% trans "Confirm your email" %}</strong>
   </div>
   <div class="card-body">
-    <p class="card-text"> {{ user }} Мы отправили письмо на твой email {{ mail }}, пожалуйста перейди по ссылке в письме и авторизуйся</p>
+    <p class="card-text"> {{ user }} {% trans "We sent a letter to your email" %} {{ mail }}, {% trans "please follow the link in the letter and log in" %}</p>
   </div>
 </div>

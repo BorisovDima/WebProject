@@ -2,9 +2,12 @@
 {% load like_tag %}
  {% load account_tags %}
 
+
+
 <div class="row ">
 {% for obj in objs %}
-<div class="col-6 px-0 pb-1" style="height: 250px">
+    {% if obj.is_verified %}
+<div class="col-6 px-0 pb-3" style="height: 250px">
     <div class="card mr-1 ml-1 my-1 h-100">
 
          <div class="card-body" style="{% if not obj.profile.head %}background: #f442a4 {% else %}background-image: url('{{ obj.profile.head.url }}') {% endif %};background-repeat: no-repeat;background-size: cover; max-height: 80px;">
@@ -13,7 +16,7 @@
             </div>
         </div>
         <div class="card-body pt-2  pr-3 pb-0">
-            <a href="{{ obj.get_absolute_url }}"> <h5 class="card-title  pb-0 pt-0 mt-0 mb-1">@{{ obj.username }}</h5></a>
+            <a href="{{ obj.get_absolute_url }}"> <h5 class="card-title  pb-0 pt-0 mt-0 mb-1">{{ obj.profile.get_user_name }}</h5></a>
             <ul class="list-inline mb-2">
                 <li class="drop-left">
                     <a class="text-secondary mb-0 pb-1 pr-2 " style="font-size:12px">{{ obj.my_followers.count|intword }} followers</a>
@@ -25,8 +28,6 @@
                      {% subscribe_html obj 'user' user 'True' %}
                     {% endif %}
                     {% endif %}
-                     <h6 class="card-title text-muted pt-0 mt-0">{% if obj.profile.user_name %}{{ obj.profile.user_name }}{% else %}<br>{% endif %}</h6>
-
                 </li>
             </ul>
             {% if obj.profile.about_me %}
@@ -35,6 +36,9 @@
         </div>
     </div>
 </div>
+    {% endif %}
 {% endfor %}
 
  </div>
+
+

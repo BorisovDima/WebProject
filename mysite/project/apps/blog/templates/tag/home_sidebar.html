@@ -1,22 +1,25 @@
 {% load static %}
 {% load like_tag %}
+{% load account_tags %}
+{% load i18n %}
 
-<div class="card" style="width: 18rem;">
+<div class="card mt-3" style="width: 18rem;">
 
       <div class="card-body">
-    <h5 class="card-title">Recommend</h5>
-{% for user in users %}
+          <h6 class="card-title"><strong>{% trans "People you may be interested in" %}</strong></h6>
+{% for user in objs %}
           <ul class="nav">
               <li class="nav-item">
                   <div class="card-comm-side-avatar ">
-                      <a href="{{ user.get_absolute_url }}"><img class="comm-side-Photo" src="{{ user.image.url }}"></a>
+                      <a href="{{ user.get_absolute_url }}"><img class="comm-side-Photo" src="{% user_image user.profile 't' %}"></a>
                   </div>
               </li>
               <li class="nav-item">
-                  <a href="{{ user.get_absolute_url }}" class="text-dark"> <h6 class="pl-2 pt-2">{{ user.name }}</h6></a>
+                  <a href="{{ user.get_absolute_url }}" class="text-dark"> <h6 class="pl-2 pt-2">{{ user.username }}</h6></a>
               </li>
           </ul>
           <hr class="py-0 my-1">
 {% endfor %}
+          <a class="text-muted btn" data-action="show-more-recommend">Show more...</a>
       </div>
 </div>

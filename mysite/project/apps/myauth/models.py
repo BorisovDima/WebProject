@@ -1,15 +1,16 @@
 from django.db import models
 from django.utils import timezone
 from django.shortcuts import render_to_response
+from django.utils.translation import gettext_lazy as _
 
 class BanList(models.Model):
     ban_24h_template = 'account/ban_24.html'
     ban_15m_template = 'account/ban_15.html'
 
-    ban = models.BooleanField(default=False)
-    attempts = models.IntegerField(default=0)
-    time_unblock = models.DateTimeField(default=timezone.now)
-    ip = models.GenericIPAddressField()
+    ban = models.BooleanField(_('Ban'), default=False)
+    attempts = models.IntegerField(_('Attempts'), default=0)
+    time_unblock = models.DateTimeField(_('Time unblock'), default=timezone.now)
+    ip = models.GenericIPAddressField(_('ip'))
 
     def __str__(self):
         return 'stat-{}: attempt-{}: time-{}: {}'.format(self.ban, self.attempts, self.time_unblock, self.ip)
@@ -18,8 +19,7 @@ class BanList(models.Model):
         self.attempts += 1
         if self.attempts in [6, 9, 12]:
             self.time_unblock = timezone.now() + timezone.timedelta(minutes=15) \
-                if self.attempts in [6, 9] \
-                else timezone.now() + timezone.timedelta(hours=24)
+                if self.attempts in [6, 9] else timezone.now() + timezone.timedelta(hours=24)
             self.ban = True
         elif self.attempts > 12:
             self.attempts = 1

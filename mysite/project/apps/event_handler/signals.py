@@ -1,14 +1,19 @@
 from django.dispatch import receiver
-from django import dispatch
 from django.db.models.signals import post_save, pre_delete, post_delete
-from asgiref.sync import async_to_sync
+from django.contrib.auth import get_user_model
+from django.conf import settings
+from django.urls import reverse
+from django.contrib.contenttypes.models import ContentType
+
+
 from project.apps.chat.models import Message
 from project.apps.like_dislike.models import Like, Subscribe
 from project.apps.comments.models import Comment
+from project.apps.back_task.tasks import sendler_mail
+from .models import Notification
+
+from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from django.contrib.auth import get_user_model
-from project.apps.back_task.tasks import send_verify
-from project.apps.blog.models import Article, Community
 
 #my_message_signal = dispatch.Signal(providing_args=['instance', 'to_user', 'dialog_id'])
 
@@ -17,8 +22,10 @@ from project.apps.blog.models import Article, Community
 def user_handler(sender, **kwargs):
     user = kwargs['instance']
     if not user.is_verified and user.email:
-        uuid, email, name = user.uuid, user.email, user.username
-        send_verify.delay(uuid, email, name)
+        kwargs = {'link': 'http://localhost%s' %  reverse('myauth:verify', kwargs={'uuid': user.uuid}),
+                  'user': user.username}
+        sendler_mail.delay('', '', settings.DEFAULT_FROM_EMAIL, [user.email],
+                           template_name='back_task/mail_registr.html', **kwargs)
 
 
 @receiver(post_save, sender=Message, dispatch_uid="my_message_handler")
@@ -40,7 +47,7 @@ def msg_handler(sender, **kwargs):
                                                  'kwargs': mykwargs
                                                   })
 
-from .models import Notification
+
 
 
 def notify(id, owner, initiator, content_object, event):
@@ -65,9 +72,8 @@ def like_handler(sender, **kwargs):
 
 @receiver(post_save, sender=Subscribe, dispatch_uid="my_subs_handler")
 def subs_handler(sender, **kwargs):
-    if kwargs['instance'].content_object.__class__ != Community:
-        user = kwargs['instance'].content_object
-        notify(user.id, user, kwargs['instance'].user, kwargs['instance'], 'S')
+    user = kwargs['instance'].content_object
+    notify(user.id, user, kwargs['instance'].user, kwargs['instance'], 'S')
 
 
 @receiver(post_save, sender=Comment, dispatch_uid="my_comment_handler")
@@ -84,12 +90,9 @@ def comment_handler(sender, **kwargs):
 
 
 
-
-from django.contrib.contenttypes.models import ContentType
-
 def del_event(kwargs):
     event, id = ContentType.objects.get_for_model(kwargs['instance']), kwargs['instance'].id
-    print(Notification.objects.filter(content_type=event, object_id=id).delete())
+    print(Notification.objects.filter(content_type=event, object_id=id).delete(), '--')
 
 
 @receiver(post_delete, sender=Like, dispatch_uid="my_like_del")

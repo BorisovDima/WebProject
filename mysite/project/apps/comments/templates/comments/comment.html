@@ -2,6 +2,7 @@
 {% load static %}
 {% load comment_tags %}
 {% load like_tag %}
+{% load i18n %}
 
 <div class="card border-0" id="comment-{{ comment_id }}">
 
@@ -14,7 +15,7 @@
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             {% if del %}
-            <a class="dropdown-item btn" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}">Удалить</a>
+            <a class="dropdown-item btn" data-action="delete_object" data-type="comment" data-id="{{ comment_id }}">{% trans 'delete' %}</a>
             {% endif %}
         </div>
 
@@ -34,7 +35,7 @@
             <li class="nav-item">
                  {% if user.is_authenticated %}
                     <a type="button" class="btn btn-link pl-0 pb-0" href="#comment-answer-{{ initial }}"
-                       data-action="answer" data-name="{{ author }}" data-id="{{ comment_id }}" data-initial="{{ initial }}" style="font-size: 12px">Ответить</a>
+                       data-action="answer" data-name="{{ author }}" data-id="{{ comment_id }}" data-initial="{{ initial }}" style="font-size: 12px">{% trans 'Reply' %}</a>
                  {% endif %}
             </li>
              <li class="nav-item">
@@ -44,7 +45,7 @@
     </div>
     {% else %}
         <div class="card-body pb-0">
-    <h5 class="card-title text-info">Комментарий удален</h5>
+    <h5 class="card-title text-info">{% trans "Comment has been deleted" %}</h5>
             <ul class="nav">
                 <li class="nav-item">
                     <a  class="nav-link text-muted pt-0"  style="font-size: 12px"> {{ create_data | naturaltime }}</a>

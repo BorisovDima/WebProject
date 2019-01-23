@@ -1,13 +1,14 @@
 {% load static %}
 {% load chat_tags %}
-
+{% load cache %}
 <link rel="stylesheet" type="text/css" href="{% static 'chat/css/chat.css' %}">
 
 
 <div class="card border-0" id="All-dialogs">
 {% for dialog in objs %}
   {% if dialog.message_set.all %}
-     {% with message=dialog.message_set.last %}
+     {% with message=dialog.message_set.first %}
+    {% cache 500 dialog message.id %}
         <div id="wrapper-dialog{{ dialog.id }}">
             <div class="row  border-0">
                 <div class="col-sm-12 px-0" style="background-color: {% color_dialog message.author.username user.username message.readed %}">
@@ -22,8 +23,10 @@
                     </div>
                 </div>
             </div>
+            {% endcache %}
     {% endwith %}
       </div>
+
   {% endif %}
 
     <hr class="py-0 my-0">

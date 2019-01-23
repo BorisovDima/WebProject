@@ -1,0 +1,171 @@
+[
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 1,
+  "fields": {
+    "location": "top",
+    "sort": "Top",
+    "top_field": "views",
+    "field": null,
+    "detail": false,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 2,
+  "fields": {
+    "location": "profile",
+    "sort": "All",
+    "top_field": null,
+    "field": "author__profile__id",
+    "detail": true,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 3,
+  "fields": {
+    "location": "post-comment",
+    "sort": "All",
+    "top_field": null,
+    "field": "article_id",
+    "detail": true,
+    "type": "comment",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 4,
+  "fields": {
+    "location": "popular",
+    "sort": "Hot",
+    "top_field": "views",
+    "field": null,
+    "detail": false,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 5,
+  "fields": {
+    "location": "new",
+    "sort": "All",
+    "top_field": null,
+    "field": null,
+    "detail": false,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 6,
+  "fields": {
+    "location": "people",
+    "sort": "All",
+    "top_field": null,
+    "field": null,
+    "detail": false,
+    "type": "user",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 7,
+  "fields": {
+    "location": "home",
+    "sort": "Home",
+    "top_field": null,
+    "field": null,
+    "detail": false,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 8,
+  "fields": {
+    "location": "followers",
+    "sort": "All",
+    "top_field": null,
+    "field": "subscribe__user_followers__profile__id",
+    "detail": true,
+    "type": "user",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 9,
+  "fields": {
+    "location": "following",
+    "sort": "All",
+    "top_field": null,
+    "field": "my_followers__user__profile__id",
+    "detail": true,
+    "type": "user",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 10,
+  "fields": {
+    "location": "post-search",
+    "sort": "Top",
+    "top_field": "views",
+    "field": null,
+    "detail": false,
+    "type": "post",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 11,
+  "fields": {
+    "location": "people-search",
+    "sort": "Top",
+    "top_field": "my_followers",
+    "field": null,
+    "detail": false,
+    "type": "user",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 12,
+  "fields": {
+    "location": "user-notify",
+    "sort": "All",
+    "top_field": null,
+    "field": null,
+    "detail": false,
+    "type": "notify",
+    "paginate": 10
+  }
+},
+{
+  "model": "ajax_utils.ajaxloadermodel",
+  "pk": 13,
+  "fields": {
+    "location": "user-dialogs",
+    "sort": "All",
+    "top_field": null,
+    "field": null,
+    "detail": false,
+    "type": "dialog",
+    "paginate": 10
+  }
+}
+]

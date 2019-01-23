@@ -1,3 +1,4 @@
+{% load i18n %}
 
 {% if event == 'post' %}
 <div class="row border py-1 border-0">
@@ -5,9 +6,9 @@
         <div class="card border-0 article">
 <div class="card">
     <div class="card-body">
-        <h6 class="card-title" style="font-size:14px" >Пост удален</h6>
+        <h6 class="card-title" style="font-size:14px" >{% trans "Post was deleted" %}</h6>
         <a style="font-size:12px" class="btn btn-primary btn-sm" data-action="return_object" data-type="{{ event }}" data-id="{{ id }}">
-            Вы можете его Восстановить
+           {% trans "You can restore it" %}
         </a>
     </div>
 </div>
@@ -17,8 +18,8 @@
 {% else %}
 <div class="card py-1">
     <div class="card-body">
-        <a style="font-size:12px">Комментарий удален.</a><a style="font-size:12px" class="btn text-primary" type="button" data-action="return_object" data-type="{{ event }}" data-id="{{ id }}">
-            Вы можете его Восстановить
+        <a style="font-size:12px">{% trans "Comment was deleted" %}</a><a style="font-size:12px" class="btn text-primary" type="button" data-action="return_object" data-type="{{ event }}" data-id="{{ id }}">
+           {% trans "You can restore it" %}
         </a>
     </div>
 </div>

@@ -30,22 +30,20 @@ class ChatConsumer(AsyncWebsocketConsumer):
         else:
             kwargs = {'text': data['text'], 'dialog_id': self.dialog_id, 'author_id': self.scope['user'].id}
             self.status = b'Dont_new'
-            to_user, msg_id = await database_sync_to_async(Message.objects.create_message)(**kwargs)
-            kwargs['name_author'] = self.scope['user'].username
-            kwargs['to_user'] = to_user.username
-            kwargs['msg_id'] = msg_id
+            msg_id = await database_sync_to_async(Message.objects.create_message)(**kwargs)
             await self.channel_layer.group_send(self.group_d,
                                                 {'type': 'send_msg',
-                                                'kwargs': kwargs})
+                                                'id': msg_id})
 
 
     async def send_msg(self, event):
-        kwargs = event['kwargs']
-        if self.scope['user'].username == kwargs['to_user']:
-            await database_sync_to_async(self.readed)(kwargs['msg_id'])
-        kwargs['data_publish'] = 'Now'
-        kwargs['dialog_read'] = True
-        html = await sync_to_async(render_to_string)('chat/message.html', kwargs)
+        msg = await database_sync_to_async(self.get_msg)(event['id'])
+        to_ = msg.to_()
+        if self.scope['user'].username == to_:
+            msg.user_readed_msg()
+        html = await sync_to_async(render_to_string)('chat/message.html', {'name_author': msg.author, 'to': to_,
+                                                                           'data_publish': 'now', 'text': msg.text})
+        print(msg, msg.readed, '____MSG', msg.author)
         await self.send(json.dumps({'message': html, 'status': 'ok'}))
 
 
@@ -53,10 +51,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
     def delete_new_close_dialog(self):
         Dialog.objects.get(id=self.dialog_id).delete()
 
-    def readed(self, msg_id):
-        msg = Message.objects.get(id=msg_id)
-        msg.user_readed_msg()
-
+    def get_msg(self, msg_id):
+        return Message.objects.get(id=msg_id)
 
 
 

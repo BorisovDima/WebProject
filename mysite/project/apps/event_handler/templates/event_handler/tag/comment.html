@@ -2,14 +2,17 @@
 {% load static %}
 {% load like_tag %}
 {% load account_tags %}
+{% load i18n %}
+
+{% with comm=obj.content_object %}
 
 <div  {% if not obj.readed %} class="card border-0 article notread" {% else %}  class="card border-0 article" {% endif %}>
   <div class="card-body px-1 py-1" >
       <ul class="list-inline mb-2">
           <li class="drop-left">
-              <img class="mr-2 mt-2 rounded-circle" src="{% user_image from_user.profile 't' %}"  width="30" height="30">
-              <a class="text-dark" href="{{ from_user.get_absolute_url }}">@{{ from_user }}</a>
-              <a style="font-size: 14px;" >оставил комментарий к вашему посту</a>
+              <img class="mr-2 mt-2 rounded-circle" src="{% user_image obj.initiator.profile 't' %}"  width="30" height="30">
+              <a class="text-dark" href="{{ obj.initiator.get_absolute_url }}">@{{ obj.initiator }}</a>
+              <a style="font-size: 14px;" >{% trans "Commented on your post" %}</a>
           </li>
         <li class="drop-left pl-5">
           <a href="{{ comm.article.get_absolute_url }}" >
@@ -27,9 +30,6 @@
          <img class="mr-2 mt-2 rounded-circle" src="{% user_image comm.article.author.profile 't' %}"  width="25" height="25">
           <a href="{{ post.author.profile.get_absolute_url }}" class="text-dark pt-2">
               <small>{{ comm.article.author.profile.pref_name }}</small></a>
-          {% if comm.article.community %}
-          <a href="{{ comm.article.community.get_absolute_url }}" class="text-dark"><small>/ {{ comm.article.community }}</small></a>
-          {% endif %}
 
           <small class="text-muted float-right mt-2" >{{ comm.article.create_data | naturaltime }}</small>
       </li>
@@ -52,3 +52,4 @@
 </div>
 
 <hr class="py-0 my-0">
+{% endwith %}

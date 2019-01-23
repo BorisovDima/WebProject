@@ -1,83 +1,90 @@
 {% load static %}
 {% load blog_tags %}
 {% load account_tags %}
+{% load i18n %}
 
-{% if add_post != 'False' %}
-    {% post_form %}
-{% endif %}
 
 {% if user.is_authenticated %}
-    {% my_messages user %}
     {% my_notify user %}
-<script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
-{% endif %}
-<link rel="stylesheet" type="text/css" href="{% static 'autocomplete/css/autocomplete.css' %}">
-
-<nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
-    <a href="/" class="navbar-brand">
-        <img id="link_to_main-page" src="{% static 'blog/img/logo.img' %}" width="35" height="35" class="rounded-circle">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"> </span>
-    </button>
-    <div class="collapse navbar-collapse ml-3" id="navbarTogglerDemo02">
-         <ul class="navbar-nav mr-auto">
-             <li class="nav-item">
-                 <a class="btn btn-outline-danger border-0 border-buttom" href="/home/">Home</a>
-             </li>
-             <li class="nav-item">
-                 <a class="btn btn-outline-danger border-0" href="/">Public</a>
-             </li>
-             <li class="nav-item">
-                 <form class="form-inline my-2 my-lg-0 pr-5 mb-4" id="form-search">
-                     <input class="form-control mr-sm-2 pr-5" type="search" maxlength="30" placeholder="Search Mysite" id="id_input" aria-label="input">
-                 </form>
-             </li>
-         </ul>
-        {% if user.is_authenticated %}
-            {% if add_post != 'False' %}
-              <nav class="navbar p-1 ml-2">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
-                       What's new?
-                  </button>
-              </nav>
-            {% endif %}
-            <nav class="navbar pt-2 p-1 ml-2">
-                <a type="button" class="btn" data-action="load-modal-notifications" data-type="dialogs" data-toggle="modal" data-target="#modal-dialogs-window">
-                    <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
-                    <img  class="ml-1" src="{% static 'blog/img/baseline-mail_outline-24px.svg' %}">
-                    <input type="hidden" id="message-dispatch" value="">
+    {% post_form %}
+    <script src="{% static 'ajax_utils/js/ajax-post.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'autocomplete/css/autocomplete.css' %}">
+    <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" id="navbar" style="background-color: #e3f2fd;">
+        <a href="/" class="navbar-brand">
+            <img id="link_to_main-page" src="{% static 'blog/img/logo-mini.png' %}" style="max-height:45px">
+        </a>
+        <div class="collapse navbar-collapse pl-2" id="navbarToggler">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="py-0 text-dark my_link {% if loc == 'home' %} my_active {% endif %}" href="/home/">Home</a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="py-0 text-dark my_link {% if loc == 'public' %} my_active {% endif %}" href="/">Public</a>
+                 </li>
+                <li class="nav-item pl-3">
+                     <form class="form-inline  my-lg-0 pr-5" id="form-search">
+                         <input class="form-control mr-sm-2 pr-5" type="search" maxlength="30" placeholder="Hmm..." id="id_input" aria-label="input">
+                    </form>
+                </li>
+            </ul>
+                <nav class="navbar p-1 ml-2">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Create-post">
+                        {% trans "What's new?" %}
+                    </button>
+                </nav>
+                <nav class="navbar pt-2 p-1 ml-2">
+                    <a type="button" class="btn" data-action="load-modal-notifications" data-type="dialog/user-dialogs">
+                        <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-message" style="font-size: 9px;">{% msg_count user id_dialog %}</span></small>
+                            <img  class="ml-1" src="{% static 'blog/img/baseline-mail_outline-24px.svg' %}">
+                        <input type="hidden" id="message-dispatch" value="">
+                    </a>
+                </nav>
+            <nav class="navbar p-1 ml-2">
+                <a type="button" class="btn" data-action="load-modal-notifications" data-type="notify/user-notify">
+                    <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-notify"  style="font-size: 9px;">{% notify_count user %}</span></small>
+                    <img  class="ml-1" src="{% static 'blog/img/baseline-notification_important-24px.svg' %}">
                 </a>
             </nav>
-        <nav class="navbar p-1 ml-2">
-            <a type="button" class="btn" data-action="load-modal-notifications" data-type="notify" data-toggle="modal" data-target="#modal-notify-window">
-                 <small class=" mr-5  position-absolute"><span class="badge badge-danger p-1 mt-0" id="counter-notify"  style="font-size: 9px;">{% notify_count user %}</span></small>
-                <img  class="ml-1" src="{% static 'blog/img/baseline-notification_important-24px.svg' %}">
-            </a>
-        </nav>
-         <ul class="navbar-nav mr-0">
-               <li class="nav-item dropdown">
-        <button class="btn btn-light dropdown-toggle pr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {{ user.profile.pref_name }}
-                <img src="{% user_image user.profile 't' %}" class="rounded-circle" width="35" height="35">
-        </button>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{% url 'account:profile' user.profile.name %}">My page</a>
-            <div class="dropdown-divider"></div>
-             <a class="dropdown-item" href="{% url 'account:profile-settings' user %}">Settings</a>
-                <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'myauth:logout' %}">Logout</a>
-                </div>
-               </li>
-         </ul>
-     {% endif %}
+                <ul class="navbar-nav mr-0">
+                    <li class="nav-item dropdown">
+                        <button class="btn btn-light dropdown-toggle pr-4" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ user.profile.pref_name }}
+                            <img src="{% user_image user.profile 't' %}" class="rounded-circle" width="35" height="35">
+                         </button>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'account:profile' user.profile.name %}">My page</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'account:profile-settings' %}">Settings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'myauth:logout' %}">Logout</a>
+                         </div>
+                    </li>
+                </ul>
+        </div>
+    </nav>
 
-    </div>
-</nav>
 
-<script src="{% static 'autocomplete/js/autocomplete.js' %}"></script>
-{% if user.is_authenticated %}
-    <script src="{% static 'ajax_utils/js/paginate-dialogs.js' %}"></script>
+    <script src="{% static 'ajax_utils/js/loader_dialogs.js' %}"></script>
     <script src="{% static 'chat/js/list-dialogs.js'%}"></script>
     <script src="{% static 'event_handler/js/websocket_event_handler.js' %}"></script>
+
+{% else %}
+    <nav class="navbar navbar-expand-lg navbar-light  sticky-top mb-0 pb-0 pt-0 pr-0" style="background-color: #e3f2fd;">
+        <a href="/" class="navbar-brand">
+            <img  src="{% static 'blog/img/logo-mini.png' %}" style="max-height:45px"></a>
+            <div class="collapse navbar-collapse pl-2" id="navbarToggler">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item pl-3">
+                        <a class="dropdown-item" href="{% url 'myauth:login' %}">Login</a>
+                    </li>
+                    <li class="nav-item pl-3">
+                     <form class="form-inline  my-lg-0 pr-5" id="form-search">
+                         <input class="form-control mr-sm-2 pr-5" type="search" maxlength="30" placeholder="Hmm..." id="id_input" aria-label="input">
+                    </form>
+                </li>
+                </ul>
+            </div>
+    </nav>
 {% endif %}
+ <script src="{% static 'autocomplete/js/autocomplete.js' %}"></script>
+

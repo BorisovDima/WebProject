@@ -9,7 +9,6 @@ def load_comments(user, article):
     return {'user': user, 'objs': comments}
 
 def get_context(comment, user, initial):
-    print(comment, initial)
     context = {'initial': initial}
     if comment.parent_comment:
         context['parent_id'] = comment.parent_comment.id

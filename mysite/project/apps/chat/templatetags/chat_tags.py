@@ -7,12 +7,8 @@ register = template.Library()
 
 @register.simple_tag
 def color_dialog(author, user, readed):
-    if author == user:
-        return '#ffffff'
-    elif readed == True:
-        return '#ffffff'
-    else:
-        return '#f4f2f9'
+    return '#ffffff' if author == user or readed else '#f4f2f9'
+
 
 
 @register.inclusion_tag('chat/user_img.html')

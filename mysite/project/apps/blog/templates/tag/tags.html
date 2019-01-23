@@ -1,15 +1,16 @@
 {% load static %}
 {% load humanize %}
+{% load i18n %}
 
   <div class="card" style="width: 18rem;">
 
       <div class="card-body">
-    <h5 class="card-title">Сейчас актуально</h5>
+    <h5 class="card-title">{% trans "Popular now" %} </h5>
 {% for tag in tags %}
           <ul class="nav ">
               <li class="nav-item">
-                  <strong><a href="{% url 'search:search-posts' %}?q={{ tag.name }}" class="text-info">#{{ tag.name }}</a></strong>
-                  <small><p class="text-muted mb-0">{{ tag.popular|intword }} Posts</p></small>
+                  <strong><a href="{% url 'search:search' %}?q={{ tag.name }}" class="text-info">#{{ tag.name }}</a></strong>
+                  <small><p class="text-muted mb-0">{{ tag.popular|intword }} {% trans "Posts" %}</p></small>
               </li>
           </ul>
           <hr class="py-0 my-1">

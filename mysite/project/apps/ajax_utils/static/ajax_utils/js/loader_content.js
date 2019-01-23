@@ -2,8 +2,10 @@ $(document).ready(function(){
     var search_data = ''
     var inProgress = true
     var since = ''
-    var start_location = $('#location').data('id')
+    var model = $('#location').data('type')
     var location =  $('#location').val()
+    var start_location = $('#location').data('start')
+    var id_location = $('#location').data('detail') || ''
     start_loader()
 
     //////////////////////////////////////////////////////////
@@ -18,6 +20,8 @@ $(document).ready(function(){
             start_loader()
         }
     })
+
+
     //////////////////////////////////////////////////////////
 
     $('[data-action="choice-sort"]').on('change', function(e){
@@ -38,39 +42,40 @@ $(document).ready(function(){
         var event = $(this)
         $('[data-action="ajax-paginate-btn"]').removeClass('my_active')
         event.addClass('my_active')
-        var type = event.data('type')
-        if (type) {
-            path = start_location + '/' + type
-           }
-        else {
+        model = event.data('type')
+        location = event.data('sort')
+        $('#location').val(location)
+        $('#add-loader').html('')
+        if (event.data('add')=='False'){
             path = start_location
         }
-        $('#location').val(path)
-        $('#add-loader').html('')
-        location = path
-        window.history.pushState("", "", '/' + start_location + '/' + type);
+        else {
+            path = start_location + '/' + location
+        }
+        window.history.pushState("", "", '/' + path + '/');
         start_loader()
     })
 
     //////////////////////////////////////////////////////////
 
     function start_loader() {
-        console.log(location)
-        if ($('#location').val()  == 'm/people' || $('#location').val()   ==  'm/communities') {
+        console.log(model)
+        if (model  == 'user') {
             $('#search-main').show()
         }
         else {
             $('#search-main').hide()
         }
+        console.log('/api/load/' + model + '/' + location + '/')
         $.ajax({
-            url: '/api/load/' + location + '/',
+            url:'/api/load/' + model + '/' + location + '/',
             method: 'GET',
-            data: {'search': search_data},
+            data: {'q': search_data, 'f': id_location},
             success: function(data) {
             if (data.status == 'ok') {
-                $('#add-loader').append(data.html) // При 200 ОК append в div c id 'add-loader'.
-                since = data.since      // c какого id делать выборку
-                inProgress = false     //( для условия && !inProgress)
+                $('#add-loader').append(data.html)
+                since = data.since
+                inProgress = false
             }
             else {
                 $('#add-loader').append('<h1>Ничего не найдено</h1>')
@@ -83,14 +88,12 @@ $(document).ready(function(){
 
     $(window).bind('scroll', loader)
     function loader() {
-        //  Жду пока scroll достигнет Button-200 и выполнится первый ajax запрос, чтобы поставить
-        // inProgress в false
 
         if ((($(window).height() + $(window).scrollTop()) > ($(document).height() - 200)) && !inProgress){
                  $.ajax({
-                    url: '/api/load/' + location + '/',
+                    url: '/api/load/' + model + '/' + location + '/',
                     method: 'GET',
-                    data: {'since': since, 'search': search_data}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
+                    data: {'since': since, 'q': search_data, 'f': id_location}, //c какого id делать выборку и obj_id'(может быть категория, пост или None).
                     beforeSend: function() {
                         inProgress = true // что бы больше не один scroll не вызвал ajax до завершения этого
                     },

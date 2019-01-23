@@ -1,9 +1,29 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
 {% load static %}
+{% load cache %}
+
 
 {% block head %}
-{% load_navbar user  %}
+{% load_navbar user  loc='home' %}
+
+
+<div class="modal fade" id="modal-recommend" tabindex="-1" role="dialog" aria-labelledby="modal-recommend" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg w-50" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body text-center" id="recommend-body">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}
 
 
@@ -16,15 +36,21 @@
 
 
 {% block sidebar %}
+
+{% cache 500  user_home  user.id %}
 <div class="col-lg-3 col-sm-4 d-none d-lg-block ml-4">
-{% home_sidebar user %}
+{% home_sidebar user request %}
+    {% about %}
 </div>
+{% endcache %}
+
 {% endblock %}
 
 
 
 {% block buttom %}
-<input id="location" value="{{ location }}" type="hidden">
+<input id="location" value="{{ location }}" type="hidden" data-type="{{ type }}">
+<script src="{% static 'blog/js/recommends.js' %}"></script>
 <script src="{% static 'ajax_utils/js/loader_content.js' %}"></script>
 <script src="{% static 'like_dislike/js/like.js' %}"></script>
 <script src="{% static 'delete_app/js/delete.js' %}"> </script>

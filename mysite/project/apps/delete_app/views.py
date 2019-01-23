@@ -1,10 +1,15 @@
 from django.views.generic import DeleteView
-from django.http import Http404, JsonResponse
+from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.template.loader import render_to_string
+from django.utils.decorators import method_decorator
+from django.views.decorators.http import require_POST
+
+from project.apps.ajax_utils_.mixins import AjaxMixin
 from project.apps.comments.templatetags.comment_tags import get_context
 
-class DeleteObj(LoginRequiredMixin, DeleteView):
+
+@method_decorator(require_POST, name='dispatch')
+class DeleteObj(LoginRequiredMixin, AjaxMixin, DeleteView):
     model = None
     template_name = None
 
@@ -15,10 +20,7 @@ class DeleteObj(LoginRequiredMixin, DeleteView):
         obj._delete() if kwargs['action'] == 'delete' else obj._return()
         if kwargs['action'] == 'return' and kwargs['event'] == 'comment':
             initial = obj.id if not obj.initial_comment else obj.initial_comment.id
-            html = render_to_string(self.template_name, get_context(obj, request.user, initial), request)
+            context = get_context(obj, request.user, initial)
         else:
-            html = render_to_string(self.template_name, {'event': kwargs['event'], 'id': obj.id, 'objs': (obj,)}, request)
-        return JsonResponse({'status': 'ok', 'event': kwargs['event'], 'html': html})
-
-    def get(self, request, *args, **kwargs):
-        raise Http404
+            context = {'id': obj.id, 'objs': (obj,), 'event': kwargs['event']}
+        return self.get_json(request, **context, extra={'status': 'ok', 'event': kwargs['event']})

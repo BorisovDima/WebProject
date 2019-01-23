@@ -3,6 +3,8 @@
 {% load like_tag %}
 {% load blog_tags %}
 {% load account_tags %}
+{% load i18n %}
+{% load cache %}
 
 {% for article in objs %}
 <div class="row border py-1 border-0" id="wrapper_post-{{ article.id }}">
@@ -13,14 +15,11 @@
                 <div data-action="detail-post" data-id="{{ article.id }}">
 
                     <div data-type="detail-post-body">
-
+                        {% cache 500 post article.id %}
                         <ul class="list-inline mb-2">
                             <li class="drop-left">
                                 <img class="mr-2 mt-2 rounded-circle" src="{% user_image article.author.profile 't' %}"  width="30" height="30">
                                 <a href="{{ article.author.profile.get_absolute_url }}" style="font-size: 14px" class="text-dark pt-2">{{ article.author.profile.pref_name }}</a>
-                                {% if article.community %}
-                                <a href="{{ article.community.get_absolute_url }}" class="text-dark"><small>/ {{ article.community }}</small></a>
-                                {% endif %}
                                 <small class="text-muted float-right mt-2" >{{ article.create_data | naturaltime }}</small>
                             </li>
                         </ul>
@@ -28,7 +27,7 @@
                         {% if  article.image %}
                                  <img class=" img-fluid  rounded {% if article.text %} pt-3 {% endif %}" src="{{ article.image.url }}" style="max-height: 485px">
                         {% endif %}
-
+                        {% endcache %}
                         <hr class="mb-1 pt-1 mx-2">
                     </div>
                 </div>
@@ -37,7 +36,7 @@
                     <ul class="nav">
                         <li class="nav-item">
                             <a type="button" class="btn border-0 btn-outline-light btn-sm mb-1">
-                            <img src="{% static 'blog/img/top.png' %}" width="20">
+                            <img src="{% static 'blog/img/view.png' %}" width="20">
                             <span  data-type="counter-views-footer-post" class="badge badge-light">{{ article.views.count }}</span>
                             </a>
                         </li>
@@ -57,7 +56,7 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     {% if article.author == user %}
-                                        <a class="dropdown-item btn" data-action="delete_object" data-type="post" data-id="{{ article.id }}">Удалить запись</a>
+                                        <a class="dropdown-item btn" data-action="delete_object" data-type="post" data-id="{{ article.id }}">{% trans "delete post" %}</a>
                                        <div class="dropdown-divider"></div>
                                         {% redact_post article %}
                                      {% endif %}

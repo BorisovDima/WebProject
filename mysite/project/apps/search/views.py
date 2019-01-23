@@ -1,11 +1,17 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
+from django.urls import reverse
 
-class Search(LoginRequiredMixin, TemplateView):
+from project.apps.ajax_utils.mixins import AjaxLoaderMixin
+from .mixins import QueryStringMixin
+from project.apps.blog.mixins import CacheMixin
+
+
+class Search(QueryStringMixin, AjaxLoaderMixin, CacheMixin, TemplateView):
     model = None
     template_name = 'search/search.html'
+    cache_time = 5
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['search'] = self.request.GET.get('q')
-        return context
+    def get_location(self):
+         return reverse('search:search')
+
+

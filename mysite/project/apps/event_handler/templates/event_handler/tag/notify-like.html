@@ -1,14 +1,16 @@
 {% load humanize %}
 {% load static %}
 {% load account_tags %}
+{% load i18n %}
 
+{% with post=obj.content_object.content_object %}
 <div  {% if not obj.readed %} class="card border-0 article notread" {% else %}  class="card border-0 article" {% endif %}>
   <div class="card-body px-1 py-1" >
       <ul class="list-inline mb-1">
           <li class="drop-left">
-              <img class="mr-2 mt-2 rounded-circle" src="{% user_image from_user.profile 't' %}"  width="30" height="30">
-              <a class="text-dark" href="{{ from_user.get_absolute_url }}">@{{ from_user }}</a>
-              <a  href="{{ post.get_absolute_url }}" style="font-size: 14px;" >оценил ваш пост</a>
+              <img class="mr-2 mt-2 rounded-circle" src="{% user_image obj.initiator.profile 't' %}"  width="30" height="30">
+              <a class="text-dark" href="{{ obj.initiator.get_absolute_url }}">@{{ obj.initiator }}</a>
+              <a  href="{{ post.get_absolute_url }}" style="font-size: 14px;" >{% trans "Liked your post" %}</a>
           </li>
       </ul>
 
@@ -45,3 +47,5 @@
 </div>
 
 <hr class="py-0 my-0">
+
+{% endwith %}

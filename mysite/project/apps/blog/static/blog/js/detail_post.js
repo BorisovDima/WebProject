@@ -6,6 +6,17 @@ var path = ''
 var since = ''
 var Socket = ''
 var inProgress = ''
+var location = ''
+
+
+console.log($("input").is('#init-post'))
+
+if ($("input").is('#init-post')) {
+    var init_post_id = $('#init-post').data('id')
+    show_post(init_post_id)
+}
+
+
 
 
 $(document).on('click', '[data-action="detail-post"]', function (event){
@@ -13,18 +24,29 @@ $(document).on('click', '[data-action="detail-post"]', function (event){
         window.location.replace(event.target.href);
         return false
     }
-    var post = $(this)
+    var id = $(this).data('id')
+    show_post(id)
+
+})
+
+
+function show_post(id) {
+    location = $('#location').val()
     inProgress = true
-    var body = post.find('[data-type="detail-post-body"]')
-    var footer = post.parent().find('[data-type="post-footer-body"]')
-    body_c = body.clone()
-    body_c.find('[data-type="text-post-body"]').css('font-size', '20px')
-    $('#detail-post-container-body').html(body_c)
-    $('#footer-post-container-body').html(footer.clone())
-    var id = post.data('id')
-    path = '/api/post/comments/'  + id + '/'
+/////////////// post  /////////////////
+        $.ajax({
+        url: '/api/post/detail-post/'  + id + '/',
+        method: 'POST',
+        success: function(data) {
+            $('#detail-post-container-body').html(data.html)
+            window.history.pushState("", document.title, data.url);
+        }
+
+    })
+/////////////// socket  /////////////////
+    path = '/api/load/comment/post-comment/'
     Socket = new WebSocket('ws://' + window.location.host + '/ws/post/' + id + '/add-comment/');
-    Socket.onopen = function(event) { console.log('Socket Connect!', path)}
+    Socket.onopen = function(event) { console.log('Socket Connect!', 'ws://' + window.location.host + '/ws/post/' + id + '/add-comment/')}
     Socket.onmessage = function(event) {
         var data = JSON.parse(event.data);
         if (data['status'] == 'ok'){
@@ -41,14 +63,12 @@ $(document).on('click', '[data-action="detail-post"]', function (event){
             console.log('INVALID')
         }
     }
+/////////////// comments  /////////////////
     $('#detail-post-container').modal('show')
-    $.ajax({
-        url: '/api/post/' + id + '/view/',
-        method: 'POST',
-     })
     $.ajax({
         url: path,
         method: 'GET',
+        data: {'f': id},
         success: function(data) {
             if (data.status == 'ok') {
                 $('#container-comments').append(data.html)
@@ -60,15 +80,21 @@ $(document).on('click', '[data-action="detail-post"]', function (event){
             }
         }
     })
-})
+}
+
+
 
 $('#detail-post-container').on('hide.bs.modal', function(){
     $('#container-comments').html('')
     $('#button-comments-loader').hide()
     Socket.onclose = function(event) { console.log('WebSocket close', path) }
     Socket.close()
-    history.pushState('', document.title, window.location.pathname);
+    history.pushState('', document.title, '/' + $('#location').data('start') + '/');
+    $('#detail-post-container-body').html('')
 })
+
+
+
 
 $(document).on('click', '[data-action="comment-send"]', function(e) {
         var event = $(this).parent().find('[data-type="data-form"]')
@@ -143,6 +169,7 @@ $(document).on('click', '[data-action="update_object"]', function(){
             $('#user_update_img').attr('src', e.target.result)
         };
         reader.readAsDataURL(input.files[0]);
+        $('[data-type="error-update-image"]').text('')
         }
     })
 
@@ -172,11 +199,14 @@ $(document).on('click', '[data-action="update_object"]', function(){
             success: function(data) {
                 $('#wrapper_post-' + id_post_update).replaceWith(data.html)
                 $('#update-modal').modal('hide')
+
             },
             error: function(data) {
                 console.log('INVALID')
                 if (data.status == 400) {
-                    console.log('Invalid')
+                    errors = JSON.parse(data.responseText)
+                    $('[data-type="error-update-image"]').text(errors['image'] || '')
+                    $('[data-type="error-update-text"]').text(errors['text'] || '')
                 }
             }
         })
@@ -187,6 +217,7 @@ $(document).on('click', '[data-action="update_object"]', function(){
         del = true
         $('#user_update_img').attr('src', '')
         $('#update_post_input_file').val('')
+        $('[data-type="error-update-image"]').text('')
     })
 
 })

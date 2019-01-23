@@ -1,0 +1,23 @@
+
+{% if user.is_authenticated %}
+<div class="form-group">
+    {{ form.title }}
+    <a  data-id="title-error" class="text-danger"></a>
+</div>
+<div class="form-group">
+    {{ form.body }}
+    <a  data-id="body-error" class="text-danger"></a>
+</div>
+
+<button data-type="message" class="btn btn-outline-info mb-2" data-action="send-question">Send</button>
+
+
+
+{% else %}
+<div class="card border-0">
+  <div class="card-body text-center">
+        <a style="font-size: 25px" href="{% url 'myauth:login' %}"><strong>Login</strong></a>
+  </div>
+</div>
+{% endif %}
+

@@ -19,9 +19,6 @@ class ChatTests(ChannelsLiveServerTestCase):
         self.user3 = BlogUser.objects.create_user(username='test_chat_3', is_verified=True)
         self.user1.set_password('19960213'), self.user2.set_password('19960213'), self.user3.set_password('19960213')
         self.user1.save(), self.user2.save(), self.user3.save()
-        Profile.objects.create(name=self.user1.username, bloguser=self.user1)
-        Profile.objects.create(name=self.user2.username, bloguser=self.user2)
-        Profile.objects.create(name=self.user3.username, bloguser=self.user3)
 
 
     def setUp(self):
@@ -130,7 +127,7 @@ class ChatTests(ChannelsLiveServerTestCase):
 
         self.assertTrue(self._check_message(self.w1, 'Hello'), 'Message did not come')
         #первый проверяет
-
+        print('------------------------')
     ################################################
 
         self._send_message(self.w1, 'Konnichiwa')
@@ -155,7 +152,7 @@ class ChatTests(ChannelsLiveServerTestCase):
 
     def _check_message(self, w, msg):
         try:
-             WebDriverWait(w, 30).until(lambda element:
+             WebDriverWait(w, 15).until(lambda element:
                    w.find_element_by_xpath('.//div[@id="message-list"]//h6[contains(text(), "%s")]' %  msg))
              return True
         except Exception:

@@ -1,5 +1,5 @@
 {% load static %}
-<script src="https://cdn.jsdelivr.net/npm/autosize@4.0.2/dist/autosize.min.js"></script>
+{% load i18n %}
 
  <link rel="stylesheet" type="text/css" href="{% static 'comments/css/comment.css' %}">
 
@@ -8,8 +8,6 @@
     <div class="modal-content">
       <div class="modal-body pt-1 pb-0" id="detail-post-container-body">
       </div>
-        <div id="footer-post-container-body">
-      </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-12" style="background-color: #ffffff">
@@ -17,7 +15,7 @@
                     <div class="form-group mt-2">
                         {{ form_comment.text }}
                         <input type="hidden" value="">
-                        <input data-action="comment-send" type="button" class="btn btn-link" value="Отправить"/>
+                        <input data-action="comment-send" type="button" class="btn btn-link" value="{% trans 'Send' %}"/>
                     </div>
                 {% endif %}
                  <hr class="pb-0 mb-0">
@@ -29,7 +27,7 @@
             </div>
         </div>
         <div class="modal-footer align-self-center py-1">
-            <button type="button" id="button-comments-loader" class="btn btn-outline-danger align-self-center btn-sm py-0" style="display: none">Загрузить еще</button>
+            <button type="button" id="button-comments-loader" class="btn btn-outline-danger align-self-center btn-sm py-0" style="display: none">{% trans "load more" %}</button>
       </div>
     </div>
   </div>

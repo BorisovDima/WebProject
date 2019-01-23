@@ -30,7 +30,6 @@ class MyAuthTest(StaticLiveServerTestCase):
         cls.user = BlogUser.objects.create_user(username=test_user, is_verified=True)
         cls.user.set_password(test_pass)
         cls.user.save()
-        Profile.objects.create(name=cls.user.username, bloguser=cls.user)
         cls.driver = WebDriver()
 
     @classmethod

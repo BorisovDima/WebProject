@@ -8,6 +8,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from django.urls import reverse
 
 
+
+
 test_pass = '19960213Z26a'
 test_user = 'comment-test1'
 
@@ -21,9 +23,6 @@ class TestComment(UserAuth, ChannelsLiveServerTestCase):
         self.user2 = get_user_model().objects.create_user(is_verified=True, username=test_user2)
         self.user1.set_password(test_pass), self.user2.set_password(test_pass),
         self.user1.save(), self.user2.save()
-
-        Profile.objects.create(name=self.user1.username, bloguser=self.user1)
-        Profile.objects.create(name=self.user2.username, bloguser=self.user2)
 
         Article.objects.create(text='TEST COMMENT POST', author=self.user1)
         Article.objects.create(text='TEST COMMENT POST #2', author=self.user1)
@@ -82,9 +81,10 @@ class TestComment(UserAuth, ChannelsLiveServerTestCase):
 
     def check_comment(self, w, msg):
         try:
-            WebDriverWait(w, 30).\
-                until(lambda el: w.find_element_by_xpath('.//div[@id="container-comments"]//h6[contains(text(), "%s")]' % msg))
-            return True
+             WebDriverWait(w, 30).\
+                until(lambda el: w.find_element_by_xpath(
+                './/div[@id="container-comments"]//h6[contains(text(), "%s")]' % msg))
+             return True
         except Exception:
             return False
 

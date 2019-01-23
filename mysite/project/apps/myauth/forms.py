@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import get_user_model
 from django.forms import widgets
 from django import forms
-
+from django.utils.translation import gettext as _
 
 class MyRegForm(UserCreationForm):
 
@@ -36,16 +36,16 @@ class MyRegForm(UserCreationForm):
 
     def clean_username(self):
         if len(self.cleaned_data['username']) < 3:
-            raise forms.ValidationError('Too short!')
+            raise forms.ValidationError(_('Too short!. 3 characters minimum'))
         return self.cleaned_data['username']
 
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not email:
-            raise forms.ValidationError('requared')
+            raise forms.ValidationError(_('Requared'))
         if get_user_model().objects.filter(email=email).exists():
-            raise forms.ValidationError('Email already exist')
+            raise forms.ValidationError(_('User with this email already exists'))
         return self.cleaned_data['email']
 
     def save(self, commit=True):
@@ -73,10 +73,10 @@ class MyLoginForm(AuthenticationForm):
             raise self.get_invalid_login_error()
         if not user.is_verified:
             id = user.id
-            raise forms.ValidationError('User not verified,'
-                                        ' please check email', code='not verify', params={'id': id})
+            raise forms.ValidationError(_('User not verified,'
+                                        ' please check email'), code='not verify', params={'id': id})
         if not user.is_active:
-            raise forms.ValidationError('User deleted')
+            raise forms.ValidationError(_('User was deleted'))
         return self.cleaned_data['username']
 
 
@@ -90,8 +90,9 @@ class MyPasswordResetForm(PasswordResetForm):
         subject = render_to_string(subject_template_name, context)
         subject = ''.join(subject.splitlines())
         body = 'Reset mail'
-        html_email = render_to_string(html_email_template_name, context)
-        sendler_mail.delay(subject, body, from_email, [to_email], html_email)
+        print(context)
+        context.update(user='')
+        sendler_mail.delay(subject, body, from_email, [to_email], template_name=html_email_template_name, **context)
 
 class MySetPasswordForm(SetPasswordForm):
 

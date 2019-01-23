@@ -1,7 +1,7 @@
 {% extends "blog/MainPage.html" %}
 {% load blog_tags %}
 {% load static %}
-{% load bootstrap4 %}
+
 
 {% block head %}
 {% load_navbar user id_dialog=dialog.id %}
@@ -11,17 +11,10 @@
 
 
 {% block body %}
+<button class="btn btn-outline-success" id="button-dialogs-loader">Load</button>
+<div class="card border-light" id="message-list" data-id="{{ dialog.id }}">
 
-<div class="card border-light" id="message-list">
-{% for message in dialog.message_set.all %}
 
-        {% if not message.readed and message.to_ == user %}
-            {{ message.user_readed_msg }}
-        {% endif %}
-
-     {% include 'chat/message.html' with text=message.text name_author=message.author.username data_publish=message.data_publish dialog_read=True %}
-
-{% endfor %}
 </div>
 
 <div class="row border">
@@ -49,14 +42,13 @@
 {% block sidebar %}
 {% endblock %}
 
-{% block additional %}
-{% endblock %}
+
 
 
 {% block buttom %}
 <input type="hidden" value="{{ status }}" id="status_dialog">
 <input type="hidden" value="{{ dialog.id }}" id="id_dialog">
-
+<script async src="{% static 'ajax_utils/js/loader_message.js' %}"></script>
 <script async src="{% static 'chat/js/websocket_chat.js' %}"></script>
 {% endblock %}
 

@@ -1,57 +1,37 @@
 from django.urls import path
 from . import views
-from .models import  Article, Community
+from .models import  Article
 from .forms import CreatePostForm, UpdatePostForm
 from django.views.generic import RedirectView
-
+from django.contrib.auth.decorators import login_required
 
 app_name = 'blog'
 
 urlpatterns = [
-    path('', views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': 'm', 'start_loc': 'm'},
+
+    path('', RedirectView.as_view(pattern_name='blog:main_page')),
+
+    path('m/', views.MainPage.as_view(template_name = 'blog/MainPage.html'),
+         {'location': 'top', 'title': 'Signup: Main page'},
          name='main_page'),
 
-    path('m/', RedirectView.as_view(pattern_name='blog:main_page')),
+    path('home/', login_required(views.MainPage.as_view(template_name = 'blog/Home.html')),
+         {'template_name': 'blog/Home.html', 'location': 'home', 'title': 'Home'},
+         name='home'),
 
-    path('m/popular/', views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': 'm/popular', 'start_loc': 'm'},
-         name='popular'),
-
-    path('m/new/', views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': 'm/new', 'start_loc': 'm'},
-         name='new'),
-
-    path('m/people/', views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': 'm/people', 'start_loc': 'm'},
-         name='people'),
-
-    path('m/communities/',views.MainPage.as_view(),
-         {'template_name': 'blog/MainPage.html', 'location': 'm/communities', 'start_loc': 'm'},
-         name='communities'),
-
-    path('home/', views.MainPage.as_view(),
-         {'template_name': 'blog/Home.html', 'location': 'home'}, name='home'),
-#
-
- #   path('community/<slug:slug>/', views.CommunityView.as_view(), name='community'),
-
-
-   # path('create-article/', views.CreateArticle.as_view(form_class=CreateArticleForm,
-    #                                                    status='A', model=Article),
-    #                                                    name='create_article'),
-
-    path('create-post/', views.CreateArticle.as_view(form_class=CreatePostForm,
-                                                     model=Article),
-                                                     name='create_post'),
+    path('create-post/', views.CreateArticle.as_view(form_class=CreatePostForm, model=Article, success_url = '/'),
+         name='create_post'),
 
     path('update-post/<int:pk>/', views.UpdateArticle.as_view(form_class=UpdatePostForm,
-                                                   template_name='blog/update_post.html',
-                                                     model=Article),
-                                                    name='update_post'),
+         template_name='blog/update_post.html', model=Article, success_url = '/'),
+         name='update_post'),
 
-    #  path('create-community/', views.CreateArticle.as_view(form_class=CreateCommunityForm, model=Community),
-    #                                                  name='create_community'),
-    path('api/post/<int:pk>/view/', views.ViewPost.as_view())
+    path('api/post/detail-post/<int:pk>/', views.DetailArticle.as_view(model=Article,
+                                                                       template_name = 'blog/articles.html')),
 
+    path('api/home/recommends/', views.Recommend.as_view()),
+
+    path('m/<path:location>/', views.MainPage.as_view(template_name = 'blog/MainPage.html'),
+         {'title': 'Signup: Main page'}),
 ]
+

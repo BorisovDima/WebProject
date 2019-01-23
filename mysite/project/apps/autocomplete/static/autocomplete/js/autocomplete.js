@@ -52,7 +52,7 @@ $("#id_input").on('keyup', function(e){
                         select: function( event, ui ) {
                             login = ui.item['login']
                             $("#form-search").html('<input class="form-control mr-sm-2 pr-5">')
-                            window.location.pathname = '/profile/' + login + '/'
+                            window.location.pathname = '/p/' + login + '/'
                         },
                     })
                 }
