@@ -1,15 +1,24 @@
 from django.contrib.auth import get_user_model
 from django.forms import widgets
 from django import forms
-from .models import Profile #ProfileImg
 from django_countries.widgets import CountrySelectWidget
 from django.utils.translation import gettext as _
+from django.conf import settings
+
+from project.apps.blog.utils import make_thumbnail
+from .models import Profile
+
+from os.path import splitext
+
 
 
 class ProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+
         self.fields['about_me'].widget = widgets.Textarea(attrs={'Class': 'form-control', 'rows': 2,
                                                                  'style':'resize:none; font-size: 14px',
                                                                  'maxlength': 120})
@@ -28,10 +37,6 @@ class ProfileForm(forms.ModelForm):
         self.fields['date_of_birth'].label = _('Birthday')
 
 
-
-    def clean(self):
-        return super().clean()
-
     class Meta:
         model = Profile
         fields = ['about_me', 'date_of_birth', 'country', 'user_name', 'image', 'head']
@@ -39,10 +44,6 @@ class ProfileForm(forms.ModelForm):
 
 
 
-from project.apps.blog.utils import make_thumbnail
-from django.conf import settings
-
-from os.path import splitext
 
 class BaseUserPhotoForm(forms.ModelForm):
 

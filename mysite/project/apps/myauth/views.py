@@ -9,7 +9,6 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404
 
-from project.apps.blog.mixins import CacheMixin
 from project.apps.account.mixins import NotLoginRequiredMixin
 from project.apps.ajax_utils_.mixins import AjaxMixin
 from .models import BanList

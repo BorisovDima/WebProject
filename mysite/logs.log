@@ -1,0 +1,1582 @@
+Not Found: /m/32313/
+Not Found: /m/232/
+Not Found: /m/232/
+Not Found: /m/232/
+HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+Configuring endpoint tcp:port=8000:interface=127.0.0.1
+Listening on TCP address 127.0.0.1:8000
+CHECK
+LOLL
+[mHTTP GET /m/ 200 [0.14, 127.0.0.1:60044][0m
+[mHTTP GET /api/load/post/top/?q=&f= 200 [0.32, 127.0.0.1:60060][0m
+HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+Configuring endpoint tcp:port=8000:interface=127.0.0.1
+Listening on TCP address 127.0.0.1:8000
+[32mHTTP GET / 302 [0.05, 127.0.0.1:60204][0m
+CHECK
+LOLL
+[mHTTP GET /m/ 200 [0.19, 127.0.0.1:60214][0m
+[mHTTP GET /api/load/post/top/?q=&f= 200 [0.41, 127.0.0.1:60232][0m
+HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+Configuring endpoint tcp:port=8000:interface=127.0.0.1
+Listening on TCP address 127.0.0.1:8000
+CHECK
+LOLL
+ERNO
+[mHTTP GET /m/ 200 [0.15, 127.0.0.1:60252][0m
+[mHTTP GET /api/load/post/top/?q=&f= 200 [0.23, 127.0.0.1:60256][0m
+INFO 2019-01-28 15:20:17,934 server 6379 140293876369152 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:20:17,942 server 6379 140293876369152 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:20:17,944 server 6379 140293876369152 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:21:07,337 runserver 6379 140293876369152 [32mHTTP GET / 302 [0.21, 127.0.0.1:38074][0m
+WARNING 2019-01-28 15:21:07,490 views 6379 140293860771584 CHECK
+INFO 2019-01-28 15:21:07,491 views 6379 140293860771584 LOLL
+ERROR 2019-01-28 15:21:07,491 views 6379 140293860771584 ERNO
+INFO 2019-01-28 15:21:07,864 runserver 6379 140293876369152 [mHTTP GET /m/ 200 [0.50, 127.0.0.1:38078][0m
+INFO 2019-01-28 15:21:08,171 runserver 6379 140293876369152 [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:38100][0m
+INFO 2019-01-28 15:21:08,180 runserver 6379 140293876369152 [mHTTP GET /static/blog/css/main_page.css 200 [0.07, 127.0.0.1:38092][0m
+INFO 2019-01-28 15:21:08,444 runserver 6379 140293876369152 [36mHTTP GET /static/autocomplete/js/autocomplete.js 304 [0.00, 127.0.0.1:38114][0m
+INFO 2019-01-28 15:21:08,465 runserver 6379 140293876369152 [36mHTTP GET /static/blog/js/detail_post.js 304 [0.00, 127.0.0.1:38116][0m
+INFO 2019-01-28 15:21:08,625 runserver 6379 140293876369152 [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.04, 127.0.0.1:38118][0m
+INFO 2019-01-28 15:21:09,653 runserver 6379 140293876369152 [mHTTP GET /api/load/post/top/?q=&f= 200 [1.00, 127.0.0.1:38120][0m
+INFO 2019-01-28 15:21:09,739 runserver 6379 140293876369152 [mHTTP GET /static/account/img/default_user.png 200 [0.06, 127.0.0.1:38124][0m
+INFO 2019-01-28 15:21:09,820 runserver 6379 140293876369152 [mHTTP GET /static/blog/img/icon-like.png 200 [0.06, 127.0.0.1:38146][0m
+HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+Configuring endpoint tcp:port=8000:interface=127.0.0.1
+Listening on TCP address 127.0.0.1:8000
+CHECK
+LOLL
+ERNO
+[mHTTP GET /m/ 200 [0.02, 127.0.0.1:38166][0m
+[mHTTP GET /api/load/post/top/?q=&f= 200 [0.33, 127.0.0.1:38194][0m
+INFO 2019-01-28 15:23:11,287 server 6487 140435951699712 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:23:11,288 server 6487 140435951699712 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:23:11,289 server 6487 140435951699712 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:23:24,653 server 6495 140664791877376 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:23:24,654 server 6495 140664791877376 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:23:24,655 server 6495 140664791877376 Listening on TCP address 127.0.0.1:8000
+WARNING 2019-01-28 15:23:25,615 views 6495 140664776541952 CHECK
+INFO 2019-01-28 15:23:25,616 views 6495 140664776541952 LOLL
+ERROR 2019-01-28 15:23:25,616 views 6495 140664776541952 ERNO
+INFO 2019-01-28 15:23:25,620 runserver 6495 140664791877376 [mHTTP GET /m/ 200 [0.03, 127.0.0.1:38208][0m
+INFO 2019-01-28 15:23:26,266 runserver 6495 140664791877376 [mHTTP GET /api/load/post/top/?q=&f= 200 [0.33, 127.0.0.1:38218][0m
+INFO 2019-01-28 15:24:17,735 server 6513 139941053581056 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:24:17,735 server 6513 139941053581056 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:24:17,737 server 6513 139941053581056 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:29:32,254 server 6623 140553845622528 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:29:32,255 server 6623 140553845622528 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:29:32,257 server 6623 140553845622528 Listening on TCP address 127.0.0.1:8000
+[2019-01-28 15:36:10,586] INFO [daphne.server.run:109 server] HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+[2019-01-28 15:36:10,587] INFO [daphne.server.run:117 server] Configuring endpoint tcp:port=8000:interface=127.0.0.1
+[2019-01-28 15:36:10,590] INFO [daphne.server.listen_success:151 server] Listening on TCP address 127.0.0.1:8000
+[2019-01-28 15:36:11,410] ERROR [test.get_location:23 views] BAMP
+[2019-01-28 15:36:11,557] INFO [django.channels.server.log_action:141 runserver] [mHTTP GET /m/ 200 [0.24, 127.0.0.1:38294][0m
+[2019-01-28 15:36:12,302] INFO [django.channels.server.log_action:141 runserver] [mHTTP GET /api/load/post/top/?q=&f= 200 [0.41, 127.0.0.1:38310][0m
+INFO 2019-01-28 15:37:25,925 serverdaphne.server.run 6741 140119518267136 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:37:25,926 serverdaphne.server.run 6741 140119518267136 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:37:25,928 serverdaphne.server.listen_success 6741 140119518267136 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:37:26,767 runserverdjango.channels.server.log_action 6741 140119518267136 [mHTTP GET /m/ 200 [0.06, 127.0.0.1:38326][0m
+INFO 2019-01-28 15:37:27,438 runserverdjango.channels.server.log_action 6741 140119518267136 [mHTTP GET /api/load/post/top/?q=&f= 200 [0.38, 127.0.0.1:38336][0m
+INFO 2019-01-28 15:37:40,714 runserverdjango.channels.server.log_action 6741 140119518267136 [mHTTP GET /m/ 200 [0.01, 127.0.0.1:38340][0m
+INFO 2019-01-28 15:37:41,328 runserverdjango.channels.server.log_action 6741 140119518267136 [mHTTP GET /api/load/post/top/?q=&f= 200 [0.29, 127.0.0.1:38348][0m
+INFO 2019-01-28 15:38:24,952 server daphne.server run 6773 140533448263424 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:38:24,956 server daphne.server run 6773 140533448263424 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:38:24,961 server daphne.server listen_success 6773 140533448263424 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:38:26,226 runserver django.channels.server log_action 6773 140533448263424 [mHTTP GET /m/ 200 [0.03, 127.0.0.1:38362][0m
+INFO 2019-01-28 15:38:26,853 runserver django.channels.server log_action 6773 140533448263424 [mHTTP GET /api/load/post/top/?q=&f= 200 [0.33, 127.0.0.1:38372][0m
+INFO 2019-01-28 15:39:36,397 server daphne.server run 6808 139929618958080 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:39:36,398 server daphne.server run 6808 139929618958080 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:39:36,400 server daphne.server listen_success 6808 139929618958080 Listening on TCP address 127.0.0.1:8000
+ERROR 2019-01-28 15:39:37,355 views test get 6808 139929603622656 BAMP
+INFO 2019-01-28 15:39:37,373 runserver django.channels.server log_action 6808 139929618958080 [mHTTP GET /m/ 200 [0.04, 127.0.0.1:38382][0m
+INFO 2019-01-28 15:39:38,205 runserver django.channels.server log_action 6808 139929618958080 [mHTTP GET /api/load/post/top/?q=&f= 200 [0.43, 127.0.0.1:38396][0m
+INFO 2019-01-28 15:40:44,753 server daphne.server run 6850 140018818270976 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:40:44,753 server daphne.server run 6850 140018818270976 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:40:44,755 server daphne.server listen_success 6850 140018818270976 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:40:54,332 server daphne.server run  139758946338560 HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:40:54,333 server daphne.server run  139758946338560 Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:40:54,335 server daphne.server listen_success  139758946338560 Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:41:15,655 server daphne.server run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:41:15,656 server daphne.server run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:41:15,658 server daphne.server listen_success Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:42:58,101 server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:42:58,101 server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:42:58,104 server.listen_success Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:43:36,808 server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:43:36,809 server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:43:36,811 server.listen_success Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:43:43,047 server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:43:43,048 server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:43:43,049 server.listen_success Listening on TCP address 127.0.0.1:8000
+ERROR 2019-01-28 15:43:46,390 views.get BAMP
+INFO 2019-01-28 15:43:46,393 runserver.log_action [mHTTP GET /m/ 200 [0.03, 127.0.0.1:38452][0m
+INFO 2019-01-28 15:43:47,125 runserver.log_action [mHTTP GET /api/load/post/top/?q=&f= 200 [0.38, 127.0.0.1:38468][0m
+INFO 2019-01-28 15:51:12,468 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:51:12,471 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:51:12,473 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+ERROR 2019-01-28 15:51:15,105 project.apps.blog.views.get BAMP
+ERROR 2019-01-28 15:51:15,106 project.apps.blog.views.get_location BAMP
+INFO 2019-01-28 15:51:15,255 django.channels.server.log_action [mHTTP GET /m/ 200 [0.23, 127.0.0.1:38602][0m
+INFO 2019-01-28 15:51:16,073 django.channels.server.log_action [mHTTP GET /api/load/post/top/?q=&f= 200 [0.34, 127.0.0.1:38620][0m
+INFO 2019-01-28 15:52:13,835 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:52:13,836 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:52:13,838 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:53:10,210 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:53:10,211 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:53:10,212 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+INFO 2019-01-28 15:57:52,831 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 15:57:52,832 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 15:57:52,834 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+ERROR 2019-01-28 15:58:05,605 project.apps.blog.views.get_location BAMP
+INFO 2019-01-28 15:58:05,719 django.channels.server.log_action [mHTTP GET /m/ 200 [0.14, 127.0.0.1:38656][0m
+INFO 2019-01-28 15:58:06,340 django.channels.server.log_action [mHTTP GET /api/load/post/top/?q=&f= 200 [0.30, 127.0.0.1:38672][0m
+INFO 2019-01-28 15:58:07,549 django.channels.server.log_action WebSocket HANDSHAKING /ws/post/1802/add-comment/ [127.0.0.1:38680]
+INFO 2019-01-28 15:58:07,818 django.channels.server.log_action [mHTTP POST /api/post/detail-post/1802/ 200 [0.29, 127.0.0.1:38676][0m
+INFO 2019-01-28 15:58:07,831 django.channels.server.log_action WebSocket CONNECT /ws/post/1802/add-comment/ [127.0.0.1:38680]
+INFO 2019-01-28 15:58:08,118 django.channels.server.log_action [mHTTP GET /api/load/comment/post-comment/?f=1802 200 [0.30, 127.0.0.1:38684][0m
+INFO 2019-01-28 15:58:08,149 django.channels.server.log_action [mHTTP GET /static/blog/img/images.png 200 [0.02, 127.0.0.1:38690][0m
+INFO 2019-01-28 16:00:19,368 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 16:00:19,368 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 16:00:19,371 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+WARNING 2019-01-28 16:00:49,925 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:00:49,970 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.07, 127.0.0.1:38700][0m
+INFO 2019-01-28 16:01:22,612 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 16:01:22,613 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 16:01:22,615 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+WARNING 2019-01-28 16:01:28,217 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:01:28,226 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38702][0m
+INFO 2019-01-28 16:11:18,031 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 16:11:18,032 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 16:11:18,033 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+WARNING 2019-01-28 16:11:24,591 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:11:24,598 django.request.log_response Not Found: /update-post/1802/
+WARNING 2019-01-28 16:11:24,600 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38706][0m
+INFO 2019-01-28 16:12:45,368 daphne.server.run HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO 2019-01-28 16:12:45,369 daphne.server.run Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO 2019-01-28 16:12:45,370 daphne.server.listen_success Listening on TCP address 127.0.0.1:8000
+WARNING 2019-01-28 16:12:46,938 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:12:46,948 django.request.log_response Not Found: /update-post/1802/
+WARNING 2019-01-28 16:12:46,950 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.05, 127.0.0.1:38712][0m
+WARNING 2019-01-28 16:12:56,650 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:12:56,656 django.request.log_response Not Found: /update-post/1802/
+WARNING 2019-01-28 16:12:56,658 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.02, 127.0.0.1:38714][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1802/
+WARNING [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38718][0m
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1803/
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.02, 127.0.0.1:38720][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1803/
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.05, 127.0.0.1:38724][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1803/
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.05, 127.0.0.1:38730][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1803/
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.04, 127.0.0.1:38732][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+ERROR OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING Not Found: /update-post/1803/
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.04, 127.0.0.1:38736][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [32mHTTP GET / 302 [0.10, 127.0.0.1:38890][0m
+INFO [mHTTP GET /m/ 200 [0.08, 127.0.0.1:38892][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:38910][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.41, 127.0.0.1:38928][0m
+INFO [mHTTP GET /login/ 200 [0.12, 127.0.0.1:38948][0m
+INFO [36mHTTP GET /static/myauth/js/reg.js 304 [0.00, 127.0.0.1:38962][0m
+INFO [32mHTTP GET /login/vk-oauth2/ 302 [0.33, 127.0.0.1:38966][0m
+INFO [32mHTTP GET /complete/vk-oauth2/?redirect_state=oKBegCVaN6O94jeznjnm4PqfO6ICmAVy&code=af661987e5364719f6&state=oKBegCVaN6O94jeznjnm4PqfO6ICmAVy 302 [1.55, 127.0.0.1:38974][0m
+INFO [32mHTTP GET / 302 [0.09, 127.0.0.1:38980][0m
+INFO [mHTTP GET /m/ 200 [0.21, 127.0.0.1:38984][0m
+INFO [36mHTTP GET /static/blog/js/image_loader.js 304 [0.00, 127.0.0.1:39000][0m
+INFO [36mHTTP GET /static/ajax_utils/js/loader_dialogs.js 304 [0.00, 127.0.0.1:39002][0m
+INFO [36mHTTP GET /static/event_handler/js/websocket_event_handler.js 304 [0.00, 127.0.0.1:39004][0m
+INFO [36mHTTP GET /static/delete_app/js/delete.js 304 [0.00, 127.0.0.1:39006][0m
+INFO [36mHTTP GET /static/like_dislike/js/subscribe.js 304 [0.00, 127.0.0.1:39008][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39014]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39014]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.72, 127.0.0.1:39018][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39014]
+ERROR Internal Server Error: /p/drug_tvoei_mamu/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/account/mixins.py", line 23, in dispatch
+    return super().post(req, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/edit.py", line 194, in post
+    return super().post(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/edit.py", line 144, in post
+    return self.form_invalid(form)
+  File "/srv/WebProject/mysite/project/apps/ajax_utils_/mixins.py", line 20, in form_invalid
+    response = super().form_invalid(form)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/edit.py", line 61, in form_invalid
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/srv/WebProject/mysite/project/apps/account/views.py", line 47, in get_context_data
+    context = super().get_context_data(**kwargs)
+  File "/srv/WebProject/mysite/project/apps/ajax_utils/mixins.py", line 67, in get_context_data
+    context['location'], context['type'] = self.location.location, self.location.type
+AttributeError: 'ProfileView' object has no attribute 'location'
+ERROR [35;1mHTTP GET /p/drug_tvoei_mamu/ 500 [0.37, 127.0.0.1:39026][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.49, 127.0.0.1:39034][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.05, 127.0.0.1:39046][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:39050][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.06, 127.0.0.1:39054][0m
+INFO [36mHTTP GET /static/account/js/account_utils.js 304 [0.01, 127.0.0.1:39068][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.05, 127.0.0.1:39064][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.05, 127.0.0.1:39066][0m
+INFO [mHTTP GET /static/blog/img/icons8-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC-100.png 200 [0.07, 127.0.0.1:39062][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39074]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39074]
+INFO [36mHTTP GET /static/like_dislike/js/like.js 304 [0.01, 127.0.0.1:39082][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.25, 127.0.0.1:39084][0m
+INFO [mHTTP POST /create-post/ 200 [0.39, 127.0.0.1:39090][0m
+INFO [mHTTP POST /api/post/delete/3179/ 200 [0.24, 127.0.0.1:39096][0m
+INFO [mHTTP POST /api/post/delete/3179/ 200 [0.24, 127.0.0.1:39100][0m
+INFO [mHTTP POST /api/post/return/3179/ 200 [0.21, 127.0.0.1:39102][0m
+INFO [mHTTP POST /api/post/return/3179/ 200 [0.25, 127.0.0.1:39106][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39112]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39112]
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.10, 127.0.0.1:39114][0m
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.23, 127.0.0.1:39108][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39112]
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39122]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39122]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.10, 127.0.0.1:39118][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.19, 127.0.0.1:39126][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.16, 127.0.0.1:39128][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.19, 127.0.0.1:39130][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.42, 127.0.0.1:39132][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.46, 127.0.0.1:39134][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.32, 127.0.0.1:39138][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.40, 127.0.0.1:39136][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.34, 127.0.0.1:39144][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.36, 127.0.0.1:39146][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.15, 127.0.0.1:39152][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.20, 127.0.0.1:39154][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.20, 127.0.0.1:39158][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.24, 127.0.0.1:39162][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.31, 127.0.0.1:39172][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.34, 127.0.0.1:39174][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.20, 127.0.0.1:39188][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.22, 127.0.0.1:39190][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39206]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.28, 127.0.0.1:39194][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.28, 127.0.0.1:39198][0m
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39206]
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39206]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.33, 127.0.0.1:39218][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:39230][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:39232][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.04, 127.0.0.1:39236][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:39244][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:39240][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:39248][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.03, 127.0.0.1:39250][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:39252][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:39256][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:39254][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:39262][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.03, 127.0.0.1:39260][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:39258][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:39268][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.05, 127.0.0.1:39266][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:39276][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:39282][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.04, 127.0.0.1:39278][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.03, 127.0.0.1:39284][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39288]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39288]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:39300][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.17, 127.0.0.1:39302][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.03, 127.0.0.1:39304][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.07, 127.0.0.1:39306][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.07, 127.0.0.1:39308][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.09, 127.0.0.1:39310][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39316]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39316]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.16, 127.0.0.1:39312][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.20, 127.0.0.1:39318][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39316]
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39288]
+INFO [mHTTP GET /p/drug_tvoei_mamu/post/3179/ 200 [0.31, 127.0.0.1:39326][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.02, 127.0.0.1:39334][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.06, 127.0.0.1:39336][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.07, 127.0.0.1:39338][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.09, 127.0.0.1:39340][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.08, 127.0.0.1:39344][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.09, 127.0.0.1:39342][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.11, 127.0.0.1:39346][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.08, 127.0.0.1:39348][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.07, 127.0.0.1:39350][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:39352][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.06, 127.0.0.1:39354][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.06, 127.0.0.1:39358][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.06, 127.0.0.1:39360][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.05, 127.0.0.1:39364][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.05, 127.0.0.1:39362][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:39366][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:39368][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:39370][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.02, 127.0.0.1:39372][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:39376][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:39374][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:39378][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39384]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39384]
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:39388][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39404]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39404]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.25, 127.0.0.1:39396][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.27, 127.0.0.1:39400][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.27, 127.0.0.1:39398][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.01, 127.0.0.1:39406][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:39410][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.02, 127.0.0.1:39408][0m
+INFO [mHTTP GET /static/blog/img/images.png 200 [0.01, 127.0.0.1:39412][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39384]
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39404]
+INFO [mHTTP GET /p/drug_tvoei_mamu/post/3179/ 200 [0.41, 127.0.0.1:39422][0m
+INFO [36mHTTP GET /static/blog/css/main_page.css 304 [0.01, 127.0.0.1:39428][0m
+INFO [36mHTTP GET /static/ajax_utils/js/ajax-post.js 304 [0.03, 127.0.0.1:39438][0m
+INFO [36mHTTP GET /static/autocomplete/js/autocomplete.js 304 [0.02, 127.0.0.1:39440][0m
+INFO [36mHTTP GET /static/comments/css/comment.css 304 [0.03, 127.0.0.1:39442][0m
+INFO [36mHTTP GET /static/comments/js/answer_comment.js 304 [0.03, 127.0.0.1:39446][0m
+INFO [36mHTTP GET /static/blog/js/detail_post.js 304 [0.03, 127.0.0.1:39444][0m
+INFO [36mHTTP GET /static/like_dislike/js/subscribe.js 304 [0.04, 127.0.0.1:39450][0m
+INFO [36mHTTP GET /static/delete_app/js/delete.js 304 [0.01, 127.0.0.1:39452][0m
+INFO [36mHTTP GET /static/ajax_utils/js/loader_content.js 304 [0.01, 127.0.0.1:39454][0m
+INFO [36mHTTP GET /static/blog/js/image_loader.js 304 [0.02, 127.0.0.1:39458][0m
+INFO [36mHTTP GET /static/account/css/account.css 304 [0.03, 127.0.0.1:39456][0m
+INFO [36mHTTP GET /static/autocomplete/css/autocomplete.css 304 [0.03, 127.0.0.1:39460][0m
+INFO [36mHTTP GET /static/ajax_utils/js/loader_dialogs.js 304 [0.03, 127.0.0.1:39462][0m
+INFO [36mHTTP GET /static/chat/js/list-dialogs.js 304 [0.03, 127.0.0.1:39464][0m
+INFO [36mHTTP GET /static/event_handler/js/websocket_event_handler.js 304 [0.04, 127.0.0.1:39466][0m
+INFO [36mHTTP GET /static/like_dislike/js/like.js 304 [0.01, 127.0.0.1:39468][0m
+INFO [36mHTTP GET /static/account/js/account_utils.js 304 [0.01, 127.0.0.1:39470][0m
+INFO [36mHTTP GET /static/ajax_utils/js/ajax-post.js 304 [0.02, 127.0.0.1:39472][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.02, 127.0.0.1:39474][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:39478][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:39480][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.03, 127.0.0.1:39482][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39486]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39486]
+INFO [36mHTTP GET /static/delete_app/js/delete.js 304 [0.00, 127.0.0.1:39492][0m
+INFO [36mHTTP GET /static/like_dislike/js/like.js 304 [0.01, 127.0.0.1:39494][0m
+INFO [36mHTTP GET /static/like_dislike/js/subscribe.js 304 [0.00, 127.0.0.1:39496][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39502]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39502]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.21, 127.0.0.1:39498][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.20, 127.0.0.1:39506][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.24, 127.0.0.1:39504][0m
+INFO [36mHTTP GET /static/blog/img/view.png 304 [0.01, 127.0.0.1:39508][0m
+INFO [36mHTTP GET /static/blog/img/comment.png 304 [0.00, 127.0.0.1:39510][0m
+INFO [36mHTTP GET /static/blog/img/icon-like.png 304 [0.00, 127.0.0.1:39512][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39502]
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39486]
+INFO [mHTTP GET /p/drug_tvoei_mamu/post/3179/ 200 [0.42, 127.0.0.1:39524][0m
+INFO [36mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 304 [0.00, 127.0.0.1:39528][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39532]
+INFO [36mHTTP GET /static/blog/img/icons8-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC-100.png 304 [0.01, 127.0.0.1:39536][0m
+INFO [36mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 304 [0.03, 127.0.0.1:39534][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39532]
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39546]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39546]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.25, 127.0.0.1:39540][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.22, 127.0.0.1:39548][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.31, 127.0.0.1:39542][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39546]
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39532]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.50, 127.0.0.1:39554][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39562]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39562]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.20, 127.0.0.1:39566][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39562]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.45, 127.0.0.1:39574][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39586]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39586]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.18, 127.0.0.1:39590][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39586]
+INFO [mHTTP GET /home/ 200 [0.39, 127.0.0.1:39594][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39606]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39606]
+INFO [mHTTP GET /api/load/post/home/?q=&f= 200 [0.32, 127.0.0.1:39610][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39606]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.43, 127.0.0.1:39614][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39624]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39624]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.17, 127.0.0.1:39620][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.13, 127.0.0.1:39628][0m
+INFO [mHTTP POST /api/post/delete/3179/ 200 [0.14, 127.0.0.1:39630][0m
+INFO [mHTTP POST /api/post/return/3179/ 200 [0.19, 127.0.0.1:39632][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.47, 127.0.0.1:39664][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39682]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39682]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.18, 127.0.0.1:39688][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.25, 127.0.0.1:39692][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39704]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39704]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.24, 127.0.0.1:39694][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.26, 127.0.0.1:39700][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.17, 127.0.0.1:39708][0m
+INFO [mHTTP POST /api/comment/return/9/ 200 [0.17, 127.0.0.1:39710][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39704]
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+ERROR {12: 'dad'}
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.56, 127.0.0.1:39728][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39746]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39746]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.19, 127.0.0.1:39752][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.14, 127.0.0.1:39756][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39764]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39764]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.16, 127.0.0.1:39758][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.17, 127.0.0.1:39770][0m
+INFO [mHTTP POST /api/comment/delete/9/ 200 [0.16, 127.0.0.1:39774][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.58, 127.0.0.1:39784][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39796]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39796]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.28, 127.0.0.1:39802][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.06, 127.0.0.1:39806][0m
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39814]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39814]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.25, 127.0.0.1:39808][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.69, 127.0.0.1:39820][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39814]
+INFO WebSocket HANDSHAKING /ws/post/3179/add-comment/ [127.0.0.1:39828]
+INFO WebSocket CONNECT /ws/post/3179/add-comment/ [127.0.0.1:39828]
+INFO [mHTTP POST /api/post/detail-post/3179/ 200 [0.13, 127.0.0.1:39824][0m
+INFO [mHTTP GET /api/load/comment/post-comment/?f=3179 200 [0.20, 127.0.0.1:39830][0m
+INFO [mHTTP POST /api/comment/delete/10/ 200 [0.15, 127.0.0.1:39832][0m
+INFO [mHTTP POST /api/comment/return/10/ 200 [0.16, 127.0.0.1:39834][0m
+INFO WebSocket DISCONNECT /ws/post/3179/add-comment/ [127.0.0.1:39828]
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39796]
+INFO [32mHTTP GET / 302 [0.07, 127.0.0.1:39840][0m
+INFO [mHTTP GET /m/ 200 [0.20, 127.0.0.1:39842][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39852]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39852]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.64, 127.0.0.1:39856][0m
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.21, 127.0.0.1:39866][0m
+INFO (1, {'event_handler.Notification': 1})
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.27, 127.0.0.1:39870][0m
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.24, 127.0.0.1:39872][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /m/ 200 [0.29, 127.0.0.1:39882][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39896]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39896]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.47, 127.0.0.1:39902][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /m/ 200 [0.24, 127.0.0.1:39914][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.42, 127.0.0.1:39924][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39928]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39928]
+ERROR Internal Server Error: /api/like/post/1802/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/like_dislike/views.py", line 17, in post
+    inst.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/base.py", line 880, in delete
+    return collector.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/deletion.py", line 306, in delete
+    sender=model, instance=obj, using=self.using
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in send
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in <listcomp>
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 102, in like_delete_notify
+    def like_delete_notify(sender, **kwargs): del_event(kwargs)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 98, in del_event
+    logger.info('Notify %s' % Notification.objects.filter(content_type=event, object_id=id).delete())
+TypeError: not all arguments converted during string formatting
+ERROR [35;1mHTTP POST /api/like/post/1802/ 500 [0.43, 127.0.0.1:39936][0m
+ERROR Internal Server Error: /api/like/post/1802/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/like_dislike/views.py", line 17, in post
+    inst.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/base.py", line 880, in delete
+    return collector.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/deletion.py", line 306, in delete
+    sender=model, instance=obj, using=self.using
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in send
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in <listcomp>
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 102, in like_delete_notify
+    def like_delete_notify(sender, **kwargs): del_event(kwargs)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 98, in del_event
+    logger.info('Notify %s' % Notification.objects.filter(content_type=event, object_id=id).delete())
+TypeError: not all arguments converted during string formatting
+ERROR [35;1mHTTP POST /api/like/post/1802/ 500 [0.19, 127.0.0.1:39938][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39928]
+INFO [mHTTP GET /m/ 200 [0.09, 127.0.0.1:39944][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39956]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39956]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.45, 127.0.0.1:39952][0m
+ERROR Internal Server Error: /api/like/post/1802/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/contrib/auth/mixins.py", line 52, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/like_dislike/views.py", line 17, in post
+    inst.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/base.py", line 880, in delete
+    return collector.delete()
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/db/models/deletion.py", line 306, in delete
+    sender=model, instance=obj, using=self.using
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in send
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/dispatch/dispatcher.py", line 175, in <listcomp>
+    for receiver in self._live_receivers(sender)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 102, in like_delete_notify
+    def like_delete_notify(sender, **kwargs): del_event(kwargs)
+  File "/srv/WebProject/mysite/project/apps/event_handler/signals.py", line 98, in del_event
+    logger.info('Notify %s' % Notification.objects.filter(content_type=event, object_id=id).delete())
+TypeError: not all arguments converted during string formatting
+ERROR [35;1mHTTP POST /api/like/post/1802/ 500 [0.24, 127.0.0.1:39962][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /m/ 200 [0.23, 127.0.0.1:39970][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.43, 127.0.0.1:39978][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:39982]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:39982]
+INFO (1, {'event_handler.Notification': 1})
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.17, 127.0.0.1:39990][0m
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.21, 127.0.0.1:39992][0m
+INFO [mHTTP POST /api/like/post/1803/ 200 [0.34, 127.0.0.1:39996][0m
+INFO (1, {'event_handler.Notification': 1})
+INFO [mHTTP POST /api/like/post/1803/ 200 [0.13, 127.0.0.1:40000][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:39982]
+INFO [mHTTP GET /m/ 200 [0.08, 127.0.0.1:40008][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:40024]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:40024]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.44, 127.0.0.1:40020][0m
+INFO (1, {'event_handler.Notification': 1})
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.20, 127.0.0.1:40028][0m
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.32, 127.0.0.1:40030][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /en/info/privacy_policy/ 200 [0.43, 127.0.0.1:40042][0m
+INFO [mHTTP GET /en/info/load_template/privacy_policy/ 200 [0.20, 127.0.0.1:40064][0m
+WARNING Not Found: /fg/info/privacy_policy/
+WARNING [33mHTTP GET /fg/info/privacy_policy/ 404 [0.24, 127.0.0.1:40070][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+WARNING Not Found: /fg/info/privacy_policy/
+WARNING [33mHTTP GET /fg/info/privacy_policy/ 404 [0.26, 127.0.0.1:40074][0m
+INFO [mHTTP GET /ru/info/privacy_policy/ 200 [0.35, 127.0.0.1:40078][0m
+INFO [mHTTP GET /ru/info/load_template/privacy_policy/ 200 [0.22, 127.0.0.1:40092][0m
+WARNING Not Found: /vv/info/privacy_policy/
+WARNING [33mHTTP GET /vv/info/privacy_policy/ 404 [0.87, 127.0.0.1:40096][0m
+WARNING Not Found: /ua/info/privacy_policy/
+WARNING [33mHTTP GET /ua/info/privacy_policy/ 404 [0.14, 127.0.0.1:40098][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /ru/info/privacy_policy/ 200 [0.26, 127.0.0.1:40112][0m
+INFO [mHTTP GET /ru/info/load_template/privacy_policy/ 200 [0.17, 127.0.0.1:40120][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [32mHTTP GET / 302 [0.32, 127.0.0.1:44824][0m
+INFO [mHTTP GET /m/ 200 [0.38, 127.0.0.1:44834][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.05, 127.0.0.1:44842][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:44858][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:44864][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.07, 127.0.0.1:44850][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.08, 127.0.0.1:44854][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.08, 127.0.0.1:44866][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.05, 127.0.0.1:44868][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.03, 127.0.0.1:44878][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.72, 127.0.0.1:44880][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.05, 127.0.0.1:44884][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.03, 127.0.0.1:44886][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.05, 127.0.0.1:44890][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.06, 127.0.0.1:44888][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /m/ 200 [0.11, 127.0.0.1:44932][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:44942][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:44954][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:44956][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:44958][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.06, 127.0.0.1:44962][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.06, 127.0.0.1:44960][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.06, 127.0.0.1:44964][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:44972][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.28, 127.0.0.1:44974][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.01, 127.0.0.1:44978][0m
+INFO [mHTTP GET /login/ 200 [0.15, 127.0.0.1:44994][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:45008][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:45010][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:45014][0m
+INFO [mHTTP GET /static/myauth/js/reg.js 200 [0.03, 127.0.0.1:45022][0m
+INFO [mHTTP POST /login/ 200 [0.39, 127.0.0.1:45038][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:45040][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:45042][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.02, 127.0.0.1:45044][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.02, 127.0.0.1:45052][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:45046][0m
+INFO [mHTTP GET /static/myauth/js/reg.js 200 [0.03, 127.0.0.1:45054][0m
+INFO [mHTTP GET /static/myauth/img/120px-VK.com-logo.svg.png 200 [0.01, 127.0.0.1:45058][0m
+INFO [32mHTTP GET /login/vk-oauth2/ 302 [0.26, 127.0.0.1:45064][0m
+INFO [32mHTTP GET /complete/vk-oauth2/?redirect_state=3lW96RRhBaLwWE3z9NEclazjDaYOghpu&code=2be5757cda231ef4a5&state=3lW96RRhBaLwWE3z9NEclazjDaYOghpu 302 [2.32, 127.0.0.1:45074][0m
+INFO [32mHTTP GET / 302 [0.07, 127.0.0.1:45082][0m
+INFO [mHTTP GET /m/ 200 [0.27, 127.0.0.1:45084][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:45088][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:45090][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.06, 127.0.0.1:45092][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:45096][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.09, 127.0.0.1:45094][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.08, 127.0.0.1:45098][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.06, 127.0.0.1:45102][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.08, 127.0.0.1:45100][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:45104][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:45106][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:45108][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.05, 127.0.0.1:45110][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.06, 127.0.0.1:45112][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.06, 127.0.0.1:45114][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.05, 127.0.0.1:45116][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.04, 127.0.0.1:45118][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.05, 127.0.0.1:45120][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.05, 127.0.0.1:45122][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.01, 127.0.0.1:45126][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:45128][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.02, 127.0.0.1:45136][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.15, 127.0.0.1:45132][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.40, 127.0.0.1:45138][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.01, 127.0.0.1:45146][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.03, 127.0.0.1:45144][0m
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.35, 127.0.0.1:45148][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.05, 127.0.0.1:45150][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.06, 127.0.0.1:45152][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:45156][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.05, 127.0.0.1:45158][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:45160][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.03, 127.0.0.1:45162][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.03, 127.0.0.1:45164][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.02, 127.0.0.1:45166][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:45168][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:45170][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.03, 127.0.0.1:45172][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:45174][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.15, 127.0.0.1:45154][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:45176][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.05, 127.0.0.1:45178][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.07, 127.0.0.1:45180][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.06, 127.0.0.1:45182][0m
+INFO [mHTTP GET /static/blog/img/icons8-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC-100.png 200 [0.05, 127.0.0.1:45184][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.01, 127.0.0.1:45192][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.10, 127.0.0.1:45200][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.16, 127.0.0.1:45204][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:45210][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.11, 127.0.0.1:45212][0m
+INFO [mHTTP POST /create-post/ 200 [0.49, 127.0.0.1:45214][0m
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.29, 127.0.0.1:45226][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.01, 127.0.0.1:45244][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:45248][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.03, 127.0.0.1:45246][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.02, 127.0.0.1:45250][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.02, 127.0.0.1:45260][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.02, 127.0.0.1:45254][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.05, 127.0.0.1:45262][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:45264][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:45266][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.04, 127.0.0.1:45270][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:45268][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:45272][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:45274][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.02, 127.0.0.1:45276][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.02, 127.0.0.1:45278][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.02, 127.0.0.1:45284][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:45286][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:45288][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.01, 127.0.0.1:45290][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.10, 127.0.0.1:45294][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.14, 127.0.0.1:45300][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.03, 127.0.0.1:45302][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:45306][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:45304][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.11, 127.0.0.1:45308][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [32mHTTP GET / 302 [0.27, 127.0.0.1:45378][0m
+INFO [mHTTP GET /m/ 200 [0.06, 127.0.0.1:45384][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:45400][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:45402][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.03, 127.0.0.1:45410][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:45404][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.07, 127.0.0.1:45412][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.08, 127.0.0.1:45416][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.05, 127.0.0.1:45420][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.05, 127.0.0.1:45418][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.05, 127.0.0.1:45422][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.01, 127.0.0.1:45424][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.17, 127.0.0.1:45428][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.36, 127.0.0.1:45430][0m
+INFO (1, {'event_handler.Notification': 1})
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.23, 127.0.0.1:45436][0m
+INFO [mHTTP POST /api/like/post/1802/ 200 [0.54, 127.0.0.1:45440][0m
+INFO [mHTTP GET /m/ 200 [0.10, 127.0.0.1:45448][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.02, 127.0.0.1:45458][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:45460][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:45462][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:45466][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:45468][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.05, 127.0.0.1:45464][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.08, 127.0.0.1:45470][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.03, 127.0.0.1:45472][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:45474][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:45476][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:45478][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.05, 127.0.0.1:45480][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.01, 127.0.0.1:45482][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.01, 127.0.0.1:45484][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.01, 127.0.0.1:45486][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:45494][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:45496][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:45498][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:45508][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.13, 127.0.0.1:45502][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.53, 127.0.0.1:45510][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.04, 127.0.0.1:45512][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:45514][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.03, 127.0.0.1:45516][0m
+INFO [mHTTP GET /m/ 200 [0.08, 127.0.0.1:45520][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:45522][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:45524][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:45526][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:45528][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.05, 127.0.0.1:45530][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.05, 127.0.0.1:45532][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:45534][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.03, 127.0.0.1:45536][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:45538][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:45540][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:45542][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.03, 127.0.0.1:45544][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:45546][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:45548][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:45550][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:45552][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:45554][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.04, 127.0.0.1:45558][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:45560][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:45562][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.17, 127.0.0.1:45570][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.42, 127.0.0.1:45566][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:45572][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.01, 127.0.0.1:45578][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO [mHTTP GET /m/ 200 [0.22, 127.0.0.1:45594][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:45608][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.01, 127.0.0.1:45610][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.01, 127.0.0.1:45616][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.01, 127.0.0.1:45618][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:45624][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.02, 127.0.0.1:45634][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.02, 127.0.0.1:45638][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.02, 127.0.0.1:45640][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:45636][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.03, 127.0.0.1:45642][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:45644][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.01, 127.0.0.1:45646][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.02, 127.0.0.1:45648][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:45650][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.04, 127.0.0.1:45652][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:45654][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.03, 127.0.0.1:45658][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:45656][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.11, 127.0.0.1:45664][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.43, 127.0.0.1:45666][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.01, 127.0.0.1:45672][0m
+INFO [mHTTP GET /m/ 200 [0.09, 127.0.0.1:45680][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:45698][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:45700][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:45696][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:45708][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.13, 127.0.0.1:45710][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.06, 127.0.0.1:45712][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.07, 127.0.0.1:45716][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.08, 127.0.0.1:45718][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.08, 127.0.0.1:45720][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.04, 127.0.0.1:45722][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:45724][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.01, 127.0.0.1:45726][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:45730][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:45734][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.04, 127.0.0.1:45736][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.04, 127.0.0.1:45738][0m
+INFO [mHTTP GET /static/blog/img/search_icon.png 200 [0.04, 127.0.0.1:45740][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.02, 127.0.0.1:45748][0m
+WARNING Not Found: /ws/event-handler/
+WARNING [33mHTTP GET /ws/event-handler/ 404 [0.25, 127.0.0.1:45746][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.50, 127.0.0.1:45742][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.04, 127.0.0.1:45750][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.04, 127.0.0.1:45754][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.05, 127.0.0.1:45752][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.05, 127.0.0.1:45756][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO [mHTTP GET /m/ 200 [0.18, 127.0.0.1:45934][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.02, 127.0.0.1:45946][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:45950][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:45954][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:45958][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:45962][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:45966][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.05, 127.0.0.1:45968][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:45970][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:45972][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:45974][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:45976][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:45978][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:45982][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:45984][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:45986][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:45988][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:45990][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:45994][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:45996][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:45998][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46004]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46004]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:46008][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.55, 127.0.0.1:46010][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.02, 127.0.0.1:46016][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:46014][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46004]
+INFO [32mHTTP GET /admin/ 302 [0.10, 127.0.0.1:46020][0m
+INFO [mHTTP GET /admin/login/?next=/admin/ 200 [0.34, 127.0.0.1:46022][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.08, 127.0.0.1:46024][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.18, 127.0.0.1:46030][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.03, 127.0.0.1:46034][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.01, 127.0.0.1:46038][0m
+INFO [mHTTP POST /admin/login/?next=/admin/ 200 [0.40, 127.0.0.1:46040][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.02, 127.0.0.1:46042][0m
+INFO [mHTTP GET /static/admin/css/login.css 200 [0.02, 127.0.0.1:46044][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.09, 127.0.0.1:46048][0m
+INFO [mHTTP GET /static/admin/css/fonts.css 200 [0.01, 127.0.0.1:46050][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.02, 127.0.0.1:46052][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.02, 127.0.0.1:46054][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.01, 127.0.0.1:46056][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO [32mHTTP POST /admin/login/?next=/admin/ 302 [0.65, 127.0.0.1:46060][0m
+INFO [mHTTP GET /admin/ 200 [0.28, 127.0.0.1:46064][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.02, 127.0.0.1:46066][0m
+INFO [mHTTP GET /static/admin/css/fonts.css 200 [0.01, 127.0.0.1:46076][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.11, 127.0.0.1:46078][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.01, 127.0.0.1:46082][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.02, 127.0.0.1:46084][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.03, 127.0.0.1:46086][0m
+INFO [mHTTP GET /static/admin/img/icon-addlink.svg 200 [0.02, 127.0.0.1:46088][0m
+INFO [mHTTP GET /admin/blog/tag/ 200 [0.33, 127.0.0.1:46092][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.05, 127.0.0.1:46096][0m
+INFO [mHTTP GET /static/admin/css/changelists.css 200 [0.05, 127.0.0.1:46098][0m
+INFO [mHTTP GET /static/admin/js/jquery.init.js 200 [0.04, 127.0.0.1:46112][0m
+INFO [mHTTP GET /static/admin/js/core.js 200 [0.04, 127.0.0.1:46114][0m
+INFO [mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.07, 127.0.0.1:46116][0m
+INFO [mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.10, 127.0.0.1:46110][0m
+INFO [mHTTP GET /static/admin/js/actions.js 200 [0.07, 127.0.0.1:46118][0m
+INFO [mHTTP GET /static/admin/js/urlify.js 200 [0.05, 127.0.0.1:46120][0m
+INFO [mHTTP GET /admin/jsi18n/ 200 [0.17, 127.0.0.1:46100][0m
+INFO [mHTTP GET /static/admin/js/prepopulate.js 200 [0.09, 127.0.0.1:46122][0m
+INFO [mHTTP GET /static/admin/css/responsive.css 200 [0.02, 127.0.0.1:46126][0m
+INFO [mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.05, 127.0.0.1:46124][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.03, 127.0.0.1:46132][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.04, 127.0.0.1:46134][0m
+INFO [mHTTP GET /static/admin/img/tooltag-add.svg 200 [0.04, 127.0.0.1:46136][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.12, 127.0.0.1:46138][0m
+INFO [mHTTP POST /admin/blog/tag/ 200 [0.15, 127.0.0.1:46144][0m
+INFO [mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.01, 127.0.0.1:46148][0m
+INFO [mHTTP GET /static/admin/js/jquery.init.js 200 [0.01, 127.0.0.1:46150][0m
+INFO [mHTTP GET /static/admin/js/actions.js 200 [0.06, 127.0.0.1:46156][0m
+INFO [mHTTP GET /static/admin/js/admin/RelatedObjectLookups.js 200 [0.06, 127.0.0.1:46154][0m
+INFO [mHTTP GET /static/admin/js/urlify.js 200 [0.07, 127.0.0.1:46158][0m
+INFO [mHTTP GET /static/admin/js/prepopulate.js 200 [0.07, 127.0.0.1:46160][0m
+INFO [mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.06, 127.0.0.1:46162][0m
+INFO [mHTTP GET /static/admin/css/responsive.css 200 [0.02, 127.0.0.1:46166][0m
+INFO [mHTTP GET /static/admin/js/cancel.js 200 [0.05, 127.0.0.1:46164][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.01, 127.0.0.1:46170][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.01, 127.0.0.1:46172][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.11, 127.0.0.1:46176][0m
+INFO [32mHTTP POST /admin/blog/tag/ 302 [0.63, 127.0.0.1:46178][0m
+INFO [mHTTP GET /admin/blog/tag/ 200 [0.18, 127.0.0.1:46180][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.04, 127.0.0.1:46182][0m
+INFO [mHTTP GET /static/admin/css/changelists.css 200 [0.04, 127.0.0.1:46184][0m
+INFO [mHTTP GET /static/admin/js/vendor/jquery/jquery.js 200 [0.04, 127.0.0.1:46188][0m
+INFO [mHTTP GET /static/admin/js/jquery.init.js 200 [0.04, 127.0.0.1:46190][0m
+INFO [mHTTP GET /static/admin/js/core.js 200 [0.05, 127.0.0.1:46192][0m
+INFO [mHTTP GET /admin/jsi18n/ 200 [0.14, 127.0.0.1:46186][0m
+INFO [mHTTP GET /static/admin/js/actions.js 200 [0.10, 127.0.0.1:46196][0m
+INFO [mHTTP GET /static/admin/js/urlify.js 200 [0.12, 127.0.0.1:46198][0m
+INFO [mHTTP GET /static/admin/js/prepopulate.js 200 [0.07, 127.0.0.1:46200][0m
+INFO [mHTTP GET /static/admin/js/vendor/xregexp/xregexp.js 200 [0.07, 127.0.0.1:46202][0m
+INFO [mHTTP GET /static/admin/css/responsive.css 200 [0.05, 127.0.0.1:46204][0m
+INFO [mHTTP GET /static/admin/fonts/Roboto-Regular-webfont.woff 200 [0.01, 127.0.0.1:46212][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.12, 127.0.0.1:46218][0m
+INFO [mHTTP GET /admin/ 200 [0.13, 127.0.0.1:46220][0m
+INFO [mHTTP GET /static/admin/css/base.css 200 [0.01, 127.0.0.1:46222][0m
+INFO [mHTTP GET /static/admin/css/dashboard.css 200 [0.01, 127.0.0.1:46224][0m
+INFO [mHTTP GET /static/admin/css/responsive.css 200 [0.01, 127.0.0.1:46226][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.14, 127.0.0.1:46228][0m
+INFO [32mHTTP GET / 302 [0.13, 127.0.0.1:46244][0m
+INFO [mHTTP GET /m/ 200 [0.19, 127.0.0.1:46246][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:46258][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:46260][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.06, 127.0.0.1:46262][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:46266][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.07, 127.0.0.1:46264][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.07, 127.0.0.1:46268][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.12, 127.0.0.1:46270][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:46278][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.06, 127.0.0.1:46276][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.07, 127.0.0.1:46274][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.09, 127.0.0.1:46272][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.08, 127.0.0.1:46282][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:46284][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:46288][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:46286][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:46290][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:46292][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.03, 127.0.0.1:46294][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:46296][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:46298][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.04, 127.0.0.1:46300][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46304]
+INFO [mHTTP GET /static/blog/img/search_icon.png 200 [0.01, 127.0.0.1:46306][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46304]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.51, 127.0.0.1:46314][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.01, 127.0.0.1:46318][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.01, 127.0.0.1:46320][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46304]
+INFO [mHTTP GET /search/?q= 200 [0.14, 127.0.0.1:46322][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:46324][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:46326][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:46330][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:46328][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:46332][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.06, 127.0.0.1:46334][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.06, 127.0.0.1:46336][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:46338][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:46340][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:46344][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:46342][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:46348][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:46352][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:46354][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:46356][0m
+INFO [mHTTP GET /static/blog/img/logo-mini.png 200 [0.04, 127.0.0.1:46358][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:46360][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:46362][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46370]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46370]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:46374][0m
+INFO [mHTTP GET /api/load/post/post-search/?q= 200 [0.48, 127.0.0.1:46376][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.03, 127.0.0.1:46378][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:46380][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:46382][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46370]
+INFO [32mHTTP GET / 302 [0.06, 127.0.0.1:46384][0m
+INFO [mHTTP GET /m/ 200 [0.07, 127.0.0.1:46386][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:46388][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:46392][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.06, 127.0.0.1:46390][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:46396][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.06, 127.0.0.1:46394][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.06, 127.0.0.1:46398][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.05, 127.0.0.1:46400][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.03, 127.0.0.1:46402][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:46404][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:46406][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.03, 127.0.0.1:46408][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:46410][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:46412][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:46414][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.01, 127.0.0.1:46416][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.03, 127.0.0.1:46418][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:46420][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.04, 127.0.0.1:46424][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.04, 127.0.0.1:46426][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:46428][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46432]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46432]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:46438][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.36, 127.0.0.1:46440][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.02, 127.0.0.1:46442][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:46444][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:46446][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46432]
+INFO [mHTTP GET /p/Boris/ 200 [0.32, 127.0.0.1:46448][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.03, 127.0.0.1:46456][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:46458][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.04, 127.0.0.1:46454][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.04, 127.0.0.1:46452][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:46460][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.06, 127.0.0.1:46462][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.03, 127.0.0.1:46464][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:46466][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:46468][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:46470][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:46472][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.05, 127.0.0.1:46474][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:46476][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:46478][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.04, 127.0.0.1:46480][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:46482][0m
+INFO [mHTTP GET /static/blog/img/icons8-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC-100.png 200 [0.03, 127.0.0.1:46484][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:46492][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46500]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.03, 127.0.0.1:46502][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46500]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=567 200 [0.37, 127.0.0.1:46506][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+CRITICAL Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+INFO [mHTTP GET /api/load/notify/user-notify/ 200 [0.09, 127.0.0.1:46520][0m
+INFO [mHTTP GET /api/load/dialog/user-dialogs/ 200 [0.10, 127.0.0.1:46522][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46500]
+INFO [32mHTTP GET / 302 [0.08, 127.0.0.1:46526][0m
+INFO [mHTTP GET /m/ 200 [0.19, 127.0.0.1:46528][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.00, 127.0.0.1:46540][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.02, 127.0.0.1:46542][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:46546][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:46550][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:46554][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:46558][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:46562][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:46564][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:46566][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:46568][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:46570][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:46572][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:46574][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.03, 127.0.0.1:46576][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:46582][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:46588][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46596]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.02, 127.0.0.1:46592][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46596]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.39, 127.0.0.1:46600][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.01, 127.0.0.1:46602][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.02, 127.0.0.1:46604][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:46606][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46596]
+INFO [mHTTP GET /m/ 200 [0.14, 127.0.0.1:46702][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.09, 127.0.0.1:46718][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.08, 127.0.0.1:46732][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.09, 127.0.0.1:46728][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.09, 127.0.0.1:46730][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.08, 127.0.0.1:46734][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.11, 127.0.0.1:46736][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.00, 127.0.0.1:46738][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.10, 127.0.0.1:46742][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.08, 127.0.0.1:46744][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.07, 127.0.0.1:46746][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.06, 127.0.0.1:46750][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.06, 127.0.0.1:46748][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.07, 127.0.0.1:46752][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:46764][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.04, 127.0.0.1:46766][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46772]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46772]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:46776][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.59, 127.0.0.1:46778][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.02, 127.0.0.1:46780][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:46784][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:46782][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46772]
+INFO [mHTTP GET /m/ 200 [0.08, 127.0.0.1:46786][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.01, 127.0.0.1:46788][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:46794][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:46790][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:46798][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:46792][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.05, 127.0.0.1:46796][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.07, 127.0.0.1:46800][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:46802][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:46804][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:46808][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:46806][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.06, 127.0.0.1:46810][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:46814][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:46816][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:46824][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:46832]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:46832]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:46838][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.44, 127.0.0.1:46840][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.02, 127.0.0.1:46844][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:46846][0m
+INFO [mHTTP GET /api/load/user/people/?q=&f= 200 [0.25, 127.0.0.1:47072][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:46832]
+ERROR OnlyOwnerMixin: User - Boris, Owner - drug_tvoei_mamu
+ERROR Internal Server Error: /p/drug_tvoei_mamu/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/account/mixins.py", line 22, in dispatch
+    raise HttpResponseForbidden
+TypeError: exceptions must derive from BaseException
+ERROR [35;1mHTTP GET /p/drug_tvoei_mamu/ 500 [0.24, 127.0.0.1:47076][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.13, 127.0.0.1:47078][0m
+INFO [mHTTP GET /m/people/ 200 [0.19, 127.0.0.1:47080][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:47100][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.05, 127.0.0.1:47102][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:47108][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.05, 127.0.0.1:47104][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:47106][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.07, 127.0.0.1:47112][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:47114][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:47116][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:47118][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47120][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:47122][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:47124][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:47126][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.01, 127.0.0.1:47128][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:47132][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47142]
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.05, 127.0.0.1:47134][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.07, 127.0.0.1:47136][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.07, 127.0.0.1:47138][0m
+INFO [mHTTP GET /static/blog/img/search_icon.png 200 [0.05, 127.0.0.1:47144][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47142]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47148][0m
+INFO [mHTTP GET /api/load/user/people/?q=&f= 200 [0.53, 127.0.0.1:47150][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47142]
+INFO [mHTTP GET /p/Boris/ 200 [0.29, 127.0.0.1:47152][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:47156][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.04, 127.0.0.1:47158][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.07, 127.0.0.1:47164][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.09, 127.0.0.1:47166][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.09, 127.0.0.1:47168][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.08, 127.0.0.1:47170][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:47172][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:47176][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:47174][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:47180][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:47182][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.02, 127.0.0.1:47184][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.02, 127.0.0.1:47186][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.02, 127.0.0.1:47188][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:47190][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:47192][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:47194][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:47196][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47200]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47200]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=567 200 [0.07, 127.0.0.1:47206][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47208][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47200]
+INFO [mHTTP GET /m/people/ 200 [0.07, 127.0.0.1:47210][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:47214][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:47212][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.03, 127.0.0.1:47216][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.03, 127.0.0.1:47220][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:47218][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.05, 127.0.0.1:47222][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:47224][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:47226][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:47228][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:47230][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47232][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:47234][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:47236][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:47238][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:47240][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:47244][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:47248][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:47250][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47254]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47254]
+INFO [mHTTP GET /api/load/user/people/?q=&f= 200 [0.28, 127.0.0.1:47262][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47254]
+ERROR OnlyOwnerMixin: User - Boris, Owner - test_497
+ERROR Internal Server Error: /p/test_497/
+Traceback (most recent call last):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/core/handlers/base.py", line 124, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/srv/WebProject/mysite/project/apps/account/mixins.py", line 22, in dispatch
+    raise HttpResponseForbidden
+TypeError: exceptions must derive from BaseException
+ERROR [35;1mHTTP GET /p/test_497/ 500 [0.17, 127.0.0.1:47264][0m
+WARNING Not Found: /favicon.ico
+WARNING [33mHTTP GET /favicon.ico 404 [0.12, 127.0.0.1:47266][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /p/test_497/ 200 [0.48, 127.0.0.1:47308][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:47320][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.04, 127.0.0.1:47326][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.04, 127.0.0.1:47328][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:47332][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.04, 127.0.0.1:47340][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.05, 127.0.0.1:47336][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:47342][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:47348][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:47350][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:47352][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:47354][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.03, 127.0.0.1:47356][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:47358][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.00, 127.0.0.1:47362][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.01, 127.0.0.1:47364][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47378]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47378]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47388][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=557 200 [0.67, 127.0.0.1:47390][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.01, 127.0.0.1:47394][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:47396][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47378]
+INFO [mHTTP GET /test_497/dialog/ 200 [0.27, 127.0.0.1:47398][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.04, 127.0.0.1:47402][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:47404][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.06, 127.0.0.1:47406][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:47410][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.06, 127.0.0.1:47408][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.06, 127.0.0.1:47412][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.07, 127.0.0.1:47414][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:47416][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:47418][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47422][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:47420][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_message.js 200 [0.08, 127.0.0.1:47424][0m
+INFO [mHTTP GET /static/chat/js/websocket_chat.js 200 [0.07, 127.0.0.1:47426][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.05, 127.0.0.1:47428][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.04, 127.0.0.1:47430][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.02, 127.0.0.1:47438][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:47440][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47446]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47446]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.02, 127.0.0.1:47450][0m
+INFO WebSocket HANDSHAKING /ws/dialog/10/ [127.0.0.1:47454]
+INFO WebSocket CONNECT /ws/dialog/10/ [127.0.0.1:47454]
+INFO [mHTTP GET /api/load/message/user-messages/?f=10 200 [0.08, 127.0.0.1:47456][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47446]
+INFO WebSocket DISCONNECT /ws/dialog/10/ [127.0.0.1:47454]
+INFO [32mHTTP GET /logout/ 302 [0.23, 127.0.0.1:47458][0m
+INFO [32mHTTP GET / 302 [0.01, 127.0.0.1:47462][0m
+INFO [mHTTP GET /m/ 200 [0.07, 127.0.0.1:47464][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:47476][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.02, 127.0.0.1:47478][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:47480][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:47482][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47484][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:47486][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.36, 127.0.0.1:47494][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.03, 127.0.0.1:47496][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.02, 127.0.0.1:47498][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.02, 127.0.0.1:47500][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:47502][0m
+INFO [mHTTP GET /login/ 200 [0.07, 127.0.0.1:47504][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:47510][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:47512][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:47514][0m
+INFO [mHTTP GET /static/myauth/js/reg.js 200 [0.06, 127.0.0.1:47516][0m
+INFO [mHTTP GET /static/myauth/img/120px-VK.com-logo.svg.png 200 [0.02, 127.0.0.1:47518][0m
+INFO [mHTTP GET /static/blog/img/main-logo.png 200 [0.01, 127.0.0.1:47520][0m
+INFO [32mHTTP GET /login/vk-oauth2/ 302 [0.20, 127.0.0.1:47530][0m
+INFO [32mHTTP GET /complete/vk-oauth2/?redirect_state=Iv0YvNTC0MOJFvITE3QK4sYHRsIFdBsA&code=6d9260fe9951866aad&state=Iv0YvNTC0MOJFvITE3QK4sYHRsIFdBsA 302 [1.33, 127.0.0.1:47534][0m
+INFO [32mHTTP GET / 302 [0.16, 127.0.0.1:47540][0m
+INFO [mHTTP GET /m/ 200 [0.14, 127.0.0.1:47542][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:47546][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.03, 127.0.0.1:47548][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.03, 127.0.0.1:47550][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.02, 127.0.0.1:47554][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:47552][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.05, 127.0.0.1:47556][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:47558][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.03, 127.0.0.1:47560][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.03, 127.0.0.1:47562][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.03, 127.0.0.1:47564][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47566][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.03, 127.0.0.1:47568][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.02, 127.0.0.1:47570][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.02, 127.0.0.1:47572][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.02, 127.0.0.1:47574][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.01, 127.0.0.1:47576][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:47578][0m
+INFO [mHTTP GET /static/blog/img/baseline-mail_outline-24px.svg 200 [0.03, 127.0.0.1:47580][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.03, 127.0.0.1:47582][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.03, 127.0.0.1:47584][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47588]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47588]
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.55, 127.0.0.1:47596][0m
+INFO [mHTTP GET /static/blog/img/icon-like-active.png 200 [0.02, 127.0.0.1:47602][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:47600][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.02, 127.0.0.1:47604][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47588]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.27, 127.0.0.1:47606][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.02, 127.0.0.1:47612][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:47614][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.04, 127.0.0.1:47616][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.04, 127.0.0.1:47620][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.04, 127.0.0.1:47622][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.05, 127.0.0.1:47618][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.04, 127.0.0.1:47624][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.06, 127.0.0.1:47626][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:47628][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:47630][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.04, 127.0.0.1:47632][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:47634][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.04, 127.0.0.1:47636][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.03, 127.0.0.1:47638][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.01, 127.0.0.1:47640][0m
+INFO [mHTTP GET /static/blog/img/baseline-add_photo_alternate-24px(3).svg 200 [0.02, 127.0.0.1:47642][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.02, 127.0.0.1:47644][0m
+INFO [mHTTP GET /static/blog/img/baseline-notification_important-24px.svg 200 [0.02, 127.0.0.1:47648][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.02, 127.0.0.1:47650][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47654]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47654]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47660][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.58, 127.0.0.1:47662][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.07, 127.0.0.1:47670][0m
+INFO [mHTTP GET /update-post/3180/ 200 [0.11, 127.0.0.1:47672][0m
+INFO [mHTTP POST /api/post/delete/3180/ 200 [0.16, 127.0.0.1:47674][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47654]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.27, 127.0.0.1:47676][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.01, 127.0.0.1:47684][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:47686][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.01, 127.0.0.1:47688][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.03, 127.0.0.1:47690][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.03, 127.0.0.1:47692][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.03, 127.0.0.1:47694][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.03, 127.0.0.1:47696][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.03, 127.0.0.1:47698][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.05, 127.0.0.1:47700][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.04, 127.0.0.1:47702][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.03, 127.0.0.1:47706][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:47704][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.03, 127.0.0.1:47708][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.04, 127.0.0.1:47710][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.03, 127.0.0.1:47712][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.02, 127.0.0.1:47714][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.02, 127.0.0.1:47716][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47730]
+INFO [mHTTP GET /static/blog/img/icons8-%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5-%D1%86%D0%B5%D0%BB%D0%B8%D0%BA%D0%BE%D0%BC-100.png 200 [0.03, 127.0.0.1:47732][0m
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47730]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47736][0m
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.12, 127.0.0.1:47738][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.02, 127.0.0.1:47742][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:47744][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:47746][0m
+INFO [mHTTP GET /api/load/post/profile/?since=3179&q=&f=566 200 [0.09, 127.0.0.1:47752][0m
+INFO [mHTTP GET /api/load/dialog/user-dialogs/ 200 [0.09, 127.0.0.1:47754][0m
+INFO [mHTTP GET /api/load/notify/user-notify/ 200 [0.09, 127.0.0.1:47756][0m
+INFO [mHTTP GET /api/load/dialog/user-dialogs/ 200 [0.12, 127.0.0.1:47758][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47730]
+INFO [mHTTP GET /p/drug_tvoei_mamu/ 200 [0.26, 127.0.0.1:47760][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.04, 127.0.0.1:47770][0m
+INFO [mHTTP GET /static/account/css/account.css 200 [0.04, 127.0.0.1:47772][0m
+INFO [mHTTP GET /static/blog/js/image_loader.js 200 [0.04, 127.0.0.1:47774][0m
+INFO [mHTTP GET /static/autocomplete/css/autocomplete.css 200 [0.05, 127.0.0.1:47776][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.06, 127.0.0.1:47780][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_dialogs.js 200 [0.06, 127.0.0.1:47778][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.06, 127.0.0.1:47782][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.07, 127.0.0.1:47784][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:47788][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.06, 127.0.0.1:47786][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.06, 127.0.0.1:47790][0m
+INFO [mHTTP GET /static/like_dislike/js/like.js 200 [0.06, 127.0.0.1:47792][0m
+INFO [mHTTP GET /static/like_dislike/js/subscribe.js 200 [0.05, 127.0.0.1:47794][0m
+INFO [mHTTP GET /static/delete_app/js/delete.js 200 [0.05, 127.0.0.1:47796][0m
+INFO [mHTTP GET /static/account/js/account_utils.js 200 [0.04, 127.0.0.1:47798][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.03, 127.0.0.1:47800][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:47814]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:47814]
+INFO [mHTTP GET /api/load/post/profile/?q=&f=566 200 [0.11, 127.0.0.1:47820][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:47822][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.01, 127.0.0.1:47828][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:47814]
+INFO [32mHTTP GET / 302 [0.15, 127.0.0.1:50174][0m
+INFO [mHTTP GET /m/ 200 [0.30, 127.0.0.1:50178][0m
+INFO [mHTTP GET /static/chat/js/list-dialogs.js 200 [0.10, 127.0.0.1:50194][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.11, 127.0.0.1:50204][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.11, 127.0.0.1:50208][0m
+INFO [mHTTP GET /static/event_handler/js/websocket_event_handler.js 200 [0.11, 127.0.0.1:50210][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.08, 127.0.0.1:50216][0m
+INFO WebSocket HANDSHAKING /ws/event-handler/ [127.0.0.1:50236]
+INFO WebSocket CONNECT /ws/event-handler/ [127.0.0.1:50236]
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:50240][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.57, 127.0.0.1:50246][0m
+INFO WebSocket DISCONNECT /ws/event-handler/ [127.0.0.1:50236]
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000

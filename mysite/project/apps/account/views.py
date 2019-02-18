@@ -30,7 +30,7 @@ class MyEmailChangeView(LoginRequiredMixin, AjaxMixin, UpdateView):
 
 
 
-class ProfileView(OnlyOwnerMixin, AjaxLoaderMixin, AjaxMixin, UpdateView):
+class ProfileView(AjaxLoaderMixin, AjaxMixin, UpdateView):
     template_name = 'account/profile.html'
     model = Profile
     slug_field = 'name'

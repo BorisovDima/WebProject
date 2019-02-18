@@ -25,7 +25,7 @@ SECRET_KEY = '1h07w#iq!h&_g$oahcj8*a@^4at$ollrgv3^dxr1qjl=9g+hj@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -267,6 +267,74 @@ GEOIP_PATH = '/srv/WebProject/mysite/etc/geoip'
 
 DOMAIN = 'http://localhost/'
 
+############## Logging ############
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
 
+    'root': {
+        'handlers': ['log_file', 'error_log'],
+        'level': 'INFO',
+        'formatter': 'verbose',
+    },
 
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(name)s.%(funcName)s %(message)s'
+
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+
+    },
+    'filters': {
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+      'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+
+    'handlers': {
+        'log_file': {
+            'level': 'INFO',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'simple',
+            'backupCount': 1,
+            'maxBytes': 16*1000000,
+            'filename': '/srv/WebProject/mysite/logs.log',
+        },
+        'error_log': {
+            'level': 'ERROR',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'backupCount': 1,
+            'maxBytes': 16 * 1000000,
+            'filename': '/srv/WebProject/mysite/error.log',
+
+        },
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+            'filters': ['require_debug_true']
+        }
+
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['log_file'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': True,
+        }
+        },
+}
 

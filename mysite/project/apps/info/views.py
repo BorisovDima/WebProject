@@ -11,6 +11,8 @@ from project.apps.ajax_utils_.mixins import AjaxMixin
 from project.apps.myauth.utils import check_google_captcha
 from project.apps.back_task.tasks import sendler_mail
 
+import logging
+logger = logging.getLogger(__name__)
 
 class Info(CacheMixin, TemplateView):
     model = InfoModel
@@ -19,6 +21,7 @@ class Info(CacheMixin, TemplateView):
         try:
             obj = self.model.objects.get(url=kwargs['url'], language=request.LANGUAGE_CODE)
         except self.model.DoesNotExist:
+            logger.error('Language error %s' % request.LANGUAGE_CODE)
             obj = get_object_or_404(self.model, url=kwargs['url'], language=settings.LANGUAGE_CODE)
         return JsonResponse({'html': mark_safe(obj.html)}) if request.is_ajax() else super().get(request, **kwargs)
 

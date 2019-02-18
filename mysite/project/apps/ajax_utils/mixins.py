@@ -2,9 +2,11 @@ from django.shortcuts import get_object_or_404
 from django.http import Http404
 from django.db.models import Count
 
-
 from project.apps.like_dislike.models import Subscribe
 from  .models import AjaxLoaderModel
+
+import logging
+logger = logging.getLogger(__name__)
 
 HOT_POST = 2
 
@@ -48,7 +50,7 @@ class AjaxLoaderMixin(Sort):
         try:
             return getattr(self, self.location.sort)
         except Exception as i:
-            print(i)
+            logger.error(i)
             raise Http404
 
 

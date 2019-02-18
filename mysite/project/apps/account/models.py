@@ -12,7 +12,7 @@ from project.apps.like_dislike.models import Subscribe
 from project.apps.chat.models import Dialog
 
 from uuid import uuid4
-from itertools import dropwhile
+
 
 
 

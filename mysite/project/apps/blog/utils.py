@@ -30,6 +30,7 @@ def make_thumbnail(image, size, icon=False, field=None):
     fileobj.close()
 
 
+
 import re
 hashtag_pattern = re.compile(r'#([\w-]{0,44})')
 

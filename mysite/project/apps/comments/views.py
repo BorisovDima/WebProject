@@ -1,5 +1,4 @@
 from django.views.generic import DetailView
-from django.http import JsonResponse
 from project.apps.ajax_utils_.mixins import AjaxMixin
 
 

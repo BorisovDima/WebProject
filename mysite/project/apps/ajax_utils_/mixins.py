@@ -1,7 +1,8 @@
 from django.http import JsonResponse
-from project.apps.myauth.utils import check_google_captcha
 from django.utils.translation import gettext as _
 from django.template.loader import render_to_string
+
+from project.apps.myauth.utils import check_google_captcha
 
 
 class AjaxMixin:

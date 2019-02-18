@@ -16,6 +16,7 @@ register = template.Library()
 
 @register.inclusion_tag('tag/navbar.html')
 def load_navbar(user, **kwargs):
+    print(kwargs)
     kwargs.update({'user': user})
     return kwargs
 
@@ -81,5 +82,3 @@ def redact_post(post):
 @register.inclusion_tag('tag/about-sidebar.html')
 def about():
     return {}
-
-

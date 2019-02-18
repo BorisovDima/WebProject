@@ -1,7 +1,8 @@
 from django.urls import path
+from django.contrib.auth import get_user_model
+
 from . import views
 from project.apps.blog.models import Article
-from django.contrib.auth import get_user_model
 from project.apps.event_handler.models import Notification
 from project.apps.comments.models import Comment
 from project.apps.chat.models import Dialog, Message

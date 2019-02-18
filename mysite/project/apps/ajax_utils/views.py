@@ -1,6 +1,7 @@
 from django.http import JsonResponse
 from django.views.generic import View
 from django.template.loader import render_to_string
+
 from .mixins import AjaxLoaderMixin
 
 

@@ -1,11 +1,14 @@
 from django.views.generic import FormView
-from .models import Dialog
 from django.contrib.auth import get_user_model
-from .forms import DialogForm
 from django.http import Http404
-
-
 from django.contrib.auth.mixins import LoginRequiredMixin
+
+from .models import Dialog
+from .forms import DialogForm
+
+import logging
+
+logger = logging.getLogger()
 
 class DialogView(LoginRequiredMixin, FormView):
    template_name = 'chat/dialog.html'
@@ -16,6 +19,7 @@ class DialogView(LoginRequiredMixin, FormView):
        if self.kwargs.get('id_dialog'):
            context['dialog'] = Dialog.objects.get(id=self.kwargs['id_dialog'])
            if context['dialog'].auth_user(self.request.user):
+               logger.error('Dialog %d not auth %s' % (self.kwargs['id_dialog'], self.request.user))
                raise Http404
        else:
             user = get_user_model().objects.get(username=self.kwargs['username'])

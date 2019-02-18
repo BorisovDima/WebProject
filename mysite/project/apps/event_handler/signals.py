@@ -14,6 +14,9 @@ from .models import Notification
 
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+import logging
+
+logger = logging.getLogger(__name__)
 
 #my_message_signal = dispatch.Signal(providing_args=['instance', 'to_user', 'dialog_id'])
 
@@ -92,7 +95,7 @@ def comment_handler(sender, **kwargs):
 
 def del_event(kwargs):
     event, id = ContentType.objects.get_for_model(kwargs['instance']), kwargs['instance'].id
-    print(Notification.objects.filter(content_type=event, object_id=id).delete(), '--')
+    logger.info(Notification.objects.filter(content_type=event, object_id=id).delete())
 
 
 @receiver(post_delete, sender=Like, dispatch_uid="my_like_del")

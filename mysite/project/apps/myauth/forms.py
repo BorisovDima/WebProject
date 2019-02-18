@@ -7,8 +7,10 @@ from django.forms import widgets
 from django import forms
 from django.utils.translation import gettext as _
 
-class MyRegForm(UserCreationForm):
+import logging
+logger = logging.getLogger(__name__)
 
+class MyRegForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -52,6 +54,7 @@ class MyRegForm(UserCreationForm):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
         user.save()
+        logger.info('User registered! %s' % user.username)
         return user
 
 
@@ -90,7 +93,6 @@ class MyPasswordResetForm(PasswordResetForm):
         subject = render_to_string(subject_template_name, context)
         subject = ''.join(subject.splitlines())
         body = 'Reset mail'
-        print(context)
         context.update(user='')
         sendler_mail.delay(subject, body, from_email, [to_email], template_name=html_email_template_name, **context)
 

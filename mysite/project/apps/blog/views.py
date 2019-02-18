@@ -11,7 +11,9 @@ from project.apps.ajax_utils.mixins import AjaxLoaderMixin
 from project.apps.account.utils import get_user_recommends
 from project.apps.account.mixins import OnlyOwnerMixin
 from .mixins import CacheMixin
+import logging
 
+logger = logging.getLogger(__name__)
 
 
 class MainPage(AjaxLoaderMixin, CacheMixin, TemplateView):

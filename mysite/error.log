@@ -1,0 +1,51 @@
+WARNING 2019-01-28 15:21:07,490 views 6379 140293860771584 CHECK
+ERROR 2019-01-28 15:21:07,491 views 6379 140293860771584 ERNO
+Not Found: /favicon.ico
+CHECK
+ERNO
+WARNING 2019-01-28 15:23:25,615 views 6495 140664776541952 CHECK
+ERROR 2019-01-28 15:23:25,616 views 6495 140664776541952 ERNO
+[2019-01-28 15:36:11,410] ERROR [test.get_location:23 views] BAMP
+ERROR 2019-01-28 15:39:37,355 views test get 6808 139929603622656 BAMP
+ERROR 2019-01-28 15:43:46,390 views.get BAMP
+ERROR 2019-01-28 15:51:15,105 project.apps.blog.views.get BAMP
+ERROR 2019-01-28 15:51:15,106 project.apps.blog.views.get_location BAMP
+ERROR 2019-01-28 15:58:05,605 project.apps.blog.views.get_location BAMP
+WARNING 2019-01-28 16:00:49,925 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:00:49,968 django.request.log_response Not Found: /update-post/1802/
+WARNING 2019-01-28 16:00:49,970 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.07, 127.0.0.1:38700][0m
+WARNING 2019-01-28 16:01:28,217 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:01:28,222 django.request.log_response Not Found: /update-post/1802/
+WARNING 2019-01-28 16:01:28,226 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38702][0m
+WARNING 2019-01-28 16:11:24,591 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:11:24,600 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38706][0m
+WARNING 2019-01-28 16:12:46,938 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:12:46,950 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.05, 127.0.0.1:38712][0m
+WARNING 2019-01-28 16:12:56,650 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:12:56,658 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.02, 127.0.0.1:38714][0m
+WARNING 2019-01-28 16:14:16,219 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:14:16,229 django.channels.server.log_action [33mHTTP GET /update-post/1802/ 404 [0.04, 127.0.0.1:38718][0m
+WARNING 2019-01-28 16:14:41,517 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:14:41,524 django.channels.server.log_action [33mHTTP GET /update-post/1803/ 404 [0.02, 127.0.0.1:38720][0m
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.05, 127.0.0.1:38724][0m
+WARNING OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING [33mHTTP GET /update-post/1803/ 404 [0.05, 127.0.0.1:38730][0m
+WARNING 2019-01-28 16:17:22,300 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+WARNING 2019-01-28 16:17:22,311 django.channels.server.log_action [33mHTTP GET /update-post/1803/ 404 [0.04, 127.0.0.1:38732][0m
+ERROR 2019-01-28 16:18:40,362 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - -A, Owner - test_478
+ERROR 2019-01-28 16:43:10,964 django.channels.server.log_action [35;1mHTTP GET /p/drug_tvoei_mamu/ 500 [0.37, 127.0.0.1:39026][0m
+ERROR 2019-01-28 17:10:25,067 test.<module> {12: 'dad'}
+ERROR 2019-01-28 17:15:02,374 django.channels.server.log_action [35;1mHTTP POST /api/like/post/1802/ 500 [0.43, 127.0.0.1:39936][0m
+ERROR 2019-01-28 17:15:04,018 django.channels.server.log_action [35;1mHTTP POST /api/like/post/1802/ 500 [0.19, 127.0.0.1:39938][0m
+ERROR 2019-01-28 17:15:24,886 django.channels.server.log_action [35;1mHTTP POST /api/like/post/1802/ 500 [0.24, 127.0.0.1:39962][0m
+CRITICAL 2019-02-17 12:06:28,809 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+CRITICAL 2019-02-17 12:07:07,980 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+CRITICAL 2019-02-17 12:13:12,318 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+CRITICAL 2019-02-17 12:15:23,176 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+CRITICAL 2019-02-17 12:15:23,443 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+CRITICAL 2019-02-17 12:17:13,134 daphne.server.listen_error Listen failure: Couldn't listen on 127.0.0.1:8000: [Errno 98] Address already in use.
+ERROR 2019-02-17 12:23:05,128 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - Boris, Owner - drug_tvoei_mamu
+ERROR 2019-02-17 12:23:05,291 django.channels.server.log_action [35;1mHTTP GET /p/drug_tvoei_mamu/ 500 [0.24, 127.0.0.1:47076][0m
+ERROR 2019-02-17 12:23:30,555 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - Boris, Owner - test_497
+ERROR 2019-02-17 12:23:30,642 django.channels.server.log_action [35;1mHTTP GET /p/test_497/ 500 [0.17, 127.0.0.1:47264][0m

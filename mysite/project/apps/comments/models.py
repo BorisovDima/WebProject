@@ -30,6 +30,11 @@ class Comment(models.Model):
 
     objects = MyManager()
 
+
+    @property
+    def get_user(self):
+        return self.author
+
     def _delete(self, *args, **kwargs):
         self.is_active = False
         self.save(update_fields=['is_active'])

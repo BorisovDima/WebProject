@@ -43,7 +43,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             msg.user_readed_msg()
         html = await sync_to_async(render_to_string)('chat/message.html', {'name_author': msg.author, 'to': to_,
                                                                            'data_publish': 'now', 'text': msg.text})
-        print(msg, msg.readed, '____MSG', msg.author)
         await self.send(json.dumps({'message': html, 'status': 'ok'}))
 
 

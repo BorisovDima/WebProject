@@ -3,6 +3,10 @@ from django.utils import timezone
 from django.shortcuts import render_to_response
 from django.utils.translation import gettext_lazy as _
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 class BanList(models.Model):
     ban_24h_template = 'account/ban_24.html'
     ban_15m_template = 'account/ban_15.html'
@@ -29,10 +33,12 @@ class BanList(models.Model):
         if self.ban and timezone.now() < self.time_unblock:
             if self.attempts in [6, 9, 12]:
                 template = self.ban_15m_template if self.attempts in [6, 9] else self.ban_24h_template
+                logger.warning('Try auth. Acquire ban %d, ip-%s' % (self.attempts, self.ip))
                 return {'status': 'ban', 'response': render_to_response(template)}
         elif self.ban and timezone.now() > self.time_unblock:
             self.ban = False
             self.save(update_fields=['ban'])
+            logger.warning('Try auth. Release, ip-%s' % self.ip)
         return {'status': 'ok'}
 
     def ban_15m(self):

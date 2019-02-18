@@ -6,7 +6,9 @@ from django.utils import timezone
 from .models import Article
 
 from os.path import splitext
+import logging
 
+logger = logging.getLogger(__name__)
 
 class BaseCreateForm(ModelForm):
 
@@ -57,6 +59,8 @@ class UpdatePostForm(CreatePostForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        if timezone.now() > self.instance.create_data + timezone.timedelta(hours=24):
+        expired = self.instance.create_data + timezone.timedelta(hours=24)
+        if timezone.now() > expired:
+            logger.error('Change error: Date %s, Now %s' % (expired, timezone.now()))
             raise ValidationError('Time expired')
         return cleaned_data

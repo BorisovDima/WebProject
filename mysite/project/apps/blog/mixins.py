@@ -14,7 +14,6 @@ class CacheMixin:
      def get(self, request, *args, **kwargs):
         uniq_key = self.get_uniq_key(request)
         response = cache.get(uniq_key)
-        print(response)
         if not response:
             response = super().get(request, *args, **kwargs)
             response = response.render() if hasattr(response, 'render') else response

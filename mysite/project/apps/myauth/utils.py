@@ -2,6 +2,10 @@ import requests
 from django.contrib.gis.geoip2 import GeoIP2
 from django.conf import settings
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 def check_google_captcha(req):
     recaptcha_response = req.POST.get('g-recaptcha-response')
     data = {
@@ -28,6 +32,7 @@ def get_geo(request):
     try:
         geo = GeoIP2().country(ip)['country_code']
     except Exception:
+        logger.warning('Not geo %s' % ip)
         geo = settings.DEFAULT_GEO
         success = False
     return geo, success
@@ -43,6 +48,7 @@ def social_user(backend, user, response, *args, **kwargs):
         set_geo(user, kwargs['request'])
         user.is_verified = True
         user.save(update_fields=['is_verified'])
+        logger.info('User registered! %s' % user.username)
 
 
 

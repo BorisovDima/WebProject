@@ -1,8 +1,11 @@
 from django.shortcuts import redirect
-from django.http import Http404
+from django.http import HttpResponseForbidden
 
 from .models import BlogUser
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 class NotLoginRequiredMixin:
     def dispatch(self, request, *args, **kwargs):
@@ -11,10 +14,11 @@ class NotLoginRequiredMixin:
         return super().dispatch(request, *args, **kwargs)
 
 class OnlyOwnerMixin:
-    def post(self, req, *args, **kwargs):
+    def dispatch(self, req, *args, **kwargs):
         obj = self.get_object()
         user = obj if isinstance(obj, BlogUser) else obj.get_user
         if user != req.user:
-            raise Http404
-        return super().post(req, *args, **kwargs)
+            logger.error('OnlyOwnerMixin: User - %s, Owner - %s' % (req.user.username or '-A', user.username))
+            raise HttpResponseForbidden
+        return super().dispatch(req, *args, **kwargs)
 
