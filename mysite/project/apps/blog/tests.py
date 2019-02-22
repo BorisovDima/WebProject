@@ -16,6 +16,7 @@ test_pass = '19960213Z26a'
 test_user = 'author'
 
 class TestBlogNotLive(TestCase):
+    fixtures = ['location-data.json']
 
     def setUp(self):
         super().setUp()
@@ -46,7 +47,8 @@ from uuid import uuid4
 
 
 class TestBlogPost(UserAuth, StaticLiveServerTestCase):
-    fixtures = ['user_data.json', 'profile_data.json']
+    fixtures = ['user_data.json', 'profile_data.json', 'location-data.json']
+
 
     def setUp(self):
         self.author = get_user_model().objects.create_user(username=test_user, is_verified=True)

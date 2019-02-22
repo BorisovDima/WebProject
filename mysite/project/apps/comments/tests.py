@@ -16,7 +16,7 @@ test_user = 'comment-test1'
 test_user2 = 'comment-test2'
 
 class TestComment(UserAuth, ChannelsLiveServerTestCase):
-
+    fixtures = ['location-data.json']
 
     def setUp(self):
         self.user1 = get_user_model().objects.create_user(is_verified=True, username=test_user)

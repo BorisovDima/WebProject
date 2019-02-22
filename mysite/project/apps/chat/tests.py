@@ -10,6 +10,7 @@ user_data = (('test_chat_1', '19960213'), ('test_chat_2', '19960213'), ('test_ch
 
 
 class ChatTests(ChannelsLiveServerTestCase):
+    fixtures = ['location-data.json']
     serve_static = True  # emulate StaticLiveServerTestCase
 
 

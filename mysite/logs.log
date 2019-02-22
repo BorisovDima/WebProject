@@ -2753,3 +2753,448 @@ INFO [mHTTP GET /static/admin/fonts/Roboto-Light-webfont.woff 200 [0.02, 127.0.
 INFO [mHTTP GET /static/admin/fonts/Roboto-Bold-webfont.woff 200 [0.01, 127.0.0.1:45228][0m
 WARNING Not Found: /favicon.ico
 WARNING [33mHTTP GET /favicon.ico 404 [0.15, 127.0.0.1:45230][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:39335
+WARNING Not Found: /m/
+WARNING Not Found: /favicon.ico
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:35931
+WARNING Not Found: /m/
+WARNING Not Found: /favicon.ico
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:45677
+WARNING Not Found: /m/
+WARNING Not Found: /favicon.ico
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:45348
+WARNING Not Found: /m/
+WARNING Not Found: /favicon.ico
+WARNING Not Found: /m/
+WARNING Not Found: /favicon.ico
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:42670
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:43183
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:34385
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:38516
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [32mHTTP GET / 302 [0.43, 127.0.0.1:56178][0m
+INFO [mHTTP GET /m/ 200 [0.15, 127.0.0.1:56178][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.03, 127.0.0.1:56178][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.02, 127.0.0.1:56186][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.03, 127.0.0.1:56184][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.04, 127.0.0.1:56182][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.04, 127.0.0.1:56188][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:56190][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.04, 127.0.0.1:56178][0m
+INFO [mHTTP GET /static/blog/img/search_icon.png 200 [0.02, 127.0.0.1:56186][0m
+WARNING [33mHTTP GET /static/blog/img/logo-mini.png 404 [0.06, 127.0.0.1:56182][0m
+WARNING [33mHTTP GET /static/blog/img/logo-mini.png 404 [0.01, 127.0.0.1:56188][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:56188][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [1.12, 127.0.0.1:56188][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.08, 127.0.0.1:56188][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.04, 127.0.0.1:56184][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.05, 127.0.0.1:56182][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.09, 127.0.0.1:56190][0m
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:38549
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:35529
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:45204
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:45496
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:39960
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:44772
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:38838
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=0:interface=localhost
+INFO Listening on TCP address 127.0.0.1:44566
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+INFO HTTP/2 support not enabled (install the http2 and tls Twisted extras)
+INFO Configuring endpoint tcp:port=8000:interface=127.0.0.1
+INFO Listening on TCP address 127.0.0.1:8000
+INFO [mHTTP GET /m/ 200 [0.31, 127.0.0.1:33030][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.04, 127.0.0.1:33030][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.05, 127.0.0.1:33052][0m
+INFO [mHTTP GET /static/autocomplete/js/autocomplete.js 200 [0.05, 127.0.0.1:33054][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:33056][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.04, 127.0.0.1:33060][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.05, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/ajax_utils/js/loader_content.js 200 [0.03, 127.0.0.1:33030][0m
+INFO [mHTTP GET /static/blog/img/search_icon.png 200 [0.01, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:33058][0m
+INFO [mHTTP GET /api/load/post/top/?q=&f= 200 [0.56, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/blog/img/comment.png 200 [0.03, 127.0.0.1:33060][0m
+INFO [mHTTP GET /static/account/img/default_user.png 200 [0.05, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/blog/img/icon-like.png 200 [0.03, 127.0.0.1:33052][0m
+INFO [mHTTP GET /static/blog/img/view.png 200 [0.04, 127.0.0.1:33054][0m
+INFO [mHTTP GET /login/ 200 [0.07, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/blog/css/main_page.css 200 [0.01, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:33060][0m
+INFO [mHTTP GET /static/comments/js/answer_comment.js 200 [0.05, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/myauth/js/reg.js 200 [0.04, 127.0.0.1:33054][0m
+INFO [mHTTP GET /static/comments/css/comment.css 200 [0.05, 127.0.0.1:33052][0m
+INFO [mHTTP GET /static/blog/js/detail_post.js 200 [0.06, 127.0.0.1:33060][0m
+WARNING [33mHTTP GET /static/blog/img/main-logo.png 404 [0.02, 127.0.0.1:33056][0m
+INFO [mHTTP GET /static/myauth/img/120px-VK.com-logo.svg.png 200 [0.02, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/ajax_utils/js/ajax-post.js 200 [0.01, 127.0.0.1:33058][0m
+WARNING [33mHTTP GET /static/blog/img/main-logo.png 404 [0.01, 127.0.0.1:33058][0m
+INFO [mHTTP GET /static/blog/img/Papirus-Team-Papirus-Apps-Distributor-logo-ubuntu.ico 200 [0.01, 127.0.0.1:33058][0m

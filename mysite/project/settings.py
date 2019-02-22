@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'project.apps.delete_app',
     'project.apps.search',
     'project.apps.myauth',
+
     'captcha',             #
     'django_countries',
     'social_django',

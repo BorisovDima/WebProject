@@ -49,3 +49,339 @@ ERROR 2019-02-17 12:23:05,128 project.apps.account.mixins.dispatch OnlyOwnerMixi
 ERROR 2019-02-17 12:23:05,291 django.channels.server.log_action [35;1mHTTP GET /p/drug_tvoei_mamu/ 500 [0.24, 127.0.0.1:47076][0m
 ERROR 2019-02-17 12:23:30,555 project.apps.account.mixins.dispatch OnlyOwnerMixin: User - Boris, Owner - test_497
 ERROR 2019-02-17 12:23:30,642 django.channels.server.log_action [35;1mHTTP GET /p/test_497/ 500 [0.17, 127.0.0.1:47264][0m
+ERROR 2019-02-22 02:02:01,408 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:02:56,116 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:03:47,318 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:04:48,349 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:14:38,951 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:15:22,832 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:16:03,021 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:16:17,264 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:17:11,048 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:17:20,068 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:28:23,323 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:28:33,338 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:30:17,218 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'
+ERROR 2019-02-22 02:30:27,237 daphne.server.application_checker Exception inside application: 'NoneType' object has no attribute 'items'
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 202, in __call__
+    await self.handle(body)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 108, in __call__
+    return await asyncio.wait_for(future, timeout=None)
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 373, in wait_for
+    return (yield from fut)
+  File "/usr/lib/python3.5/asyncio/futures.py", line 361, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "/usr/lib/python3.5/asyncio/tasks.py", line 296, in _wakeup
+    future.result()
+  File "/usr/lib/python3.5/asyncio/futures.py", line 274, in result
+    raise self._exception
+  File "/usr/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/asgiref/sync.py", line 123, in thread_handler
+    return self.func(*args, **kwargs)
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 238, in handle
+    for response_message in self.encode_response(response):
+  File "/srv/WebProject/venv/lib/python3.5/site-packages/channels/http.py", line 304, in encode_response
+    for header, value in response.items():
+  'NoneType' object has no attribute 'items'

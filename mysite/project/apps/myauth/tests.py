@@ -11,8 +11,9 @@ domain = 'localhost'
 
 
 class UserAuth():
+
     def user_auth(self, w, data):
-        w.get('%s' % (self.live_server_url))
+        w.get(self.live_server_url + reverse('myauth:login'))
         login = w.find_element_by_id('login_username')
         login.send_keys(data[0])
         password = w.find_element_by_id('id_password')
@@ -22,7 +23,7 @@ class UserAuth():
 
 
 class MyAuthTest(StaticLiveServerTestCase):
-    #fixtures = ['user_auth.json']
+    fixtures = ['location-data.json']
 
     @classmethod
     def setUpClass(cls):
